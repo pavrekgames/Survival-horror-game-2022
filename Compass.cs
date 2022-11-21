@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class Compass : MonoBehaviour {
 
-    public RawImage compassImage;
     private Transform player;
-    public GameObject iconPrefab;
+    [SerializeField] private RawImage compassImage;
+    [SerializeField] private GameObject iconPrefab;
 
     public List<TaskPoint> tasksPoints = new List<TaskPoint>();
 
     float compassUnit;
 
-    // Punkty do mapy
+    public TaskPoint[] taskPointsArray;
 
     public TaskPoint keyWoodPoint;
     public TaskPoint magicWellPoint;
@@ -44,9 +44,6 @@ public class Compass : MonoBehaviour {
     public TaskPoint abandonedHousePoint;
     public TaskPoint stevenHousePoint;
     public TaskPoint scientistHousePoint;
-
-    // Dodatkowe punkty do notatek nie zadan
-
     public TaskPoint edwardCupboardPoint;
     public TaskPoint bonesShedPoint;
     public TaskPoint boneStablePoint;
@@ -59,43 +56,7 @@ public class Compass : MonoBehaviour {
         compassUnit = compassImage.rectTransform.rect.width / 360f;
         player = GameObject.Find("Player").transform;
 
-        keyWoodPoint = GameObject.Find("PunktZadaniaKluczDrewno").GetComponent<TaskPoint>();
-        magicWellPoint = GameObject.Find("PunktZadaniaMagicznaStudnia").GetComponent<TaskPoint>();
-        gardenDoorPoint = GameObject.Find("PunktZadaniaDrzwiOgrod").GetComponent<TaskPoint>();
-        simonElementPoint = GameObject.Find("PunktZadaniaSimonElement").GetComponent<TaskPoint>();
-        workshopPoint = GameObject.Find("PunktZadaniaWarsztat").GetComponent<TaskPoint>();
-        brokenKeyPoint = GameObject.Find("PunktZadaniaZepsutyKlucz").GetComponent<TaskPoint>();
-        animalCementaryPoint = GameObject.Find("PunktZadaniaCmentarzZwierzat").GetComponent<TaskPoint>();
-        cornfieldPoint = GameObject.Find("PunktZadaniaKukurydza").GetComponent<TaskPoint>();
-        axePoint = GameObject.Find("PunktZadaniaSiekiera").GetComponent<TaskPoint>();
-        wardrobeCorridorPoint = GameObject.Find("PunktZadaniaSzafaKorytarz").GetComponent<TaskPoint>();
-        cassete2Point = GameObject.Find("PunktZadaniaKaseta2").GetComponent<TaskPoint>();
-        goTrailPoint = GameObject.Find("PunktZadaniaIdzSzlak").GetComponent<TaskPoint>();
-        getToPoint = GameObject.Find("PunktZadaniaPrzedostanSie").GetComponent<TaskPoint>();
-        tomCampPoint = GameObject.Find("PunktZadaniaTomOboz").GetComponent<TaskPoint>();
-        ravibePoint = GameObject.Find("PunktZadaniaWawoz").GetComponent<TaskPoint>();
-        stevenMeatPoint = GameObject.Find("PunktZadaniaStevenMieso").GetComponent<TaskPoint>();
-        stevenMushroomPoint = GameObject.Find("PunktZadaniaStevenGrzyb").GetComponent<TaskPoint>();
-        stevenPlantPoint = GameObject.Find("PunktZadaniaStevenRoslina").GetComponent<TaskPoint>();
-        stevenSkullPoint = GameObject.Find("PunktZadaniaStevenCzaszka").GetComponent<TaskPoint>();
-        stevenShedPoint = GameObject.Find("PunktZadaniaStevenSzopa").GetComponent<TaskPoint>();
-        stevenBrookPoint = GameObject.Find("PunktZadaniaStevenPotok").GetComponent<TaskPoint>();
-        hutPoint = GameObject.Find("PunktZadaniaChatka").GetComponent<TaskPoint>();
-        devilsBrookPoint = GameObject.Find("PunktZadaniaPotokDiably").GetComponent<TaskPoint>();
-        grandmaHousePoint = GameObject.Find("PunktZadaniaDomBabci").GetComponent<TaskPoint>();
-        aliceHousePoint = GameObject.Find("PunktZadaniaDomAlice").GetComponent<TaskPoint>();
-        tomHousePoint = GameObject.Find("PunktZadaniaDomTom").GetComponent<TaskPoint>();
-        abandonedHousePoint = GameObject.Find("PunktZadaniaOpuszczonyDom").GetComponent<TaskPoint>();
-        stevenHousePoint = GameObject.Find("PunktZadaniaDomSteven").GetComponent<TaskPoint>();
-        scientistHousePoint = GameObject.Find("PunktZadaniaDomNaukowca").GetComponent<TaskPoint>();
-
-        edwardCupboardPoint = GameObject.Find("PunktZadaniaSzafkaEdward").GetComponent<TaskPoint>();
-        bonesShedPoint = GameObject.Find("PunktZadaniaKoscSzopa").GetComponent<TaskPoint>();
-        boneStablePoint = GameObject.Find("PunktZadaniaKoscStajnia").GetComponent<TaskPoint>();
-        toolShedPoint = GameObject.Find("PunktZadaniaSzopaNarzedzia").GetComponent<TaskPoint>();
-        keyToiletPoint = GameObject.Find("PunktZadaniaKluczWychodek").GetComponent<TaskPoint>();
-        secretRoomPoint = GameObject.Find("PunktZadaniaSekretnyPokoj").GetComponent<TaskPoint>();
-
+        AddPointsToArray();
     }
 	
 	
@@ -103,9 +64,9 @@ public class Compass : MonoBehaviour {
 
         compassImage.uvRect = new Rect(player.localEulerAngles.y / 360f, 0f, 1f, 1f);
 
-        foreach(TaskPoint Punkt in tasksPoints)
+        foreach(TaskPoint point in tasksPoints)
         {
-            Punkt.pointImage.rectTransform.anchoredPosition = GetPointPosition(Punkt);
+            point.pointImage.rectTransform.anchoredPosition = GetPointPosition(point);
         }
 
 	}
@@ -138,6 +99,48 @@ public class Compass : MonoBehaviour {
         float angle = Vector2.Angle(point.PointPosition - playerPosition, forwardPosition);
 
         return new Vector2(compassUnit * angle, 0f);
+    }
+
+    void AddPointsToArray()
+    {
+
+        taskPointsArray = new TaskPoint[35];
+
+        taskPointsArray[0] = GameObject.Find("KeyWoodPoint").GetComponent<TaskPoint>();
+        taskPointsArray[1] = GameObject.Find("MagicWellPoint").GetComponent<TaskPoint>();
+        taskPointsArray[2] = GameObject.Find("GardenDoorPoint").GetComponent<TaskPoint>();
+        taskPointsArray[3] = GameObject.Find("SimonElementPoint").GetComponent<TaskPoint>();
+        taskPointsArray[4] = GameObject.Find("WorkshopPoint").GetComponent<TaskPoint>();
+        taskPointsArray[5] = GameObject.Find("BrokenKeyPoint").GetComponent<TaskPoint>();
+        taskPointsArray[6] = GameObject.Find("animalCementaryPoint").GetComponent<TaskPoint>();
+        taskPointsArray[7] = GameObject.Find("CornfieldPoint").GetComponent<TaskPoint>();
+        taskPointsArray[8] = GameObject.Find("AxePoint").GetComponent<TaskPoint>();
+        taskPointsArray[9] = GameObject.Find("WardrobeCorridorPoint").GetComponent<TaskPoint>();
+        taskPointsArray[10] = GameObject.Find("Cassete2Point").GetComponent<TaskPoint>();
+        taskPointsArray[11] = GameObject.Find("GoTrailPoint").GetComponent<TaskPoint>();
+        taskPointsArray[12] = GameObject.Find("GetToPoint").GetComponent<TaskPoint>();
+        taskPointsArray[13] = GameObject.Find("TomCampPoint").GetComponent<TaskPoint>();
+        taskPointsArray[14] = GameObject.Find("RavibePoint").GetComponent<TaskPoint>();
+        taskPointsArray[15] = GameObject.Find("StevenMeatPoint").GetComponent<TaskPoint>();
+        taskPointsArray[16] = GameObject.Find("StevenMushroomPoint").GetComponent<TaskPoint>();
+        taskPointsArray[17] = GameObject.Find("StevenPlantPoint").GetComponent<TaskPoint>();
+        taskPointsArray[18] = GameObject.Find("StevenSkullPoint").GetComponent<TaskPoint>();
+        taskPointsArray[19] = GameObject.Find("StevenShedPoint").GetComponent<TaskPoint>();
+        taskPointsArray[20] = GameObject.Find("StevenBrookPoint").GetComponent<TaskPoint>();
+        taskPointsArray[21] = GameObject.Find("HutPoint").GetComponent<TaskPoint>();
+        taskPointsArray[22] = GameObject.Find("DevilsBrookPoint").GetComponent<TaskPoint>();
+        taskPointsArray[23] = GameObject.Find("GrandmaHousePoint").GetComponent<TaskPoint>();
+        taskPointsArray[24] = GameObject.Find("AliceHousePoint").GetComponent<TaskPoint>();
+        taskPointsArray[25] = GameObject.Find("TomHousePoint").GetComponent<TaskPoint>();
+        taskPointsArray[26] = GameObject.Find("AbandonedHousePoint").GetComponent<TaskPoint>();
+        taskPointsArray[27] = GameObject.Find("StevenHousePoint").GetComponent<TaskPoint>();
+        taskPointsArray[28] = GameObject.Find("ScientistHousePoint").GetComponent<TaskPoint>();
+        taskPointsArray[29] = GameObject.Find("EdwardCupboardPoint").GetComponent<TaskPoint>();
+        taskPointsArray[30] = GameObject.Find("BonesShedPoint").GetComponent<TaskPoint>();
+        taskPointsArray[31] = GameObject.Find("BoneStablePoint").GetComponent<TaskPoint>();
+        taskPointsArray[32] = GameObject.Find("ToolShedPoint").GetComponent<TaskPoint>();
+        taskPointsArray[33] = GameObject.Find("KeyToiletPoint").GetComponent<TaskPoint>();
+        taskPointsArray[34] = GameObject.Find("SecretRoomPoint").GetComponent<TaskPoint>();
     }
 
 }
