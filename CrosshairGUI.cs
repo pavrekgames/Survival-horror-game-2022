@@ -12,36 +12,42 @@ public class CrosshairGUI : MonoBehaviour {
     private Health healthScript;
 
     public Texture2D m_crosshairTexture;
-	public Texture2D m_useTexture;
-	public Texture2D m_useHandTexture;
-	public Texture2D m_useNoteTexture;
-	public Texture2D m_usePushTexture;
-	public Texture2D m_useSaveTexture;
+    public Texture2D m_useTexture;
+    public Texture2D m_useHandTexture;
+    public Texture2D m_useNoteTexture;
+    public Texture2D m_usePushTexture;
+    public Texture2D m_useSaveTexture;
     public Texture2D m_useDrawersTexture;
     public Texture2D m_useWardrobeTexture;
     public Texture2D m_useMoveTexture;
+    
     public float rayLength = 3f;
 
-	public bool m_DefaultReticle;
-	public bool m_UseReticle;
-	public bool m_ShowCursor = false;
-	public bool m_HandTexture;
-	public bool m_NoteTexture;
-	public bool m_PushTexture;
-	public bool m_SaveTexture;
-    public bool m_Drawers1Texture;
-    public bool m_Drawers2Texture;
-    public bool m_WardrobeTexture;
-    public bool m_ObjectTexture;
-    public bool m_Object2Texture;
-    public bool m_MoveTexture;
-    public bool m_Move2Texture;
-    public bool m_MoveZadTexture;
+    public enum CursorState {
+        DefaultTexture,
+        DoorTexture,
+        HandTexture,
+        NoteTexture,
+        PushTexture,
+        SaveTexture,
+        Drawers1Texture,
+        Drawers2Texture,
+        WardrobeTexture,
+        Object1Texture,
+        Object2Texture,
+        Move1Texture,
+        Move2Texture,
+        MoveTaskTexture
+    };
+
+    public CursorState currentCursorState;
+
+    public bool m_ShowCursor = false;
 
     private bool m_bIsCrosshairVisible = true;
 	private Rect m_crosshairRect;
 	private Ray playerAim;
-	public Camera playerCam;
+	private Camera playerCam;
 
 	void OnEnable(){
 
@@ -52,634 +58,327 @@ public class CrosshairGUI : MonoBehaviour {
         openCloseObjectScript = GameObject.Find("Player").GetComponent<OpenCloseObject>();
         notesScript = GameObject.Find("Player").GetComponent<Notes>();
         healthScript = GameObject.Find("Player").GetComponent<Health>();
-        //playerAim = playerCam.GetComponent<Camera> ();
     }
 
 	void  Update (){
 		
-		//playerCam = Camera.main;
-		//Ray playerAim = playerCam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 		Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 		RaycastHit hit;
 
-      /*  if (Input.GetMouseButtonDown(0))
-        {
-            if (Physics.Raycast(playerAim, out hit, RayLength))
-            {
-                Debug.Log(hit.transform.gameObject.name);
-            }
-
-        } */
+        ShowHideCursor();
 
 		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9) && notesScript.isNotes == false)
 		{
-			if(hit.collider.gameObject.tag == "Interact")
-			{
-				m_DefaultReticle = false;
-				m_UseReticle = true;
-				m_HandTexture = false;
-				m_NoteTexture = false;
-				m_PushTexture = false;
-				m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
-            }
-			if(hit.collider.gameObject.tag == "InteractItem")
-			{
-				m_DefaultReticle = false;
-				m_UseReticle = true;
-				m_HandTexture = false;
-				m_NoteTexture = false;
-				m_PushTexture = false;
-				m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-               // SkryptDrag.Przywroc();
-               // SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
-            }
+			
 			if(hit.collider.gameObject.tag == "Door" && m_ShowCursor == false)
 			{
-				m_DefaultReticle = false;
-				m_UseReticle = true;
-				m_HandTexture = false;
-				m_NoteTexture = false;
-				m_PushTexture = false;
-				m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = true;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.DoorTexture;
             }
 
 			else if(hit.collider.gameObject.tag == "Hand" && m_ShowCursor == false)
 			{
-				m_DefaultReticle = false;
-				m_UseReticle = false;
-				m_HandTexture = true;
-				m_NoteTexture = false;
-				m_PushTexture = false;
-				m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.HandTexture;
             }
 
 			else if(hit.collider.gameObject.tag == "Note" && m_ShowCursor == false)
 			{
-				m_DefaultReticle = false;
-				m_UseReticle = false;
-				m_HandTexture = false;
-				m_NoteTexture = true;
-				m_PushTexture = false;
-				m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-               // SkryptDrag.Przywroc();
-               // SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.NoteTexture;
             } 
 
 			else if(hit.collider.gameObject.tag == "Push" && m_ShowCursor == false)
 			{
-				m_DefaultReticle = false;
-				m_UseReticle = false;
-				m_HandTexture = false;
-				m_NoteTexture = false;
-				m_PushTexture = true;
-				m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                pushScript.enabled = true;
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
+                currentCursorState = CursorState.PushTexture;
             }
 
-			else if(hit.collider.gameObject.tag == "Zapis" && m_ShowCursor == false)
+			else if(hit.collider.gameObject.tag == "Save" && m_ShowCursor == false)
 			{
-				m_DefaultReticle = false;
-				m_UseReticle = false;
-				m_HandTexture = false;
-				m_NoteTexture = false;
-				m_PushTexture = false;
-				m_SaveTexture = true;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.SaveTexture;
             }
 
             else if (hit.collider.gameObject.tag == "Drawers1" && m_ShowCursor == false)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = true;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = true;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
+                currentCursorState = CursorState.Drawers1Texture;
             }
 
             else if (hit.collider.gameObject.tag == "Drawers2" && m_ShowCursor == false)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = true;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = true;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.Drawers2Texture;
             }
 
-            else if (hit.collider.gameObject.tag == "Szafka" && m_ShowCursor == false)
+            else if (hit.collider.gameObject.tag == "Wardrobe" && m_ShowCursor == false)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = true;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = true;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.WardrobeTexture;
             }
 
-            else if (hit.collider.gameObject.tag == "Obiekt" && m_ShowCursor == false)
+            else if (hit.collider.gameObject.tag == "Object1" && m_ShowCursor == false)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = true;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = true;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.Object1Texture;
             }
 
-            else if (hit.collider.gameObject.tag == "Obiekt2" && m_ShowCursor == false)
+            else if (hit.collider.gameObject.tag == "Object2" && m_ShowCursor == false)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = true;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = true;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.Object2Texture;
             }
 
-            else if (hit.collider.gameObject.tag == "Move" && m_ShowCursor == false && healthScript.health > 0)
+            else if (hit.collider.gameObject.tag == "Move1" && m_ShowCursor == false && healthScript.health > 0)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = true;
-                m_Move2Texture = false;
-                m_MoveZadTexture = false;
-
-                dragScript.enabled = true;
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.Move1Texture;
             }
 
             else if (hit.collider.gameObject.tag == "Move2" && m_ShowCursor == false && healthScript.health > 0)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = true;
-                m_MoveZadTexture = false;
-
-                dragRigidbodyScript.enabled = true;
-               // SkryptDrag.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.Move2Texture;
             }
 
-            else if (hit.collider.gameObject.tag == "MoveZad" && m_ShowCursor == false && healthScript.health > 0)
+            else if (hit.collider.gameObject.tag == "MoveTask" && m_ShowCursor == false && healthScript.health > 0)
             {
-                m_DefaultReticle = false;
-                m_UseReticle = false;
-                m_HandTexture = false;
-                m_NoteTexture = false;
-                m_PushTexture = false;
-                m_SaveTexture = false;
-                m_Drawers1Texture = false;
-                m_Drawers2Texture = false;
-                m_WardrobeTexture = false;
-                m_ObjectTexture = false;
-                m_Object2Texture = false;
-                m_MoveTexture = false;
-                m_Move2Texture = false;
-                m_MoveZadTexture = true;
-
-                dragScript.enabled = true;
-                dragRigidbodyScript.enabled = false;
-                openCloseObjectScript.enabled = false;
-
-                //SkryptDrag.Przywroc();
-                //SkryptDrag.enabled = false;
-
-                pushScript.DefaultSettings();
-                pushScript.enabled = false;
-
+                currentCursorState = CursorState.MoveTaskTexture;
             }
-
-            //else if(hit.collider.gameObject.tag != "Note" || hit.collider.gameObject.tag != "Hand" || hit.collider.gameObject.tag != "Door"){
-            //	m_DefaultReticle = true;
-            //	m_UseReticle = false;
-            //	m_HandTexture = false;
-            //m_NoteTexture = false;
-            //}
 
         }
 
         else if (notesScript.isNotes == true)
         {
-            m_DefaultReticle = false;
-            m_UseReticle = false;
-            m_HandTexture = false;
-            m_NoteTexture = false;
-            m_PushTexture = false;
-            m_SaveTexture = false;
-            m_Drawers1Texture = false;
-            m_Drawers2Texture = false;
-            m_WardrobeTexture = false;
-            m_ObjectTexture = false;
-            m_Object2Texture = false;
-            m_MoveTexture = false;
-            m_Move2Texture = false;
-            m_MoveZadTexture = false;
-            Cursor.visible = (false);
-
+            NotesEnabledCursorState();
         }
 
         else {
-			m_DefaultReticle = true;
-			m_UseReticle = false;
-			m_HandTexture = false;
-			m_NoteTexture = false;
-			m_PushTexture = false;
-			m_SaveTexture = false;
-            m_Drawers1Texture = false;
-            m_Drawers2Texture = false;
-            m_WardrobeTexture = false;
-            m_ObjectTexture = false;
-            m_Object2Texture = false;
-            m_MoveTexture = false;
-            m_Move2Texture = false;
-            m_MoveZadTexture = false;
-
-            dragRigidbodyScript.enabled = false;
-
-            //SkryptDrag.Przywroc();
-            //SkryptDrag.enabled = false;
-
-            pushScript.DefaultSettings();
-            pushScript.enabled = false;
-
-        }
-			
-
-		if(m_ShowCursor == true){
-			m_DefaultReticle = false;
-			m_UseReticle = false;
-			m_HandTexture = false;
-			m_NoteTexture = false;
-			m_PushTexture = false;
-			m_SaveTexture = false;
-            m_Drawers1Texture = false;
-            m_Drawers2Texture = false;
-            m_WardrobeTexture = false;
-            m_ObjectTexture = false;
-            m_Object2Texture = false;
-            m_MoveTexture = false;
-            m_Move2Texture = false;
-            m_MoveZadTexture = false;
-            Cursor.visible = (true);
-			Cursor.lockState = CursorLockMode.None;	
-		}else{
-			Cursor.visible = (false);
-			Cursor.lockState = CursorLockMode.Locked;						
-		}
-
-		if(m_DefaultReticle){
-			m_crosshairRect = new Rect((Screen.width - m_crosshairTexture.width) / 2, 
-				(Screen.height - m_crosshairTexture.height) / 2, 
-				m_crosshairTexture.width, 
-				m_crosshairTexture.height);
-		}
-
-		if(m_UseReticle){
-			m_crosshairRect = new Rect((Screen.width - m_useTexture.width) / 2, 
-				(Screen.height - m_useTexture.height) / 2, 
-				m_useTexture.width, 
-				m_useTexture.height);
-		}
-
-		if(m_HandTexture){
-			m_crosshairRect = new Rect((Screen.width - m_useHandTexture.width) / 2, 
-				(Screen.height - m_useHandTexture.height) / 2, 
-				m_useHandTexture.width, 
-				m_useHandTexture.height);
-		}
-
-		if(m_NoteTexture){
-			m_crosshairRect = new Rect((Screen.width - m_useNoteTexture.width) / 2, 
-				(Screen.height - m_useNoteTexture.height) / 2, 
-				m_useNoteTexture.width, 
-				m_useNoteTexture.height);
-		}
-
-		if(m_PushTexture){
-			m_crosshairRect = new Rect((Screen.width - m_usePushTexture.width) / 2, 
-				(Screen.height - m_usePushTexture.height) / 2, 
-				m_usePushTexture.width, 
-				m_usePushTexture.height);
-		}
-
-		if(m_SaveTexture){
-			m_crosshairRect = new Rect((Screen.width - m_useSaveTexture.width) / 2, 
-				(Screen.height - m_useSaveTexture.height) / 2, 
-				m_useSaveTexture.width, 
-				m_useSaveTexture.height);
-		}
-
-        if (m_Drawers1Texture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useDrawersTexture.width) / 2,
-                (Screen.height - m_useDrawersTexture.height) / 2,
-                m_useDrawersTexture.width,
-                m_useDrawersTexture.height);
-        }
-
-        if (m_Drawers2Texture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useDrawersTexture.width) / 2,
-                (Screen.height - m_useDrawersTexture.height) / 2,
-                m_useDrawersTexture.width,
-                m_useDrawersTexture.height);
-        }
-
-        if (m_WardrobeTexture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
-                (Screen.height - m_useWardrobeTexture.height) / 2,
-                m_useWardrobeTexture.width,
-                m_useWardrobeTexture.height);
-        }
-
-        if (m_ObjectTexture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
-                (Screen.height - m_useWardrobeTexture.height) / 2,
-                m_useWardrobeTexture.width,
-                m_useWardrobeTexture.height);
-        }
-
-        if (m_Object2Texture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
-                (Screen.height - m_useWardrobeTexture.height) / 2,
-                m_useWardrobeTexture.width,
-                m_useWardrobeTexture.height);
-        }
-
-        if (m_MoveTexture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
-                (Screen.height - m_useMoveTexture.height) / 2,
-                m_useMoveTexture.width,
-                m_useMoveTexture.height);
-        }
-
-        if (m_Move2Texture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
-                (Screen.height - m_useMoveTexture.height) / 2,
-                m_useMoveTexture.width,
-                m_useMoveTexture.height);
-        }
-
-        if (m_MoveZadTexture)
-        {
-            m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
-                (Screen.height - m_useMoveTexture.height) / 2,
-                m_useMoveTexture.width,
-                m_useMoveTexture.height);
-        }
+            DefaultCursorState();
+        }	
 
     }
 		
+    void ShowHideCursor()
+    {
+        if (m_ShowCursor == true)
+        {
+            Cursor.visible = (true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = (false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
 
-	void  OnGUI (){
+    void CheckCursorState()
+    {
+        switch (currentCursorState)
+        {
+            case CursorState.DefaultTexture:
+                DefaultCursorState();
+                break;
+            case CursorState.DoorTexture:
+                DoorCursorState();
+                break;
+            case CursorState.HandTexture:
+                HandCursorState();
+                break;
+            case CursorState.NoteTexture:
+                NoteCursorState();
+                break;
+            case CursorState.PushTexture:
+                PushCursorState();
+                break;
+            case CursorState.SaveTexture:
+                SaveCursorState();
+                break;
+            case CursorState.Drawers1Texture:
+                Drawers1CursorState();
+                break;
+            case CursorState.Drawers2Texture:
+                Drawers1CursorState();
+                break;
+            case CursorState.WardrobeTexture:
+                WardrobeCursorState();
+                break;
+            case CursorState.Object1Texture:
+                Object1CursorState();
+                break;
+            case CursorState.Object2Texture:
+                Object1CursorState();
+                break;
+            case CursorState.Move1Texture:
+                Move1CursorState();
+                break;
+            case CursorState.Move2Texture:
+                Move2CursorState();
+                break;
+            case CursorState.MoveTaskTexture:
+                MoveTaskCursorState();
+                break;
+        }
+    }
+
+    void DoorCursorState()
+    {
+        SetDefaultScriptsSettings();
+        openCloseObjectScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useTexture.width) / 2,
+                (Screen.height - m_useTexture.height) / 2,
+                m_useTexture.width,
+                m_useTexture.height);
+    }
+
+    void HandCursorState()
+    {
+        SetDefaultScriptsSettings();
+
+        m_crosshairRect = new Rect((Screen.width - m_useHandTexture.width) / 2,
+                (Screen.height - m_useHandTexture.height) / 2,
+                m_useHandTexture.width,
+                m_useHandTexture.height);
+    }
+
+    void NoteCursorState()
+    {
+        
+        SetDefaultScriptsSettings();
+        m_crosshairRect = new Rect((Screen.width - m_useNoteTexture.width) / 2,
+                (Screen.height - m_useNoteTexture.height) / 2,
+                m_useNoteTexture.width,
+                m_useNoteTexture.height);
+    }
+
+    void PushCursorState()
+    {
+        SetDefaultScriptsSettings();
+        pushScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_usePushTexture.width) / 2,
+                (Screen.height - m_usePushTexture.height) / 2,
+                m_usePushTexture.width,
+                m_usePushTexture.height);
+    }
+
+    void SaveCursorState()
+    {
+        SetDefaultScriptsSettings();
+
+        m_crosshairRect = new Rect((Screen.width - m_useSaveTexture.width) / 2,
+                (Screen.height - m_useSaveTexture.height) / 2,
+                m_useSaveTexture.width,
+                m_useSaveTexture.height);
+    }
+
+    void Drawers1CursorState()
+    {  
+        SetDefaultScriptsSettings();
+        openCloseObjectScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useDrawersTexture.width) / 2,
+                (Screen.height - m_useDrawersTexture.height) / 2,
+                m_useDrawersTexture.width,
+                m_useDrawersTexture.height);
+    }
+
+    void Drawers2CursorState()
+    {
+        SetDefaultScriptsSettings();
+        openCloseObjectScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useDrawersTexture.width) / 2,
+                (Screen.height - m_useDrawersTexture.height) / 2,
+                m_useDrawersTexture.width,
+                m_useDrawersTexture.height);
+    }
+
+    void WardrobeCursorState()
+    {
+        SetDefaultScriptsSettings();
+        openCloseObjectScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
+                (Screen.height - m_useWardrobeTexture.height) / 2,
+                m_useWardrobeTexture.width,
+                m_useWardrobeTexture.height);
+    }
+
+    void Object1CursorState()
+    {
+        SetDefaultScriptsSettings();
+        openCloseObjectScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
+                (Screen.height - m_useWardrobeTexture.height) / 2,
+                m_useWardrobeTexture.width,
+                m_useWardrobeTexture.height);
+    }
+
+    void Object2CursorState()
+    {
+        SetDefaultScriptsSettings();
+        openCloseObjectScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
+                (Screen.height - m_useWardrobeTexture.height) / 2,
+                m_useWardrobeTexture.width,
+                m_useWardrobeTexture.height);
+    }
+
+    void Move1CursorState()
+    {
+        SetDefaultScriptsSettings();
+        dragScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
+                (Screen.height - m_useMoveTexture.height) / 2,
+                m_useMoveTexture.width,
+                m_useMoveTexture.height);
+    }
+
+    void Move2CursorState()
+    {
+        SetDefaultScriptsSettings();
+        dragRigidbodyScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
+                (Screen.height - m_useMoveTexture.height) / 2,
+                m_useMoveTexture.width,
+                m_useMoveTexture.height);
+    }
+
+    void MoveTaskCursorState()
+    {
+        SetDefaultScriptsSettings();
+        dragScript.enabled = true;
+
+        m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
+                (Screen.height - m_useMoveTexture.height) / 2,
+                m_useMoveTexture.width,
+                m_useMoveTexture.height);
+    }
+
+    void NotesEnabledCursorState()
+    {
+        Cursor.visible = (false);
+    }
+
+    void DefaultCursorState()
+    {
+        SetDefaultScriptsSettings();
+        m_crosshairRect = new Rect((Screen.width - m_crosshairTexture.width) / 2,
+                (Screen.height - m_crosshairTexture.height) / 2,
+                m_crosshairTexture.width,
+                m_crosshairTexture.height);
+    }
+
+    void SetDefaultScriptsSettings()
+    {
+        dragRigidbodyScript.enabled = false;
+        openCloseObjectScript.enabled = false;
+        pushScript.DefaultSettings();
+        pushScript.enabled = false;
+    }
+
+ /*   void  OnGUI (){
 		if(m_bIsCrosshairVisible)
-		if(m_DefaultReticle){
+		if(m_DefaultTexture){
 			GUI.DrawTexture(m_crosshairRect, m_crosshairTexture);
 		}
-		if(m_UseReticle){
+		if(m_DoorTexture){
 			GUI.DrawTexture(m_crosshairRect, m_useTexture);
 		}
 
@@ -714,7 +413,7 @@ public class CrosshairGUI : MonoBehaviour {
             GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
         }
 
-        if (m_ObjectTexture)
+        if (m_Object1Texture)
         {
             GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
         }
@@ -724,7 +423,7 @@ public class CrosshairGUI : MonoBehaviour {
             GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
         }
 
-        if (m_MoveTexture)
+        if (m_Move1Texture)
         {
             GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
         }
@@ -734,12 +433,12 @@ public class CrosshairGUI : MonoBehaviour {
             GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
         }
 
-        if (m_MoveZadTexture)
+        if (m_MoveTaskTexture)
         {
             GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
         }
 
-    }
+    } */
 
 	void OnEnabled(){
 		m_ShowCursor = false;
