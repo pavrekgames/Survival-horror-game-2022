@@ -12,7 +12,7 @@ public class CrosshairGUI : MonoBehaviour {
     private Health healthScript;
 
     public Texture2D m_crosshairTexture;
-    public Texture2D m_useTexture;
+    public Texture2D m_doorTexture;
     public Texture2D m_useHandTexture;
     public Texture2D m_useNoteTexture;
     public Texture2D m_usePushTexture;
@@ -20,8 +20,6 @@ public class CrosshairGUI : MonoBehaviour {
     public Texture2D m_useDrawersTexture;
     public Texture2D m_useWardrobeTexture;
     public Texture2D m_useMoveTexture;
-    
-    public float rayLength = 3f;
 
     public enum CursorState {
         DefaultTexture,
@@ -45,9 +43,10 @@ public class CrosshairGUI : MonoBehaviour {
     public bool m_ShowCursor = false;
 
     private bool m_bIsCrosshairVisible = true;
-	private Rect m_crosshairRect;
-	private Ray playerAim;
-	private Camera playerCam;
+    private Rect m_crosshairRect;
+
+    public float rayLength = 3f;
+    private Camera playerCam;
 
 	void OnEnable(){
 
@@ -61,37 +60,57 @@ public class CrosshairGUI : MonoBehaviour {
     }
 
 	void  Update (){
-		
-		Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-		RaycastHit hit;
 
         ShowHideCursor();
+        SetCursorState();
+        SetCursorTexture();
 
-		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9) && notesScript.isNotes == false)
-		{
-			
-			if(hit.collider.gameObject.tag == "Door" && m_ShowCursor == false)
-			{
+    }
+		
+    void ShowHideCursor()
+    {
+        if (m_ShowCursor == true)
+        {
+            Cursor.visible = (true);
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.visible = (false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    void SetCursorState()
+    {
+        Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && notesScript.isNotes == false)
+        {
+
+            if (hit.collider.gameObject.tag == "Door" && m_ShowCursor == false)
+            {
                 currentCursorState = CursorState.DoorTexture;
             }
 
-			else if(hit.collider.gameObject.tag == "Hand" && m_ShowCursor == false)
-			{
+            else if (hit.collider.gameObject.tag == "Hand" && m_ShowCursor == false)
+            {
                 currentCursorState = CursorState.HandTexture;
             }
 
-			else if(hit.collider.gameObject.tag == "Note" && m_ShowCursor == false)
-			{
+            else if (hit.collider.gameObject.tag == "Note" && m_ShowCursor == false)
+            {
                 currentCursorState = CursorState.NoteTexture;
-            } 
+            }
 
-			else if(hit.collider.gameObject.tag == "Push" && m_ShowCursor == false)
-			{
+            else if (hit.collider.gameObject.tag == "Push" && m_ShowCursor == false)
+            {
                 currentCursorState = CursorState.PushTexture;
             }
 
-			else if(hit.collider.gameObject.tag == "Save" && m_ShowCursor == false)
-			{
+            else if (hit.collider.gameObject.tag == "Save" && m_ShowCursor == false)
+            {
                 currentCursorState = CursorState.SaveTexture;
             }
 
@@ -139,230 +158,169 @@ public class CrosshairGUI : MonoBehaviour {
 
         else if (notesScript.isNotes == true)
         {
-            NotesEnabledCursorState();
+            HideCursorDuringNotes();
         }
 
-        else {
-            DefaultCursorState();
-        }	
-
-    }
-		
-    void ShowHideCursor()
-    {
-        if (m_ShowCursor == true)
-        {
-            Cursor.visible = (true);
-            Cursor.lockState = CursorLockMode.None;
-        }
         else
         {
-            Cursor.visible = (false);
-            Cursor.lockState = CursorLockMode.Locked;
+            currentCursorState = CursorState.DefaultTexture;
         }
     }
 
-    void CheckCursorState()
+    void SetCursorTexture()
     {
         switch (currentCursorState)
         {
             case CursorState.DefaultTexture:
-                DefaultCursorState();
+                DefaultCursorTexture();
                 break;
             case CursorState.DoorTexture:
-                DoorCursorState();
+                DoorCursorTexture();
                 break;
             case CursorState.HandTexture:
-                HandCursorState();
+                HandCursorTexture();
                 break;
             case CursorState.NoteTexture:
-                NoteCursorState();
+                NoteCursorTexture();
                 break;
             case CursorState.PushTexture:
-                PushCursorState();
+                PushCursorTexture();
                 break;
             case CursorState.SaveTexture:
-                SaveCursorState();
+                SaveCursorTexture();
                 break;
             case CursorState.Drawers1Texture:
-                Drawers1CursorState();
+                Drawers1CursorTexture();
                 break;
             case CursorState.Drawers2Texture:
-                Drawers1CursorState();
+                Drawers2CursorTexture();
                 break;
             case CursorState.WardrobeTexture:
-                WardrobeCursorState();
+                WardrobeCursorTexture();
                 break;
             case CursorState.Object1Texture:
-                Object1CursorState();
+                Object1CursorTexture();
                 break;
             case CursorState.Object2Texture:
-                Object1CursorState();
+                Object2CursorTexture();
                 break;
             case CursorState.Move1Texture:
-                Move1CursorState();
+                Move1CursorTexture();
                 break;
             case CursorState.Move2Texture:
-                Move2CursorState();
+                Move2CursorTexture();
                 break;
             case CursorState.MoveTaskTexture:
-                MoveTaskCursorState();
+                MoveTaskCursorTexture();
                 break;
         }
     }
 
-    void DoorCursorState()
+    void DoorCursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_doorTexture);
         openCloseObjectScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useTexture.width) / 2,
-                (Screen.height - m_useTexture.height) / 2,
-                m_useTexture.width,
-                m_useTexture.height);
     }
 
-    void HandCursorState()
+    void HandCursorTexture()
     {
         SetDefaultScriptsSettings();
-
-        m_crosshairRect = new Rect((Screen.width - m_useHandTexture.width) / 2,
-                (Screen.height - m_useHandTexture.height) / 2,
-                m_useHandTexture.width,
-                m_useHandTexture.height);
+        SetCrosshairRect(m_useHandTexture);
     }
 
-    void NoteCursorState()
+    void NoteCursorTexture()
     {
-        
         SetDefaultScriptsSettings();
-        m_crosshairRect = new Rect((Screen.width - m_useNoteTexture.width) / 2,
-                (Screen.height - m_useNoteTexture.height) / 2,
-                m_useNoteTexture.width,
-                m_useNoteTexture.height);
+        SetCrosshairRect(m_useNoteTexture);
     }
 
-    void PushCursorState()
+    void PushCursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_usePushTexture);
         pushScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_usePushTexture.width) / 2,
-                (Screen.height - m_usePushTexture.height) / 2,
-                m_usePushTexture.width,
-                m_usePushTexture.height);
     }
 
-    void SaveCursorState()
+    void SaveCursorTexture()
     {
         SetDefaultScriptsSettings();
-
-        m_crosshairRect = new Rect((Screen.width - m_useSaveTexture.width) / 2,
-                (Screen.height - m_useSaveTexture.height) / 2,
-                m_useSaveTexture.width,
-                m_useSaveTexture.height);
+        SetCrosshairRect(m_useSaveTexture);
     }
 
-    void Drawers1CursorState()
+    void Drawers1CursorTexture()
     {  
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useDrawersTexture);
         openCloseObjectScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useDrawersTexture.width) / 2,
-                (Screen.height - m_useDrawersTexture.height) / 2,
-                m_useDrawersTexture.width,
-                m_useDrawersTexture.height);
     }
 
-    void Drawers2CursorState()
+    void Drawers2CursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useDrawersTexture);
         openCloseObjectScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useDrawersTexture.width) / 2,
-                (Screen.height - m_useDrawersTexture.height) / 2,
-                m_useDrawersTexture.width,
-                m_useDrawersTexture.height);
     }
 
-    void WardrobeCursorState()
+    void WardrobeCursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useWardrobeTexture);
         openCloseObjectScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
-                (Screen.height - m_useWardrobeTexture.height) / 2,
-                m_useWardrobeTexture.width,
-                m_useWardrobeTexture.height);
     }
 
-    void Object1CursorState()
+    void Object1CursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useWardrobeTexture);
         openCloseObjectScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
-                (Screen.height - m_useWardrobeTexture.height) / 2,
-                m_useWardrobeTexture.width,
-                m_useWardrobeTexture.height);
     }
 
-    void Object2CursorState()
+    void Object2CursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useWardrobeTexture);
         openCloseObjectScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useWardrobeTexture.width) / 2,
-                (Screen.height - m_useWardrobeTexture.height) / 2,
-                m_useWardrobeTexture.width,
-                m_useWardrobeTexture.height);
     }
 
-    void Move1CursorState()
+    void Move1CursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useMoveTexture);
         dragScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
-                (Screen.height - m_useMoveTexture.height) / 2,
-                m_useMoveTexture.width,
-                m_useMoveTexture.height);
     }
 
-    void Move2CursorState()
+    void Move2CursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useMoveTexture);
         dragRigidbodyScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
-                (Screen.height - m_useMoveTexture.height) / 2,
-                m_useMoveTexture.width,
-                m_useMoveTexture.height);
     }
 
-    void MoveTaskCursorState()
+    void MoveTaskCursorTexture()
     {
         SetDefaultScriptsSettings();
+        SetCrosshairRect(m_useMoveTexture);
         dragScript.enabled = true;
-
-        m_crosshairRect = new Rect((Screen.width - m_useMoveTexture.width) / 2,
-                (Screen.height - m_useMoveTexture.height) / 2,
-                m_useMoveTexture.width,
-                m_useMoveTexture.height);
     }
 
-    void NotesEnabledCursorState()
+    void HideCursorDuringNotes()
     {
         Cursor.visible = (false);
     }
 
-    void DefaultCursorState()
+    void DefaultCursorTexture()
     {
         SetDefaultScriptsSettings();
-        m_crosshairRect = new Rect((Screen.width - m_crosshairTexture.width) / 2,
-                (Screen.height - m_crosshairTexture.height) / 2,
-                m_crosshairTexture.width,
-                m_crosshairTexture.height);
+        SetCrosshairRect(m_crosshairTexture);
+    }
+
+    void SetCrosshairRect(Texture2D texture)
+    {
+        m_crosshairRect = new Rect((Screen.width - texture.width) / 2,
+                (Screen.height - texture.height) / 2,
+                texture.width,
+                texture.height);
     }
 
     void SetDefaultScriptsSettings()
@@ -373,72 +331,55 @@ public class CrosshairGUI : MonoBehaviour {
         pushScript.enabled = false;
     }
 
- /*   void  OnGUI (){
+    void  OnGUI (){
 		if(m_bIsCrosshairVisible)
-		if(m_DefaultTexture){
-			GUI.DrawTexture(m_crosshairRect, m_crosshairTexture);
-		}
-		if(m_DoorTexture){
-			GUI.DrawTexture(m_crosshairRect, m_useTexture);
-		}
 
-		if(m_HandTexture){
-			GUI.DrawTexture(m_crosshairRect, m_useHandTexture);
-		}
-
-		if(m_NoteTexture){
-			GUI.DrawTexture(m_crosshairRect, m_useNoteTexture);
-		}
-
-		if(m_PushTexture){
-			GUI.DrawTexture(m_crosshairRect, m_usePushTexture);
-		}
-
-		if(m_SaveTexture){
-			GUI.DrawTexture(m_crosshairRect, m_useSaveTexture);
-		}
-
-        if (m_Drawers1Texture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useDrawersTexture);
-        }
-
-        if (m_Drawers2Texture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useDrawersTexture);
-        }
-
-        if (m_WardrobeTexture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
-        }
-
-        if (m_Object1Texture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
-        }
-
-        if (m_Object2Texture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
-        }
-
-        if (m_Move1Texture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
-        }
-
-        if (m_Move2Texture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
-        }
-
-        if (m_MoveTaskTexture)
-        {
-            GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
-        }
-
-    } */
+            switch (currentCursorState)
+            {
+                case CursorState.DefaultTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_crosshairTexture);
+                    break;
+                case CursorState.DoorTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_doorTexture);
+                    break;
+                case CursorState.HandTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_useHandTexture);
+                    break;
+                case CursorState.NoteTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_useNoteTexture);
+                    break;
+                case CursorState.PushTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_usePushTexture);
+                    break;
+                case CursorState.SaveTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_useSaveTexture);
+                    break;
+                case CursorState.Drawers1Texture:
+                    GUI.DrawTexture(m_crosshairRect, m_useDrawersTexture);
+                    break;
+                case CursorState.Drawers2Texture:
+                    GUI.DrawTexture(m_crosshairRect, m_useDrawersTexture);
+                    break;
+                case CursorState.WardrobeTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
+                    break;
+                case CursorState.Object1Texture:
+                    GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
+                    break;
+                case CursorState.Object2Texture:
+                    GUI.DrawTexture(m_crosshairRect, m_useWardrobeTexture);
+                    break;
+                case CursorState.Move1Texture:
+                    GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
+                    break;
+                case CursorState.Move2Texture:
+                    GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
+                    break;
+                case CursorState.MoveTaskTexture:
+                    GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
+                    break;
+            }
+    } 
 
 	void OnEnabled(){
 		m_ShowCursor = false;

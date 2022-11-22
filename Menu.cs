@@ -1001,7 +1001,7 @@ public class Menu : MonoBehaviour {
     {
 
         
-        cursorScript.m_useTexture = resolution1920[0];
+        cursorScript.m_doorTexture = resolution1920[0];
         cursorScript.m_useHandTexture = resolution1920[1];
         cursorScript.m_useNoteTexture = resolution1920[2];
         cursorScript.m_usePushTexture = resolution1920[3];
@@ -1016,7 +1016,7 @@ public class Menu : MonoBehaviour {
     public void SetCursorTo1680()
     {
        
-        cursorScript.m_useTexture = resolution1680[0];
+        cursorScript.m_doorTexture = resolution1680[0];
         cursorScript.m_useHandTexture = resolution1680[1];
         cursorScript.m_useNoteTexture = resolution1680[2];
         cursorScript.m_usePushTexture = resolution1680[3];
@@ -1029,7 +1029,7 @@ public class Menu : MonoBehaviour {
     public void SetCursorTo1366_60()
     {
 
-        cursorScript.m_useTexture = resolution1366_60[0];
+        cursorScript.m_doorTexture = resolution1366_60[0];
         cursorScript.m_useHandTexture = resolution1366_60[1];
         cursorScript.m_useNoteTexture = resolution1366_60[2];
         cursorScript.m_usePushTexture = resolution1366_60[3];
@@ -1043,7 +1043,7 @@ public class Menu : MonoBehaviour {
     public void SetCursorTo1280()
     {
 
-        cursorScript.m_useTexture = resolution1280[0];
+        cursorScript.m_doorTexture = resolution1280[0];
         cursorScript.m_useHandTexture = resolution1280[1];
         cursorScript.m_useNoteTexture = resolution1280[2];
         cursorScript.m_usePushTexture = resolution1280[3];
@@ -1057,7 +1057,7 @@ public class Menu : MonoBehaviour {
     public void SetCursorTo1152()
     {
 
-        cursorScript.m_useTexture = resolution1152[0];
+        cursorScript.m_doorTexture = resolution1152[0];
         cursorScript.m_useHandTexture = resolution1152[1];
         cursorScript.m_useNoteTexture = resolution1152[2];
         cursorScript.m_usePushTexture = resolution1152[3];
