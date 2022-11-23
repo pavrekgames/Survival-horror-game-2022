@@ -9,7 +9,6 @@ public class FactoryButton : MonoBehaviour {
 	public AudioClip buttonSound;
 	public bool isButton = false;
 	
-
 	void Update () {
 
 			if(factoryTaskScript.isHasEnergy == false && isButton == true){
