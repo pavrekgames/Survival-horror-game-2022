@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 
 public class Map : MonoBehaviour {
 
+    private PlayerManager playerManagerScript;
 	public Canvas mapCanvas;
     public RectTransform resolutionRect;
 	private Menu gameMenuScript;
@@ -23,9 +24,6 @@ public class Map : MonoBehaviour {
 	private Notes notesScript;
     private Notifications notificationScript;
     private StraszakScarecrow scarecrowJumpscareScript;
-    //public CrosshairGUI Gui;
-    public AudioMixerSnapshot pauseSoundSnapshot;
-    public AudioMixerSnapshot unPauseSoundSnapshot;
 
     private RectTransform wholeMapRect;
     private RectTransform pointerRect;
@@ -56,6 +54,7 @@ public class Map : MonoBehaviour {
 
         playerCam = Camera.main;
         player = GameObject.Find("Player").transform;
+        playerManagerScript = player.GetComponent<PlayerManager>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         healthScript = GameObject.Find("Player").GetComponent<Health>();
 		notesScript = GameObject.Find("Player").GetComponent<Notes>();
@@ -104,24 +103,15 @@ public class Map : MonoBehaviour {
 
 	void Update () {
 
-		if(Input.GetButtonDown("Mapa") && healthScript.health > 0 && isMap == false  && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && notesScript.isNotes == false && inventoryScript.isTreatmentActive == false && gameMenuScript.isLoadedGame == false && inventoryScript.isCollectionActive == false && notificationScript.isTutorialNotification == false)
+		if(Input.GetButtonDown("Map") && isMap == false && playerManagerScript.isPlayerCanInput == true)
         {
 			ShowMap ();
 		}
 
-		else if((Input.GetButtonDown("Mapa") || Input.GetButtonDown("Cancel")) && isMap == true && healthScript.health > 0 && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && gameMenuScript.isLoadedGame == false && inventoryScript.isCollectionActive == false && notificationScript.isTutorialNotification == false)
+		else if((Input.GetButtonDown("Map") || Input.GetButtonDown("Cancel")) && isMap == true)
         {
 			HideMap ();
 		}
-
-        if (Time.timeScale == 0)
-        {
-            pauseSoundSnapshot.TransitionTo(0.01f);
-        }
-        else
-        {
-            unPauseSoundSnapshot.TransitionTo(0.01f);
-        }
 
     }
 
@@ -132,9 +122,7 @@ public class Map : MonoBehaviour {
         playerScript.enabled = false;
 		Time.timeScale = 0;
 		mapCamera.gameObject.SetActive(true);
-		//Cursor.visible = false;
 		audioSource.PlayOneShot(mapSound);
-        RenderSettings.fog = false;
         SetPointer();
         cursorScript.m_ShowCursor = true;
         Cursor.visible = true;
@@ -159,7 +147,6 @@ public class Map : MonoBehaviour {
         mapCamera.gameObject.SetActive(false);
 		Cursor.visible = true;
 		audioSource.PlayOneShot(mapSound);
-        RenderSettings.fog = true;
         cursorScript.m_ShowCursor = false;
         Cursor.visible = false;
         fastTravleCanvas.enabled = false;
@@ -167,14 +154,8 @@ public class Map : MonoBehaviour {
 
     void SetPointer()
     {
-        
-        // Ustawienie pozycji pointera na mapie
 
         Vector2 position = mapCamera.WorldToViewportPoint(player.transform.position);
-
-        //Vector2 PozycjaMapa = new Vector2(
-        //((Pozycja.x * CalaMapa.sizeDelta.x) - (CalaMapa.sizeDelta.x * 0.5f)),
-        //((Pozycja.y * CalaMapa.sizeDelta.y) - (CalaMapa.sizeDelta.y * 0.5f)));
 
         Vector2 mapPosition = new Vector2(
         ((position.x * resolutionRect.sizeDelta.x) - (resolutionRect.sizeDelta.x * 0.5f)),
@@ -182,13 +163,9 @@ public class Map : MonoBehaviour {
 
         pointerRect.anchoredPosition = mapPosition;
 
-        // Ustawiene rotacji pointera na mapie
-
         Vector3 playerRotation = player.eulerAngles;
         playerRotation = new Vector3(0, 0, 360 - playerRotation.y);
         pointerRect.localRotation = Quaternion.Euler(playerRotation);
-
-        Debug.Log("X: " + wholeMapRect.sizeDelta.x + " ,Y: " + wholeMapRect.sizeDelta.y);
 
     }
 
