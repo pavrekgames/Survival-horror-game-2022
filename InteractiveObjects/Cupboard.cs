@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cupboard : MonoBehaviour {
+public class Cupboard : MonoBehaviour, IOpenCloseObject {
 
 	public AudioSource audioSource;
 	public AudioClip openSound;
@@ -48,7 +48,7 @@ public class Cupboard : MonoBehaviour {
         }
 	}
 
-    public void OpenDoor()
+    public void Open1()
     {
         if(isReverse == false && isNeedKey == false)
         {
@@ -67,7 +67,7 @@ public class Cupboard : MonoBehaviour {
 
     }
 
-    public void CloseDoor()
+    public void Close1()
     {
 
         if (isReverse == false && isNeedKey == false)
@@ -88,7 +88,7 @@ public class Cupboard : MonoBehaviour {
 
     }
 
-    public void openDoor2()
+    public void Open2()
     {
 
         if (isReverse == false && isNeedKey == false)
@@ -106,7 +106,7 @@ public class Cupboard : MonoBehaviour {
 
     }
 
-    public void CloseDoor2()
+    public void Close2()
     {
 
         if (isReverse == false && isNeedKey == false)

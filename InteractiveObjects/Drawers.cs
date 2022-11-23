@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drawers : MonoBehaviour {
+public class Drawers : MonoBehaviour, IOpenCloseObject {
 
 	public AudioSource audioSource;
 	public AudioClip openSound;
@@ -59,7 +59,7 @@ public class Drawers : MonoBehaviour {
 
     }
 
-    public void OpenDrawers1() {
+    public void Open1() {
 
         if (isReverse == false)
         {
@@ -76,7 +76,7 @@ public class Drawers : MonoBehaviour {
 
     }
 
-    public void CloseDrawers1()
+    public void Close1()
     {
 
         if (isReverse == false)
@@ -94,7 +94,7 @@ public class Drawers : MonoBehaviour {
 
     }
 
-    public void OpenDrawers2()
+    public void Open2()
     {
 
         if(isReverse == false)
@@ -112,7 +112,7 @@ public class Drawers : MonoBehaviour {
 
     }
 
-    public void CloseDrawers2()
+    public void Close2()
     {
 
         if (isReverse == false)

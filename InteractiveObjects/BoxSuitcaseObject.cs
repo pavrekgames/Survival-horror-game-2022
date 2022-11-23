@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxSuitcaseObject : MonoBehaviour {
+public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
 
     public AudioSource audioSource;
     public AudioClip openSound;
@@ -46,7 +46,7 @@ public class BoxSuitcaseObject : MonoBehaviour {
         }
     }
 
-    public void OpenObject()
+    public void Open1()
     {
         if (isReverse == false)
         {
@@ -64,7 +64,7 @@ public class BoxSuitcaseObject : MonoBehaviour {
 
     }
 
-    public void CloseObject()
+    public void Close1()
     {
 
         if (isReverse == false)
@@ -85,7 +85,7 @@ public class BoxSuitcaseObject : MonoBehaviour {
 
     }
 
-    public void OpenObject2()
+    public void Open2()
     {
         if (isReverse == false)
         {
@@ -103,7 +103,7 @@ public class BoxSuitcaseObject : MonoBehaviour {
 
     }
 
-    public void CloseObject2()
+    public void Close2()
     {
 
         if (isReverse == false)

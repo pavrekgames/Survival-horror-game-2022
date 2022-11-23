@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class OpenCloseObject : MonoBehaviour {
 
-    public GameObject interactiveObject;
+    [SerializeField]
+    private GameObject interactiveObject;
 
     private Ray playerAim;
     private Camera playerCam;
     public float rayLength = 4f;
 
     void Start () {
-
         playerCam = Camera.main;
-
     }
 	
 	
@@ -31,10 +30,10 @@ public class OpenCloseObject : MonoBehaviour {
 
                 if(interactiveObject.GetComponent<Drawers>().isCloseOpen == false)
                 {
-                    interactiveObject.GetComponent<Drawers>().OpenDrawers1();
+                    interactiveObject.GetComponent<Drawers>().Open1();
                 }else
                 {
-                    interactiveObject.GetComponent<Drawers>().CloseDrawers2();
+                    interactiveObject.GetComponent<Drawers>().Close1();
                 }
 
             }
@@ -45,27 +44,27 @@ public class OpenCloseObject : MonoBehaviour {
 
                 if (interactiveObject.GetComponent<Drawers>().isCloseOpen == false)
                 {
-                    interactiveObject.GetComponent<Drawers>().OpenDrawers2();
+                    interactiveObject.GetComponent<Drawers>().Open2();
                 }
                 else
                 {
-                    interactiveObject.GetComponent<Drawers>().CloseDrawers2();
+                    interactiveObject.GetComponent<Drawers>().Close2();
                 }
 
             }
-            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Szafka"))
+            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Cupboard"))
             {
 
                 interactiveObject = hit.transform.gameObject;
 
                 if (interactiveObject.GetComponent<Cupboard>().isCloseOpen == false && interactiveObject.GetComponent<Cupboard>().isNeedKey == false)
                 {
-                    interactiveObject.GetComponent<Cupboard>().OpenDoor();
+                    interactiveObject.GetComponent<Cupboard>().Open1();
                     
                 }
                 else if(interactiveObject.GetComponent<Cupboard>().isCloseOpen == true && interactiveObject.GetComponent<Cupboard>().isNeedKey == false)
                 {
-                    interactiveObject.GetComponent<Cupboard>().CloseDoor();
+                    interactiveObject.GetComponent<Cupboard>().Close1();
                 }
 
             }
@@ -77,51 +76,52 @@ public class OpenCloseObject : MonoBehaviour {
 
                 if (interactiveObject.GetComponent<Door>().isOpenClose == false && interactiveObject.GetComponent<Door>().isNeedKey == false)
                 {
-                    interactiveObject.GetComponent<Door>().OpenDoor();
+                    interactiveObject.GetComponent<Door>().Open1();
 
                 }
                 else if(interactiveObject.GetComponent<Door>().isOpenClose == true && interactiveObject.GetComponent<Door>().isNeedKey == false)
                 {
-                    interactiveObject.GetComponent<Door>().CloseDoor();
+                    interactiveObject.GetComponent<Door>().Close1();
                 }
 
             }
 
-            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Obiekt"))
+            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Object1"))
             {
 
                 interactiveObject = hit.transform.gameObject;
 
                 if (interactiveObject.GetComponent<BoxSuitcaseObject>().isOpenClose == false)
                 {
-                    interactiveObject.GetComponent<BoxSuitcaseObject>().OpenObject();
+                    interactiveObject.GetComponent<BoxSuitcaseObject>().Open1();
 
                 }
                 else
                 {
-                    interactiveObject.GetComponent<BoxSuitcaseObject>().CloseObject();
+                    interactiveObject.GetComponent<BoxSuitcaseObject>().Close1();
                 }
 
             }
 
-            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Obiekt2"))
+            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Object2"))
             {
 
                 interactiveObject = hit.transform.gameObject;
 
                 if (interactiveObject.GetComponent<BoxSuitcaseObject>().isOpenClose == false)
                 {
-                    interactiveObject.GetComponent<BoxSuitcaseObject>().OpenObject2();
+                    interactiveObject.GetComponent<BoxSuitcaseObject>().Open2();
 
                 }
                 else
                 {
-                    interactiveObject.GetComponent<BoxSuitcaseObject>().CloseObject2();
+                    interactiveObject.GetComponent<BoxSuitcaseObject>().Close2();
                 }
 
             }
 
         }
-
     }
+
+
 }
