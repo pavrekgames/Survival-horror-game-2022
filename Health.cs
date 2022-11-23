@@ -47,7 +47,6 @@ public class Health : MonoBehaviour {
 		health = maxHealth;
 		player = GameObject.Find("Player").transform;
 		playerScript = player.GetComponent<Player>();
-		//Sterowanie.enabled = true;
 		animator = GetComponent<Animator>();
 		inventoryScript = player.GetComponent<Inventory>();
 		passAnimator = GameObject.Find ("Przejscie").GetComponent<Animator> ();
@@ -59,9 +58,6 @@ public class Health : MonoBehaviour {
 		audioSource = GameObject.Find ("Głowa").GetComponent<AudioSource> ();
 		audioSource2 = GameObject.Find ("ZrodloRanny_s").GetComponent<AudioSource>();
         damageAudioSource = GameObject.Find("ZrodloObrazenia_s").GetComponent<AudioSource>();
-        //DzwRanny = Resources.Load<AudioClip>("Muzyka/GraczRanny_v1");
-        //DzwCios = Resources.Load<AudioClip>("Muzyka/Gracz_bol");
-        //DzwMartwy = Resources.Load<AudioClip>("Muzyka/GraczSmierc_v1");
         noisesScreenScript = GameObject.Find ("Kamera").GetComponent<NoiseAndScratches> (); 
 		deadScreenScript = GameObject.Find ("Kamera").GetComponent<ColorCorrectionRamp> ();
 		deadScreenScript.enabled = false;
@@ -74,7 +70,7 @@ public class Health : MonoBehaviour {
 
 	void Update () {
 		
-		HealtCondition ();
+		HealthCondition ();
 
 		if(health <= 0 && isDead == false){
 			PlayerDead ();
@@ -278,7 +274,7 @@ public class Health : MonoBehaviour {
     }
 
 
-    public void HealtCondition(){
+    public void HealthCondition(){
 		if(health < maxHealth && health > 0 && (!Input.GetKey("left shift") || inventoryScript.isSkill4_Unlocked == true) ){
 			health += 2 * Time.deltaTime;
 		}
