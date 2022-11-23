@@ -12,12 +12,7 @@ public class Crouch : MonoBehaviour {
 	public bool isCrouch = false;
 	public CrouchCollision crouchCollisionScript;
 	private Transform player;
-    private Map mapScript;
 	private Health healthScript;
-	private Inventory inventoryScript;
-	private Notes notesScript;
-    private Notifications notificationScript;
-    public Menu gameMenuScript;
 	private Animator animator;
     private AudioSource audioSource;
     public AudioClip crouchSound;
@@ -31,17 +26,12 @@ public class Crouch : MonoBehaviour {
 	void OnEnable(){
 
 		player = GameObject.Find("Player").transform;
-        mapScript = GameObject.Find("Player").GetComponent<Map>();
         healthScript = player.GetComponent<Health>();
-		inventoryScript = player.GetComponent<Inventory>();
-		notesScript = player.GetComponent<Notes>();
-        notificationScript = GameObject.Find("Player").GetComponent<Notifications>();
         currentHeight = transform.localScale.y;
 		getUpHeight = transform.localScale.y;
 		crouchHeight = transform.localScale.y * couchFactor;
 		animator = GetComponent<Animator>();
-		gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
-        audioSource = GameObject.Find("ZrodloDzwKucanie").GetComponent<AudioSource>();
+        audioSource = GameObject.Find("CrouchAudioSource").GetComponent<AudioSource>();
 
     }
 			
@@ -49,12 +39,12 @@ public class Crouch : MonoBehaviour {
 	void Update () {
 
 
-		if(Input.GetButtonDown("Kucanie") && healthScript.health > 0 && isCrouch == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isNotesActive == false && notesScript.isNotes == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && notificationScript.isTutorialNotification == false && mapScript.isMap == false)
+		if(Input.GetButtonDown("Crouch") && isCrouch == false && Time.timeScale == 1)
         {
 
 			CrouchFunc ();
 
-		}else if(Input.GetButtonDown("Kucanie") && healthScript.health > 0 && isCrouch == true && crouchCollisionScript.isCollide == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isNotesActive == false && notesScript.isNotes == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && notificationScript.isTutorialNotification == false && mapScript.isMap == false)
+		}else if(Input.GetButtonDown("Crouch") && isCrouch == true && Time.timeScale == 1)
         {
 			
 			GetUp ();
@@ -65,21 +55,31 @@ public class Crouch : MonoBehaviour {
 	}
 
 	void CrouchFunc(){
-		currentHeight = crouchHeight;
-		isCrouch = true;
-		animator.SetBool("kucanie", true);
-		animator.SetBool("wstawanie", false);
-        audioSource.pitch = Random.Range(0.8f, 1.5f);
-        audioSource.PlayOneShot(crouchSound);
+
+        if(healthScript.health > 0)
+        {
+            currentHeight = crouchHeight;
+            isCrouch = true;
+            animator.SetBool("isCrouch", true);
+            animator.SetBool("isGetUp", false);
+            audioSource.pitch = Random.Range(0.8f, 1.5f);
+            audioSource.PlayOneShot(crouchSound);
+        }
+		
 	}
 		
 	public void GetUp(){
-		currentHeight = getUpHeight;
-		isCrouch = false;
-		animator.SetBool("kucanie", false);
-		animator.SetBool("wstawanie", true);
-        audioSource.pitch = Random.Range(0.8f, 1.5f);
-        audioSource.PlayOneShot(crouchSound);
+
+        if(crouchCollisionScript.isCollide == false && healthScript.health > 0)
+        {
+            currentHeight = getUpHeight;
+            isCrouch = false;
+            animator.SetBool("isCrouch", false);
+            animator.SetBool("isGetUp", true);
+            audioSource.pitch = Random.Range(0.8f, 1.5f);
+            audioSource.PlayOneShot(crouchSound);
+        }
+		
     }
 
 }
