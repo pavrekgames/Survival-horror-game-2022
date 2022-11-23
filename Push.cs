@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Push : MonoBehaviour {
 
-    public float pushForce = 3f;
+    [SerializeField]
+    private float pushForce = 3f;
+
     private Transform player;
     private CrosshairGUI cursorScript;
     public GameObject pushedObject;
@@ -15,11 +17,9 @@ public class Push : MonoBehaviour {
 
     void Start()
     {
-
         playerCam = Camera.main;
         player = GameObject.Find("Player").transform;
-        cursorScript = GameObject.Find("Kamera").GetComponent<CrosshairGUI>();
-
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
     }
 
     void Update() {
@@ -55,7 +55,4 @@ public class Push : MonoBehaviour {
         }
 
     }
-
-
-
 }
