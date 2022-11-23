@@ -5,28 +5,31 @@ using UnityEngine.UI;
 
 public class Halluns : MonoBehaviour {
 
-    public bool DzwiekPlay_ok = false; // wznawianie i zatrzymywanie dzwiekow
+    public bool isPlaySound = false;
+    private PlayerManager playerManager;
 
     private AudioSource fireAudioSource;
     private AudioSource ganjaAudioSource;
     public AudioClip fireSound;
+
     public bool isStartGanja1 = false;
     public bool isStartGanja2 = false;
     public bool isStartGanja3 = false;
     public bool isStartGanja4 = false;
     public bool isStartGanja5 = false;
+
     public bool isEndGanja1 = false;
     public bool isEndGanja2 = false;
     public bool isEndGanja3 = false;
     public bool isEndGanja4 = false;
     public bool isEndGanja5 = false;
+
     private Canvas ganja1Canvas;
     private Canvas ganja2Canvas;
     private Canvas ganja3Canvas;
     private Canvas ganja4Canvas;
     private Canvas ganja5Canvas;
-    private Menu gameMenuScript;
-    private Inventory inventoryScript;
+
     public AudioClip whistleSound;
     public AudioClip flashbackSound;
     public AudioClip backgroundSound;
@@ -44,6 +47,7 @@ public class Halluns : MonoBehaviour {
     private Animator halluns3Animator;
     private Animator halluns4Animator;
     private Animator halluns5Animator;
+
     private Animator fire1Animator;
     private Animator fire2Animator;
     private Animator fire3Animator;
@@ -61,6 +65,8 @@ public class Halluns : MonoBehaviour {
 
     void OnEnable () {
 
+        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+
         ganja1Canvas = GameObject.Find("CanvasHaluny1").GetComponent<Canvas>();
         ganja2Canvas = GameObject.Find("CanvasHaluny2").GetComponent<Canvas>();
         ganja3Canvas = GameObject.Find("CanvasHaluny3").GetComponent<Canvas>();
@@ -68,8 +74,6 @@ public class Halluns : MonoBehaviour {
         ganja5Canvas = GameObject.Find("CanvasHaluny5").GetComponent<Canvas>();
         fireAudioSource = GameObject.Find("ZrodloPrzedmiot3_s").GetComponent<AudioSource>();
         ganjaAudioSource = GameObject.Find("GanjaHalucynacje2").GetComponent<AudioSource>();
-        gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
-        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
 
         halluns1Animator = GameObject.Find("ObrazHaluny1").GetComponent<Animator>();
         halluns2Animator = GameObject.Find("ObrazHaluny2").GetComponent<Animator>();
@@ -109,14 +113,13 @@ public class Halluns : MonoBehaviour {
         halluns3Image.GetComponent<HallunsEvent3>().enabled = true;
         halluns4Image.GetComponent<HallunsEvent4>().enabled = true;
         halluns5Image.GetComponent<HallunsEvent5>().enabled = true;
-        //Debug.Log("WylaczonyHaluny");
 
     }
 	
 	
 	void Update () {
 
-        if (Input.GetMouseButtonUp(0) && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && gameMenuScript.isLoadedGame == false && inventoryScript.isCollectionActive == false)
+        if (Input.GetMouseButtonUp(0) && playerManager.isPlayerCanInput == true)
         {
             Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
@@ -221,17 +224,17 @@ public class Halluns : MonoBehaviour {
 
         // pauza dzwieku haluny
 
-        if(Time.timeScale == 0 && DzwiekPlay_ok == false)
+        if(Time.timeScale == 0 && isPlaySound == false)
         {
             ganjaAudioSource.Pause();
 
-            DzwiekPlay_ok = true;
+            isPlaySound = true;
         }
-        else if (Time.timeScale == 1 && DzwiekPlay_ok == true)
+        else if (Time.timeScale == 1 && isPlaySound == true)
         {
             ganjaAudioSource.UnPause();
 
-            DzwiekPlay_ok = false;
+            isPlaySound = false;
         }
 
         } // klamra do update
