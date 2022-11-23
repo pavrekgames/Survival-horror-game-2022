@@ -4,22 +4,56 @@ using UnityEngine;
 
 public class Headbobber : MonoBehaviour {
 
-	private float timer = 0.0f;
-	public float bobbingSpeed = 0.29f;
-	public float bobbingAmount = 0.05f;
-	public float midpoint = 1.7f;
-	private Player player;
+	[SerializeField] private float timer = 0.0f;
+    [SerializeField] private float bobbingSpeed = 0.29f;
+    [SerializeField] private float bobbingAmount = 0.05f;
+    [SerializeField] private float midpoint = 1.7f;
+    [SerializeField] private float fps;
 
-    public float fps;
+    private Player playerScript;
 
     void OnEnable(){
 
-		player = GameObject.Find("Player").GetComponent<Player>();
+		playerScript = GameObject.Find("Player").GetComponent<Player>();
 
 	}
 
 	void Update () {
 
+        SetBobbingSpeedAndAmount();
+
+        float waveslice = 0.0f;
+		float horizontal = Input.GetAxis("Horizontal");
+		float vertical = Input.GetAxis("Vertical");
+
+		Vector3 cSharpConversion = transform.localPosition; 
+
+		if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0 && playerScript.isSprint == true) {
+			timer = 0.0f;
+		}
+		else {
+			waveslice = Mathf.Sin(timer);
+			timer = timer + bobbingSpeed;
+			if (timer > Mathf.PI * 2) {
+				timer = timer - (Mathf.PI * 2);
+			}
+		}
+		if (waveslice != 0 && playerScript.isSprint == true) {
+			float translateChange = waveslice * bobbingAmount;
+			float totalAxes = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
+			totalAxes = Mathf.Clamp (totalAxes, 0.0f, 1.0f);
+			translateChange = totalAxes * translateChange;
+			cSharpConversion.y = midpoint + translateChange;
+		}
+		else {
+			cSharpConversion.y = midpoint;
+		}
+
+		transform.localPosition = cSharpConversion;
+	}
+
+    void SetBobbingSpeedAndAmount()
+    {
         fps = (int)(1f / Time.deltaTime);
 
         if (fps > 120)
@@ -52,34 +86,6 @@ public class Headbobber : MonoBehaviour {
             bobbingAmount = 0.02f;
         }
 
-        float waveslice = 0.0f;
-		float horizontal = Input.GetAxis("Horizontal");
-		float vertical = Input.GetAxis("Vertical");
-
-		Vector3 cSharpConversion = transform.localPosition; 
-
-		if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0 && player.isSprint == true) {
-			timer = 0.0f;
-		}
-		else {
-			waveslice = Mathf.Sin(timer);
-			timer = timer + bobbingSpeed;
-			if (timer > Mathf.PI * 2) {
-				timer = timer - (Mathf.PI * 2);
-			}
-		}
-		if (waveslice != 0 && player.isSprint == true) {
-			float translateChange = waveslice * bobbingAmount;
-			float totalAxes = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
-			totalAxes = Mathf.Clamp (totalAxes, 0.0f, 1.0f);
-			translateChange = totalAxes * translateChange;
-			cSharpConversion.y = midpoint + translateChange;
-		}
-		else {
-			cSharpConversion.y = midpoint;
-		}
-
-		transform.localPosition = cSharpConversion;
-	}
+    }
 
 }
