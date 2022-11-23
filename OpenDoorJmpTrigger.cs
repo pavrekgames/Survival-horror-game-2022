@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class OpenDoorJmpTrigger : MonoBehaviour {
 
-    public Door doorScript;
+    [SerializeField]
+    private Door doorScript;
     private Screamer scraemerScript;
 
     void Start()
