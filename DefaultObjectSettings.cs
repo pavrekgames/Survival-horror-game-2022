@@ -4,33 +4,29 @@ using UnityEngine;
 
 public class DefaultObjectSettings : MonoBehaviour {
 
-    private Menu gameMenuScript;
-
-    public GameObject[] cupboards;
-    public GameObject[] drawers1;
-    public GameObject[] drawers2;
-    public GameObject[] doors;
-    public GameObject[] objects1;
-    public GameObject[] objects2;
-    public GameObject[] movedObjects1;
-    public GameObject[] movedObjects2;
-    public GameObject[] tasksMovedObjects;
-    public GameObject[] pushedObjects;
-
+    [SerializeField] private GameObject[] cupboards;
+    [SerializeField] private GameObject[] drawers1;
+    [SerializeField] private GameObject[] drawers2;
+    [SerializeField] private GameObject[] doors;
+    [SerializeField] private GameObject[] objects1;
+    [SerializeField] private GameObject[] objects2;
+    [SerializeField] private GameObject[] movedObjects1;
+    [SerializeField] private GameObject[] movedObjects2;
+    [SerializeField] private GameObject[] tasksMovedObjects;
+    [SerializeField] private GameObject[] pushedObjects;
+    
     void Start () {
 
-        gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
-
-        cupboards = GameObject.FindGameObjectsWithTag("Szafka");
+        cupboards = GameObject.FindGameObjectsWithTag("Cupboard");
         drawers1 = GameObject.FindGameObjectsWithTag("Drawers1");
         drawers2 = GameObject.FindGameObjectsWithTag("Drawers2");
         doors = GameObject.FindGameObjectsWithTag("Door");
-        objects1 = GameObject.FindGameObjectsWithTag("Obiekt");
-        objects2 = GameObject.FindGameObjectsWithTag("Obiekt2");
-        movedObjects1 = GameObject.FindGameObjectsWithTag("Move");
+        objects1 = GameObject.FindGameObjectsWithTag("Object1");
+        objects2 = GameObject.FindGameObjectsWithTag("Object2");
+        movedObjects1 = GameObject.FindGameObjectsWithTag("Move1");
         movedObjects2 = GameObject.FindGameObjectsWithTag("Move2");
         pushedObjects = GameObject.FindGameObjectsWithTag("Push");
-        tasksMovedObjects = GameObject.FindGameObjectsWithTag("MoveZad");
+        tasksMovedObjects = GameObject.FindGameObjectsWithTag("MoveTask");
     }
 	
 
