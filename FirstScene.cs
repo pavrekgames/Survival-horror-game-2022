@@ -17,9 +17,9 @@ public class FirstScene : MonoBehaviour {
 	void Start () {
 
 		pavrekSceneCanvas = GameObject.Find ("CanvasPavrek").GetComponent<Canvas> ();
-		audioSource = GameObject.Find ("ZrodloDzwieku").GetComponent<AudioSource> ();
+		audioSource = GameObject.Find ("AudioSource").GetComponent<AudioSource> ();
 		animator = GameObject.Find ("Logo").GetComponent<Animator> ();
-		ligtingAnimator = GameObject.Find ("Tlo").GetComponent<Animator> ();
+		ligtingAnimator = GameObject.Find ("Background").GetComponent<Animator> ();
 		audioSource.clip = stormSound;
 		audioSource.Play ();
         Cursor.visible = false;
@@ -29,14 +29,14 @@ public class FirstScene : MonoBehaviour {
 
 		if (audioSource.time > 3 && isPass2 == false) {
 
-			ligtingAnimator.SetTrigger ("Blyski");
+			ligtingAnimator.SetTrigger ("Lighting");
 			isPass2 = true;
 
 		}
 
 		if (audioSource.time < 10 && isPass1 == false) {
 
-			audioSource.volume = audioSource.volume += (Time.deltaTime / 4);
+			audioSource.volume += (Time.deltaTime / 4);
 
 		}
 
@@ -47,13 +47,13 @@ public class FirstScene : MonoBehaviour {
 
 		if (audioSource.time > 17 && isPass1 == true) {
 
-			audioSource.volume = audioSource.volume -= (Time.deltaTime / 4);
+			audioSource.volume -= (Time.deltaTime / 4);
 
 		}
 
 		if (audioSource.volume == 0 && isPass1 == true) {
 
-			SceneManager.LoadScene ("MenuGlowne");
+			SceneManager.LoadScene ("MainMenu");
 
 		}
 
