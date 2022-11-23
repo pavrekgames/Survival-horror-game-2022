@@ -10494,7 +10494,7 @@ public class Inventory : MonoBehaviour {
 			itemAudioSource3.PlayOneShot (skillUnlockedSound);
 			skill3_Icon.color = Color.green;
 			isSkill3_Unlocked = true;
-			playerScript.RegeneracjaStaminy = 9;
+			playerScript.staminaRegenerationFactor = 9;
             skillsCount++;
         }
 

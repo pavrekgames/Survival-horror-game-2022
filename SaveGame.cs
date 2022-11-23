@@ -209,7 +209,7 @@ public class SaveGame : MonoBehaviour {
 
 			// gracz
 			Dane.MaxStamina = player.GetComponent<Player> ().maxStamina;
-			Dane.RegeneracjaStaminy = player.GetComponent<Player> ().RegeneracjaStaminy;
+			Dane.RegeneracjaStaminy = player.GetComponent<Player> ().staminaRegenerationFactor;
 
 			// ekwipunek
 			Dane.IloscSecretItems = player.GetComponent<Inventory> ().secretItemsCount;
@@ -1120,7 +1120,7 @@ public class SaveGame : MonoBehaviour {
 
 			// gracz
 			player.GetComponent<Player> ().maxStamina = Dane.MaxStamina;
-			player.GetComponent<Player> ().RegeneracjaStaminy = Dane.RegeneracjaStaminy;
+			player.GetComponent<Player> ().staminaRegenerationFactor = Dane.RegeneracjaStaminy;
 
 			// ekwipunek
 			player.GetComponent<Inventory> ().secretItemsCount = Dane.IloscSecretItems;

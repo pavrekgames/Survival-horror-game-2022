@@ -311,7 +311,7 @@ public class BeginGame : MonoBehaviour {
 
 		Player.maxStamina = 150f;
 		Player.currentStamina = 150f;
-		Player.RegeneracjaStaminy = 8;
+		Player.staminaRegenerationFactor = 8;
         Player.isRest = true;
         Player.isSprint = false;
         Player.isSprintEffect = false;

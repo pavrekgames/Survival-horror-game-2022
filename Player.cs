@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-	//Obiekt odpowiedzialny za ruch gracza.
 	public CharacterController characterControler;
 	private Camera playerCamera;
 
@@ -28,30 +27,22 @@ public class Player : MonoBehaviour {
 	private float playerHeight;
 
     public float walkVelocity = 5f;
-	//Prędkość poruszania się gracza.
 	public float currentVelocity = 4.0f;
-
 	public float crouchVelocity = 4f;
+    public float runVelocity = 12.0f;
 
-	//Wysokość skoku.
-	public float jumpHeight = 2.0f;
-	//Aktualna wysokosc skoku.
+    public float jumpHeight = 2.0f;
 	public float currentJumpHeight = 0f;
-	//Predkosc biegania.
-	public float runVelocity = 12.0f;
-
 	private float jumpTime = 0;
 
-	//Czulość myszki (Sensitivity)
-	public float mouseSensitivity = 10f;  //3.0f
+	public float mouseSensitivity = 10f;  
 	public float mouseUpDown = 0.0f;
-	//Zakres patrzenia w górę i dół.
 	public float mouseUpDownRange = 89.0f;
 
 	// stamina
 	public float maxStamina = 150f;
 	public float currentStamina = 150f;
-	public int RegeneracjaStaminy = 8;
+	public int staminaRegenerationFactor = 8;
 	public bool isRest = true;
 	public bool isSprint = false;
 	public bool isSprintEffect = false;
@@ -65,13 +56,6 @@ public class Player : MonoBehaviour {
     private string tiredStaminaString = "#FF5A5ABA";
     private Color defaultStaminaColor;
     private Color tiredStaminaColour;
-
-
-	// Use this for initialization
-	/*void Start () {
-		
-
-	} */
 
 	void OnEnable(){
 
@@ -101,8 +85,6 @@ public class Player : MonoBehaviour {
 
     }
 
-
-	// Update is called once per frame
 	void Update() {
 		
 		KeyboardInput();
@@ -133,16 +115,11 @@ public class Player : MonoBehaviour {
 
     }
 		
-
-	/**
-     * Metoda odpowiedzialna za poruszanie się na klawiaturze.
-     */
 	private void KeyboardInput(){
 		
 		float moveForwardBack = Input.GetAxis("Vertical") * currentVelocity;
 		
 		float moveLeftRight = Input.GetAxis("Horizontal") * currentVelocity;
-		//Debug.Log (rochLewoPrawo);
 
 		//Skakanie
 		
@@ -252,7 +229,7 @@ public class Player : MonoBehaviour {
 
         if ((isSprint == false && currentStamina <= maxStamina) || ((Input.GetAxis("Vertical") == 0) && (Input.GetAxis("Horizontal") == 0) && currentStamina <= maxStamina)) 
         { // bylo to w pierwszym warunku !Input.GetKey("left shift")
-			currentStamina += RegeneracjaStaminy * Time.deltaTime;
+			currentStamina += staminaRegenerationFactor * Time.deltaTime;
 		}
 
 		if (isRest == false && currentStamina >= 75) {
@@ -262,12 +239,5 @@ public class Player : MonoBehaviour {
         }
 	}
 		
-	/*void OnTriggerEnter(Collider other){
-
-		if (other.gameObject.GetComponent<Collider> ().gameObject.name == "Drewno_kons_v1" ) { //&& Input.GetButtonDown ("Jump")
-			animator.SetTrigger("przeskok");
-		}
-
-	} */
 
 }

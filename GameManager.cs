@@ -4871,7 +4871,7 @@ public class GameManager : MonoBehaviour {
         Postac.currentVelocity = Postac.walkVelocity;
         Postac.crouchVelocity = 4;
         Postac.currentStamina = Postac.maxStamina;
-        Postac.RegeneracjaStaminy = 8;
+        Postac.staminaRegenerationFactor = 8;
         Postac.isRest = true;
         Postac.isSprint = false;
         Postac.isSprintEffect = false;
