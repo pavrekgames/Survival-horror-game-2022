@@ -5,20 +5,18 @@ using System.Collections;
 public class StartPoint : MonoBehaviour {
 
 	private Transform trans;
-	
-	private bool isStartSet = false;
+    private GameObject player;
+    private bool isStartSet = false;
     private AudioListener audioListener;
     
-	
 	void Start () {
-        
-        audioListener = GameObject.Find("Kamera").GetComponent<AudioListener>();
+        player = GameObject.Find("Player").gameObject;
+        audioListener = GameObject.Find("PlayerCamera").GetComponent<AudioListener>();
 		trans = GetComponent<Transform>();
-		Debug.Log("PS: " + PlayerInstance.startNr);
 	}
 	
-	
 	void Update () {
+
 		if (!isStartSet) {
 
             if (!PlayerInstance.isRespown) {
@@ -26,13 +24,9 @@ public class StartPoint : MonoBehaviour {
                 return;
             }
 
-            
-			GameObject player = GameObject.Find ("Player").gameObject;
-            
 			if (player != null) {
 
                 GameObject start = null;
-                
                 
                 if (PlayerInstance.startNr != null && !PlayerInstance.startNr.Equals("")) { 
                     
@@ -45,10 +39,8 @@ public class StartPoint : MonoBehaviour {
                     position = start.GetComponent<Transform>().position;
                 }
 
-                
                 player.GetComponent<Transform>().position = position;
 
-                
                 isStartSet = true;
                 audioListener.enabled = true;
 			}
