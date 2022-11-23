@@ -9,7 +9,7 @@ using UnityEngine.Audio;
 using TMPro;
 
 
-public class ZapisMenu : MonoBehaviour {
+public class SaveMenu : MonoBehaviour {
 
 	public AudioClip DzwMenuZapis;
 	public AudioSource ZrodloDzwieku;

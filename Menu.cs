@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour {
     public Texture2D[] resolution1280;
     public Texture2D[] resolution1152;
 
-    private ZapisMenu saveMenuScript;
+    private SaveMenu saveMenuScript;
 	private SaveGame saveGameScript;
 	public GameManager gameManagerScript;
 	private Transform playerCamera;
@@ -136,7 +136,7 @@ public class Menu : MonoBehaviour {
 
 	void Awake(){
 
-		saveMenuScript = GameObject.Find ("CanvasMenu").GetComponent<ZapisMenu> ();
+		saveMenuScript = GameObject.Find ("CanvasMenu").GetComponent<SaveMenu> ();
 		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
         cursorScript = GameObject.Find("Kamera").GetComponent<CrosshairGUI>();
         tonemapScript = GameObject.Find("Kamera").GetComponent<Tonemapping>();
