@@ -8,9 +8,8 @@ public class GrilleSound : MonoBehaviour {
 	public AudioClip grilleSound;
 	public bool isOpen = false;
 	
-
 	void OnTriggerExit(Collider other){
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Krata_trigger" && isOpen == false){
+		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Grille_trigger" && isOpen == false){
 			audioSource.PlayOneShot(grilleSound);
 			isOpen = true;
 	}
