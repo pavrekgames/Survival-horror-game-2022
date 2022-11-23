@@ -4,29 +4,25 @@ using UnityEngine;
 
 public class Crouch : MonoBehaviour {
 
+    private PlayerManager playerManagerScript;
+
 	public float couchFactor = 0.6f;
 	public float couchTime = 5f;
 	public float currentHeight;
 	public float getUpHeight;
 	public float crouchHeight;
 	public bool isCrouch = false;
+
 	public CrouchCollision crouchCollisionScript;
 	private Transform player;
-	private Health healthScript;
 	private Animator animator;
     private AudioSource audioSource;
     public AudioClip crouchSound;
 
-	void Awake(){
-
-		animator = GetComponent<Animator>();
-
-	}
-
 	void OnEnable(){
 
 		player = GameObject.Find("Player").transform;
-        healthScript = player.GetComponent<Health>();
+        playerManagerScript = player.GetComponent<PlayerManager>();
         currentHeight = transform.localScale.y;
 		getUpHeight = transform.localScale.y;
 		crouchHeight = transform.localScale.y * couchFactor;
@@ -35,16 +31,15 @@ public class Crouch : MonoBehaviour {
 
     }
 			
-
 	void Update () {
 
 
-		if(Input.GetButtonDown("Crouch") && isCrouch == false && Time.timeScale == 1)
+		if(Input.GetButtonDown("Crouch") && isCrouch == false && playerManagerScript.isPlayerCanInput == true)
         {
 
 			CrouchFunc ();
 
-		}else if(Input.GetButtonDown("Crouch") && isCrouch == true && Time.timeScale == 1)
+		}else if(Input.GetButtonDown("Crouch") && isCrouch == true && playerManagerScript.isPlayerCanInput == true)
         {
 			
 			GetUp ();
@@ -55,22 +50,17 @@ public class Crouch : MonoBehaviour {
 	}
 
 	void CrouchFunc(){
-
-        if(healthScript.health > 0)
-        {
             currentHeight = crouchHeight;
             isCrouch = true;
             animator.SetBool("isCrouch", true);
             animator.SetBool("isGetUp", false);
             audioSource.pitch = Random.Range(0.8f, 1.5f);
             audioSource.PlayOneShot(crouchSound);
-        }
-		
 	}
 		
 	public void GetUp(){
 
-        if(crouchCollisionScript.isCollide == false && healthScript.health > 0)
+        if(crouchCollisionScript.isCollide == false)
         {
             currentHeight = getUpHeight;
             isCrouch = false;
