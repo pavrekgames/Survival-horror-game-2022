@@ -612,7 +612,7 @@ public class Notes : MonoBehaviour {
 
 		// Zbieranie notatek
 
-		if (Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && isMenuNotes == false && inventoryScript.isTreatmentActive == false && gameMenuScript.isLoadedGame == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
+		if (Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && isMenuNotes == false && inventoryScript.isTreatmentActive == false && gameMenuScript.isLoadedGame == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
 
 			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

@@ -369,7 +369,7 @@ public class Menu : MonoBehaviour {
 
 		//Debug.Log (SceneManager.GetActiveScene().name);
 
-		if(Input.GetButtonDown("Cancel") && isMenu == false && healthScript.health > 0 && inventoryScript.isInventoryActive == false && inventoryScript.isPanelActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && mapScript.isMap == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && SceneManager.GetActiveScene().name == "ScenaGlowna" && isMenuNewGame == false && isLoadedGame == false && loadingScreenCanvas.enabled == false && isToMenu == false)
+		if(Input.GetButtonDown("Cancel") && isMenu == false && healthScript.health > 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && mapScript.isMap == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && SceneManager.GetActiveScene().name == "ScenaGlowna" && isMenuNewGame == false && isLoadedGame == false && loadingScreenCanvas.enabled == false && isToMenu == false)
         {
 			PauseGame ();
 

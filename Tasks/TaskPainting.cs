@@ -26,7 +26,7 @@ public class TaskPainting : MonoBehaviour {
 			painting.gameObject.GetComponent<Collider>().enabled = false;
 		}
 
-		if(distance <= 11 && isPainting == false && Input.GetMouseButton(0) && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(distance <= 11 && isPainting == false && Input.GetMouseButton(0) && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			painting.gameObject.AddComponent<Rigidbody>();
 			isPainting = true;

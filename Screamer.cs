@@ -445,7 +445,7 @@ public class Screamer : MonoBehaviour {
 
 		// screamer ciernie
 
-		if (isThorns == false && inventoryScript.isStrongAcidRemoved == false && Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
+		if (isThorns == false && inventoryScript.isStrongAcidRemoved == false && Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
 			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
 			RaycastHit hit; 

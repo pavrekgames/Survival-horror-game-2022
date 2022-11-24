@@ -341,7 +341,7 @@ public class Notifications : MonoBehaviour {
 
 		// glowne komunikaty
 
-		if (Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
+		if (Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
 
 			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
@@ -637,7 +637,7 @@ public class Notifications : MonoBehaviour {
 
 		// kaseta 1 i bateria
 
-		if (audioSource.isPlaying == false && isBatteriesNotification == true && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) { // DystansOdtwarzacz <= 11 &&
+		if (audioSource.isPlaying == false && isBatteriesNotification == true && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) { // DystansOdtwarzacz <= 11 &&
 			isBatteriesNotification = false;
 			notificationTime = 0;
 			isNotificationTimeOn = true;
@@ -646,7 +646,7 @@ public class Notifications : MonoBehaviour {
 
 		// kaseta 3 i chip
 
-		if (audioSource.isPlaying == false && isChipNotification == true && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) { // DystansOdtwarzacz2 <= 11 &&
+		if (audioSource.isPlaying == false && isChipNotification == true && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) { // DystansOdtwarzacz2 <= 11 &&
 			notificationTime = 0;
 			isNotificationTimeOn = true;	
 			//CanvasKomunikaty.enabled = true;
@@ -698,21 +698,21 @@ public class Notifications : MonoBehaviour {
 			mainNotificationTextMesh.text = flashlightHint;
 		}
 
-		if(Input.GetButtonDown("Latarka") && isLightNotification == false && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Latarka") && isLightNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			isLightNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Sprint") && isSprintNotification == false && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Sprint") && isSprintNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			isSprintNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetMouseButton(2) && isLight2Notification == false && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetMouseButton(2) && isLight2Notification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			isLight2Notification = true;
 			//CanvasKomunikaty.enabled = false;
@@ -725,14 +725,14 @@ public class Notifications : MonoBehaviour {
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Mapa") && isMapNotification == false && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Mapa") && isMapNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			isMapNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Kucanie") && isCrouchNotification == false && gameMenuScript.isMenu == false && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Kucanie") && isCrouchNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			isCrouchNotification = true;
 			//CanvasKomunikaty.enabled = false;

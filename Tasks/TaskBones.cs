@@ -88,7 +88,7 @@ public class TaskBones : MonoBehaviour {
 
 
 
-		if(distance <= 8 && Input.GetMouseButtonDown(0) && bonesCount < 5 && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && gameMenuScript.isMenu == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(distance <= 8 && Input.GetMouseButtonDown(0) && bonesCount < 5 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && gameMenuScript.isMenu == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
         {
 			
 			for(int i=0; i<inventoryScript.items.Count; i++){
