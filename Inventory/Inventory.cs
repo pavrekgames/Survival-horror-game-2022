@@ -2819,11 +2819,6 @@ public class Inventory : MonoBehaviour {
 
     // Wlaczanie panelu
 
-    void PanelF()
-    {
-
-    }
-
     public void ShowInventory()
     {
 
@@ -5346,31 +5341,6 @@ public class Inventory : MonoBehaviour {
 
 	// ------------- Funkcje GUI Canvas ----------------------------------
 
-	
-
-	
-
-	public void ShowTasks(){
-		
-		itemAudioSource3.PlayOneShot (menuButtonSound);
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
-        tasksCanvas.enabled = true;
-        isTasksActive = true;
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        noteDefaultCanvas.enabled = false;
-
-    }
-
 	public void ShowNotes(){
 
         StartCoroutine(ShowNotesIE());
@@ -5406,12 +5376,13 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	public void TasksBackFunction(){
+    public void TasksBackFunction()
+    {
 
-		//Panel.enabled = true;
-		//Panel_ok = true;
-		tasksCanvas.enabled = false;
-		isTasksActive = false;
+        //Panel.enabled = true;
+        //Panel_ok = true;
+        tasksCanvas.enabled = false;
+        isTasksActive = false;
         //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
@@ -5435,7 +5406,7 @@ public class Inventory : MonoBehaviour {
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
     }
 
-	public void NotesBackFunction(){
+    public void NotesBackFunction(){
 
 		//Panel.enabled = true;
 		//Panel_ok = true;
