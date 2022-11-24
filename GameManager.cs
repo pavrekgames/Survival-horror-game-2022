@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject[] IkonyZadan;
 
+    public InventoryUI inventoryUI;
 	public Inventory Inventory;
 	private Tasks Tasks;
 	private Notes Notes;
@@ -1947,8 +1948,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-		Inventory.secretItemsText.text = Inventory.secretItemsCount + "/25";
-		Inventory.secretPlacesText.text = Inventory.secretPlacesCount + "/15";
+        inventoryUI.secretItemsText.text = Inventory.secretItemsCount + "/25";
+        inventoryUI.secretPlacesText.text = Inventory.secretPlacesCount + "/15";
 		Inventory.greenHerbsText.text = Inventory.greenHerbsCount + "";
 		Inventory.blueHerbsText.text = Inventory.blueHerbsCount + "";
 		Inventory.healthPotsText.text = Inventory.healthPotsCount + "";
