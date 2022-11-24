@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour {
     public Image[] itemIcons;
     private PlayerManager playerManagerScript;
     public List<Item> items = new List<Item>();
+    public Item[] allItems;
     private Animator animator;
     private Transform player;
     private Map mapScript;
@@ -1371,8 +1372,8 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie klucza do stajni
 
 			else if(hit.collider.gameObject.name == "KluczStajnia"){
-				AddStableKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do szopy obok kampingu
 
@@ -1383,26 +1384,26 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie baterii w szopie z narzedziami
 
 			else if(hit.collider.gameObject.name == "BaterieO"){
-				AddBatteries ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kasety z pokoju U
 
 			else if(hit.collider.gameObject.name == "KasetaVideo1"){
-				AddCassete1 ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kosci nr 1
 
 			else if(hit.collider.gameObject.name == "KoscZad1"){
-				AddBone1 ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kosci nr 2
 
 			else if(hit.collider.gameObject.name == "KoscZad2"){
-				AddBone2 ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kosci nr 3
 
@@ -1419,14 +1420,14 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie kosci nr 5
 
 			else if(hit.collider.gameObject.name == "KoscZad5"){
-				AddBone5 ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do wneki
 
 			else if(hit.collider.gameObject.name == "KluczWneka"){
-				AddNicheKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do kampingu
 
@@ -1437,32 +1438,32 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie zepsutego klucza do fabryki
 
 			else if(hit.collider.gameObject.name == "KluczFabrykaBroken"){
-				AddBrokenFactoryKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie Brakujace kola
 
 			else if(hit.collider.gameObject.name == "BrakujaceDrewnianeKoloItem"){
-				AddWoodenWheel ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie Naprawionego klucza
 
 			else if(hit.collider.gameObject.name == "KluczNaprawiony" && isFixedKeyTaken == false){ // && Zdnia.NaprawionyKlucz_ok == true
-				AddFixedKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie lomu
 
 			else if(hit.collider.gameObject.name == "Lom"){
-				AddCrowbar ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do salonu domu Alice na poludniu
 
 			else if(hit.collider.gameObject.name == "KluczSalonPoludnie"){
-				AddAliceKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kombinerek
 
@@ -1480,15 +1481,15 @@ public class Inventory : MonoBehaviour {
 
 
 			else if(hit.collider.gameObject.name == "KluczSzafaKorytarz"){
-				AddWardrobeCorridorKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do szafki w szopie
 
 
 			else if(hit.collider.gameObject.name == "KluczSzafkaSzopa"){
-				AddShedCupboardKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kasety 2 z szopy
 
@@ -1499,68 +1500,68 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie dyni z głowy potwora
 
 			else if(hit.collider.gameObject.name == "DyniaMisja"){
-				AddPumpkin ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 				
 			// Podnoszenie klucza do pokoju Toma na gorze
 
 			else if(hit.collider.gameObject.name == "KluczTomGora"){
-				AddTomUpstairsKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do pokoju Toma
 
 			else if(hit.collider.gameObject.name == "KluczPokojTom"){
-				AddTomRoomKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kasety nr 3 z pola kukurydzy
 
 			else if(hit.collider.gameObject.name == "KasetaVideo3"){
-				AddCassete3 ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie chipu
 
 			else if(hit.collider.gameObject.name == "Chip"){
-				AddChip ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do szafy w opuszczonym domu
 
 			else if(hit.collider.gameObject.name == "KluczSzafaStaryDom"){
-				AddOldWardobeKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie kasety nr 4 z opuszczonego domu
 
 			else if(hit.collider.gameObject.name == "KasetaVideo4"){
-				AddCassete4 ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie klucza do pokoju Stevena
 
 			else if(hit.collider.gameObject.name == "KluczStevena"){
-				AddStevenKey ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie rosliny
 
 			else if(hit.collider.gameObject.name == "RoslinaLab"){
-				AddLabPlant ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie grzyba
 
 			else if(hit.collider.gameObject.name == "GrzybLab"){
-				AddLabMushroom ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie czaszki
 
 			else if(hit.collider.gameObject.name == "CzaszkaLabO"){
-				AddLabSkull ();
-			}
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
+                }
 
 			// Podnoszenie mikstury
 
@@ -1571,7 +1572,7 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie klucza do w domu na zachodzie
 
 			else if(hit.collider.gameObject.name == "KluczPokojZachod"){
-				AddPaulKey ();
+                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
 			}
 
 			// Podnoszenie secret items
@@ -1580,203 +1581,203 @@ public class Inventory : MonoBehaviour {
 			else if (hit.collider.gameObject.name == "SecretItem1_1") {
 				secretItem1.gameObject.SetActive(false);
 				isSecretIem1 = true;
-				AddSecretItem1();
+				AddSecretItem(secretItemSound);
 			}
 
 			else if (hit.collider.gameObject.name == "SecretItem2_1") {
 				secretItem2.gameObject.SetActive(false);
 				isSecretIem2 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_2") {
 				secretItem3.gameObject.SetActive(false);
 				isSecretIem3 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_3") {
 				secretItem4.gameObject.SetActive(false);
 				isSecretIem4 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_2") {
 				secretItem5.gameObject.SetActive(false);
 				isSecretIem5 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_4") {
 				secretItem6.transform.gameObject.SetActive(false);
 				isSecretIem6 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_3") {
 				secretItem7.gameObject.SetActive(false);
 				isSecretIem7 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_4") {
 				secretItem8.gameObject.SetActive(false);
 				isSecretIem8 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_5") {
 				secretItem9.gameObject.SetActive(false);
 				isSecretIem9 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_6") {
 				secretItem10.gameObject.SetActive(false);
 				isSecretIem10 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_5") {
 				secretItem11.gameObject.SetActive(false);
 				isSecretIem11 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_6") {
 				secretItem12.gameObject.SetActive(false);
 				isSecretIem12 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_7") {
 				secretItem13.gameObject.SetActive(false);
 				isSecretIem13 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_7") {
 				secretItem14.gameObject.SetActive(false);
 				isSecretIem14 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_8") {
 				secretItem15.transform.gameObject.SetActive(false);
 				isSecretIem15 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_9") {
 				secretItem16.transform.gameObject.SetActive(false);
 				isSecretIem16 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_8") {
 				secretItem17.transform.gameObject.SetActive(false);
 				isSecretIem17 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_10") {
 				secretItem18.transform.gameObject.SetActive(false);
 				isSecretIem18 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_11") {
 				secretItem19.transform.gameObject.SetActive(false);
 				isSecretIem19 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem1_12") {
 				secretItem20.transform.gameObject.SetActive(false);
 				isSecretIem20 = true;
-				AddSecretItem1();
-			}
+                    AddSecretItem(secretItemSound);
+                }
 
 			else if (hit.collider.gameObject.name == "SecretItem2_9") {
 				secretItem21.transform.gameObject.SetActive(false);
 				isSecretIem21 = true;
-				AddSecretItem2();
-			}
+                    AddSecretItem(secretItemSound2);
+                }
 
             else if (hit.collider.gameObject.name == "SecretItem1_13")
                 {
                     secretItem22.transform.gameObject.SetActive(false);
                     isSecretIem22 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
             else if (hit.collider.gameObject.name == "SecretItem2_10")
                 {
                     secretItem23.transform.gameObject.SetActive(false);
                     isSecretIem23 = true;
-                    AddSecretItem2();
+                    AddSecretItem(secretItemSound2);
                 }
 
             else if (hit.collider.gameObject.name == "SecretItem1_14")
                 {
                     secretItem24.transform.gameObject.SetActive(false);
                     isSecretIem24 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
             else if (hit.collider.gameObject.name == "SecretItem1_15")
                 {
                     secretItem25.transform.gameObject.SetActive(false);
                     isSecretIem25 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 else if (hit.collider.gameObject.name == "SecretItem1_16")
                 {
                     secretItem26.transform.gameObject.SetActive(false);
                     isSecretIem26 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 else if (hit.collider.gameObject.name == "SecretItem1_17")
                 {
                     secretItem27.transform.gameObject.SetActive(false);
                     isSecretIem27 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 else if (hit.collider.gameObject.name == "SecretItem2_11")
                 {
                     secretItem28.transform.gameObject.SetActive(false);
                     isSecretIem28 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 else if (hit.collider.gameObject.name == "SecretItem2_12")
                 {
                     secretItem29.transform.gameObject.SetActive(false);
                     isSecretIem29 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 else if (hit.collider.gameObject.name == "SecretItem2_13")
                 {
                     secretItem30.transform.gameObject.SetActive(false);
                     isSecretIem30 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
                 else if (hit.collider.gameObject.name == "SecretItem2_14")
                 {
                     secretItem31.transform.gameObject.SetActive(false);
                     isSecretIem31 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 else if (hit.collider.gameObject.name == "SecretItem2_15")
                 {
                     secretItem32.transform.gameObject.SetActive(false);
                     isSecretIem32 = true;
-                    AddSecretItem1();
+                    AddSecretItem(secretItemSound);
                 }
 
                 // podnoszenie ziola
@@ -3042,6 +3043,26 @@ public class Inventory : MonoBehaviour {
 
 	//-------------- Funckje dodawania przedmiotow-----------------------
 
+    void AddItem(Item item, Transform itemTransform, AudioClip pickUpSound, bool isItemTaken)
+    {
+        itemTransform.gameObject.SetActive(false);
+        animator.SetTrigger("PickUp");
+        isItemTaken = true;
+        itemAudioSource1.PlayOneShot(keySound);
+
+        for (int i = 0; i < itemIcons.Length; i++)
+        {
+            if (itemIcons[i].sprite == null)
+            {
+                items.Add(item);
+                item.id = i + 1;
+                itemIcons[i].sprite = item.icon;
+                itemIcons[i].color = Color.white;
+                break;
+            }
+        }
+    }
+
 	void AddKeyV1(){
 		keyV1.gameObject.SetActive(false);
 		isKeyV1Taken = true;
@@ -3107,22 +3128,6 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	void AddStableKey(){
-		keyV3.gameObject.SetActive(false);
-		isKeyV3Taken = true;
-		itemAudioSource1.PlayOneShot(keySound2);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczStajnia", stableKeyName, stableKeyDescription, keyV3Icon, false));
-				itemIcons[i].sprite = keyV3Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
 	void AddShedKey(){
 		keyV4.gameObject.SetActive(false);
 		isKeyV4Taken = true;
@@ -3143,70 +3148,6 @@ public class Inventory : MonoBehaviour {
         
 
     }
-
-	void AddBatteries(){
-		batteries.gameObject.SetActive(false);
-		isBatteriesTaken = true;
-		itemAudioSource1.PlayOneShot(batteriesSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Baterie", batteriesName, batteriesDescription, batteriesIcon, false));
-				itemIcons[i].sprite = batteriesIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddCassete1(){
-		cassete1.gameObject.SetActive(false);
-		isCassete1Taken = true;
-		itemAudioSource1.PlayOneShot(casseteSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kaseta1", cassete1Name, cassete1Description, cassete1Icon, false));
-				itemIcons[i].sprite = cassete1Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddBone1(){
-		bone1.gameObject.SetActive(false);
-		isBone1Taken = true;
-		itemAudioSource1.PlayOneShot(boneSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc1", bone1Name, boneDescription, bone1Icon, false));
-				itemIcons[i].sprite = bone1Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddBone2(){
-		bone2.gameObject.SetActive(false);
-		isBone2Taken = true;
-		itemAudioSource1.PlayOneShot(boneSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc2", bone2Name, boneDescription, bone2Icon, false));
-				itemIcons[i].sprite = bone2Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
 
 	void AddBone3(){
 		bone3.gameObject.SetActive(false);
@@ -3256,38 +3197,6 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	void AddBone5(){
-		bone5.gameObject.SetActive(false);
-		isBone5Taken = true;
-		itemAudioSource1.PlayOneShot(boneSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc5", bone5Name, boneDescription, bone5Icon, false));
-				itemIcons[i].sprite = bone5Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddNicheKey(){
-		nicheKey.gameObject.SetActive(false);
-		isNicheKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczWneka", nicheKeyName, nicheKeyDescription, nicheKeyIcon, false));
-				itemIcons[i].sprite = nicheKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
 	void AddSecretRoomKey(){
 		secretRoomKey.gameObject.SetActive(false);
 		isSecretRoomKeyTaken = true;
@@ -3307,89 +3216,8 @@ public class Inventory : MonoBehaviour {
 
 	}
 
-	void AddBrokenFactoryKey(){
-		brokenFactoryKey.gameObject.SetActive(false);
-		isBrokenFactoryKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczFabryka", factoryKeyName, factoryKeyDescription, brokenFactoryKeyIcon, false));
-				itemIcons[i].sprite = brokenFactoryKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddWoodenWheel(){
-		woodenWheel.gameObject.SetActive(false);
-		isWoodenWheelTaken = true;
-		itemAudioSource3.PlayOneShot(woodenWheelSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "DrewnianeKolo", woodenWheelName, woodenWheelDescription, woodenWheelIcon, false));
-				itemIcons[i].sprite = woodenWheelIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddFixedKey(){
-        fixedKey.gameObject.SetActive(false);
-        isFixedKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "FixedKey", fixedKeyName, fixedKeyDescription, fixedKeyIcon, false));
-				itemIcons[i].sprite = fixedKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddCrowbar(){
-		crowbar.gameObject.SetActive(false);
-		isCrowbarTaken = true;
-		itemAudioSource3.PlayOneShot(crowbarSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Lom", crowbarName, crowbarDescription, crowbarIcon, false));
-				itemIcons[i].sprite = crowbarIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddAliceKey(){
-		aliceKey.gameObject.SetActive(false);
-		isAliceKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound2);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSalonPoludnie", aliceKeyName, aliceKeyDescription, aliceKeyIcon, false));
-				itemIcons[i].sprite = aliceKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
 	void AddPliers(){
 		itemAudioSource3.PlayOneShot(pliersSound);
-		voiceActingScript.GlosKombinerki();
 		pliers.transform.gameObject.SetActive(false);
 		isPliersTaken = true;
 		animator.SetTrigger("Podnies");
@@ -3402,11 +3230,13 @@ public class Inventory : MonoBehaviour {
 				break;
 			}
 		}
-	}
+
+        voiceActingScript.GlosKombinerki();
+
+    }
 
 	void AddAxe(){
 		itemAudioSource1.PlayOneShot(axeSound);
-		voiceActingScript.GlosSiekiera();
 		axe.gameObject.SetActive(false);
 		isAxeTaken = true;
 		animator.SetTrigger("Podnies");
@@ -3419,39 +3249,10 @@ public class Inventory : MonoBehaviour {
 				break;
 			}
 		}
-	}
 
-	void AddWardrobeCorridorKey(){
-		wardrobeCorridorKey.gameObject.SetActive(false);
-		isWardrobeCorridorKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
+        voiceActingScript.GlosSiekiera();
+    }
 
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSzafaKorytarz", wardrobeCorridorKeyName, wardrobeCorridorKeyDescription, wardrobeCorridorKeyIcon, false));
-				itemIcons[i].sprite = wardrobeCorridorKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddShedCupboardKey(){
-		shedCupboardKey.gameObject.SetActive(false);
-		isShedCupboardKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSzafkaSzopa", shedCupboardName, shedCupboardDescription, shedCupboardKeyIcon, false));
-				itemIcons[i].sprite = shedCupboardKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
 
 	void AddCassete2(){
 		cassete2.gameObject.SetActive(false);
@@ -3472,187 +3273,11 @@ public class Inventory : MonoBehaviour {
 
 	}
 
-	void AddPumpkin(){
-		pumpkin.SetActive(false);
-		isPumpkinTaken = true;
-		itemAudioSource1.PlayOneShot(woodenWheelSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Dynia", pumpkinName, pumpkinDescription, pumpkinIcon, false));
-				itemIcons[i].sprite = pumpkinIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddTomUpstairsKey(){
-		tomUpstairsKey.gameObject.SetActive(false);
-		isTomUpstairsKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczTomGora", tomUpstairsKeyName, tomUpstairsKeyDescription, tomUpstairsKeyIcon, false));
-				itemIcons[i].sprite = tomUpstairsKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddTomRoomKey(){
-		tomRoomKey.gameObject.SetActive(false);
-		isTomRoomKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczPokojTom", tomRoomKeyName, tomRoomKeyDescription, tomRoomKeyIcon, false));
-				itemIcons[i].sprite = tomRoomKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddCassete3(){
-		cassete3.gameObject.SetActive(false);
-		isCassete3Taken = true;
-		itemAudioSource1.PlayOneShot(casseteSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kaseta3", cassete3Name, cassete3Description, cassete3Icon, false));
-				itemIcons[i].sprite = cassete3Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddChip(){
-		chip.gameObject.SetActive(false);
-		isChipTaken = true;
-		itemAudioSource1.PlayOneShot(casseteSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Chip", chipName, chipDescription, chipIcon, false));
-				itemIcons[i].sprite = chipIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddOldWardobeKey(){
-		oldWardrobeKey.gameObject.SetActive(false);
-		isOldWardrobeKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczStaryDom", oldWardrobeKeyName, oldWardrobeKeyDescription, oldWardrobeKeyIcon, false));
-				itemIcons[i].sprite = oldWardrobeKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddCassete4(){
-		cassete4.gameObject.SetActive(false);
-		isCassete4Taken = true;
-		itemAudioSource1.PlayOneShot(casseteSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kaseta4", cassete4Name, cassete4Description, cassete4Icon, false));
-				itemIcons[i].sprite = cassete4Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddStevenKey(){
-		stevenKey.gameObject.SetActive(false);
-		isStevenKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSteven", stevenKeyName, stevenKeyDescription, stevenKeyIcon, false));
-				itemIcons[i].sprite = stevenKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddLabPlant(){
-		labPlant.gameObject.SetActive(false);
-		isLabPlantTaken = true;
-		itemAudioSource1.PlayOneShot(labPlantSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "RoslinaLab", labPlantName, labPlantDescription, labPlantIcon, false));
-				itemIcons[i].sprite = labPlantIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddLabMushroom(){
-		labMushroom.gameObject.SetActive(false);
-		isLabMushroomTaken = true;
-		itemAudioSource1.PlayOneShot(labPlantSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "GrzybLab", labMushroomName, labMushroomDescription, labMushroomIcon, false));
-				itemIcons[i].sprite = labMushroomIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
-	void AddLabSkull(){
-		labSkull.gameObject.SetActive(false);
-		isLabSkullTaken = true;
-		itemAudioSource1.PlayOneShot(boneSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "CzaszkaLab", labSkullName, labSkullDescription, labSkullIcon, false));
-				itemIcons[i].sprite = labSkullIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
-
 	void AddStrongAcid(){
 		strongAcid.gameObject.SetActive(false);
 		isStrongAcidTaken = true;
 		itemAudioSource1.PlayOneShot(oilSound);
-		voiceActingScript.GlosEliksir();
+		
 		animator.SetTrigger("Podnies");
 
 		for(int i=0; i<itemIcons.Length; i++){
@@ -3663,57 +3288,27 @@ public class Inventory : MonoBehaviour {
 				break;
 			}
 		}
-	}
 
-	void AddPaulKey(){
-		paulKey.gameObject.SetActive(false);
-		isPaulKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
+        voiceActingScript.GlosEliksir();
 
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczPokojZachod", paulKeyName, paulKeyDescription, paulKeyIcon, false));
-				itemIcons[i].sprite = paulKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-	}
+    }
 
-	void AddSecretItem1(){
-		itemAudioSource1.PlayOneShot (secretItemSound);
-		secretItemsCount++;
-		notificationScript.secretItemsTime = 0;
-		notificationScript.isSecretItemNotification = true;
-		notificationScript.isGreenHerbNotification = false;
-		notificationScript.isBlueHerbNotification = false;
+    void AddSecretItem(AudioClip secretItemSound)
+    {
+        itemAudioSource1.PlayOneShot(secretItemSound);
+        secretItemsCount++;
+        notificationScript.secretItemsTime = 0;
+        notificationScript.isSecretItemNotification = true;
+        notificationScript.isGreenHerbNotification = false;
+        notificationScript.isBlueHerbNotification = false;
         notificationScript.isVialNotification = false;
         notificationScript.isBadgeNotification = false;
         notificationScript.isPhotoNotification = false;
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger ("Podnies");
-		//secretItemsText.text = secretItemsCount + "/32";
-	}
-
-	void AddSecretItem2(){
-		itemAudioSource1.PlayOneShot (secretItemSound2);
-		secretItemsCount++;
-		notificationScript.secretItemsTime = 0;
-		notificationScript.isSecretItemNotification = true;
-		notificationScript.isGreenHerbNotification = false;
-		notificationScript.isBlueHerbNotification = false;
-        notificationScript.isVialNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger ("Podnies");
-		//secretItemsText.text = secretItemsCount + "/32";
-	}
+        animator.SetTrigger("Podnies");
+    }
 
 	void AddGreenHerb(){
 		itemAudioSource2.PlayOneShot (collectHerbSound);
