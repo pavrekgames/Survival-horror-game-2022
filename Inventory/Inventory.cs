@@ -2345,148 +2345,148 @@ public class Inventory : MonoBehaviour {
             // podnoszenie odznak do kolekcji
 
             else if (hit.collider.gameObject.name == "Odznaka1") {
-                AddBadge1();
+                AddBadge(badge1, isBadge1, collectionTextures[0]);
 			}  
             
             else if (hit.collider.gameObject.name == "Odznaka2") {
-                AddBadge2();
-			}
+                    AddBadge(badge2, isBadge2, collectionTextures[1]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka3") {
-                AddBadge3();
-			}        
+                    AddBadge(badge3, isBadge3, collectionTextures[2]);
+                }        
 
             else if (hit.collider.gameObject.name == "Odznaka4") {
-                AddBadge4();
+                    AddBadge(badge4, isBadge4, collectionTextures[3]); ;
 			} 
 
             else if (hit.collider.gameObject.name == "Odznaka5") {
-                AddBadge5();
-			} 
+                    AddBadge(badge5, isBadge5, collectionTextures[4]);
+                } 
 
             else if (hit.collider.gameObject.name == "Odznaka6") {
-                AddBadge6();
-			}
+                    AddBadge(badge6, isBadge6, collectionTextures[5]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka7") {
-                AddBadge7();
-			}
+                    AddBadge(badge7, isBadge7, collectionTextures[6]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka8") {
-                AddBadge8();
-			}
+                    AddBadge(badge8, isBadge8, collectionTextures[7]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka9") {
-                AddBadge9();
-			}
+                    AddBadge(badge9, isBadge9, collectionTextures[8]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka10") {
-                AddBadge10();
-			}
+                    AddBadge(badge10, isBadge10, collectionTextures[9]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka11") {
-                AddBadge11();
-			}
+                    AddBadge(badge11, isBadge11, collectionTextures[10]);
+                }
             
             else if (hit.collider.gameObject.name == "Odznaka12") {
-                AddBadge12();
-			}
+                    AddBadge(badge12, isBadge12, collectionTextures[11]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto1") {
-                AddPhoto1();
+                AddPhoto(photo1, isPhoto1, collectionTextures[12]);
 			}  
             
             else if (hit.collider.gameObject.name == "Foto2") {
-                AddPhoto2();
-			}      
+                    AddPhoto(photo2, isPhoto2, collectionTextures[13]);
+                }      
        
             else if (hit.collider.gameObject.name == "Foto3") {
-                AddPhoto3();
-			}
+                    AddPhoto(photo3, isPhoto3, collectionTextures[13]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto4") {
-                AddPhoto4();
-			}
+                    AddPhoto(photo4, isPhoto4, collectionTextures[14]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto5") {
-                AddPhoto5();
-			}
+                    AddPhoto(photo5, isPhoto5, collectionTextures[15]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto6") {
-                AddPhoto6();
-			}
+                    AddPhoto(photo6, isPhoto6, collectionTextures[16]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto7") {
-                AddPhoto7();
-			}
+                    AddPhoto(photo7, isPhoto7, collectionTextures[17]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto8") {
-                AddPhoto8();
-			}
+                    AddPhoto(photo8, isPhoto8, collectionTextures[18]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto9") {
-                AddPhoto9();
-			}
+                    AddPhoto(photo9, isPhoto9, collectionTextures[19]);
+                }
             
             else if (hit.collider.gameObject.name == "Foto10") {
-                AddPhoto10();
-			}        
+                    AddPhoto(photo10, isPhoto10, collectionTextures[20]);
+                }        
 
             else if (hit.collider.gameObject.name == "Foto11") {
-                AddPhoto11();
-			} 
+                    AddPhoto(photo11, isPhoto11, collectionTextures[21]);
+                } 
 
             else if (hit.collider.gameObject.name == "Foto12") {
-                AddPhoto12();
-			} 
+                    AddPhoto(photo12, isPhoto12, collectionTextures[22]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka1") {
-                AddTip1();
+                    AddTip(tip1, isTip1, collectionTextures[23]);
 			}
             
             else if (hit.collider.gameObject.name == "Wskazowka2") {
-                AddTip2();
-			}  
+                    AddTip(tip2, isTip2, collectionTextures[24]);
+                }  
 
             else if (hit.collider.gameObject.name == "Wskazowka3") {
-                AddTip3();
-			} 
+                    AddTip(tip3, isTip3, collectionTextures[25]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka4") {
-                AddTip4();
-			} 
+                    AddTip(tip4, isTip4, collectionTextures[26]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka5") {
-                AddTip5();
-			} 
+                    AddTip(tip5, isTip5, collectionTextures[27]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka6") {
-                AddTip6();
-			} 
+                    AddTip(tip6, isTip6, collectionTextures[28]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka7") {
-                AddTip7();
-			} 
+                    AddTip(tip7, isTip7, collectionTextures[29]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka8") {
-                AddTip8();
-			} 
+                    AddTip(tip8, isTip8, collectionTextures[30]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka9") {
-                AddTip9();
-			} 
+                    AddTip(tip9, isTip9, collectionTextures[31]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka10") {
-                AddTip10();
-			} 
+                    AddTip(tip10, isTip10, collectionTextures[31]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka11") {
-                AddTip11();
-			} 
+                    AddTip(tip11, isTip11, collectionTextures[32]);
+                } 
 
             else if (hit.collider.gameObject.name == "Wskazowka12") {
-                AddTip12();
-			} 
+                    AddTip(tip12, isTip12, collectionTextures[33]);
+                } 
 
 			if (hit.collider.gameObject.tag == "Zapis") {
 					SaveGameScript.Zapisz ();
@@ -3307,7 +3307,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
+        animator.SetTrigger("PickUp");
     }
 
 	void AddGreenHerb(){
@@ -3323,7 +3323,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger ("Podnies");
+        animator.SetTrigger ("PickUp");
 		greenHerbsText.text = greenHerbsCount + "";
 	}
 
@@ -3340,7 +3340,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger ("Podnies");
+        animator.SetTrigger ("PickUp");
 		blueHerbsText.text = blueHerbsCount + "";
 	}
 
@@ -3358,7 +3358,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
+        animator.SetTrigger("PickUp");
         vialsCountText.text = vialsCount + "";
     }
 
@@ -3377,7 +3377,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = true;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
+        animator.SetTrigger("PickUp");
         staminaPotsText.text = staminaPotsCount + "";
     }
 
@@ -3396,14 +3396,14 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = true;
-        animator.SetTrigger("Podnies");
+        animator.SetTrigger("PickUp");
         healthPotsText.text = healthPotsCount + "";
     }
 
-    void AddBadge1() {
-
-        badge1.transform.gameObject.SetActive(false);
-        isBadge1 = true;
+    void AddBadge(Transform badge, bool isBadge, Image badgeTexture)
+    {
+        badge.transform.gameObject.SetActive(false);
+        isBadge = true;
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
@@ -3417,269 +3417,15 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[0].sprite = badgeOKSprite;
+        animator.SetTrigger("PickUp");
+        badgeTexture.sprite = badgeOKSprite;
         badgesCount++;
     }
 
-    void AddBadge2()
+    void AddPhoto(Transform photo, bool isPhoto, Image photoTexture)
     {
-
-        badge2.transform.gameObject.SetActive(false);
-        isBadge2 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[1].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge3()
-    {
-
-        badge3.transform.gameObject.SetActive(false);
-        isBadge3 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[2].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge4()
-    {
-
-        badge4.transform.gameObject.SetActive(false);
-        isBadge4 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[3].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge5()
-    {
-
-        badge5.transform.gameObject.SetActive(false);
-        isBadge5 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[4].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge6()
-    {
-
-        badge6.transform.gameObject.SetActive(false);
-        isBadge6 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[5].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge7()
-    {
-
-        badge7.transform.gameObject.SetActive(false);
-        isBadge7 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[6].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge8()
-    {
-
-        badge7.transform.gameObject.SetActive(false);
-        isBadge8 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[7].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge9()
-    {
-
-        badge9.transform.gameObject.SetActive(false);
-        isBadge9 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[8].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge10()
-    {
-
-        badge10.transform.gameObject.SetActive(false);
-        isBadge10 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[9].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge11()
-    {
-
-        badge11.transform.gameObject.SetActive(false);
-        isBadge11 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[10].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddBadge12()
-    {
-
-        badge12.transform.gameObject.SetActive(false);
-        isBadge12 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[11].sprite = badgeOKSprite;
-        badgesCount++;
-    }
-
-    void AddPhoto1()
-    {
-
-        photo1.transform.gameObject.SetActive(false);
-        isPhoto1 = true;
+        photo.transform.gameObject.SetActive(false);
+        isPhoto = true;
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
@@ -3693,269 +3439,15 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = false;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[12].sprite = photoOKSprite;
+        animator.SetTrigger("PickUp");
+        photoTexture.sprite = photoOKSprite;
         photosCount++;
     }
 
-    void AddPhoto2()
+    void AddTip(Transform tip, bool isTip, Image tipTexture)
     {
-
-        photo2.transform.gameObject.SetActive(false);
-        isPhoto2 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[13].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto3()
-    {
-
-        photo3.transform.gameObject.SetActive(false);
-        isPhoto3 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[14].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto4()
-    {
-
-        photo4.transform.gameObject.SetActive(false);
-        isPhoto4 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[15].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto5()
-    {
-
-        photo5.transform.gameObject.SetActive(false);
-        isPhoto5 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[16].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto6()
-    {
-
-        photo6.transform.gameObject.SetActive(false);
-        isPhoto6 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[17].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto7()
-    {
-
-        photo7.transform.gameObject.SetActive(false);
-        isPhoto7 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[18].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto8()
-    {
-
-        photo8.transform.gameObject.SetActive(false);
-        isPhoto8 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[19].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto9()
-    {
-
-        photo9.transform.gameObject.SetActive(false);
-        isPhoto9 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[20].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto10()
-    {
-
-        photo10.transform.gameObject.SetActive(false);
-        isPhoto10 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[21].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto11()
-    {
-
-        photo11.transform.gameObject.SetActive(false);
-        isPhoto11 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[22].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddPhoto12()
-    {
-
-        photo12.transform.gameObject.SetActive(false);
-        isPhoto12 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[23].sprite = photoOKSprite;
-        photosCount++;
-    }
-
-    void AddTip1()
-    {
-
-        tip1.transform.gameObject.SetActive(false);
-        isTip1 = true;
+        tip.transform.gameObject.SetActive(false);
+        isTip = true;
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
@@ -3969,261 +3461,8 @@ public class Inventory : MonoBehaviour {
         notificationScript.isTipNotification = true;
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[24].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip2()
-    {
-
-        tip2.transform.gameObject.SetActive(false);
-        isTip2 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[25].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip3()
-    {
-
-        tip3.transform.gameObject.SetActive(false);
-        isTip3 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[26].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip4()
-    {
-
-        tip4.transform.gameObject.SetActive(false);
-        isTip4 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[27].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip5()
-    {
-
-        tip5.transform.gameObject.SetActive(false);
-        isTip5 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[28].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip6()
-    {
-
-        tip6.transform.gameObject.SetActive(false);
-        isTip6 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[29].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip7()
-    {
-
-        tip7.transform.gameObject.SetActive(false);
-        isTip7 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[30].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip8()
-    {
-
-        tip8.transform.gameObject.SetActive(false);
-        isTip8 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[31].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip9()
-    {
-
-        tip9.transform.gameObject.SetActive(false);
-        isTip9 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[32].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip10()
-    {
-
-        tip10.transform.gameObject.SetActive(false);
-        isTip10 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[33].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip11()
-    {
-
-        tip11.transform.gameObject.SetActive(false);
-        isTip11 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[34].sprite = tipOKSprite;
-        tipsCount++;
-    }
-
-    void AddTip12()
-    {
-
-        tip12.transform.gameObject.SetActive(false);
-        isTip12 = true;
-        itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
-        itemAudioSource3.PlayOneShot(collectItemSound);
-        itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
-        animator.SetTrigger("Podnies");
-        collectionTextures[35].sprite = tipOKSprite;
+        animator.SetTrigger("PickUp");
+        tipTexture.sprite = tipOKSprite;
         tipsCount++;
     }
 
