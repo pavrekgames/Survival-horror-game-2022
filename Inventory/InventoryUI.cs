@@ -124,6 +124,21 @@ public class InventoryUI : MonoBehaviour {
     public Sprite tipSprite;
     public Sprite tipOKSprite;
 
+    public bool isSkill1_Unlocked = false;
+    public AudioClip skillUnlockedSound;
+    public Image skill1_Icon;
+
+    public bool isSkill2_Unlocked = false;
+    public Image skill2_Icon;
+
+    public bool isSkill3_Unlocked = false;
+    public Image skill3_Icon;
+
+    public bool isSkill4_Unlocked = false;
+    public Image skill4_Icon;
+
+    public int skillsCount = 0;
+
     void OnEnable()
     {
         
@@ -141,6 +156,37 @@ public class InventoryUI : MonoBehaviour {
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
         itemAudioSource3.PlayOneShot(menuButtonSound);
+    }
+
+    public void InventoryBackFunction()
+    {
+
+        //Panel.enabled = true;
+        //Panel_ok = true;
+        inventoryCanvas.enabled = false;
+        isInventoryActive = false;
+        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
+
+        pauseAudioSource.pitch = 1.3f;
+        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
+
+        noteDefaultCanvas.enabled = false;
+
+        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
+        {
+            notesScript.notesCanvas2[i].enabled = false;
+        }
+
+        for (int i = 0; i < collectionCanvas.Length; i++)
+        {
+            collectionCanvas[i].enabled = false;
+        }
+
+        Time.timeScale = 1;
+        playerScript.enabled = true;
+        playerScript.audioSource.UnPause();
+        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
+
     }
 
     public void ShowDescriptionSlot1()
@@ -5026,6 +5072,63 @@ public class InventoryUI : MonoBehaviour {
                 }
             }
 
+        }
+
+    }
+
+    // Funkcje do umiejetnosci
+
+    public void UnlockSkill1()
+    {
+
+        if (secretItemsCount >= 7 && secretPlacesCount >= 2 && isSkill1_Unlocked == false)
+        {
+            itemAudioSource3.PlayOneShot(skillUnlockedSound);
+            skill1_Icon.color = Color.green;
+            isSkill1_Unlocked = true;
+            playerScript.maxStamina = 200;
+            skillsCount++;
+        }
+
+    }
+
+    public void UnlockSkill2()
+    {
+
+        if (secretItemsCount >= 13 && secretPlacesCount >= 6 && isSkill2_Unlocked == false)
+        {
+            itemAudioSource3.PlayOneShot(skillUnlockedSound);
+            skill2_Icon.color = Color.green;
+            isSkill2_Unlocked = true;
+            flashlightScript.lightRange = 50;
+            skillsCount++;
+        }
+
+    }
+
+    public void UnlockSkill3()
+    {
+
+        if (secretItemsCount >= 18 && secretPlacesCount >= 10 && isSkill3_Unlocked == false)
+        {
+            itemAudioSource3.PlayOneShot(skillUnlockedSound);
+            skill3_Icon.color = Color.green;
+            isSkill3_Unlocked = true;
+            playerScript.staminaRegenerationFactor = 9;
+            skillsCount++;
+        }
+
+    }
+
+    public void UnlockSkill4()
+    {
+
+        if (secretItemsCount >= 22 && secretPlacesCount >= 13 && isSkill4_Unlocked == false)
+        {
+            itemAudioSource3.PlayOneShot(skillUnlockedSound);
+            skill4_Icon.color = Color.green;
+            isSkill4_Unlocked = true;
+            skillsCount++;
         }
 
     }

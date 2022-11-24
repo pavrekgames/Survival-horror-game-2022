@@ -5406,58 +5406,6 @@ public class Inventory : MonoBehaviour {
 
     }
 
-
-    public void ShowTreatment(){
-		
-		itemAudioSource3.PlayOneShot (menuButtonSound);
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        treatmentCanvas.enabled = true;
-        isTreatmentActive = true;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        noteDefaultCanvas.enabled = false;
-
-    }
-
-	public void InventoryBackFunction(){
-
-		//Panel.enabled = true;
-		//Panel_ok = true;
-		inventoryCanvas.enabled = false;
-		isInventoryActive = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
-
-        pauseAudioSource.pitch = 1.3f;
-        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-    }
-
 	public void TasksBackFunction(){
 
 		//Panel.enabled = true;
@@ -5516,12 +5464,44 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	public void TreatmentBackFunction(){
+    public void InventoryBackFunction()
+    {
 
-		//Panel.enabled = true;
-		//Panel_ok = true;
-		treatmentCanvas.enabled = false;
-		isTreatmentActive = false;
+        //Panel.enabled = true;
+        //Panel_ok = true;
+        inventoryCanvas.enabled = false;
+        isInventoryActive = false;
+        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
+
+        pauseAudioSource.pitch = 1.3f;
+        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
+
+        noteDefaultCanvas.enabled = false;
+
+        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
+        {
+            notesScript.notesCanvas2[i].enabled = false;
+        }
+
+        for (int i = 0; i < collectionCanvas.Length; i++)
+        {
+            collectionCanvas[i].enabled = false;
+        }
+
+        Time.timeScale = 1;
+        playerScript.enabled = true;
+        playerScript.audioSource.UnPause();
+        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
+
+    }
+
+    public void TreatmentBackFunction()
+    {
+
+        //Panel.enabled = true;
+        //Panel_ok = true;
+        treatmentCanvas.enabled = false;
+        isTreatmentActive = false;
         //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
@@ -5577,157 +5557,34 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	
+    public void CheckHealthCondition()
+    {
 
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	// Funkcje do umiejetnosci
-
-	public void UnlockSkill1(){
-
-		if (secretItemsCount >= 7 && secretPlacesCount >= 2 && isSkill1_Unlocked == false) {
-			itemAudioSource3.PlayOneShot (skillUnlockedSound);
-			skill1_Icon.color = Color.green;
-			isSkill1_Unlocked = true;
-			playerScript.maxStamina = 200;
-            skillsCount++;
-		}
-
-	}
-
-	public void UnlockSkill2(){
-
-		if (secretItemsCount >= 13 && secretPlacesCount >= 6 && isSkill2_Unlocked == false) {
-			itemAudioSource3.PlayOneShot (skillUnlockedSound);
-			skill2_Icon.color = Color.green;
-			isSkill2_Unlocked = true;
-			flashlightScript.lightRange = 50;
-            skillsCount++;
-        }
-
-	}
-
-	public void UnlockSkill3(){
-
-		if (secretItemsCount >= 18 && secretPlacesCount >= 10 && isSkill3_Unlocked == false) {
-			itemAudioSource3.PlayOneShot (skillUnlockedSound);
-			skill3_Icon.color = Color.green;
-			isSkill3_Unlocked = true;
-			playerScript.staminaRegenerationFactor = 9;
-            skillsCount++;
-        }
-
-	}
-
-	public void UnlockSkill4(){
-
-		if (secretItemsCount >= 22 && secretPlacesCount >= 13 && isSkill4_Unlocked == false) {
-			itemAudioSource3.PlayOneShot (skillUnlockedSound);
-			skill4_Icon.color = Color.green;
-			isSkill4_Unlocked = true;
-            skillsCount++;
-        }
-
-	}
-
-	// funkcje do apteczki
-
-	public void ShowHealthPotDescription(){
-		itemAudioSource3.PlayOneShot (itemDesciptionSound);
-		mixturesText.text = healthPotDescription;
-	}
-
-	public void ShowStaminaPotDescription(){
-		itemAudioSource3.PlayOneShot (itemDesciptionSound);
-		mixturesText.text = staminaPotDescription;
-	}
-
-	public void CreateHealthPot(){
-
-		if (greenHerbsCount >= 2 && blueHerbsCount >= 2 && vialsCount > 0) {
-			greenHerbsCount -= 2;
-			blueHerbsCount -= 2;
-            vialsCount--;
-			healthPotsCount++;
-			itemAudioSource1.PlayOneShot (createPotSound);
-			healthPotsText.text = healthPotsCount + "";
-            greenHerbsText.text = greenHerbsCount + "";
-            blueHerbsText.text = blueHerbsCount + "";
-            vialsCountText.text = vialsCount + "";
-        }
-        else
+        if (healthScript.health >= 70 && playerScript.isRest == true)
         {
-            itemAudioSource3.PlayOneShot(lackVialsSound);
-            mixturesText.text = lackComponentsText;
+            healthConditionText.text = stateGoodText;
         }
-	}
-
-	public void CreateStaminaPot(){
-
-		if (greenHerbsCount >= 1 && blueHerbsCount >= 2 && vialsCount > 0) {
-			greenHerbsCount -= 1;
-			blueHerbsCount -= 2;
-            vialsCount--;
-			staminaPotsCount++;
-			itemAudioSource3.PlayOneShot (createPotSound);
-			staminaPotsText.text = staminaPotsCount + "";
-            greenHerbsText.text = greenHerbsCount + "";
-            blueHerbsText.text = blueHerbsCount + "";
-            vialsCountText.text = vialsCount + "";
-        }
-        else
+        else if (healthScript.health > 40 && healthScript.health < 70)
         {
-            itemAudioSource3.PlayOneShot(lackVialsSound);
-            mixturesText.text = lackComponentsText;
+            healthConditionText.text = stateInjuredText;
         }
+        else if (healthScript.health <= 40)
+        {
+            healthConditionText.text = stateCriticalText;
+        }
+        else if (healthScript.health >= 70 && playerScript.isRest == false)
+        {
+            healthConditionText.text = stateTiredText;
+        }
+
     }
 
-	public void UseHealthPot(){
 
-		if (healthPotsCount > 0) {
-			healthPotsCount--;
-			healthScript.health += 50;
-			itemAudioSource4.PlayOneShot (usePotSound);
-            healthPotsText.text = healthPotsCount + "";
-        }
-	}
 
-	public void UseStaminaPot(){
 
-		if (staminaPotsCount > 0) {
-			staminaPotsCount--;
-			playerScript.currentStamina += 60;
-			itemAudioSource4.PlayOneShot (usePotSound);
-            staminaPotsText.text = staminaPotsCount + "";
-        }
-	}
 
-	public void CheckHealthCondition(){
 
-		if (healthScript.health >= 70 && playerScript.isRest == true) {
-			healthConditionText.text = stateGoodText;
-		} else if (healthScript.health > 40 && healthScript.health < 70) {
-			healthConditionText.text = stateInjuredText;
-		} else if (healthScript.health <= 40) {
-			healthConditionText.text = stateCriticalText;
-		}else if (healthScript.health >= 70 && playerScript.isRest == false) {
-			healthConditionText.text = stateTiredText;
-		}
-
-	}
+   
 
     // Funkcje do kolekcji
 
