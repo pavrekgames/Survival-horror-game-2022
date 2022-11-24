@@ -5341,49 +5341,13 @@ public class Inventory : MonoBehaviour {
 
 	// ------------- Funkcje GUI Canvas ----------------------------------
 
-	public void ShowNotes(){
-
-        StartCoroutine(ShowNotesIE());
-
-    }
-
-    public IEnumerator ShowNotesIE()
-    {
-
-        itemAudioSource3.PlayOneShot(menuButtonSound);
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-        notesCanvas.enabled = true;
-        isNotesActive = true;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        noteDefaultCanvas.enabled = true;
-
-        yield return new WaitForSecondsRealtime(0.01f);
-
-        notesScrollRect.GetComponent<ScrollRect>().enabled = true;
-        notesScrollbar.value = 1;
-        StopCoroutine(ShowNotesIE());
-
-
-    }
+	
 
     public void TasksBackFunction()
     {
 
-        //Panel.enabled = true;
-        //Panel_ok = true;
         tasksCanvas.enabled = false;
         isTasksActive = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
@@ -5408,12 +5372,9 @@ public class Inventory : MonoBehaviour {
 
     public void NotesBackFunction(){
 
-		//Panel.enabled = true;
-		//Panel_ok = true;
 		notesCanvas.enabled = false;
 		isNotesActive = false;
 		noteDefaultCanvas.enabled = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
@@ -5432,17 +5393,13 @@ public class Inventory : MonoBehaviour {
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
 
-
     }
 
     public void InventoryBackFunction()
     {
 
-        //Panel.enabled = true;
-        //Panel_ok = true;
         inventoryCanvas.enabled = false;
         isInventoryActive = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
@@ -5469,11 +5426,8 @@ public class Inventory : MonoBehaviour {
     public void TreatmentBackFunction()
     {
 
-        //Panel.enabled = true;
-        //Panel_ok = true;
         treatmentCanvas.enabled = false;
         isTreatmentActive = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
@@ -5498,13 +5452,11 @@ public class Inventory : MonoBehaviour {
 
     public void CollectionBackFunction()
     {
-        //Panel.enabled = true;
-        //Panel_ok = true;
+       
         badgeCollectionCanvas.enabled = false;
         photoCollectionCanvas.enabled = false;
         tipCollectionCanvas.enabled = false;
         isCollectionActive = false;
-        //ZrodloDzwieku3.PlayOneShot(PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
@@ -5549,13 +5501,6 @@ public class Inventory : MonoBehaviour {
         }
 
     }
-
-
-
-
-
-
-   
 
     // Funkcje do kolekcji
 
