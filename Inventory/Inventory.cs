@@ -2502,223 +2502,223 @@ public class Inventory : MonoBehaviour {
 
 		// Usuwanie klucza do pokoju U
 		if(tasksScript.isUncleDoorLocked == false && isKeyV1Removed == false){
-			RemoveKeyV1 ();
+			RemoveItem(allItems[0], isKeyV1Removed);
 		}
 
 		// Usuwanie klucza do szafki w kuchni
 		if(tasksScript.isKitchenWardrobeLocked == false && isKeyV2Removed == false){
-			UsunKluczSzafkaKuchnia ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do drzwi stajni
 
 		if(tasksScript.isStableDoorLocked == false && isKeyV3Removed == false){
-			UsunKluczStajnia ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do drzwi szopy
 
 		if(tasksScript.isToolShedDoorLocked == false && isKeyV4Removed == false){
-			UsunKluczSzopa ();
+            RemoveItem(allItems[0], isKeyV1Removed); ;
 		}
 
 		// Usuwanie Oliwy przy drzwiach w ogrodzie
 
 		if(tasksScript.isGardenDoorLocked == false && isOilRemoved == false){
-			RemoveOil ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do wneki
 
 		if(tasksScript.isNicheDoorLocked == false && isNicheKeyRemoved == false){
-			UsunKluczWnekaItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kosci 1
 
 		if(bonesTaskScript.isBone1 == true && isBone1Removed == false){
-			UsunKoscZad1 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kosci 2
 
 		if(bonesTaskScript.isBone2 == true && isBone2Removed == false){
-			UsunKoscZad2 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kosci 3
 
 		if(bonesTaskScript.isBone3 == true && isBone3Removed == false){
-			UsunKoscZad3 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kosci 4
 
 		if(bonesTaskScript.isBone4 == true && isBone4Removed == false){
-			UsunKoscZad4 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kosci 5
 
 		if(bonesTaskScript.isBone5 == true && isBone5Removed == false){
-			UsunKoscZad5 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do kampingu
 
 		if(tasksScript.isSecretRoomDoorLocked == false && isSecretRoomKeyRemoved == false){
-			UsunKluczKampingItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kasety 1
 
 		if(tasksScript.isCasseteInserted == true && isCassete1Removed == false){
-			UsunKasetaVideo1 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie baterii
 
 		if(tasksScript.isBatteriesPut == true && isBatteriesRemoved == false){
-			UsunBateria ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie zepsutego klucza
 
 		if(tasksScript.isBrokenKey == true && isBrokenFactoryKeyRemoved == false){
-			UsunKluczFabrykaBrokenItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie brakujacego kola
 
 		if(tasksScript.isWheel == true && isWoodenWheelRemoved == false){
-			UsunDrewnianeKolo ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie naprawionego klucza
 
 		if(tasksScript.isFactoryWoodenDoorLocked == false && isFixedKeyRemoved == false){
-			UsunNaprawionyKlucz ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie lomu
 
 		if(tasksScript.isFactoryMetalDoorLocked == false && isCrowbarRemoved == false){
-			UsunLomItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do salonu na poludniu domu Alice
 
 		if(tasksScript.isAliceRoomDoorLocked == false && isAliceKeyRemoved == false){
-			UsunKluczSalonPoludnieItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kombinerek
 
 		if(tasksScript.isCornfieldDoorLocked == false && isPliersRemoved == false){
-			UsunKombinerkiItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie Siekiery
 
 		if(tasksScript.isPlanksLocked == false && isAxeRemoved == false){
-			UsunSiekieraZadanie ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do szafy w korytarzu
 
 		if(tasksScript.isCorridorWardrobeLocked == false && isWardrobeCorridorKeyRemoved == false){
-			UsunKluczSzafaKorytarzItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do szafki w szopie
 
 		if(tasksScript.isShedCupboardLocked == false && isShedCupboardKeyRemoved == false){
-			UsunKluczSzafkaSzopaItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kasety 2
 
 		if(tasksScript.isCassete2Inserted == true && isCassete2Removed == false){
-			UsunKasetaVideo2 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie dyni
 
 		if(tasksScript.isPumpkin == true && isPumpkinRemoved == false){
-			UsunDyniaItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do pokoju Toma na gorze
 
 		if(tasksScript.isTomUpstairsDoorLocked == false && isTomUpstairsKeyRemoved == false){
-			UsunKluczTomGoraItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do pokoju Toma
 
 		if(tasksScript.isTomRoomDoorLocked == false && isTomRoomKeyRemoved == false){
-			UsunKluczPokojTomItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kasety 3
 
 		if(tasksScript.isCassete3Inserted == true && isCassete3Removed == false){
-			UsunKasetaVideo3 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie chipu
 
 		if(tasksScript.isChipPut == true && isChipRemoved == false){
-			UsunChipItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do szafy w opuszczonym domu
 
 		if(tasksScript.isOldWardrobeLocked == false && isOldWardrobeKeyRemoved == false){
-			UsunKluczSzafaStaryDomItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie kasety 4
 
 		if(tasksScript.isCassete4Inserted == true && isCassete4Removed == false){
-			UsunKasetaVideo4 ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza do pokoju Stevena
 
 		if(tasksScript.isStevenDoorLocked == false && isStevenKeyRemoved == false){
-			UsunKluczStevenaItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie rosliny
 
 		if(tasksScript.isLabPlant == true && isLabPlantRemoved == false){
-			UsunRoslinaLabItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie grzyba
 
 		if(tasksScript.isLabMushroom == true && isLabMushroomRemoved == false){
-			UsunGrzybLabItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie czaszki
 
 		if(tasksScript.isLabSkull == true && isLabSkullRemoved == false){
-			UsunCzaszkaLabItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
 		// Usuwanie klucza w pokoju na zachodzie
 
 		if(tasksScript.isPaulDoorLocked == false && isPaulKeyRemoved== false){
-			UsunKluczPokojZachodItem ();
-		}
+            RemoveItem(allItems[0], isKeyV1Removed);
+        }
 
         // Usuwanie mikstury
 
 		if (tasksScript.isThornsAcid == true && isStrongAcidRemoved == false)
         {
-            UsunMiksturaItem();
+            RemoveItem(allItems[0], isKeyV1Removed);
         }
 
 
@@ -3468,682 +3468,18 @@ public class Inventory : MonoBehaviour {
 
     // ------------- Funkcje do usuwania przedmiotow----------------------
 
-    void RemoveKeyV1(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == keyV1Icon){
-				items.RemoveAll(x=>x.type =="KluczPokojW");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-				isKeyV1Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void RemoveOil(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == oilIcon){
-				items.RemoveAll(x=>x.type == "Oliwa");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-				isOilRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczSzafkaKuchnia(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == keyV2Icon){
-				items.RemoveAll(x=>x.type == "KluczSzafkaKuchnia");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-				isKeyV2Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczStajnia(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == keyV3Icon){
-				items.RemoveAll(x=>x.type == "KluczStajnia");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-               // itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isKeyV3Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczSzopa(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == keyV4Icon){
-				items.RemoveAll(x=>x.type == "KluczSzopa");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-               // usedItemText.text = defaultUsingItemText;
-                isKeyV4Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunBateria(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == batteriesIcon){
-				items.RemoveAll(x=>x.type == "Baterie");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isBatteriesRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKasetaVideo1(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == cassete1Icon){
-				items.RemoveAll(x=>x.type == "Kaseta1");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isCassete1Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKoscZad1(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == bone1Icon){
-				items.RemoveAll(x=>x.type == "Kosc1");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-				//itemDescriptionText.text = defaultDescription;
-				//usedItemText.text = defaultUsingItemText;
-                isBone1Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKoscZad2(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == bone2Icon){
-				items.RemoveAll(x=>x.type == "Kosc2");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-				//itemDescriptionText.text = defaultDescription;
-				//usedItemText.text = defaultUsingItemText;
-                isBone2Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKoscZad3(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == bone3Icon){
-				items.RemoveAll(x=>x.type == "Kosc3");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-				//itemDescriptionText.text = defaultDescription;
-				//usedItemText.text = defaultUsingItemText;
-				isBone3Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKoscZad4(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == bone4Icon){
-				items.RemoveAll(x=>x.type == "Kosc4");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-				//itemDescriptionText.text = defaultDescription;
-				//usedItemText.text = defaultUsingItemText;
-                isBone4Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKoscZad5(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == bone5Icon){
-				items.RemoveAll(x=>x.type == "Kosc5");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-				//itemDescriptionText.text = defaultDescription;
-				//usedItemText.text = defaultUsingItemText;
-                isBone5Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczWnekaItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == nicheKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczWneka");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isNicheKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczKampingItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == secretRoomKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczKamping");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isSecretRoomKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczFabrykaBrokenItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == brokenFactoryKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczFabryka");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isBrokenFactoryKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunDrewnianeKolo(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == woodenWheelIcon){
-				items.RemoveAll(x=>x.type == "DrewnianeKolo");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isWoodenWheelRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunNaprawionyKlucz(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == fixedKeyIcon){
-				items.RemoveAll(x=>x.type == "FixedKey");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isFixedKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunLomItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == crowbarIcon){
-				items.RemoveAll(x=>x.type == "Lom");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-               // usedItemText.text = defaultUsingItemText;
-                isCrowbarRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczSalonPoludnieItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == aliceKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczSalonPoludnie");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isAliceKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKombinerkiItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == pliersIcon){
-				items.RemoveAll(x=>x.type == "Kombinerki");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isPliersRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunSiekieraZadanie(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == axeIcon){
-				items.RemoveAll(x=>x.type == "Siekiera");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-               // usedItemText.text = defaultUsingItemText;
-                isAxeRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczSzafaKorytarzItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == wardrobeCorridorKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczSzafaKorytarz");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-               // usedItemText.text = defaultUsingItemText;
-                isWardrobeCorridorKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczSzafkaSzopaItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == shedCupboardKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczSzafkaSzopa");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isShedCupboardKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKasetaVideo2(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == cassete2Icon){
-				items.RemoveAll(x=>x.type == "Kaseta2");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-               // usedItemText.text = defaultUsingItemText;
-                isCassete2Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunDyniaItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == pumpkinIcon){
-				items.RemoveAll(x=>x.type == "Dynia");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isPumpkinRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczTomGoraItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == tomUpstairsKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczTomGora");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isTomUpstairsKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczPokojTomItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == tomRoomKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczPokojTom");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isTomRoomKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKasetaVideo3(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == cassete3Icon){
-				items.RemoveAll(x=>x.type == "Kaseta3");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isCassete3Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunChipItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == chipIcon){
-				items.RemoveAll(x=>x.type == "Chip");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isChipRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczSzafaStaryDomItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == oldWardrobeKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczStaryDom");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isOldWardrobeKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKasetaVideo4(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == cassete4Icon){
-				items.RemoveAll(x=>x.type == "Kaseta4");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isCassete4Removed = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunKluczStevenaItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == stevenKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczSteven");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isStevenKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunRoslinaLabItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == labPlantIcon){
-				items.RemoveAll(x=>x.type == "RoslinaLab");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isLabPlantRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunGrzybLabItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == labMushroomIcon){
-				items.RemoveAll(x=>x.type == "GrzybLab");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isLabMushroomRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunCzaszkaLabItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == labSkullIcon){
-				items.RemoveAll(x=>x.type == "CzaszkaLab");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isLabSkullRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
-
-	void UsunMiksturaItem(){
+    void RemoveItem(Item item, bool isItemRemoved)
+    {
         for (int i = 0; i < itemIcons.Length; i++)
         {
-            if (itemIcons[i].sprite == strongAcidIcon)
+            if (itemIcons[i].sprite == item.icon)
             {
-                items.RemoveAll(x => x.type == "Mikstura");
+                items.Remove(item);
                 itemIcons[i].sprite = null;
                 itemIcons[i].color = Color.black;
                 //itemDescriptionText.text = defaultDescription;
                 //usedItemText.text = defaultUsingItemText;
-                isStrongAcidRemoved = true;
+                isItemRemoved = true;
 
                 currentItemIcon.sprite = null;
                 currentItemIcon.color = Color.black;
@@ -4153,25 +3489,6 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
-
-	void UsunKluczPokojZachodItem(){
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == paulKeyIcon){
-				items.RemoveAll(x=>x.type == "KluczPokojZachod");
-				itemIcons[i].sprite = null;
-				itemIcons[i].color = Color.black;
-                //itemDescriptionText.text = defaultDescription;
-                //usedItemText.text = defaultUsingItemText;
-                isPaulKeyRemoved = true;
-
-                currentItemIcon.sprite = null;
-                currentItemIcon.color = Color.black;
-                currenntItemTitle.text = currentItemText;
-
-                break;
-			}
-		}
-	}
 
 	// ------------- Funkcje GUI Canvas ----------------------------------
 
