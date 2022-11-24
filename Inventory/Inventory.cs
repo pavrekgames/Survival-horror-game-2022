@@ -40,6 +40,12 @@ public class Inventory : MonoBehaviour {
     public Canvas inventoryCanvas;
     public AudioClip itemDesciptionSound;
 
+    public InventoryUI inventoryUI;
+    public TasksUI tasksUI;
+    public NotesUI notesUI;
+    public TreatmentUI treatmentUI;
+    public CollectionBadgesUI collectionBadgesUI;
+
     public int secretItemsCount = 0;
     public int secretPlacesCount = 0;
     public int blueHerbsCount = 0;
@@ -1291,46 +1297,42 @@ public class Inventory : MonoBehaviour {
 
 		if(Input.GetButtonDown("Inventory") && playerManagerScript.isPlayerCanInput == true)
         {
-            //Panel.enabled = true;
 
             ShowInventory();
 
 			Time.timeScale = 0;
-			//Panel_ok = true;
-			cursorScript.m_ShowCursor = true; // !Kursor.m_ShowCursor
+			cursorScript.m_ShowCursor = true; 
             playerScript.audioSource.Pause();
 			playerScript.enabled = false;
             pauseAudioSource.pitch = 1;
             pauseAudioSource.PlayOneShot (openInventorySound);
-			//Ekwpnk.enabled = false;
-			//Ekwipunek_ok = false;
-		}//else if((Input.GetButtonDown("Ekwipunek") || Input.GetButtonDown("Cancel"))  && Panel_ok == true){
-         //BackFunction();
-         //}
+			
+		}
+         
 
         else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isInventoryActive == true)
         {
-            InventoryBackFunction();
+            inventoryUI.InventoryBackFunction();
         }
 
         else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTasksActive == true)
         {
-            TasksBackFunction();
+            tasksUI.TasksBackFunction();
         }
 
         else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isNotesActive == true)
         {
-            NotesBackFunction();
+            notesUI.NotesBackFunction();
         }
 
         else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
         {
-            TreatmentBackFunction();
+            treatmentUI.TreatmentBackFunction();
         }
 
         else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
         {
-            CollectionBackFunction();
+            collectionBadgesUI.CollectionBackFunction();
         }
 
         else if(gameMenuScript.isMenu == true){
@@ -1342,13 +1344,10 @@ public class Inventory : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0) && playerManagerScript.isPlayerCanInput == true)
         {
-
-			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 			RaycastHit hit;
 
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
-	    // Debug.Log (hit.collider.gameObject.name);
 
 			// Podnoszenie klucza do drzwi pokoju U
 
@@ -3492,144 +3491,7 @@ public class Inventory : MonoBehaviour {
 
 	// ------------- Funkcje GUI Canvas ----------------------------------
 
-	
-
-    public void TasksBackFunction()
-    {
-
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-
-        pauseAudioSource.pitch = 1.3f;
-        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-    }
-
-    public void NotesBackFunction(){
-
-		notesCanvas.enabled = false;
-		isNotesActive = false;
-		noteDefaultCanvas.enabled = false;
-
-        pauseAudioSource.pitch = 1.3f;
-        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++) {
-			notesScript.notesCanvas2 [i].enabled = false;
-		}
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-    }
-
-    public void InventoryBackFunction()
-    {
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
-
-        pauseAudioSource.pitch = 1.3f;
-        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-    }
-
-    public void TreatmentBackFunction()
-    {
-
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-
-        pauseAudioSource.pitch = 1.3f;
-        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-    }
-
-    public void CollectionBackFunction()
-    {
-       
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        pauseAudioSource.pitch = 1.3f;
-        pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-    }
+    // do health script ?
 
     public void CheckHealthCondition()
     {
@@ -3675,43 +3537,13 @@ public class Inventory : MonoBehaviour {
         noteDefaultCanvas.enabled = false;
 
         itemAudioSource3.PlayOneShot(menuButtonSound);
+
+        foreach(var collCanvas in collectionCanvas)
+        {
+            collCanvas.enabled = false;
+        }
+
         collectionCanvas[0].enabled = true;
-        collectionCanvas[1].enabled = false;
-        collectionCanvas[2].enabled = false;
-        collectionCanvas[3].enabled = false;
-        collectionCanvas[4].enabled = false;
-        collectionCanvas[5].enabled = false;
-        collectionCanvas[6].enabled = false;
-        collectionCanvas[7].enabled = false;
-        collectionCanvas[8].enabled = false;
-        collectionCanvas[9].enabled = false;
-        collectionCanvas[10].enabled = false;
-        collectionCanvas[11].enabled = false;
-        collectionCanvas[12].enabled = false;
-        collectionCanvas[13].enabled = false;
-        collectionCanvas[14].enabled = false;
-        collectionCanvas[15].enabled = false;
-        collectionCanvas[16].enabled = false;
-        collectionCanvas[17].enabled = false;
-        collectionCanvas[18].enabled = false;
-        collectionCanvas[19].enabled = false;
-        collectionCanvas[20].enabled = false;
-        collectionCanvas[21].enabled = false;
-        collectionCanvas[22].enabled = false;
-        collectionCanvas[23].enabled = false;
-        collectionCanvas[24].enabled = false;
-        collectionCanvas[25].enabled = false;
-        collectionCanvas[26].enabled = false;
-        collectionCanvas[27].enabled = false;
-        collectionCanvas[28].enabled = false;
-        collectionCanvas[29].enabled = false;
-        collectionCanvas[30].enabled = false;
-        collectionCanvas[31].enabled = false;
-        collectionCanvas[32].enabled = false;
-        collectionCanvas[33].enabled = false;
-        collectionCanvas[34].enabled = false;
-        collectionCanvas[35].enabled = false;
-        collectionCanvas[36].enabled = false;
         badgeCollectionTitleText.text = collectionTitles[0];
 
     }
@@ -3728,43 +3560,13 @@ public class Inventory : MonoBehaviour {
         tipCollectionCanvas.enabled = false;
 
         itemAudioSource3.PlayOneShot(menuButtonSound);
+
+        foreach (var collCanvas in collectionCanvas)
+        {
+            collCanvas.enabled = false;
+        }
+
         collectionCanvas[0].enabled = true;
-        collectionCanvas[1].enabled = false;
-        collectionCanvas[2].enabled = false;
-        collectionCanvas[3].enabled = false;
-        collectionCanvas[4].enabled = false;
-        collectionCanvas[5].enabled = false;
-        collectionCanvas[6].enabled = false;
-        collectionCanvas[7].enabled = false;
-        collectionCanvas[8].enabled = false;
-        collectionCanvas[9].enabled = false;
-        collectionCanvas[10].enabled = false;
-        collectionCanvas[11].enabled = false;
-        collectionCanvas[12].enabled = false;
-        collectionCanvas[13].enabled = false;
-        collectionCanvas[14].enabled = false;
-        collectionCanvas[15].enabled = false;
-        collectionCanvas[16].enabled = false;
-        collectionCanvas[17].enabled = false;
-        collectionCanvas[18].enabled = false;
-        collectionCanvas[19].enabled = false;
-        collectionCanvas[20].enabled = false;
-        collectionCanvas[21].enabled = false;
-        collectionCanvas[22].enabled = false;
-        collectionCanvas[23].enabled = false;
-        collectionCanvas[24].enabled = false;
-        collectionCanvas[25].enabled = false;
-        collectionCanvas[26].enabled = false;
-        collectionCanvas[27].enabled = false;
-        collectionCanvas[28].enabled = false;
-        collectionCanvas[29].enabled = false;
-        collectionCanvas[30].enabled = false;
-        collectionCanvas[31].enabled = false;
-        collectionCanvas[32].enabled = false;
-        collectionCanvas[33].enabled = false;
-        collectionCanvas[34].enabled = false;
-        collectionCanvas[35].enabled = false;
-        collectionCanvas[36].enabled = false;
         photoCollectionTitleText.text = collectionTitles[1];
 
     }
@@ -3781,47 +3583,16 @@ public class Inventory : MonoBehaviour {
         tipCollectionCanvas.enabled = true;
 
         itemAudioSource3.PlayOneShot(menuButtonSound);
+
+        foreach (var collCanvas in collectionCanvas)
+        {
+            collCanvas.enabled = false;
+        }
+
         collectionCanvas[0].enabled = true;
-        collectionCanvas[1].enabled = false;
-        collectionCanvas[2].enabled = false;
-        collectionCanvas[3].enabled = false;
-        collectionCanvas[4].enabled = false;
-        collectionCanvas[5].enabled = false;
-        collectionCanvas[6].enabled = false;
-        collectionCanvas[7].enabled = false;
-        collectionCanvas[8].enabled = false;
-        collectionCanvas[9].enabled = false;
-        collectionCanvas[10].enabled = false;
-        collectionCanvas[11].enabled = false;
-        collectionCanvas[12].enabled = false;
-        collectionCanvas[13].enabled = false;
-        collectionCanvas[14].enabled = false;
-        collectionCanvas[15].enabled = false;
-        collectionCanvas[16].enabled = false;
-        collectionCanvas[17].enabled = false;
-        collectionCanvas[18].enabled = false;
-        collectionCanvas[19].enabled = false;
-        collectionCanvas[20].enabled = false;
-        collectionCanvas[21].enabled = false;
-        collectionCanvas[22].enabled = false;
-        collectionCanvas[23].enabled = false;
-        collectionCanvas[24].enabled = false;
-        collectionCanvas[25].enabled = false;
-        collectionCanvas[26].enabled = false;
-        collectionCanvas[27].enabled = false;
-        collectionCanvas[28].enabled = false;
-        collectionCanvas[29].enabled = false;
-        collectionCanvas[30].enabled = false;
-        collectionCanvas[31].enabled = false;
-        collectionCanvas[32].enabled = false;
-        collectionCanvas[33].enabled = false;
-        collectionCanvas[34].enabled = false;
-        collectionCanvas[35].enabled = false;
-        collectionCanvas[36].enabled = false;
         tipCollectionTitleText.text = collectionTitles[2];
 
     }
-
 
     public void HoverButton(){
 
