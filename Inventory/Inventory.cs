@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 public class Inventory : MonoBehaviour {
 
     // inventory
+    public Image[] itemIcons;
     private PlayerManager playerManagerScript;
     public List<Item> items = new List<Item>();
     private Animator animator;
@@ -34,6 +35,9 @@ public class Inventory : MonoBehaviour {
     public Health healthScript;
     public Notes notesScript;
     public VoiceActing voiceActingScript;
+    public AudioClip menuButtonSound;
+    public Canvas inventoryCanvas;
+    public AudioClip itemDesciptionSound;
 
     public int secretItemsCount = 0;
     public int secretPlacesCount = 0;
@@ -51,16 +55,7 @@ public class Inventory : MonoBehaviour {
     public AudioClip collectItemSound;
     public AudioClip openInventorySound;
 
-    // inventory UI
-    public Image[] itemIcons;
-    public Canvas inventoryCanvas;
-    public TextMeshProUGUI itemDescriptionText;
-    public TextMeshProUGUI usedItemText;
-    public Text secretItemsText;
-    public Text secretPlacesText;
-    public AudioClip menuButtonSound;
-    public AudioClip useItemSound;
-    public AudioClip itemDesciptionSound;
+   
 
     // Umiejetnosci
     public bool isSkill1_Unlocked = false;
@@ -839,17 +834,17 @@ public class Inventory : MonoBehaviour {
 	void OnEnable(){
 
         itemIcons = new Image[9];
-		itemIcons [0] = GameObject.Find ("InventoryItem1").GetComponent<Image> ();
-		itemIcons [1] = GameObject.Find ("InventoryItem2").GetComponent<Image> ();
-		itemIcons [2] = GameObject.Find ("InventoryItem3").GetComponent<Image> ();
-		itemIcons [3] = GameObject.Find ("InventoryItem4").GetComponent<Image> ();
-		itemIcons [4] = GameObject.Find ("InventoryItem5").GetComponent<Image> ();
-		itemIcons [5] = GameObject.Find ("InventoryItem6").GetComponent<Image> ();
-		itemIcons [6] = GameObject.Find ("InventoryItem7").GetComponent<Image> ();
-		itemIcons [7] = GameObject.Find ("InventoryItem8").GetComponent<Image> ();
-		itemIcons [8] = GameObject.Find ("InventoryItem9").GetComponent<Image> ();
+        itemIcons[0] = GameObject.Find("InventoryItem1").GetComponent<Image>();
+        itemIcons[1] = GameObject.Find("InventoryItem2").GetComponent<Image>();
+        itemIcons[2] = GameObject.Find("InventoryItem3").GetComponent<Image>();
+        itemIcons[3] = GameObject.Find("InventoryItem4").GetComponent<Image>();
+        itemIcons[4] = GameObject.Find("InventoryItem5").GetComponent<Image>();
+        itemIcons[5] = GameObject.Find("InventoryItem6").GetComponent<Image>();
+        itemIcons[6] = GameObject.Find("InventoryItem7").GetComponent<Image>();
+        itemIcons[7] = GameObject.Find("InventoryItem8").GetComponent<Image>();
+        itemIcons[8] = GameObject.Find("InventoryItem9").GetComponent<Image>();
 
-		playerCam = Camera.main;
+        playerCam = Camera.main;
 
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
         player = GameObject.Find("Player").transform;
@@ -875,7 +870,7 @@ public class Inventory : MonoBehaviour {
 		staminaPotsText = GameObject.Find ("MiksturaStaminaIlosc").GetComponent<Text> ();
 		healthConditionText = GameObject.Find ("StanZdrowiaWartosc").GetComponent<TextMeshProUGUI> ();
 
-		inventoryCanvas = GameObject.Find ("CanvasInventory").GetComponent<Canvas>();
+		
 		tasksCanvas = GameObject.Find ("CanvasTasks").GetComponent<Canvas>();
 		notesCanvas = GameObject.Find ("CanvasNotatki").GetComponent<Canvas>();
 		treatmentCanvas = GameObject.Find ("CanvasTreatment").GetComponent<Canvas>();
@@ -883,10 +878,7 @@ public class Inventory : MonoBehaviour {
         badgeCollectionCanvas = GameObject.Find("CanvasCollectionOdznaki").GetComponent<Canvas>();
         photoCollectionCanvas = GameObject.Find("CanvasCollectionFoto").GetComponent<Canvas>();
         tipCollectionCanvas = GameObject.Find("CanvasCollectionWskazowki").GetComponent<Canvas>();
-        itemDescriptionText = GameObject.Find ("InventoryOpis").GetComponent<TextMeshProUGUI>();
-		usedItemText = GameObject.Find ("InventoryUsing").GetComponent<TextMeshProUGUI>();
-		secretItemsText = GameObject.Find ("InventorySecretItemsWynik").GetComponent<Text>();
-		secretPlacesText = GameObject.Find ("InventorySecretPlacesWynik").GetComponent<Text>();
+        
 
 		itemAudioSource1 = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();      // klucze
 		itemAudioSource2 = GameObject.Find ("ZrodloPrzedmiot2_s").GetComponent<AudioSource>();    // glosne
@@ -2728,65 +2720,6 @@ public class Inventory : MonoBehaviour {
             UsunMiksturaItem();
         }
 
-        /*    if (Input.GetKeyDown("v"))
-            {
-                PodniesWskazowka1();
-                PodniesWskazowka2();
-                PodniesWskazowka3();
-                PodniesWskazowka4();
-                PodniesWskazowka5();
-                PodniesWskazowka6();
-                PodniesWskazowka7();
-                PodniesWskazowka8();
-                PodniesWskazowka9();
-                PodniesWskazowka10();
-                PodniesWskazowka11();
-                PodniesWskazowka12();
-
-                PodniesFoto1();
-                PodniesFoto2();
-                PodniesFoto3();
-                PodniesFoto4();
-                PodniesFoto5();
-                PodniesFoto6();
-                PodniesFoto7();
-                PodniesFoto8();
-                PodniesFoto9();
-                PodniesFoto10();
-                PodniesFoto11();
-                PodniesFoto12();
-
-                PodniesOdznaka1();
-                PodniesOdznaka2();
-                PodniesOdznaka3();
-                PodniesOdznaka4();
-                PodniesOdznaka5();
-                PodniesOdznaka6();
-                PodniesOdznaka7();
-                PodniesOdznaka8();
-                PodniesOdznaka9();
-                PodniesOdznaka10();
-                PodniesOdznaka11();
-                PodniesOdznaka12();
-            } */
-
-      //  if (Input.GetKeyDown("v"))
-      //  {
-            //KluczSzafaKorytarzItem();
-            //KluczSzopa();
-            //KasetaVideo1();
-            //Bateria();
-            //MiksturaItem();
-            //KluczFabrykaBrokenItem();
-            //NaprawionyKlucz();
-            //DrewnianeKolo();
-            //KluczWnekaItem();
-            //KluczSalonPoludnieItem();
-            //SiekieraZadanie();
-            //KluczSzafkaSzopaItem();
-            //KasetaVideo2();
-            //OliwaItem();
-      //  } 
 
     } // Klamra do Update
 		
@@ -2891,9 +2824,47 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	//-------------- Funkcje do Secret Places----------------------------
+    public void ShowInventory()
+    {
 
-	void DiscoverRockyGrave(){
+        if (Time.timeScale == 0)
+        {
+            itemAudioSource3.PlayOneShot(menuButtonSound);
+        }
+
+
+        inventoryCanvas.enabled = true;
+        isInventoryActive = true;
+        tasksCanvas.enabled = false;
+        isTasksActive = false;
+        notesCanvas.enabled = false;
+        isNotesActive = false;
+        treatmentCanvas.enabled = false;
+        isTreatmentActive = false;
+        badgeCollectionCanvas.enabled = false;
+        photoCollectionCanvas.enabled = false;
+        tipCollectionCanvas.enabled = false;
+        isCollectionActive = false;
+
+        noteDefaultCanvas.enabled = false;
+
+        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
+        {
+            notesScript.notesCanvas2[i].enabled = false;
+        }
+
+        for (int i = 0; i < collectionCanvas.Length; i++)
+        {
+            collectionCanvas[i].enabled = false;
+        }
+
+        notificationScript.taskHintTime = 5f;
+
+    }
+
+    //-------------- Funkcje do Secret Places----------------------------
+
+    void DiscoverRockyGrave(){
 		notificationScript.secretPlacesTime = 0f;
 		notificationScript.secretPlacesNotificationTextMesh.text = rockyGraveText;
 		rockyGraveTextPointer.enabled = true;
@@ -2901,8 +2872,8 @@ public class Inventory : MonoBehaviour {
         itemAudioSource4.Play();
 		secretPlacesCount++;
 		isRockyGraveSP = true;
-		//Saving.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverAnimalCemetery(){
@@ -2914,7 +2885,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isAnimalCementarySP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverSimonGarden(){
@@ -2926,7 +2897,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isSimonGardenSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverTomCamp(){
@@ -2937,8 +2908,8 @@ public class Inventory : MonoBehaviour {
         itemAudioSource4.Play();
         secretPlacesCount++;
 		isTomCampSP = true;
-		secretPlacesText.text = secretPlacesCount + "/15";
-		//Saving.Zapisz ();
+		//secretPlacesText.text = secretPlacesCount + "/15";
+		
 	}
 
 	void DiscoverDevilsShelter(){
@@ -2950,7 +2921,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isDevilsShelterSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverWarCemetery(){
@@ -2961,8 +2932,8 @@ public class Inventory : MonoBehaviour {
         itemAudioSource4.Play();
         secretPlacesCount++;
 		isWarCementarySP = true;
-		secretPlacesText.text = secretPlacesCount + "/15";
-		//Saving.Zapisz ();
+		//secretPlacesText.text = secretPlacesCount + "/15";
+
 	}
 
 	void DiscoverHut(){
@@ -2973,8 +2944,8 @@ public class Inventory : MonoBehaviour {
         itemAudioSource4.Play();
         secretPlacesCount++;
 		isHutSP = true;
-		secretPlacesText.text = secretPlacesCount + "/15";
-		//Saving.Zapisz ();
+		//secretPlacesText.text = secretPlacesCount + "/15";
+		
 	}
 
 	void DiscoverAbandonedBasement(){
@@ -2986,7 +2957,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isBasementSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverMushroomField(){
@@ -2998,7 +2969,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isMushroomFieldSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverDarkForest(){
@@ -3010,7 +2981,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isDarkForestSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverBonesTower(){
@@ -3022,7 +2993,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isBonesTowerSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverKnifeArena(){
@@ -3034,7 +3005,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isKnifeArenaSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverCave(){
@@ -3046,7 +3017,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isCaveSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverMonument(){
@@ -3058,7 +3029,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isMonumentSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 	void DiscoverSpaceship(){
@@ -3070,7 +3041,7 @@ public class Inventory : MonoBehaviour {
         secretPlacesCount++;
 		isSpaceshipSP = true;
 		SaveGameScript.Zapisz ();
-		secretPlacesText.text = secretPlacesCount + "/15";
+		//secretPlacesText.text = secretPlacesCount + "/15";
 	}
 
 
@@ -3729,7 +3700,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
         animator.SetTrigger ("Podnies");
-		secretItemsText.text = secretItemsCount + "/32";
+		//secretItemsText.text = secretItemsCount + "/32";
 	}
 
 	void AddSecretItem2(){
@@ -3746,7 +3717,7 @@ public class Inventory : MonoBehaviour {
         notificationScript.isStaminaPotNotification = false;
         notificationScript.isHealthPotNotification = false;
         animator.SetTrigger ("Podnies");
-		secretItemsText.text = secretItemsCount + "/32";
+		//secretItemsText.text = secretItemsCount + "/32";
 	}
 
 	void AddGreenHerb(){
@@ -4674,8 +4645,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type =="KluczPokojW");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
 				isKeyV1Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4693,8 +4664,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Oliwa");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
 				isOilRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4712,8 +4683,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczSzafkaKuchnia");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
 				isKeyV2Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4731,8 +4702,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczStajnia");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+               // itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isKeyV3Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4750,8 +4721,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczSzopa");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+               // usedItemText.text = defaultUsingItemText;
                 isKeyV4Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4769,8 +4740,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Baterie");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isBatteriesRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4788,8 +4759,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kaseta1");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isCassete1Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4807,8 +4778,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kosc1");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-				itemDescriptionText.text = defaultDescription;
-				usedItemText.text = defaultUsingItemText;
+				//itemDescriptionText.text = defaultDescription;
+				//usedItemText.text = defaultUsingItemText;
                 isBone1Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4826,8 +4797,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kosc2");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-				itemDescriptionText.text = defaultDescription;
-				usedItemText.text = defaultUsingItemText;
+				//itemDescriptionText.text = defaultDescription;
+				//usedItemText.text = defaultUsingItemText;
                 isBone2Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4845,8 +4816,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kosc3");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-				itemDescriptionText.text = defaultDescription;
-				usedItemText.text = defaultUsingItemText;
+				//itemDescriptionText.text = defaultDescription;
+				//usedItemText.text = defaultUsingItemText;
 				isBone3Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4864,8 +4835,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kosc4");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-				itemDescriptionText.text = defaultDescription;
-				usedItemText.text = defaultUsingItemText;
+				//itemDescriptionText.text = defaultDescription;
+				//usedItemText.text = defaultUsingItemText;
                 isBone4Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4883,8 +4854,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kosc5");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-				itemDescriptionText.text = defaultDescription;
-				usedItemText.text = defaultUsingItemText;
+				//itemDescriptionText.text = defaultDescription;
+				//usedItemText.text = defaultUsingItemText;
                 isBone5Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -4902,8 +4873,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczWneka");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isNicheKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4921,8 +4892,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczKamping");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isSecretRoomKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4940,8 +4911,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczFabryka");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isBrokenFactoryKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4959,8 +4930,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "DrewnianeKolo");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isWoodenWheelRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4978,8 +4949,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "FixedKey");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isFixedKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -4997,8 +4968,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Lom");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+               // usedItemText.text = defaultUsingItemText;
                 isCrowbarRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5016,8 +4987,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczSalonPoludnie");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isAliceKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5035,8 +5006,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kombinerki");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isPliersRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5054,8 +5025,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Siekiera");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+               // usedItemText.text = defaultUsingItemText;
                 isAxeRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5073,8 +5044,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczSzafaKorytarz");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+               // usedItemText.text = defaultUsingItemText;
                 isWardrobeCorridorKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5092,8 +5063,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczSzafkaSzopa");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isShedCupboardKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5111,8 +5082,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kaseta2");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+               // usedItemText.text = defaultUsingItemText;
                 isCassete2Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -5130,8 +5101,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Dynia");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isPumpkinRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5149,8 +5120,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczTomGora");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isTomUpstairsKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5168,8 +5139,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczPokojTom");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isTomRoomKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5187,8 +5158,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kaseta3");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isCassete3Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -5206,8 +5177,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Chip");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isChipRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5225,8 +5196,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczStaryDom");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isOldWardrobeKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5244,8 +5215,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "Kaseta4");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isCassete4Removed = true;
 
                 currentItemIcon.sprite = null;
@@ -5263,8 +5234,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczSteven");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isStevenKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5282,8 +5253,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "RoslinaLab");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isLabPlantRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5301,8 +5272,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "GrzybLab");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isLabMushroomRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5320,8 +5291,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "CzaszkaLab");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isLabSkullRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5341,8 +5312,8 @@ public class Inventory : MonoBehaviour {
                 items.RemoveAll(x => x.type == "Mikstura");
                 itemIcons[i].sprite = null;
                 itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isStrongAcidRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5360,8 +5331,8 @@ public class Inventory : MonoBehaviour {
 				items.RemoveAll(x=>x.type == "KluczPokojZachod");
 				itemIcons[i].sprite = null;
 				itemIcons[i].color = Color.black;
-                itemDescriptionText.text = defaultDescription;
-                usedItemText.text = defaultUsingItemText;
+                //itemDescriptionText.text = defaultDescription;
+                //usedItemText.text = defaultUsingItemText;
                 isPaulKeyRemoved = true;
 
                 currentItemIcon.sprite = null;
@@ -5375,50 +5346,9 @@ public class Inventory : MonoBehaviour {
 
 	// ------------- Funkcje GUI Canvas ----------------------------------
 
-	public void BackFunction(){
-		Time.timeScale = 1;
-		playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-		itemAudioSource3.PlayOneShot (menuButtonSound);
-	}
+	
 
-	public void ShowInventory(){
-
-        if(Time.timeScale == 0)
-        {
-            itemAudioSource3.PlayOneShot(menuButtonSound);
-        }
-		
-
-        inventoryCanvas.enabled = true;
-        isInventoryActive = true;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
-        notificationScript.taskHintTime = 5f;
-
-    }
+	
 
 	public void ShowTasks(){
 		
@@ -5647,4786 +5577,23 @@ public class Inventory : MonoBehaviour {
 
     }
 
-    public void ShowDescriptionSlot1(){
+	
 
-		if(items.Count > 0){
+	
 
-			for(int i=0; i<items.Count; i++){
-                if (items[i].id == 1)
-                {
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-                    itemDescriptionText.text = items[i].name + " - " + items[i].description;
-                    break;
-                }
+	
 
-            } // do fora
+	
 
-		} // do 1 ifa
-			
-	} // do funkcji
+	
 
-	public void ShowDescriptionSlot2(){
+	
 
-		if(items.Count > 0){
+	
 
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 2){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}  
-			}
+	
 
-		}
-
-	}
-
-	public void ShowDescriptionSlot3(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 3){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void ShowDescriptionSlot4(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 4){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void ShowDescriptionSlot5(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 5){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void ShowDescriptionSlot6(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 6){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void ShowDescriptionSlot7(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 7){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void ShowDescriptionSlot8(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 8){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void ShowDescriptionSlot9(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 9){
-					itemAudioSource3.PlayOneShot (itemDesciptionSound);
-					itemDescriptionText.text = items[i].name + " - " + items[i].description;
-					break;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot1(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 1){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 1){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot2(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 2){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 2){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot3(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 3){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 3){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot4(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 4){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 4){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot5(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 5){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 5){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot6(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 6){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 6){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot7(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 7){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 7){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot8(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 8){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 8){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
-	public void UseItemFromSlot9(){
-
-		if(items.Count > 0){
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 9){
-
-                    if (items[i].type == "KluczPokojW")
-                    {
-
-                        notificationScript.isUncleDoor = true;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafkaKuchnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = true;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStajnia")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = true;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = true;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Oliwa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = true;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczWneka")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = true;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczKamping")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = true;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "FixedKey")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = true;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Lom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = true;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSalonPoludnie")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = true;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Kombinerki")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = true;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "Siekiera")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = true;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaKorytarz")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = true;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSzafaSzopa")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = true;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczTomGora")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = true;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojTom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = true;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczStaryDom")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = true;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczSteven")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = true;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    else if (items[i].type == "KluczPokojZachod")
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = true;
-                    }
-
-                    else
-                    {
-                        notificationScript.isUncleDoor = false;
-                        notificationScript.isKitchenWardrobe = false;
-                        notificationScript.isStableDoor = false;
-                        notificationScript.isToolShedDoor = false;
-                        notificationScript.isGardenDoor = false;
-                        notificationScript.isNicheDoor = false;
-                        notificationScript.isSecretRoomDoor = false;
-                        notificationScript.isFactoryWoodenDoor = false;
-                        notificationScript.isFactoryMetalDoor = false;
-                        notificationScript.isAliceRoomDoor = false;
-                        notificationScript.isCornfieldDoor = false;
-                        notificationScript.isPlanks = false;
-                        notificationScript.isCorridorWardrobe = false;
-                        notificationScript.isShedCupboard = false;
-                        notificationScript.isTomUpstairsDoor = false;
-                        notificationScript.isTomRoomDoor = false;
-                        notificationScript.isOldWardrobe = false;
-                        notificationScript.isStevenDoor = false;
-                        notificationScript.isPaulDoor = false;
-                    }
-
-                    usedItemText.text = items[i].name + usingItemText;
-
-                    currentItemIcon.sprite = items[i].icon;
-                    currentItemIcon.color = Color.white;
-                    currenntItemTitle.text = items[i].name;
-
-                    // funkcja inventory back bez wywolania dzwieku menu
-
-                    inventoryCanvas.enabled = false;
-                    isInventoryActive = false;
-
-                    noteDefaultCanvas.enabled = false;
-
-                    for (int j = 0; i < notesScript.notesCanvas2.Length; i++)
-                    {
-                        notesScript.notesCanvas2[i].enabled = false;
-                    }
-
-                    for (int j = 0; i < collectionCanvas.Length; i++)
-                    {
-                        collectionCanvas[i].enabled = false;
-                    }
-
-                    Time.timeScale = 1;
-                    playerScript.enabled = true;
-                    playerScript.audioSource.UnPause();
-                    cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
-                    // koniec funkcji inventory back
-
-                    break;
-				}
-			}
-
-			for(int i=0; i<items.Count; i++){
-				if(items[i].id == 9){
-					items[i].isUsed = true;
-					itemAudioSource3.PlayOneShot (useItemSound);
-				}else{
-					items[i].isUsed = false;
-				}
-			}
-
-		}
-
-	}
-
+	
 	// Funkcje do umiejetnosci
 
 	public void UnlockSkill1(){
