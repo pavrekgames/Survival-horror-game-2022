@@ -7,113 +7,151 @@ using UnityEngine.Audio;
 
 public class Inventory : MonoBehaviour {
 
-	public List<Item> items = new List<Item>();
-	public Image[] itemIcons;
-	private Animator animator;
-	private Transform player;
+    // inventory
+    private PlayerManager playerManagerScript;
+    public List<Item> items = new List<Item>();
+    private Animator animator;
+    private Transform player;
     private Map mapScript;
     private BeginGame beginGameScript;
-
-    public AudioMixerSnapshot pauseAudioSnapshot;
-    public AudioMixerSnapshot unPauseAudioSnapshot;
-
     private CrosshairGUI cursorScript;
-	private Player playerScript;
-	public Flashlight flashlightScript;
-	private SaveGame SaveGameScript;
-	public Canvas panelCanvas;
-	public Canvas inventoryCanvas;
-	public Canvas tasksCanvas;
-	public Canvas notesCanvas;
-	public Canvas treatmentCanvas;
-	public Canvas noteDefaultCanvas;
-
+    private Player playerScript;
+    public Flashlight flashlightScript;
+    private SaveGame SaveGameScript;
     private Canvas uiCanvas;
     public TextMeshProUGUI currenntItemTitle;
     public Image currentItemIcon;
-
-    public Canvas badgeCollectionCanvas;
-    public Canvas photoCollectionCanvas;
-    public Canvas tipCollectionCanvas;
-    public Canvas[] collectionCanvas;
-
-    private TextMeshProUGUI badgeCollectionTitleText;
-    private TextMeshProUGUI photoCollectionTitleText;
-    private TextMeshProUGUI tipCollectionTitleText;
-    //public Button Inventory;
-    //public Button Tasks;
-    //public Button Notes;
-    //public Button Back;
-    public TextMeshProUGUI itemDescriptionText;
-	public TextMeshProUGUI usedItemText;
-	public Text secretItemsText;
-	public Text secretPlacesText;
-	public TextMeshProUGUI mixturesText;
-    public TextMeshProUGUI vialsText;
-	public Text blueHerbsText;
-	public Text greenHerbsText;
-    public Text vialsCountText;
-	public Text healthPotsText;
-	public Text staminaPotsText;
-	private TextMeshProUGUI healthConditionText;
-	public bool isPanelActive = false;
-	public bool isInventoryActive = false;
-	public bool isTasksActive = false;
-	public bool isNotesActive = false;
-	public bool isTreatmentActive = false;
-    public bool isCollectionActive = false;
-	private Menu gameMenuScript;
-	public Notifications notificationScript;        
-	public Tasks tasksScript;
-	public TaskBones bonesTaskScript;
-	public AudioSource itemAudioSource1; 
+    public bool isInventoryActive = false;
+    private Menu gameMenuScript;
+    public Notifications notificationScript;
+    public Tasks tasksScript;
+    public TaskBones bonesTaskScript;
+    public AudioSource itemAudioSource1;
     public AudioSource itemAudioSource2;
     public AudioSource itemAudioSource3;
-	public AudioSource itemAudioSource4;
+    public AudioSource itemAudioSource4;
     public AudioSource pauseAudioSource;
     public Health healthScript;
-	public Notes notesScript;
-	public int secretItemsCount = 0;
-	public int secretPlacesCount = 0;
-	public int blueHerbsCount = 0;
-	public int greenHerbsCount = 0;
-	public int healthPotsCount = 0;
-	public int staminaPotsCount = 0;
+    public Notes notesScript;
+    public VoiceActing voiceActingScript;
+
+    public int secretItemsCount = 0;
+    public int secretPlacesCount = 0;
+    public int blueHerbsCount = 0;
+    public int greenHerbsCount = 0;
+    public int healthPotsCount = 0;
+    public int staminaPotsCount = 0;
     public int vialsCount = 0;
-	public AudioClip secretItemSound;
-	public AudioClip secretItemSound2;
-	public AudioClip secretPlaceSound;
-	public AudioClip menuButtonSound;
-	public AudioClip createPotSound;
-	public AudioClip usePotSound;
-	public AudioClip collectHerbSound;
+
+    public AudioClip secretItemSound;
+    public AudioClip secretItemSound2;
+    public AudioClip secretPlaceSound;
+    public AudioClip collectHerbSound;
     public AudioClip collectVialSound;
     public AudioClip collectItemSound;
     public AudioClip openInventorySound;
-	public AudioClip useItemSound;
-	public AudioClip itemDesciptionSound;
-    public AudioClip lackVialsSound;
-	public VoiceActing voiceActingScript;
-    public Sprite badgeSprite;
-    public Sprite photoSprite;
-    public Sprite tipSprite;
-    public Sprite badgeOKSprite;
-    public Sprite photoOKSprite;
-    public Sprite tipOKSprite;
-    public Image[] collectionTextures;
 
-    // do ustawiania scrollbara notatek
+    // inventory UI
+    public Image[] itemIcons;
+    public Canvas inventoryCanvas;
+    public TextMeshProUGUI itemDescriptionText;
+    public TextMeshProUGUI usedItemText;
+    public Text secretItemsText;
+    public Text secretPlacesText;
+    public AudioClip menuButtonSound;
+    public AudioClip useItemSound;
+    public AudioClip itemDesciptionSound;
+
+    // Umiejetnosci
+    public bool isSkill1_Unlocked = false;
+    public AudioClip skillUnlockedSound;
+    public Image skill1_Icon;
+
+    public bool isSkill2_Unlocked = false;
+    public Image skill2_Icon;
+
+    public bool isSkill3_Unlocked = false;
+    public Image skill3_Icon;
+
+    public bool isSkill4_Unlocked = false;
+    public Image skill4_Icon;
+
+    // tasks UI
+
+    public Canvas tasksCanvas;
+    public bool isTasksActive = false;
+    // notes UI
+
+    public Canvas notesCanvas;
+    public Canvas noteDefaultCanvas;
+    public bool isNotesActive = false;
 
     private ScrollRect notesScrollRect;
     private Scrollbar notesScrollbar;
 
-    // Glos bohatera
+    // treatment
 
-    //public AudioClip GlosKombinerki;
-    //public AudioClip GlosSiekiera;
-    //public AudioClip GlosStevenSzopa;
+    // treatment UI
 
-    // Secret Places
+    public Canvas treatmentCanvas;
+    public TextMeshProUGUI mixturesText;
+    public TextMeshProUGUI vialsText;
+    public Text blueHerbsText;
+    public Text greenHerbsText;
+    public Text vialsCountText;
+    public Text healthPotsText;
+    public Text staminaPotsText;
+    private TextMeshProUGUI healthConditionText;
+    public bool isTreatmentActive = false;
+    public AudioClip createPotSound;
+    public AudioClip usePotSound;
+    public AudioClip lackVialsSound;
+
+    // teksty do apteczki
+    public string defaultPotDescription = "Hover over the mixture to get more information.";
+    public string healthPotDescription = "Health Mixture  - Increase your health. You need 2 green herbs and 2 blue herbs to create it.";
+    public string staminaPotDescription = "Stamina Mixture  - Increase your Stamina. You need 1 green herb and 2 blue herbs to create it.";
+    public string stateGoodText = "<color=#08FF5BFF>Good</color>";
+    public string stateInjuredText = "<color=#FFC117FF>Injured</color>";
+    public string stateCriticalText = "<color=#FF4E26FF>Critical</color>";
+    public string stateTiredText = "<color=#BF42C7FF>Tired</color>";
+    public string lackComponentsText = "<color=#FF0000FF>You don't have enough herbs or a vial</color>";
+
+    // collection badges
+
+
+    // collection badges UI
+
+    public Canvas badgeCollectionCanvas;
+    public Canvas[] collectionCanvas;
+    private TextMeshProUGUI badgeCollectionTitleText;
+    public bool isCollectionActive = false;
+
+    public Sprite badgeSprite;
+    public Sprite badgeOKSprite;
+    public Image[] collectionTextures;
+
+    // collection photos
+
+
+    // collection photos UI
+
+    public Canvas photoCollectionCanvas;
+    private TextMeshProUGUI photoCollectionTitleText;
+    public Sprite photoSprite;
+    public Sprite photoOKSprite;
+
+    // collection tips
+
+
+    // collection tips UI
+
+    public Canvas tipCollectionCanvas;
+    private TextMeshProUGUI tipCollectionTitleText;
+    public Sprite tipSprite;
+    public Sprite tipOKSprite;
+
+    // Notification
 
     public bool isRockyGraveSP = false;
 	public Text rockyGraveTextPointer;
@@ -145,9 +183,30 @@ public class Inventory : MonoBehaviour {
 	public bool isSpaceshipSP = false;
 	public Text spaceshipTextPointer;
 
-	private Ray playerAim;
+    // teskty do secret places
+    public string rockyGraveText = "Secret Place: Rocky's Grave";
+    public string animalCemeteryText = "Secret Place: Animals's Cemetery";
+    public string simonGardenText = "Secret Place: Simon's Garden";
+    public string tomCampText = "Secret Place: Tom's Camp";
+    public string devilsShelterText = "Secret Place: Devils Hide";
+    public string warCemeteryText = "Secret Place: War Cemetery";
+    public string hutText = "Secret Place: Scientist's Hut";
+    public string abandonedBasementText = "Secret Place: Abandoned Basement";
+    public string mushroomFieldText = "Secret Place: Mushroom Field";
+    public string darkForestText = "Secret Place: Dark Forest";
+    public string bonesTowerText = "Secret Place: Bones Tower";
+    public string knifeArenaText = "Secret Place: Knife Arena";
+    public string caveText = "Secret Place: Cave";
+    public string monumentText = "Secret Place: Old Monument";
+    public string spaceshipText = "Secret Place: Spececraft";
+
+    //------------------------------------------------------------------------
+
+    private Ray playerAim;
 	private Camera playerCam;
 	public float rayLength = 4f;
+
+    // przedmioty do pondoszenia
 
 	private Transform keyV1;
 	public bool isKeyV1Taken = false;
@@ -687,21 +746,6 @@ public class Inventory : MonoBehaviour {
     private Transform tip12;
     public bool isTip12 = false;
 
-
-    // Umiejetnosci
-    public bool isSkill1_Unlocked = false;
-	public AudioClip skillUnlockedSound;
-	public Image skill1_Icon;
-
-	public bool isSkill2_Unlocked = false;
-	public Image skill2_Icon;
-
-	public bool isSkill3_Unlocked = false;
-	public Image skill3_Icon;
-
-	public bool isSkill4_Unlocked = false;
-	public Image skill4_Icon;
-
     // teksty do jezykow
     public string uncleKeyName = "The Uncle's key"; // id 1
     public string uncleKeyDescription = "This key opens Uncle's room door next to bathroom";
@@ -776,34 +820,7 @@ public class Inventory : MonoBehaviour {
     public string defaultDescription = "Hover on an item to see the description"; 
     public string usingItemText = " is using now!";
     public string defaultUsingItemText = "Click on the item you want to use";
-
-    // teskty do secret places
-    public string rockyGraveText = "Secret Place: Rocky's Grave";
-    public string animalCemeteryText = "Secret Place: Animals's Cemetery";
-    public string simonGardenText = "Secret Place: Simon's Garden";
-    public string tomCampText = "Secret Place: Tom's Camp";
-    public string devilsShelterText = "Secret Place: Devils Hide";
-    public string warCemeteryText = "Secret Place: War Cemetery";
-    public string hutText = "Secret Place: Scientist's Hut";
-    public string abandonedBasementText = "Secret Place: Abandoned Basement";
-    public string mushroomFieldText = "Secret Place: Mushroom Field";
-    public string darkForestText = "Secret Place: Dark Forest";
-    public string bonesTowerText = "Secret Place: Bones Tower";
-    public string knifeArenaText = "Secret Place: Knife Arena";
-    public string caveText = "Secret Place: Cave";
-    public string monumentText = "Secret Place: Old Monument";
-    public string spaceshipText = "Secret Place: Spececraft";
-
-    // teksty do apteczki
-    public string defaultPotDescription = "Hover over the mixture to get more information.";
-	public string healthPotDescription = "Health Mixture  - Increase your health. You need 2 green herbs and 2 blue herbs to create it.";
-	public string staminaPotDescription = "Stamina Mixture  - Increase your Stamina. You need 1 green herb and 2 blue herbs to create it.";
-	public string stateGoodText = "<color=#08FF5BFF>Good</color>";
-	public string stateInjuredText = "<color=#FFC117FF>Injured</color>";
-	public string stateCriticalText = "<color=#FF4E26FF>Critical</color>";
-	public string stateTiredText = "<color=#BF42C7FF>Tired</color>";
-    public string lackComponentsText = "<color=#FF0000FF>You don't have enough herbs or a vial</color>";
-
+    
     // teksty do kolekcji
 
     public string[] collectionTitles;
@@ -834,13 +851,10 @@ public class Inventory : MonoBehaviour {
 
 		playerCam = Camera.main;
 
-		player = GameObject.Find("Player").transform;
+        playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
+        player = GameObject.Find("Player").transform;
         mapScript = GameObject.Find("Player").GetComponent<Map>();
         beginGameScript = GameObject.Find("Player").GetComponent<BeginGame>();
-        //Inventory = Inventory.GetComponent<Button>();
-        //Tasks = Tasks.GetComponent<Button>();
-        //Notes = Notes.GetComponent<Button>();
-        //Back= Back.GetComponent<Button>();
         flashlightScript = GameObject.Find ("Latarka").GetComponent<Flashlight>();
 		cursorScript = GameObject.Find ("Kamera").GetComponent<CrosshairGUI>();
 		playerScript = GameObject.Find ("Player").GetComponent<Player>();
@@ -861,7 +875,6 @@ public class Inventory : MonoBehaviour {
 		staminaPotsText = GameObject.Find ("MiksturaStaminaIlosc").GetComponent<Text> ();
 		healthConditionText = GameObject.Find ("StanZdrowiaWartosc").GetComponent<TextMeshProUGUI> ();
 
-		panelCanvas = GameObject.Find ("CanvasPanel").GetComponent<Canvas>();
 		inventoryCanvas = GameObject.Find ("CanvasInventory").GetComponent<Canvas>();
 		tasksCanvas = GameObject.Find ("CanvasTasks").GetComponent<Canvas>();
 		notesCanvas = GameObject.Find ("CanvasNotatki").GetComponent<Canvas>();
@@ -1274,18 +1287,16 @@ public class Inventory : MonoBehaviour {
 
         if (Time.timeScale == 0)
         {
-            pauseAudioSnapshot.TransitionTo(0.01f);
             uiCanvas.enabled = false;
         }
         else if(Time.timeScale == 1 && beginGameScript.enabled == false)
         {
-            unPauseAudioSnapshot.TransitionTo(0.01f);
             uiCanvas.enabled = true;
         }
 
         CheckHealthCondition ();
 
-		if(Input.GetButtonDown("Ekwipunek") && isPanelActive == false && healthScript.health > 0 && gameMenuScript.isMenu == false && isInventoryActive == false && isTasksActive == false && isNotesActive == false && notesScript.isNotes == false && isTreatmentActive == false && isCollectionActive == false && gameMenuScript.isMenuNewGame == false && gameMenuScript.isLoadedGame == false && notificationScript.isTutorialNotification == false && mapScript.isMap == false)
+		if(Input.GetButtonDown("Inventory") && playerManagerScript.isPlayerCanInput == true)
         {
             //Panel.enabled = true;
 
@@ -1304,44 +1315,40 @@ public class Inventory : MonoBehaviour {
          //BackFunction();
          //}
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Ekwipunek")) && isInventoryActive == true)
+        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isInventoryActive == true)
         {
             InventoryBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Ekwipunek")) && isTasksActive == true)
+        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTasksActive == true)
         {
             TasksBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Ekwipunek")) && isNotesActive == true)
+        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isNotesActive == true)
         {
             NotesBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Ekwipunek")) && isTreatmentActive == true)
+        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
         {
             TreatmentBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Ekwipunek")) && isCollectionActive == true)
+        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
         {
             CollectionBackFunction();
         }
 
-        else if(gameMenuScript.isMenu == true && isPanelActive == true){
-			panelCanvas.enabled = false;
-			isPanelActive = false; 
+        else if(gameMenuScript.isMenu == true){
 			cursorScript.m_ShowCursor = true; // !Kursor.m_ShowCursor
 		}
 
 
-		
-
-
         //------------------PODNOSZENIE PRZEDMIOTOW----------------------
 
-        if (Input.GetMouseButtonDown(0) && gameMenuScript.isMenu == false && isPanelActive == false && isInventoryActive == false && isTasksActive == false && isNotesActive == false && isTreatmentActive == false && isCollectionActive == false && notificationScript.isTutorialNotification == false){
+        if (Input.GetMouseButtonDown(0) && playerManagerScript.isPlayerCanInput == true)
+        {
 
 			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -5369,9 +5376,7 @@ public class Inventory : MonoBehaviour {
 	// ------------- Funkcje GUI Canvas ----------------------------------
 
 	public void BackFunction(){
-		panelCanvas.enabled = false;
 		Time.timeScale = 1;
-		isPanelActive = false;
 		playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -5379,8 +5384,6 @@ public class Inventory : MonoBehaviour {
 	}
 
 	public void ShowInventory(){
-		panelCanvas.enabled = false;
-		isPanelActive = false;
 
         if(Time.timeScale == 0)
         {
@@ -5418,10 +5421,7 @@ public class Inventory : MonoBehaviour {
     }
 
 	public void ShowTasks(){
-		panelCanvas.enabled = false;
-		isPanelActive = false;
-		//Zadania.enabled = true;
-		//Zadania_ok = true;
+		
 		itemAudioSource3.PlayOneShot (menuButtonSound);
 
         inventoryCanvas.enabled = false;
@@ -5450,10 +5450,6 @@ public class Inventory : MonoBehaviour {
     public IEnumerator ShowNotesIE()
     {
 
-        panelCanvas.enabled = false;
-        isPanelActive = false;
-        //Notatki.enabled = true;
-        //Notatki_ok = true;
         itemAudioSource3.PlayOneShot(menuButtonSound);
 
         inventoryCanvas.enabled = false;
@@ -5482,10 +5478,7 @@ public class Inventory : MonoBehaviour {
 
 
     public void ShowTreatment(){
-		panelCanvas.enabled = false;
-		isPanelActive = false;
-		//Apteczka.enabled = true;
-		//Apteczka_ok = true;
+		
 		itemAudioSource3.PlayOneShot (menuButtonSound);
 
         inventoryCanvas.enabled = false;
@@ -5528,9 +5521,7 @@ public class Inventory : MonoBehaviour {
             collectionCanvas[i].enabled = false;
         }
 
-        panelCanvas.enabled = false;
         Time.timeScale = 1;
-        isPanelActive = false;
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -5560,9 +5551,7 @@ public class Inventory : MonoBehaviour {
             collectionCanvas[i].enabled = false;
         }
 
-        panelCanvas.enabled = false;
         Time.timeScale = 1;
-        isPanelActive = false;
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -5589,9 +5578,7 @@ public class Inventory : MonoBehaviour {
             collectionCanvas[i].enabled = false;
         }
 
-        panelCanvas.enabled = false;
         Time.timeScale = 1;
-        isPanelActive = false;
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -5622,9 +5609,7 @@ public class Inventory : MonoBehaviour {
             collectionCanvas[i].enabled = false;
         }
 
-        panelCanvas.enabled = false;
         Time.timeScale = 1;
-        isPanelActive = false;
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -5655,9 +5640,7 @@ public class Inventory : MonoBehaviour {
             collectionCanvas[i].enabled = false;
         }
 
-        panelCanvas.enabled = false;
         Time.timeScale = 1;
-        isPanelActive = false;
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -6300,9 +6283,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -6817,9 +6798,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -7334,9 +7313,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -7851,9 +7828,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -8368,9 +8343,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -8885,9 +8858,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -9402,9 +9373,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -9919,9 +9888,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -10436,9 +10403,7 @@ public class Inventory : MonoBehaviour {
                         collectionCanvas[i].enabled = false;
                     }
 
-                    panelCanvas.enabled = false;
                     Time.timeScale = 1;
-                    isPanelActive = false;
                     playerScript.enabled = true;
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
@@ -10603,14 +10568,6 @@ public class Inventory : MonoBehaviour {
 
         collectionCanvas[0].enabled = false;
 
-        panelCanvas.enabled = false;
-        isPanelActive = false;
-        //Kolekcja_ok = true;
-
-       // KolekcjaOdznaki.enabled = true;
-       // KolekcjaFoto.enabled = false;
-       // KolekcjaWskazowki.enabled = false;
-
         inventoryCanvas.enabled = false;
         isInventoryActive = false;
         tasksCanvas.enabled = false;
@@ -10673,8 +10630,6 @@ public class Inventory : MonoBehaviour {
 
         collectionCanvas[0].enabled = false;
 
-        panelCanvas.enabled = false;
-        isPanelActive = false;
         isCollectionActive = true;
 
         badgeCollectionCanvas.enabled = false;
@@ -10728,8 +10683,6 @@ public class Inventory : MonoBehaviour {
 
         collectionCanvas[0].enabled = false;
 
-        panelCanvas.enabled = false;
-        isPanelActive = false;
         isCollectionActive = true;
 
         badgeCollectionCanvas.enabled = false;
