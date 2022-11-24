@@ -685,7 +685,7 @@ public class Tasks : MonoBehaviour {
 		//--------------ZADANIA Z INTERACKJA------------------------
 
 
-		if (Input.GetMouseButtonDown (0) && inventoryScript.items.Count >= 0 && inventoryScript.isPanelActive == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
+		if (Input.GetMouseButtonDown (0) && inventoryScript.items.Count >= 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
 															// tu bylo count > 0
 
 			//playerCam = Camera.main;
