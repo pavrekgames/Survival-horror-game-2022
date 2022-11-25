@@ -249,7 +249,6 @@ public class Notifications : MonoBehaviour {
 			infoNotificationTextMesh.text = "";
             doorNotificationTextMesh.text = "";
 			isNotificationTimeOn = false;
-			//CanvasKomunikaty.enabled = false;
 		}
 
 
@@ -500,13 +499,6 @@ public class Notifications : MonoBehaviour {
 					infoNotificationTextMesh.text = insertCasseteMessage;
 				}
 
-				// Komunikat do odtwarzacza bez chipu
-
-			/*	if (hit.collider.gameObject.name == "Odtwarzacz2" && Tasks.WlozKasete3_ok == true && Tasks.WlozChip_ok == false && JestKaseta3_ok == false) { // DystansOdtwarzacz2 <= 11 &&
-					//ZrodloDzwieku2.PlayOneShot (DzwWlozKasete);
-					JestKaseta3_ok = true;
-				} */
-
 				else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == true && tasksScript.isChipPut == false) { 
 					//ZrodloDzwieku.PlayOneShot (DzwBrakChipu);
                     audioSource4.clip = lackChipSound;
@@ -686,7 +678,6 @@ public class Notifications : MonoBehaviour {
             isDoorNotification = true;
 
         }
-
 	}
 
 	void NotificationTime(){
@@ -756,6 +747,17 @@ public class Notifications : MonoBehaviour {
         taskHintTime = 0;
         taskHintBackground.enabled = true;
         taskHintTextMesh.text = tasksHint;
+    }
+
+    public void ShowInfoNotification(string notificationText)
+    {
+        infoNotificationTextMesh.text = notificationText;
+    }
+
+    public void ShowInfoNotification(string notificationText, AudioClip notificationSound)
+    {
+        infoNotificationTextMesh.text = notificationText;
+        audioSource.PlayOneShot(notificationSound);
     }
 
 	void KomunikatDrzwi(){
