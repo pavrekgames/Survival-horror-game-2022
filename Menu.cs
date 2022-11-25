@@ -811,12 +811,12 @@ public class Menu : MonoBehaviour {
             //PlayerListener.enabled = false;
             AudioListener.volume = 0;
             ResumeGame ();
-            notificationScript.KomunikatSamouczekZiolaOk();
-            notificationScript.KomunikatSamouczekZapisOk();
-            notificationScript.KomunikatSamouczekPchanieOk();
-            notificationScript.KomunikatSamouczekSecretOk();
-            notificationScript.KomunikatSamouczekItemsOk();
-            notificationScript.KomunikatSamouczekInventoryOk();
+            notificationScript.HideTutorialNotification(notificationScript.herbsNotificationCanvas);
+            notificationScript.HideTutorialNotification(notificationScript.saveGameNotificationCanvas);
+            notificationScript.HideTutorialNotification(notificationScript.pushNotificationCanvas);
+            notificationScript.HideTutorialNotification(notificationScript.secretNotificationCanvas);
+            notificationScript.HideTutorialNotification(notificationScript.itemsNotificationCanvas);
+            notificationScript.HideTutorialNotification(notificationScript.inventoryNotificationCanvas);
             player.GetComponent<Crouch>().GetUp();
 
         }
@@ -883,32 +883,36 @@ public class Menu : MonoBehaviour {
 
         if(notificationScript.herbsNotificationCanvas.enabled == true)
         {
-            notificationScript.KomunikatSamouczekZiolaOk();
+            notificationScript.HideTutorialNotification(notificationScript.herbsNotificationCanvas);
         }
 
         if (notificationScript.saveGameNotificationCanvas.enabled == true)
         {
-            notificationScript.KomunikatSamouczekZapisOk();
+            notificationScript.HideTutorialNotification(notificationScript.saveGameNotificationCanvas);
+            
         }
 
         if (notificationScript.pushNotificationCanvas.enabled == true)
         {
-            notificationScript.KomunikatSamouczekPchanieOk();
+            notificationScript.HideTutorialNotification(notificationScript.pushNotificationCanvas);
+            
         }
 
         if (notificationScript.secretNotificationCanvas.enabled == true)
         {
-            notificationScript.KomunikatSamouczekSecretOk();
+            notificationScript.HideTutorialNotification(notificationScript.secretNotificationCanvas);
+            
         }
 
         if (notificationScript.itemsNotificationCanvas.enabled == true)
         {
-            notificationScript.KomunikatSamouczekItemsOk();
+            notificationScript.HideTutorialNotification(notificationScript.itemsNotificationCanvas);
+           
         }
 
         if (notificationScript.inventoryNotificationCanvas.enabled == true)
         {
-            notificationScript.KomunikatSamouczekInventoryOk();
+            notificationScript.HideTutorialNotification(notificationScript.inventoryNotificationCanvas);
         }
 
         player.GetComponent<Halluns>().DefaultScriptSettings();

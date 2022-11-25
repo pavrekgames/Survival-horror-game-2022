@@ -191,7 +191,7 @@ public class Notifications : MonoBehaviour {
         Badge,
         Photo,
         Tip,
-        Tutorail
+        Tutorial
 }
 
     public NotificationType notificationType;
@@ -634,59 +634,50 @@ public class Notifications : MonoBehaviour {
 
             isPlaySound = false;
         }
-    
 
 } // klamra do update
 
 
 	void HideMainNotification(){
 
-
-
 		if(isLightNotification == false){
 			//CanvasKomunikaty.enabled = true;
 			mainNotificationTextMesh.text = flashlightHint;
 		}
 
-		if(Input.GetButtonDown("Latarka") && isLightNotification == false && playerManagerScript.isPlayerCanInput == true)
+		if(Input.GetButtonDown("Flashlight") && isLightNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
-			isLightNotification = true;
-			//CanvasKomunikaty.enabled = false;
+            isLightNotification = true;
 			mainNotificationTextMesh.text = "";
 		}
 
 		if(Input.GetButtonDown("Sprint") && isSprintNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isSprintNotification = true;
-			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
 		if(Input.GetMouseButton(2) && isLight2Notification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isLight2Notification = true;
-			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Ekwipunek") && isTaskInfoNotification == false && playerManagerScript.isPlayerCanInput == true)
+		if(Input.GetButtonDown("Inventory") && isTaskInfoNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isTaskInfoNotification = true;
-			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Mapa") && isMapNotification == false && playerManagerScript.isPlayerCanInput == true)
+		if(Input.GetButtonDown("Map") && isMapNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isMapNotification = true;
-			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Kucanie") && isCrouchNotification == false && playerManagerScript.isPlayerCanInput == true)
+		if(Input.GetButtonDown("Crouch") && isCrouchNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isCrouchNotification = true;
-			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
@@ -695,7 +686,6 @@ public class Notifications : MonoBehaviour {
             isDoorNotification = true;
 
         }
-
 
 	}
 
@@ -826,557 +816,61 @@ public class Notifications : MonoBehaviour {
 		infoNotificationTextMesh.text = stevenGrilleMessage;
 	}
 
-    void KomunikatSamouczekZiola()
-    {
-        isTutorialNotification = true;
-        isHerbsNotification = true;
-        herbsNotificationCanvas.enabled = true;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 0;
-        gameMenuScript.playerScript.enabled = false;
-        gameMenuScript.cursorScript.m_ShowCursor = true;
-        Cursor.visible = true;
-        //GlowneMenu.Notes.Notatki_ok = true;
-        gameMenuScript.headbobberScript.enabled = false;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-   public void KomunikatSamouczekZiolaOk()
-    {
-        isTutorialNotification = false;
-        herbsNotificationCanvas.enabled = false;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 1;
-        gameMenuScript.playerScript.enabled = true;
-        gameMenuScript.cursorScript.m_ShowCursor = false;
-        Cursor.visible = false;
-       // GlowneMenu.Notes.Notatki_ok = false;
-        gameMenuScript.headbobberScript.enabled = true;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-    void KomunikatSamouczekZapis()
-    {
-        isTutorialNotification = true;
-        isSaveNotification = true;
-        saveGameNotificationCanvas.enabled = true;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 0;
-        gameMenuScript.playerScript.enabled = false;
-        gameMenuScript.cursorScript.m_ShowCursor = true;
-        Cursor.visible = true;
-       // GlowneMenu.Notes.Notatki_ok = true;
-        gameMenuScript.headbobberScript.enabled = false;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-    public void KomunikatSamouczekZapisOk()
-    {
-        isTutorialNotification = false;
-        saveGameNotificationCanvas.enabled = false;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 1;
-        gameMenuScript.playerScript.enabled = true;
-        gameMenuScript.cursorScript.m_ShowCursor = false;
-        Cursor.visible = false;
-        //GlowneMenu.Notes.Notatki_ok = false;
-        gameMenuScript.headbobberScript.enabled = true;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-    void KomunikatSamouczekPchanie()
-    {
-        isTutorialNotification = true;
-        isPushNotification = true;
-        pushNotificationCanvas.enabled = true;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 0;
-        gameMenuScript.playerScript.enabled = false;
-        gameMenuScript.cursorScript.m_ShowCursor = true;
-        Cursor.visible = true;
-       // GlowneMenu.Notes.Notatki_ok = true;
-        gameMenuScript.headbobberScript.enabled = false;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-
-    }
-
-    public void KomunikatSamouczekPchanieOk()
-    {
-        isTutorialNotification = false;
-        pushNotificationCanvas.enabled = false;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 1;
-        gameMenuScript.playerScript.enabled = true;
-        gameMenuScript.cursorScript.m_ShowCursor = false;
-        Cursor.visible = false;
-       // GlowneMenu.Notes.Notatki_ok = false;
-        gameMenuScript.headbobberScript.enabled = true;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-    void KomunikatSamouczekSecret()
-    {
-        isTutorialNotification = true;
-        isSecretNotification = true;
-        secretNotificationCanvas.enabled = true;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 0;
-        gameMenuScript.playerScript.enabled = false;
-        gameMenuScript.cursorScript.m_ShowCursor = true;
-        Cursor.visible = true;
-        // GlowneMenu.Notes.Notatki_ok = true;
-        gameMenuScript.headbobberScript.enabled = false;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-
-    }
-
-    public void KomunikatSamouczekSecretOk()
-    {
-        isTutorialNotification = false;
-        secretNotificationCanvas.enabled = false;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 1;
-        gameMenuScript.playerScript.enabled = true;
-        gameMenuScript.cursorScript.m_ShowCursor = false;
-        Cursor.visible = false;
-        // GlowneMenu.Notes.Notatki_ok = false;
-        gameMenuScript.headbobberScript.enabled = true;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-    void KomunikatSamouczekItems()
-    {
-        isTutorialNotification = true;
-        isItemsNotification = true;
-        itemsNotificationCanvas.enabled = true;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 0;
-        gameMenuScript.playerScript.enabled = false;
-        gameMenuScript.cursorScript.m_ShowCursor = true;
-        Cursor.visible = true;
-        // GlowneMenu.Notes.Notatki_ok = true;
-        gameMenuScript.headbobberScript.enabled = false;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-
-    }
-
-    public void KomunikatSamouczekItemsOk()
-    {
-        isTutorialNotification = false;
-        itemsNotificationCanvas.enabled = false;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 1;
-        gameMenuScript.playerScript.enabled = true;
-        gameMenuScript.cursorScript.m_ShowCursor = false;
-        Cursor.visible = false;
-        // GlowneMenu.Notes.Notatki_ok = false;
-        gameMenuScript.headbobberScript.enabled = true;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-   public void KomunikatSamouczekInventory()
-    {
-        isTutorialNotification = true;
-        isInventoryNotification = true;
-        inventoryNotificationCanvas.enabled = true;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 0;
-        gameMenuScript.playerScript.enabled = false;
-        gameMenuScript.cursorScript.m_ShowCursor = true;
-        Cursor.visible = true;
-        // GlowneMenu.Notes.Notatki_ok = true;
-        gameMenuScript.headbobberScript.enabled = false;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-
-    }
-
-    public void KomunikatSamouczekInventoryOk()
-    {
-        isTutorialNotification = false;
-        inventoryNotificationCanvas.enabled = false;
-        tutorialAudioSource.PlayOneShot(tutorialSound);
-        Time.timeScale = 1;
-        gameMenuScript.playerScript.enabled = true;
-        gameMenuScript.cursorScript.m_ShowCursor = false;
-        Cursor.visible = false;
-        // GlowneMenu.Notes.Notatki_ok = false;
-        gameMenuScript.headbobberScript.enabled = true;
-        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
-        playerScript.isSprint = false;
-    }
-
-    void KomunikatPodnoszenie()
-    {
-        mainNotificationTextMesh.text = dragHint;
-        //KomPodnoszenie_ok = true;
-    }
-
-    public void ShowNotification(string notificationText)
+    public void ShowMainNotification(string notificationText)
     {
         mainNotificationTextMesh.text = notificationText;
     }
 
-    void OnTriggerExit(Collider other){
-		
-         if (other.gameObject.CompareTag("PtakSzalas_trigger") && isDragNotification == false)
+    public void ShowSecretPlaceNotification(string notificationText, Text pointer)
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = notificationText;
+        pointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+    }
+
+    public void ShowTutorialNotification(Canvas tutorialCanvas)
+    {
+        notificationType = NotificationType.Tutorial;
+        tutorialCanvas.enabled = true;
+        tutorialAudioSource.PlayOneShot(tutorialSound);
+        Time.timeScale = 0;
+        gameMenuScript.playerScript.enabled = false;
+        gameMenuScript.cursorScript.m_ShowCursor = true;
+        Cursor.visible = true;
+        gameMenuScript.headbobberScript.enabled = false;
+        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
+        playerScript.isSprint = false;
+    }
+
+    public void HideTutorialNotification(Canvas tutorialCanvas)
+    {
+        notificationType = NotificationType.None;
+        tutorialCanvas.enabled = false;
+        tutorialAudioSource.PlayOneShot(tutorialSound);
+        Time.timeScale = 1;
+        gameMenuScript.playerScript.enabled = true;
+        gameMenuScript.cursorScript.m_ShowCursor = false;
+        Cursor.visible = false;
+        gameMenuScript.headbobberScript.enabled = true;
+        gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
+        playerScript.isSprint = false;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("PtakSzalas_trigger") && isDragNotification == false)
         {
             mainNotificationTextMesh.text = "";
 
-            if(player.gameObject.GetComponent<DragObject>().objectToDrag != null)
+            if (player.gameObject.GetComponent<DragObject>().objectToDrag != null)
             {
                 isDragNotification = true;
             }
-
         }
-
     }
-
-    void OnTriggerEnter(Collider other) {
-
-        if (other.gameObject.CompareTag("KomunikatDrzwiWskazowka") && isSecretNotification == false) {
-            KomunikatSamouczekSecret();
-        }
-
-        else if (other.gameObject.CompareTag("KomunikatZiola") && isHerbsNotification == false)
-        {
-            KomunikatSamouczekZiola();
-        }
-
-        else if (other.gameObject.CompareTag("KomunikatZapis") && isSaveNotification == false)
-        {
-            KomunikatSamouczekZapis();
-        }
-
-        else if (other.gameObject.CompareTag("PtakSzalas_trigger") && isDragNotification == false && tasksScript.isWoodKeyTask == true && inventoryScript.isKeyV4Taken == false)
-        {
-            KomunikatPodnoszenie();
-        }
-
-        else if (other.gameObject.CompareTag("KomunikatPchanie") && isPushNotification == false && tasksScript.isBrokenKeyTask == true)
-        {
-            KomunikatSamouczekPchanie();
-        }
-
-        else if (other.gameObject.CompareTag("TerenStraszak_trigger") && isItemsNotification == false)
-        {
-            KomunikatSamouczekItems();
-        }
-
-        // secret place grob rocky
-
-        else if (other.gameObject.CompareTag("GrobRocky_trigger") && inventoryScript.isRockyGraveSP == false)
-        {
-            DiscoverRockyGrave();
-        }
-
-        // secret place cmentarz zwierzat
-
-        else if (other.gameObject.CompareTag("CmentarzZwierzat_trigger") && inventoryScript.isAnimalCementarySP == false)
-        {
-            DiscoverAnimalCemetery();
-        }
-
-        // secret place ogrod simona
-
-        else if (other.gameObject.CompareTag("OgrodSimona_trigger") && inventoryScript.isSimonGardenSP == false)
-        {
-            DiscoverSimonGarden();
-        }
-
-        // secret place oboz Toma
-
-        else if (other.gameObject.CompareTag("ObozToma_trigger") && inventoryScript.isTomCampSP == false)
-        {
-            DiscoverTomCamp();
-        }
-
-        // secret place kryjowka diablow
-
-        else if (other.gameObject.CompareTag("KryjowkaDiablow_trigger") && inventoryScript.isDevilsShelterSP == false)
-        {
-            DiscoverDevilsShelter();
-        }
-
-        // secret place cmentarz wojna
-
-        else if (other.gameObject.CompareTag("CmentarzWojna_trigger") && inventoryScript.isWarCementarySP == false)
-        {
-            DiscoverWarCemetery();
-        }
-
-        // secret place domek 
-
-        else if (other.gameObject.CompareTag("Domek_trigger") && inventoryScript.isHutSP == false)
-        {
-            DiscoverHut();
-        }
-
-        // secret place opuszczona piwnica 
-
-        else if (other.gameObject.CompareTag("Piwnica_trigger") && inventoryScript.isBasementSP == false)
-        {
-            DiscoverAbandonedBasement();
-        }
-
-        // secret place pole grzybowe 
-
-        else if (other.gameObject.CompareTag("PoleGrzybowe_trigger") && inventoryScript.isMushroomFieldSP == false)
-        {
-            DiscoverMushroomField();
-        }
-
-        // secret place ciemny las 
-
-        else if (other.gameObject.CompareTag("CiemnyLas_trigger") && inventoryScript.isDarkForestSP == false)
-        {
-            DiscoverDarkForest();
-        }
-
-        // secret place wieza kosci 
-
-        else if (other.gameObject.CompareTag("WiezaKosci_trigger") && inventoryScript.isBonesTowerSP == false)
-        {
-            DiscoverBonesTower();
-        }
-
-        // secret place Nozowa arena 
-
-        else if (other.gameObject.CompareTag("NozowaArena_trigger") && inventoryScript.isKnifeArenaSP == false)
-        {
-            DiscoverKnifeArena();
-        }
-
-        // secret place jaskinia
-
-        else if (other.gameObject.CompareTag("Jaskinia_trigger") && inventoryScript.isCaveSP == false)
-        {
-            DiscoverCave();
-        }
-
-        // secret stary pomnik
-
-        else if (other.gameObject.CompareTag("Pomnik_trigger") && inventoryScript.isMonumentSP == false)
-        {
-            DiscoverMonument();
-        }
-
-        // secret statek kosmiczny
-
-        else if (other.gameObject.CompareTag("StatekKosmiczny_trigger") && inventoryScript.isSpaceshipSP == false)
-        {
-            DiscoverSpaceship();
-        }
-
-    }
-
-    //-------------- Funkcje do Secret Places----------------------------
-
-    void DiscoverRockyGrave()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.rockyGraveText;
-        inventoryScript.rockyGraveTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isRockyGraveSP = true;
-
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverAnimalCemetery()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.animalCemeteryText;
-        inventoryScript.animalCementaryTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isAnimalCementarySP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverSimonGarden()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.simonGardenText;
-        inventoryScript.simonGardenTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isSimonGardenSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverTomCamp()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.tomCampText;
-        inventoryScript.tomCampTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isTomCampSP = true;
-        //secretPlacesText.text = secretPlacesCount + "/15";
-
-    }
-
-    void DiscoverDevilsShelter()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.devilsShelterText;
-        //SPKryjowkaDiablyPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isDevilsShelterSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverWarCemetery()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.warCemeteryText;
-        inventoryScript.warCementaryTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isWarCementarySP = true;
-        //secretPlacesText.text = secretPlacesCount + "/15";
-
-    }
-
-    void DiscoverHut()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.hutText;
-        inventoryScript.hutTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isHutSP = true;
-        //secretPlacesText.text = secretPlacesCount + "/15";
-
-    }
-
-    void DiscoverAbandonedBasement()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.abandonedBasementText;
-        inventoryScript.basementTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isBasementSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverMushroomField()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.mushroomFieldText;
-        inventoryScript.mushroomFieldTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isMushroomFieldSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverDarkForest()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.darkForestText;
-        inventoryScript.darkForestTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isDarkForestSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverBonesTower()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.bonesTowerText;
-        inventoryScript.bonesTowerTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isBonesTowerSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverKnifeArena()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.knifeArenaText;
-        inventoryScript.knifeArenaTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isKnifeArenaSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverCave()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.caveText;
-        inventoryScript.caveTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isCaveSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverMonument()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.monumentText;
-        inventoryScript.monumentTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isMonumentSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-    void DiscoverSpaceship()
-    {
-        secretPlacesTime = 0f;
-        secretPlacesNotificationTextMesh.text = inventoryScript.spaceshipText;
-        inventoryScript.spaceshipTextPointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
-        inventoryScript.secretPlacesCount++;
-        inventoryScript.isSpaceshipSP = true;
-        inventoryScript.saveGameScript.Zapisz();
-        //secretPlacesText.text = secretPlacesCount + "/15";
-    }
-
-
 }
 

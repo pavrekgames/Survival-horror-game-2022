@@ -1442,7 +1442,7 @@ public class Inventory : MonoBehaviour {
 
         if (notificationScript.isInventoryNotification == false)
         {
-            notificationScript.KomunikatSamouczekInventory();
+            notificationScript.ShowTutorialNotification(notificationScript.inventoryNotificationCanvas);
         }
 
         // AddOil()
@@ -1452,7 +1452,7 @@ public class Inventory : MonoBehaviour {
 
         if (notificationScript.isInventoryNotification == false)
         {
-            notificationScript.KomunikatSamouczekInventory();
+            notificationScript.ShowTutorialNotification(notificationScript.inventoryNotificationCanvas);
         }
 
         tasksScript.RemoveKluczWychodekPointer();
@@ -1463,7 +1463,7 @@ public class Inventory : MonoBehaviour {
         //AddBone3()
         if (notificationScript.isInventoryNotification == false)
         {
-            notificationScript.KomunikatSamouczekInventory();
+            notificationScript.ShowTutorialNotification(notificationScript.inventoryNotificationCanvas);
         }
 
         tasksScript.RemoveKoscSzopaPointer();
@@ -1471,7 +1471,7 @@ public class Inventory : MonoBehaviour {
         //AddBone4()
         if (notificationScript.isInventoryNotification == false)
         {
-            notificationScript.KomunikatSamouczekInventory();
+            notificationScript.ShowTutorialNotification(notificationScript.inventoryNotificationCanvas);
         }
 
         tasksScript.RemoveKoscStajniaPointer();
