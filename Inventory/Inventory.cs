@@ -1660,8 +1660,6 @@ public class Inventory : MonoBehaviour {
         tipsCount++;
     }
 
-    // ------------- Funkcje do usuwania przedmiotow----------------------
-
     public void RemoveItem(Item item, bool isItemRemoved)
     {
         for (int i = 0; i < itemIcons.Length; i++)
@@ -1683,8 +1681,6 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
-
-	// ------------- Funkcje GUI Canvas ----------------------------------
 
     // do health script ?
 
@@ -1709,91 +1705,6 @@ public class Inventory : MonoBehaviour {
         }
 
     }
-
-    // Funkcje do kolekcji
-
-    public void CollectionOdznaki() {
-
-        collectionCanvas[0].enabled = false;
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = true;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = true;
-
-        noteDefaultCanvas.enabled = false;
-
-        itemAudioSource3.PlayOneShot(menuButtonSound);
-
-        foreach(var collCanvas in collectionCanvas)
-        {
-            collCanvas.enabled = false;
-        }
-
-        collectionCanvas[0].enabled = true;
-        badgeCollectionTitleText.text = collectionTitles[0];
-
-    }
-
-    public void CollectionFoto()
-    {
-
-        collectionCanvas[0].enabled = false;
-
-        isCollectionActive = true;
-
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = true;
-        tipCollectionCanvas.enabled = false;
-
-        itemAudioSource3.PlayOneShot(menuButtonSound);
-
-        foreach (var collCanvas in collectionCanvas)
-        {
-            collCanvas.enabled = false;
-        }
-
-        collectionCanvas[0].enabled = true;
-        photoCollectionTitleText.text = collectionTitles[1];
-
-    }
-
-    public void CollectionWskazowki()
-    {
-
-        collectionCanvas[0].enabled = false;
-
-        isCollectionActive = true;
-
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = true;
-
-        itemAudioSource3.PlayOneShot(menuButtonSound);
-
-        foreach (var collCanvas in collectionCanvas)
-        {
-            collCanvas.enabled = false;
-        }
-
-        collectionCanvas[0].enabled = true;
-        tipCollectionTitleText.text = collectionTitles[2];
-
-    }
-
-    public void HoverButton(){
-
-		itemAudioSource3.PlayOneShot (itemDesciptionSound);
-
-	}
 
 }
 

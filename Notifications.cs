@@ -17,6 +17,7 @@ public class Notifications : MonoBehaviour {
 	private TaskBooks taskBooksScript;
 	private Screamer screamerScript;
     private Player playerScript;
+    public PlayerManager playerManagerScript;
 
 	private Ray playerAim;
 	private Camera playerCam;
@@ -85,35 +86,7 @@ public class Notifications : MonoBehaviour {
 	public bool isCassete3Notification = false;
 
 	private Transform player;
-	private Transform gardenDoor;
-	private Transform cornfieldDoor;
-	private Transform stableDoor;
-	private Transform corridorWardrobe;
-	private Transform uncleDoor;
-	private Transform kitchenWardrobe;
-	private Transform secretRoomDoor;
-	private Transform planks;
-	private Transform toolShedDoor;
-	private Transform well;
-	private Transform nicheDoor;
-	public Transform cassetePlayer;
-	private Transform aliceRoomDoor;
-	private Transform factoryMetalDoor;
-	private Transform victorInvention;
-	private Transform factoryWoodenDoor;
-	private Transform shedCupboard;
-	private Transform tomRoomDoor;
-	private Transform tomUpstairsDoor;
-	private Transform pumpkinPile;
-	private Transform bookShelf;
-	private Transform cassetePlayer2;
-	private Transform oldWardrobe;
-	private Transform cassetePlayer3;
-	private Transform stevenDoor;
-	private Transform stevenGrille;
-	private Transform paulDoor;
-	private Transform paulJumpscareDoor;
-    private Transform thorns;
+    private Transform bookShelf;
 
     public bool isGardenDoor = false;
     public bool isCornfieldDoor = false;
@@ -206,6 +179,22 @@ public class Notifications : MonoBehaviour {
     public Image taskHintBackground;
     public float taskHintTime = 5f;
 
+    public enum NotificationType
+    {
+        None, 
+        SecretItem,
+        GreenHerb,
+        BlueHerb,
+        Vial ,
+        StaminaPot,
+        HealthPot,
+        Badge,
+        Photo,
+        Tip,
+        Tutorail
+}
+
+    public NotificationType notificationType;
 
     void OnEnable () {
 
@@ -216,37 +205,9 @@ public class Notifications : MonoBehaviour {
 
         firstDoorSoundScript = GameObject.Find("DrzwiDom").GetComponent<Door>();
 		player = GameObject.Find("Player").transform;
-		gardenDoor = GameObject.Find("DrzwiOgrod").transform;
-		cornfieldDoor = GameObject.Find("DrzwiKukurydza").transform;
-		stableDoor = GameObject.Find("DrzwiStajnia").transform;
-		corridorWardrobe = GameObject.Find("SzafaKorytarz").transform;
-		uncleDoor = GameObject.Find("DrzwiPokojW").transform;
-		kitchenWardrobe = GameObject.Find("SzafaKuchnia").transform;
-		secretRoomDoor = GameObject.Find("DrzwiKamping").transform;
-		planks = GameObject.Find("DeskiSzopa").transform;
-		toolShedDoor = GameObject.Find("DrzwiSzopaNarzedzia").transform;
-		well = GameObject.Find("WiadroStudnia").transform;
-		//DrzwiWneka = GameObject.Find("DrzwiWneka").transform;
-		cassetePlayer = GameObject.Find("Odtwarzacz").transform;
-		aliceRoomDoor = GameObject.Find("DrzwiSalonPoludnie").transform;
-		factoryMetalDoor = GameObject.Find("DrzwiFabrykaMetal").transform;
-		victorInvention = GameObject.Find("UrzadzenieVictora").transform;
-		factoryWoodenDoor = GameObject.Find("DrzwiFabrykaDrewno").transform;
-		shedCupboard = GameObject.Find("SzafkaSzopa").transform;
-		tomRoomDoor = GameObject.Find("DrzwiFabrykaDrewno").transform;
-		tomUpstairsDoor = GameObject.Find("DrzwiTomGora").transform;
-		pumpkinPile = GameObject.Find("PalDynia").transform;
-		bookShelf = GameObject.Find("Biblioteka_Ksiazki").transform;
-		cassetePlayer2 = GameObject.Find("Odtwarzacz2").transform;
-		oldWardrobe = GameObject.Find("SzafaStaryDom").transform;
-		cassetePlayer3 = GameObject.Find("Odtwarzacz3").transform;
-		stevenDoor = GameObject.Find("DrzwiSteven").transform;
-		stevenGrille = GameObject.Find("KratySteven").transform;
-		paulDoor = GameObject.Find("DrzwiZachod").transform;
-		paulJumpscareDoor = GameObject.Find("DrzwiOtworzJmp").transform;
-        //Ciernie = GameObject.Find("CiernieKryjowka2_c").transform;
+        bookShelf = GameObject.Find("Biblioteka_Ksiazki").transform;
 
-		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu> ();
+        gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu> ();
 		inventoryScript = GameObject.Find ("Player").GetComponent<Inventory> ();
 		tasksScript = GameObject.Find ("Player").GetComponent<Tasks> ();
 		taskWellScript = GameObject.Find ("StudniaTrigger").GetComponent<TaskWell> ();
@@ -341,7 +302,7 @@ public class Notifications : MonoBehaviour {
 
 		// glowne komunikaty
 
-		if (Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
+		if (Input.GetMouseButtonDown (0) && playerManagerScript.isPlayerCanInput == true) {
 
 			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
@@ -351,7 +312,7 @@ public class Notifications : MonoBehaviour {
 
 				// Komunikat do drzwi w ogrodzie
 
-				if (hit.collider.gameObject.name == "DrzwiOgrod" && tasksScript.isGardenDoorLocked == true && isGardenDoor == false) { // && DystansDrzwiOgrod <= 7
+				if (hit.collider.gameObject.name == "DrzwiOgrod" && tasksScript.isGardenDoorLocked == true && isGardenDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatDrzwiOgrod ();
@@ -360,7 +321,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi na polu kukurydzy
 
-			else if (hit.collider.gameObject.name == "DrzwiKukurydza" && tasksScript.isCornfieldDoorLocked == true && isCornfieldDoor == false) { // && DystansDrzwiKukurydza <= 11
+			else if (hit.collider.gameObject.name == "DrzwiKukurydza" && tasksScript.isCornfieldDoorLocked == true && isCornfieldDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatDrzwikukurydza ();
@@ -369,7 +330,7 @@ public class Notifications : MonoBehaviour {
 				
 			// Komunikat do drzwi stajni
 
-			else if (hit.collider.gameObject.name == "DrzwiStajnia" && tasksScript.isStableDoorLocked == true && isStableDoor == false) { // DystansDrzwiStajnia <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiStajnia" && tasksScript.isStableDoorLocked == true && isStableDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatDrzwi ();
@@ -378,7 +339,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do szafki w korytarzu
 
-			else if (hit.collider.gameObject.name == "SzafaKorytarz" && tasksScript.isCorridorWardrobeLocked == true && isCorridorWardrobe == false) { // && DystansSzafaKorytarz <= 11 
+			else if (hit.collider.gameObject.name == "SzafaKorytarz" && tasksScript.isCorridorWardrobeLocked == true && isCorridorWardrobe == false) {  
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatSzafa ();
@@ -387,7 +348,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi do pokoju W
 
-			else if (hit.collider.gameObject.name == "DrzwiPokojW" && tasksScript.isUncleDoorLocked == true && isUncleDoor == false) { // DystansDrzwiPokojW <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiPokojW" && tasksScript.isUncleDoorLocked == true && isUncleDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatDrzwi ();
@@ -396,7 +357,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do szafki w kuchni
 
-			else if (hit.collider.gameObject.name == "SzafaKuchnia" && tasksScript.isKitchenWardrobeLocked == true && isKitchenWardrobe == false) { // DystansSzafaKuchnia <= 11 &&
+			else if (hit.collider.gameObject.name == "SzafaKuchnia" && tasksScript.isKitchenWardrobeLocked == true && isKitchenWardrobe == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatSzafa ();
@@ -405,7 +366,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi od kampingu
 
-			else if (hit.collider.gameObject.name == "DrzwiKamping" && tasksScript.isSecretRoomDoorLocked == true && isSecretRoomDoor == false) { // DystansDrzwiKamping <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiKamping" && tasksScript.isSecretRoomDoorLocked == true && isSecretRoomDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;
 					KomunikatDrzwi ();
@@ -414,7 +375,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do zabitych desek przy szopie
 
-			else if (hit.collider.gameObject.name == "DeskiSzopa" && tasksScript.isPlanksLocked == true && isPlanks == false) { // DystansDeskiSzopa <= 11 &&
+			else if (hit.collider.gameObject.name == "DeskiSzopa" && tasksScript.isPlanksLocked == true && isPlanks == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDeskiSzopa ();
@@ -422,7 +383,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi do szopy z narzedziami w 1 lokacji
 
-			else if (hit.collider.gameObject.name == "DrzwiSzopaNarzedzia" && tasksScript.isToolShedDoorLocked == true && isToolShedDoor == false) { // DystansDrzwiSzopaNarzedzia <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiSzopaNarzedzia" && tasksScript.isToolShedDoorLocked == true && isToolShedDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -431,7 +392,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi wneki
 
-			else if (hit.collider.gameObject.name == "DrzwiWneka" && tasksScript.isNicheDoorLocked == true && isNicheDoor == false) { // DystansDrzwiWneka <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiWneka" && tasksScript.isNicheDoorLocked == true && isNicheDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -447,19 +408,8 @@ public class Notifications : MonoBehaviour {
 					KomunikatKaseta ();
 				}
 
-				// Komunikat do odtwarzacza bez baterii
-
-
-				//if (hit.collider.gameObject.name == "Odtwarzacz" && Tasks.WlozKasete_ok == true && Tasks.WlozBaterie_ok == false && JestKaseta_ok == false) { // DystansOdtwarzacz <= 11 &&
-					//CzasKom = 0;
-					//WlaczCzaskom = true;	
-					//ZrodloDzwieku2.PlayOneShot (DzwWlozKasete);
-					//JestKaseta_ok = true;
-				//}
-
             else if (hit.collider.gameObject.name == "Odtwarzacz" && tasksScript.isCasseteInserted == true && tasksScript.isBatteriesPut == false)
-                { // DystansOdtwarzacz <= 11 && //&& JestKaseta_ok == true
-                  //ZrodloDzwieku.PlayOneShot (DzwBrakEnergii);
+                { 
                     audioSource.clip = lackPowerSound;
                     audioSource.Play();
 					isBatteriesNotification = true;
@@ -467,7 +417,7 @@ public class Notifications : MonoBehaviour {
 
 				// Komunikat do drzwi do salonu na poludniu
 
-				if (hit.collider.gameObject.name == "DrzwiSalonPoludnie" && tasksScript.isAliceRoomDoorLocked == true && isAliceRoomDoor == false) { // DystansDrzwiSalonPoludnie <= 11 && 
+				if (hit.collider.gameObject.name == "DrzwiSalonPoludnie" && tasksScript.isAliceRoomDoorLocked == true && isAliceRoomDoor == false) {  
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -476,7 +426,7 @@ public class Notifications : MonoBehaviour {
 				
 			// Komunikat do metalowych drzwi w fabryce 
 
-			else if (hit.collider.gameObject.name == "DrzwiFabrykaMetal" && tasksScript.isFactoryMetalDoorLocked == true && isFactoryMetalDoor == false) { // DystansDrzwiFabrykaMetal <= 11 && 
+			else if (hit.collider.gameObject.name == "DrzwiFabrykaMetal" && tasksScript.isFactoryMetalDoorLocked == true && isFactoryMetalDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwiFabrykaMetal ();
@@ -484,7 +434,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do urzadzenia Victora bez klucza
 
-			else if ((hit.collider.gameObject.name == "UrzadzenieVictora" || hit.collider.gameObject.name == "BrakujaceDrewnianeKolo") && tasksScript.isBrokenKey == false) { // DystansUrzadzenieVictora <= 11 &&
+			else if ((hit.collider.gameObject.name == "UrzadzenieVictora" || hit.collider.gameObject.name == "BrakujaceDrewnianeKolo") && tasksScript.isBrokenKey == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					infoNotificationTextMesh.text = keyToFixMessage;
@@ -492,7 +442,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do urzadzenia Victora bez klucza
 
-			else if (hit.collider.gameObject.name == "UrzadzenieVictora" && tasksScript.isBrokenKey == true && tasksScript.isWheel == false) { // DystansUrzadzenieVictora <= 11 &&
+			else if (hit.collider.gameObject.name == "UrzadzenieVictora" && tasksScript.isBrokenKey == true && tasksScript.isWheel == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					infoNotificationTextMesh.text = woodenWheelMessage;
@@ -500,7 +450,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drewnianych drzwi fabryki 
 
-			else if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno" && tasksScript.isFactoryWoodenDoorLocked == true && isFactoryWoodenDoor == false) { // DystansDrzwiFabrykaDrewno <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno" && tasksScript.isFactoryWoodenDoorLocked == true && isFactoryWoodenDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -509,7 +459,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do szafki w szopie
 
-			else if (hit.collider.gameObject.name == "SzafkaSzopa" && tasksScript.isShedCupboardLocked == true && isShedCupboard == false) { // DystansSzafkaSzopa <= 11 &&
+			else if (hit.collider.gameObject.name == "SzafkaSzopa" && tasksScript.isShedCupboardLocked == true && isShedCupboard == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					infoNotificationTextMesh.text = edwardKeyMessage;
@@ -518,7 +468,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi do pokoju Toma 
 
-			else if (hit.collider.gameObject.name == "DrzwiPokojTom" && tasksScript.isTomRoomDoorLocked == true && isTomRoomDoor == false) { // DystansDrzwiPokojTom >= 692 &&
+			else if (hit.collider.gameObject.name == "DrzwiPokojTom" && tasksScript.isTomRoomDoorLocked == true && isTomRoomDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -527,7 +477,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi do pokoju u Toma na gorze 
 
-			else if (hit.collider.gameObject.name == "DrzwiTomGora" && tasksScript.isTomUpstairsDoorLocked == true && isTomUpstairsDoor == false) { // DystansDrzwiTomGora >= 2 && 
+			else if (hit.collider.gameObject.name == "DrzwiTomGora" && tasksScript.isTomUpstairsDoorLocked == true && isTomUpstairsDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -536,7 +486,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do palu bez dyni
 
-			else if (hit.collider.gameObject.name == "PalDynia" && tasksScript.isPumpkin == false) { // DystansPalDynia <= 11 &&
+			else if (hit.collider.gameObject.name == "PalDynia" && tasksScript.isPumpkin == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					infoNotificationTextMesh.text = pumpkinMessage;
@@ -544,7 +494,7 @@ public class Notifications : MonoBehaviour {
 					
 			// Komunikat do odtwarzacza 2 bez kasety
 
-			else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == false && tasksScript.isChipPut == false) { // DystansOdtwarzacz2 <= 11 &&
+			else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == false && tasksScript.isChipPut == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					infoNotificationTextMesh.text = insertCasseteMessage;
@@ -557,7 +507,7 @@ public class Notifications : MonoBehaviour {
 					JestKaseta3_ok = true;
 				} */
 
-				else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == true && tasksScript.isChipPut == false) { // DystansOdtwarzacz2 <= 11 &&
+				else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == true && tasksScript.isChipPut == false) { 
 					//ZrodloDzwieku.PlayOneShot (DzwBrakChipu);
                     audioSource4.clip = lackChipSound;
                     audioSource4.Play();
@@ -568,7 +518,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do szafki w opuszczonym domu
 
-			else if (hit.collider.gameObject.name == "SzafaStaryDom" && tasksScript.isOldWardrobeLocked == true && isOldWardrobe == false) { // DystansSzafaStaryDom <= 11 &&
+			else if (hit.collider.gameObject.name == "SzafaStaryDom" && tasksScript.isOldWardrobeLocked == true && isOldWardrobe == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatSzafa ();
@@ -577,7 +527,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do odtwarzacza 3
 
-			else if (hit.collider.gameObject.name == "Odtwarzacz3" && tasksScript.isCassete4Inserted == false) { // DystansOdtwarzacz3 <= 11 &&
+			else if (hit.collider.gameObject.name == "Odtwarzacz3" && tasksScript.isCassete4Inserted == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					infoNotificationTextMesh.text = insertCasseteMessage;
@@ -585,7 +535,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi w domu Stevena
 
-			else if (hit.collider.gameObject.name == "DrzwiSteven" && tasksScript.isStevenDoorLocked == true && isStevenDoor == false) { // DystansDrzwiSteven <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiSteven" && tasksScript.isStevenDoorLocked == true && isStevenDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -594,7 +544,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do kart szopy Stevena
 
-			else if (hit.collider.gameObject.name == "KratySteven" && tasksScript.isStevenGrille == true) { // DystansDrzwiSteven <= 11 &&
+			else if (hit.collider.gameObject.name == "KratySteven" && tasksScript.isStevenGrille == true) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatKratySteven ();
@@ -602,7 +552,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi w domu lokatora za potokiem na zachodzie
 
-			else if (hit.collider.gameObject.name == "DrzwiZachod" && tasksScript.isPaulDoorLocked == true && isPaulDoor == false) { // DystansDrzwiZachod <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiZachod" && tasksScript.isPaulDoorLocked == true && isPaulDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -611,7 +561,7 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi jumpscare na zachodzie
 
-			else if (hit.collider.gameObject.name == "DrzwiOtworzJmp" && screamerScript.isOpenDoor == false && isPaulJumpscareDoor == false) { //  DystansDrzwiOtworzJmp <= 11 &&
+			else if (hit.collider.gameObject.name == "DrzwiOtworzJmp" && screamerScript.isOpenDoor == false && isPaulJumpscareDoor == false) { 
 					notificationTime = 0;
 					isNotificationTimeOn = true;	
 					KomunikatDrzwi ();
@@ -637,7 +587,7 @@ public class Notifications : MonoBehaviour {
 
 		// kaseta 1 i bateria
 
-		if (audioSource.isPlaying == false && isBatteriesNotification == true && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) { // DystansOdtwarzacz <= 11 &&
+		if (audioSource.isPlaying == false && isBatteriesNotification == true && playerManagerScript.isPlayerCanInput == true) { 
 			isBatteriesNotification = false;
 			notificationTime = 0;
 			isNotificationTimeOn = true;
@@ -646,7 +596,7 @@ public class Notifications : MonoBehaviour {
 
 		// kaseta 3 i chip
 
-		if (audioSource.isPlaying == false && isChipNotification == true && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) { // DystansOdtwarzacz2 <= 11 &&
+		if (audioSource.isPlaying == false && isChipNotification == true && playerManagerScript.isPlayerCanInput == true) { 
 			notificationTime = 0;
 			isNotificationTimeOn = true;	
 			//CanvasKomunikaty.enabled = true;
@@ -698,41 +648,42 @@ public class Notifications : MonoBehaviour {
 			mainNotificationTextMesh.text = flashlightHint;
 		}
 
-		if(Input.GetButtonDown("Latarka") && isLightNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Latarka") && isLightNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isLightNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Sprint") && isSprintNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Sprint") && isSprintNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isSprintNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetMouseButton(2) && isLight2Notification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetMouseButton(2) && isLight2Notification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isLight2Notification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Ekwipunek") && isTaskInfoNotification == false && gameMenuScript.isMenu == false){
+		if(Input.GetButtonDown("Ekwipunek") && isTaskInfoNotification == false && playerManagerScript.isPlayerCanInput == true)
+        {
 			isTaskInfoNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Mapa") && isMapNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Mapa") && isMapNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isMapNotification = true;
 			//CanvasKomunikaty.enabled = false;
 			mainNotificationTextMesh.text = "";
 		}
 
-		if(Input.GetButtonDown("Kucanie") && isCrouchNotification == false && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(Input.GetButtonDown("Kucanie") && isCrouchNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
 			isCrouchNotification = true;
 			//CanvasKomunikaty.enabled = false;
@@ -755,26 +706,32 @@ public class Notifications : MonoBehaviour {
 			secretItemsTime += 1 * Time.deltaTime;
 			//CanvasKomunikaty.enabled = true;
 
-			if (isSecretItemNotification == true && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == false) {
+			if (notificationType == NotificationType.SecretItem) {
 				secretItemsNotificationTextMesh.text = secretItemNotification;
-			} else if (isSecretItemNotification == false && isGreenHerbNotification == true && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == false) {
+
+			} else if (notificationType == NotificationType.GreenHerb) {
 				secretItemsNotificationTextMesh.text = greenHerbNotification;
-			} else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == true && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == false) {
+
+			} else if (notificationType == NotificationType.BlueHerb) {
 				secretItemsNotificationTextMesh.text = blueHerbNotification;
-			} else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == true && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == false) {
+
+			} else if (notificationType == NotificationType.Vial) {
 				secretItemsNotificationTextMesh.text = vialNotification;
-			} else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == true && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == false) {
+
+			} else if (notificationType == NotificationType.Badge) {
 				secretItemsNotificationTextMesh.text = badgeNotification;
-			} else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == true && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == false) {
+
+			} else if (notificationType == NotificationType.Photo) {
 				secretItemsNotificationTextMesh.text = photoNotification;
-			} else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == true && isStaminaPotNotification == false && isHealthPotNotification == false) {
+
+			} else if (notificationType == NotificationType.Tip) {
 				secretItemsNotificationTextMesh.text = tipNotification;
 			}
-            else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == true && isHealthPotNotification == false)
+            else if (notificationType == NotificationType.StaminaPot)
             {
                 secretItemsNotificationTextMesh.text = staminaPotNotification;
             }
-            else if (isSecretItemNotification == false && isGreenHerbNotification == false && isBlueHerbNotification == false && isVialNotification == false && isBadgeNotification == false && isPhotoNotification == false && isTipNotification == false && isStaminaPotNotification == false && isHealthPotNotification == true)
+            else if (notificationType == NotificationType.HealthPot)
             {
                 secretItemsNotificationTextMesh.text = healthPotNotification;
             }
@@ -802,14 +759,6 @@ public class Notifications : MonoBehaviour {
             taskHintTextMesh.text = "";
             taskHintBackground.enabled = false;
         }
-
-        /*if (CzasKom < 3) {
-			Komunikat.text = "Secret Item has been collected";
-			CzasSecretItems += 1 * Time.deltaTime;
-		} else {
-			SecretItems.text = "";
-		}
-		*/
     }
 
     public void KomunikatZadanieWskazowka()
@@ -820,60 +769,60 @@ public class Notifications : MonoBehaviour {
     }
 
 	void KomunikatDrzwi(){
-		//CanvasKomunikaty.enabled = true;
+	
 		infoNotificationTextMesh.text = lockedDoorMessage;
 		audioSource.PlayOneShot (doorLockedSound);
 	}
 		
 
 	void KomunikatSzafa(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = lockedWardrobeMessage;
 		audioSource.PlayOneShot (doorLockedSound);
 	}
 
     void KomunikatCiernie()
     {
-		//CanvasKomunikaty.enabled = true;
+		
         infoNotificationTextMesh.text = thornsMessage;
     }
 
 
     void KomunikatDrzwiOgrod(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = gardenDoorMessage;
 	}
 
 	void KomunikatDrzwiFabrykaMetal(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = lockedFactoryDoorMessage;
 	}
 
 	void KomunikatDrzwikukurydza(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = cornfieldDoorMessage;
 	}
 
 
 	void KomunikatDeskiSzopa(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = planksMessage;
 		audioSource.PlayOneShot (planksSound);
 	}
 		
 
 	void KomunikatKaseta(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = insertCasseteMessage;
 	}
 
 	void KomunikatEnergia(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = factoryLeverMessage;
 	}
 
 	void KomunikatKratySteven(){
-		//CanvasKomunikaty.enabled = true;
+		
 		infoNotificationTextMesh.text = stevenGrilleMessage;
 	}
 
@@ -1073,42 +1022,15 @@ public class Notifications : MonoBehaviour {
         //KomPodnoszenie_ok = true;
     }
 
+    public void ShowNotification(string notificationText)
+    {
+        mainNotificationTextMesh.text = notificationText;
+    }
 
     void OnTriggerExit(Collider other){
-		if(other.gameObject.CompareTag("KomunikatLatarka") && isLight2Notification == false){
-			//CanvasKomunikaty.enabled = true;
-			mainNotificationTextMesh.text = lightHint;
-		}
-
-		else if(other.gameObject.CompareTag("KomunikatSprint") && isSprintNotification == false){
-			//CanvasKomunikaty.enabled = true;
-			mainNotificationTextMesh.text = sprintHint;
-		}
-
-		else if(other.gameObject.CompareTag("KomunikatZadanieInfo") && isTaskInfoNotification == false){
-			//CanvasKomunikaty.enabled = true;
-			mainNotificationTextMesh.text = tasksHint;
-		}
-
-		else if(other.gameObject.CompareTag("KomunikatMapa") && isMapNotification == false){
-			//CanvasKomunikaty.enabled = true;
-			mainNotificationTextMesh.text = mapHint;
-		}
-
-		else if(other.gameObject.CompareTag("KomunikatKucanie") && isCrouchNotification == false){
-			//CanvasKomunikaty.enabled = true;
-			mainNotificationTextMesh.text = crouchHint;
-		}
-
-       /* else if ((other.gameObject.CompareTag("KomunikatDrzwiWskazowka") && KomDrzwiWskazowka_ok == false) || PierwszeDrzwi.Otwarte == true)
+		
+         if (other.gameObject.CompareTag("PtakSzalas_trigger") && isDragNotification == false)
         {
-            //CanvasKomunikaty.enabled = true;
-            KomunikatGlowny.text = "";
-        } */
-
-        else if (other.gameObject.CompareTag("PtakSzalas_trigger") && isDragNotification == false)
-        {
-            //CanvasKomunikaty.enabled = true;
             mainNotificationTextMesh.text = "";
 
             if(player.gameObject.GetComponent<DragObject>().objectToDrag != null)
@@ -1153,7 +1075,7 @@ public class Notifications : MonoBehaviour {
 
         // secret place grob rocky
 
-        if (other.gameObject.CompareTag("GrobRocky_trigger") && inventoryScript.isRockyGraveSP == false)
+        else if (other.gameObject.CompareTag("GrobRocky_trigger") && inventoryScript.isRockyGraveSP == false)
         {
             DiscoverRockyGrave();
         }
