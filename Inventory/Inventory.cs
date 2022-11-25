@@ -1352,1146 +1352,17 @@ public class Inventory : MonoBehaviour {
 			// Podnoszenie klucza do drzwi pokoju U
 
 
-			if(hit.collider.gameObject.name == "KluczPokojW"){
-				AddKeyV1 ();
+			if(hit.collider.gameObject.tag == "TaskItem"){
+                    hit.transform.gameObject.GetComponent<TaskItem>().PickUpItem();
 			}
 
-			// Podnoszenie oliwy do drzwi w ogrodzie
-
-			else if(hit.collider.gameObject.name == "Oliwa"){
-				AddOil ();
-			}
-
-			// Podnoszenie klucza do Szafki w kuchni
-
-			else if(hit.collider.gameObject.name == "KluczSzafkaKuchnia"){
-				AddKitchenWardrobeKey ();
-			}
-
-			// Podnoszenie klucza do stajni
-
-			else if(hit.collider.gameObject.name == "KluczStajnia"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do szopy obok kampingu
-
-			else if(hit.collider.gameObject.name == "KluczSzopa"){
-				AddShedKey ();
-			}
-
-			// Podnoszenie baterii w szopie z narzedziami
-
-			else if(hit.collider.gameObject.name == "BaterieO"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kasety z pokoju U
-
-			else if(hit.collider.gameObject.name == "KasetaVideo1"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kosci nr 1
-
-			else if(hit.collider.gameObject.name == "KoscZad1"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kosci nr 2
-
-			else if(hit.collider.gameObject.name == "KoscZad2"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kosci nr 3
-
-			else if(hit.collider.gameObject.name == "KoscZad3"){
-				AddBone3 ();
-			}
-
-			// Podnoszenie kosci nr 4
-
-			else if(hit.collider.gameObject.name == "KoscZad4"){
-				AddBone4 ();
-			}
-
-			// Podnoszenie kosci nr 5
-
-			else if(hit.collider.gameObject.name == "KoscZad5"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do wneki
-
-			else if(hit.collider.gameObject.name == "KluczWneka"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do kampingu
-
-			else if(hit.collider.gameObject.name == "KluczKamping"){
-				AddSecretRoomKey ();
-			}
-
-			// Podnoszenie zepsutego klucza do fabryki
-
-			else if(hit.collider.gameObject.name == "KluczFabrykaBroken"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie Brakujace kola
-
-			else if(hit.collider.gameObject.name == "BrakujaceDrewnianeKoloItem"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie Naprawionego klucza
-
-			else if(hit.collider.gameObject.name == "KluczNaprawiony" && isFixedKeyTaken == false){ // && Zdnia.NaprawionyKlucz_ok == true
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie lomu
-
-			else if(hit.collider.gameObject.name == "Lom"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do salonu domu Alice na poludniu
-
-			else if(hit.collider.gameObject.name == "KluczSalonPoludnie"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kombinerek
-
-			else if(hit.collider.gameObject.name == "KombinerkiO"){
-				AddPliers ();
-			}
-
-			// Podnoszenie siekiery
-
-			else if(hit.collider.gameObject.name == "SiekieraZadanie"){
-				AddAxe ();
-			}
-
-			// Podnoszenie klucza do szafy w korytarzu
-
-
-			else if(hit.collider.gameObject.name == "KluczSzafaKorytarz"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do szafki w szopie
-
-
-			else if(hit.collider.gameObject.name == "KluczSzafkaSzopa"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kasety 2 z szopy
-
-			else if(hit.collider.gameObject.name == "KasetaVideo2"){
-				AddCassete2 ();
-			}
-
-			// Podnoszenie dyni z głowy potwora
-
-			else if(hit.collider.gameObject.name == "DyniaMisja"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-				
-			// Podnoszenie klucza do pokoju Toma na gorze
-
-			else if(hit.collider.gameObject.name == "KluczTomGora"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do pokoju Toma
-
-			else if(hit.collider.gameObject.name == "KluczPokojTom"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kasety nr 3 z pola kukurydzy
-
-			else if(hit.collider.gameObject.name == "KasetaVideo3"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie chipu
-
-			else if(hit.collider.gameObject.name == "Chip"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do szafy w opuszczonym domu
-
-			else if(hit.collider.gameObject.name == "KluczSzafaStaryDom"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie kasety nr 4 z opuszczonego domu
-
-			else if(hit.collider.gameObject.name == "KasetaVideo4"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie klucza do pokoju Stevena
-
-			else if(hit.collider.gameObject.name == "KluczStevena"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie rosliny
-
-			else if(hit.collider.gameObject.name == "RoslinaLab"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie grzyba
-
-			else if(hit.collider.gameObject.name == "GrzybLab"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie czaszki
-
-			else if(hit.collider.gameObject.name == "CzaszkaLabO"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-                }
-
-			// Podnoszenie mikstury
-
-			else if(hit.collider.gameObject.name == "Mikstura"){
-				AddStrongAcid ();
-			}
-
-			// Podnoszenie klucza do w domu na zachodzie
-
-			else if(hit.collider.gameObject.name == "KluczPokojZachod"){
-                    AddItem(allItems[0], paulKey, keySound, isPaulKeyTaken);
-			}
-
-			// Podnoszenie secret items
-
-
-			else if (hit.collider.gameObject.name == "SecretItem1_1") {
-				secretItem1.gameObject.SetActive(false);
-				isSecretIem1 = true;
-				AddSecretItem(secretItemSound);
-			}
-
-			else if (hit.collider.gameObject.name == "SecretItem2_1") {
-				secretItem2.gameObject.SetActive(false);
-				isSecretIem2 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_2") {
-				secretItem3.gameObject.SetActive(false);
-				isSecretIem3 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_3") {
-				secretItem4.gameObject.SetActive(false);
-				isSecretIem4 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_2") {
-				secretItem5.gameObject.SetActive(false);
-				isSecretIem5 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_4") {
-				secretItem6.transform.gameObject.SetActive(false);
-				isSecretIem6 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_3") {
-				secretItem7.gameObject.SetActive(false);
-				isSecretIem7 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_4") {
-				secretItem8.gameObject.SetActive(false);
-				isSecretIem8 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_5") {
-				secretItem9.gameObject.SetActive(false);
-				isSecretIem9 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_6") {
-				secretItem10.gameObject.SetActive(false);
-				isSecretIem10 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_5") {
-				secretItem11.gameObject.SetActive(false);
-				isSecretIem11 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_6") {
-				secretItem12.gameObject.SetActive(false);
-				isSecretIem12 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_7") {
-				secretItem13.gameObject.SetActive(false);
-				isSecretIem13 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_7") {
-				secretItem14.gameObject.SetActive(false);
-				isSecretIem14 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_8") {
-				secretItem15.transform.gameObject.SetActive(false);
-				isSecretIem15 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_9") {
-				secretItem16.transform.gameObject.SetActive(false);
-				isSecretIem16 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_8") {
-				secretItem17.transform.gameObject.SetActive(false);
-				isSecretIem17 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_10") {
-				secretItem18.transform.gameObject.SetActive(false);
-				isSecretIem18 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_11") {
-				secretItem19.transform.gameObject.SetActive(false);
-				isSecretIem19 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem1_12") {
-				secretItem20.transform.gameObject.SetActive(false);
-				isSecretIem20 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-			else if (hit.collider.gameObject.name == "SecretItem2_9") {
-				secretItem21.transform.gameObject.SetActive(false);
-				isSecretIem21 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-            else if (hit.collider.gameObject.name == "SecretItem1_13")
-                {
-                    secretItem22.transform.gameObject.SetActive(false);
-                    isSecretIem22 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-            else if (hit.collider.gameObject.name == "SecretItem2_10")
-                {
-                    secretItem23.transform.gameObject.SetActive(false);
-                    isSecretIem23 = true;
-                    AddSecretItem(secretItemSound2);
-                }
-
-            else if (hit.collider.gameObject.name == "SecretItem1_14")
-                {
-                    secretItem24.transform.gameObject.SetActive(false);
-                    isSecretIem24 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-            else if (hit.collider.gameObject.name == "SecretItem1_15")
-                {
-                    secretItem25.transform.gameObject.SetActive(false);
-                    isSecretIem25 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                else if (hit.collider.gameObject.name == "SecretItem1_16")
-                {
-                    secretItem26.transform.gameObject.SetActive(false);
-                    isSecretIem26 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                else if (hit.collider.gameObject.name == "SecretItem1_17")
-                {
-                    secretItem27.transform.gameObject.SetActive(false);
-                    isSecretIem27 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                else if (hit.collider.gameObject.name == "SecretItem2_11")
-                {
-                    secretItem28.transform.gameObject.SetActive(false);
-                    isSecretIem28 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                else if (hit.collider.gameObject.name == "SecretItem2_12")
-                {
-                    secretItem29.transform.gameObject.SetActive(false);
-                    isSecretIem29 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                else if (hit.collider.gameObject.name == "SecretItem2_13")
-                {
-                    secretItem30.transform.gameObject.SetActive(false);
-                    isSecretIem30 = true;
-                    AddSecretItem(secretItemSound);
-                }
-                else if (hit.collider.gameObject.name == "SecretItem2_14")
-                {
-                    secretItem31.transform.gameObject.SetActive(false);
-                    isSecretIem31 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                else if (hit.collider.gameObject.name == "SecretItem2_15")
-                {
-                    secretItem32.transform.gameObject.SetActive(false);
-                    isSecretIem32 = true;
-                    AddSecretItem(secretItemSound);
-                }
-
-                // podnoszenie ziola
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo1") {
-				greenHerb1.transform.gameObject.SetActive(false);
-				isGreenHerb1 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo2") {
-				greenHerb2.transform.gameObject.SetActive(false);
-				isGreenHerb2 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo3") {
-				greenHerb3.transform.gameObject.SetActive(false);
-				isGreenHerb3 = true;
-				AddGreenHerb();
-				}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo4") {
-				greenHerb4.transform.gameObject.SetActive(false);
-				isGreenHerb4 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo5") {
-				greenHerb5.transform.gameObject.SetActive(false);
-				isGreenHerb5 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo6") {
-				greenHerb6.transform.gameObject.SetActive(false);
-				isGreenHerb6 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo7") {
-				greenHerb7.transform.gameObject.SetActive(false);
-				isGreenHerb7 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo8") {
-				greenHerb8.transform.gameObject.SetActive(false);
-				isGreenHerb8 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo9") {
-				greenHerb9.transform.gameObject.SetActive(false);
-				isGreenHerb9 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo10") {
-				greenHerb10.transform.gameObject.SetActive(false);
-				isGreenHerb10 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo11") {
-				greenHerb11.transform.gameObject.SetActive(false);
-				isGreenHerb11 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo12") {
-				greenHerb12.transform.gameObject.SetActive(false);
-				isGreenHerb12 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo13") {
-				greenHerb13.transform.gameObject.SetActive(false);
-				isGreenHerb13 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo14") {
-				greenHerb14.transform.gameObject.SetActive(false);
-				isGreenHerb14 = true;
-				AddGreenHerb();
-				}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo15") {
-				greenHerb15.transform.gameObject.SetActive(false);
-				isGreenHerb15 = true;
-				AddGreenHerb();
-				}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo16") {
-				greenHerb16.transform.gameObject.SetActive(false);
-				isGreenHerb16 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo17") {
-				greenHerb17.transform.gameObject.SetActive(false);
-				isGreenHerb17 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo18") {
-				greenHerb18.transform.gameObject.SetActive(false);
-				isGreenHerb18 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo19") {
-				greenHerb19.transform.gameObject.SetActive(false);
-				isGreenHerb19 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo20") {
-				greenHerb20.transform.gameObject.SetActive(false);
-				isGreenHerb20 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo21") {
-				greenHerb21.transform.gameObject.SetActive(false);
-				isGreenHerb21 = true;
-				AddGreenHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "ZieloneZiolo22") {
-				greenHerb22.transform.gameObject.SetActive(false);
-				isGreenHerb22 = true;
-				AddGreenHerb();
-			}
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo23")
-                {
-                    greenHerb23.transform.gameObject.SetActive(false);
-                    isGreenHerb23 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo24")
-                {
-                    greenHerb24.transform.gameObject.SetActive(false);
-                    isGreenHerb24 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo25")
-                {
-                    greenHerb25.transform.gameObject.SetActive(false);
-                    isGreenHerb25 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo26")
-                {
-                    greenHerb26.transform.gameObject.SetActive(false);
-                    isGreenHerb26 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo27")
-                {
-                    greenHerb27.transform.gameObject.SetActive(false);
-                    isGreenHerb27 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo28")
-                {
-                    greenHerb28.transform.gameObject.SetActive(false);
-                    isGreenHerb28 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo29")
-                {
-                    greenHerb29.transform.gameObject.SetActive(false);
-                    isGreenHerb29 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo30")
-                {
-                    greenHerb30.transform.gameObject.SetActive(false);
-                    isGreenHerb30 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo31")
-                {
-                    greenHerb31.transform.gameObject.SetActive(false);
-                    isGreenHerb31 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "ZieloneZiolo32")
-                {
-                    greenHerb32.transform.gameObject.SetActive(false);
-                    isGreenHerb32 = true;
-                    AddGreenHerb();
-                }
-
-                else if (hit.collider.gameObject.name == "NiebieskieZiolo1") {
-				blueHerb1.transform.gameObject.SetActive(false);
-				isBlueHerb1 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo2") {
-				blueHerb2.transform.gameObject.SetActive(false);
-				isBlueHerb2 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo3") {
-				blueHerb3.transform.gameObject.SetActive(false);
-				isBlueHerb3 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo4") {
-				blueHerb4.transform.gameObject.SetActive(false);
-				isBlueHerb4 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo5") {
-				blueHerb5.transform.gameObject.SetActive(false);
-				isBlueHerb5 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo6") {
-				blueHerb5.transform.gameObject.SetActive(false);
-				isBlueHerb6 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo7") {
-				blueHerb7.transform.gameObject.SetActive(false);
-				isBlueHerb7 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo8") {
-				blueHerb8.transform.gameObject.SetActive(false);
-				isBlueHerb8 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo9") {
-				blueHerb9.transform.gameObject.SetActive(false);
-				isBlueHerb9 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo10") {
-				blueHerb10.transform.gameObject.SetActive(false);
-				isBlueHerb10 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo11") {
-				blueHerb11.transform.gameObject.SetActive(false);
-				isBlueHerb11 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo12") {
-				blueHerb12.transform.gameObject.SetActive(false);
-				isBlueHerb12 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo13") {
-				blueHerb13.transform.gameObject.SetActive(false);
-				isBlueHerb13 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo14") {
-				blueHerb14.transform.gameObject.SetActive(false);
-				isBlueHerb14 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo15") {
-				blueHerb15.transform.gameObject.SetActive(false);
-				isBlueHerb15 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo16") {
-				blueHerb16.transform.gameObject.SetActive(false);
-				isBlueHerb16 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo17") {
-				blueHerb17.transform.gameObject.SetActive(false);
-				isBlueHerb17 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo18") {
-				blueHerb18.transform.gameObject.SetActive(false);
-				isBlueHerb18 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo19") {
-				blueHerb19.transform.gameObject.SetActive(false);
-				isBlueHerb19 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo20") {
-				blueHerb20.transform.gameObject.SetActive(false);
-				isBlueHerb20 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo21") {
-				blueHerb21.transform.gameObject.SetActive(false);
-				isBlueHerb21 = true;
-				AddBlueHerb();
-			}
-
-			else if (hit.collider.gameObject.name == "NiebieskieZiolo22") {
-				blueHerb22.transform.gameObject.SetActive(false);
-				isBlueHerb22 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo23") {
-				blueHerb23.transform.gameObject.SetActive(false);
-				isBlueHerb23 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo24") {
-				blueHerb24.transform.gameObject.SetActive(false);
-				isBlueHerb24 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo25") {
-				blueHerb25.transform.gameObject.SetActive(false);
-				isBlueHerb25 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo26") {
-				blueHerb26.transform.gameObject.SetActive(false);
-				isBlueHerb26 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo27") {
-				blueHerb27.transform.gameObject.SetActive(false);
-				isBlueHerb27 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo28") {
-				blueHerb28.transform.gameObject.SetActive(false);
-				isBlueHerb28 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo29") {
-				blueHerb29.transform.gameObject.SetActive(false);
-				isBlueHerb29 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo30") {
-				blueHerb30.transform.gameObject.SetActive(false);
-				isBlueHerb30 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo31") {
-				blueHerb31.transform.gameObject.SetActive(false);
-				isBlueHerb31 = true;
-				AddBlueHerb();
-			}
-
-            else if (hit.collider.gameObject.name == "NiebieskieZiolo32") {
-				blueHerb32.transform.gameObject.SetActive(false);
-				isBlueHerb32 = true;
-				AddBlueHerb();
-			}
-
-            // podnoszenie fiolek
-
-            else if (hit.collider.gameObject.name == "Fiolka1") {
-				vial1.transform.gameObject.SetActive(false);
-				isVial1 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka2") {
-				vial2.transform.gameObject.SetActive(false);
-				isVial2 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka3") {
-				vial3.transform.gameObject.SetActive(false);
-				isVial3 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka4") {
-				vial4.transform.gameObject.SetActive(false);
-				isVial4 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka5") {
-				vial5.transform.gameObject.SetActive(false);
-				isVial5 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka6") {
-				vial6.transform.gameObject.SetActive(false);
-				isVial6 = true;
-				AddVial();
-			}
-            
-            else if (hit.collider.gameObject.name == "Fiolka7") {
-				vial7.transform.gameObject.SetActive(false);
-				isVial7 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka8") {
-				vial8.transform.gameObject.SetActive(false);
-				isVial8 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka9") {
-				vial9.transform.gameObject.SetActive(false);
-				isVial9 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka10") {
-				vial10.transform.gameObject.SetActive(false);
-				isVial10 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka11") {
-				vial11.transform.gameObject.SetActive(false);
-				isVial11 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka12") {
-				vial12.transform.gameObject.SetActive(false);
-				isVial12 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka13") {
-				vial13.transform.gameObject.SetActive(false);
-				isVial13 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka14") {
-				vial14.transform.gameObject.SetActive(false);
-				isVial14 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka15") {
-				vial15.transform.gameObject.SetActive(false);
-				isVial15 = true;
-				AddVial();
-			}
-
-            else if (hit.collider.gameObject.name == "Fiolka16") {
-				vial16.transform.gameObject.SetActive(false);
-				isVial16 = true;
-				AddVial();
-			}
-            
-            // podnoszenie eliksirów
-
-            else if (hit.collider.gameObject.name == "EliksirStamina1") {
-				staminaPot1.transform.gameObject.SetActive(false);
-				isStaminaPot1 = true;
-				AddStaminaPot();
-			}
-
-            else if (hit.collider.gameObject.name == "EliksirStamina2") {
-				staminaPot2.transform.gameObject.SetActive(false);
-				isStaminaPot2 = true;
-				AddStaminaPot();
-			}
-
-            else if (hit.collider.gameObject.name == "EliksirStamina3") {
-				staminaPot3.transform.gameObject.SetActive(false);
-				isStaminaPot3 = true;
-				AddStaminaPot();
-			}
-
-            else if (hit.collider.gameObject.name == "EliksirStamina4") {
-				staminaPot4.transform.gameObject.SetActive(false);
-				isStaminaPot4 = true;
-				AddStaminaPot();
-			}
-
-            else if (hit.collider.gameObject.name == "EliksirStamina5") {
-				staminaPot5.transform.gameObject.SetActive(false);
-				isStaminaPot5 = true;
-				AddStaminaPot();
-			}
-
-            else if (hit.collider.gameObject.name == "EliksirZdrowie1") {
-				healthPot1.transform.gameObject.SetActive(false);
-				isHealthPot1 = true;
-				AddHealthPot();
-			}
-
-             else if (hit.collider.gameObject.name == "EliksirZdrowie2") {
-				healthPot2.transform.gameObject.SetActive(false);
-				isHealthPot2 = true;
-				AddHealthPot();
-			}
-
-             else if (hit.collider.gameObject.name == "EliksirZdrowie3") {
-				healthPot3.transform.gameObject.SetActive(false);
-				isHealthPot3 = true;
-				AddHealthPot();
-			}
-
-             else if (hit.collider.gameObject.name == "EliksirZdrowie4") {
-				healthPot4.transform.gameObject.SetActive(false);
-				isHealthPot4 = true;
-				AddHealthPot();
-			}
-
-             else if (hit.collider.gameObject.name == "EliksirZdrowie5") {
-				healthPot5.transform.gameObject.SetActive(false);
-				isHealthPot5 = true;
-				AddHealthPot();
-			}
-
-            else if (hit.collider.gameObject.name == "EliksirZdrowie6") {
-				healthPot6.transform.gameObject.SetActive(false);
-				isHealthPot6 = true;
-				AddHealthPot();
-			}
-            
-            // podnoszenie odznak do kolekcji
-
-            else if (hit.collider.gameObject.name == "Odznaka1") {
-                AddBadge(badge1, isBadge1, collectionTextures[0]);
-			}  
-            
-            else if (hit.collider.gameObject.name == "Odznaka2") {
-                    AddBadge(badge2, isBadge2, collectionTextures[1]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Odznaka3") {
-                    AddBadge(badge3, isBadge3, collectionTextures[2]);
-                }        
-
-            else if (hit.collider.gameObject.name == "Odznaka4") {
-                    AddBadge(badge4, isBadge4, collectionTextures[3]); ;
-			} 
-
-            else if (hit.collider.gameObject.name == "Odznaka5") {
-                    AddBadge(badge5, isBadge5, collectionTextures[4]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Odznaka6") {
-                    AddBadge(badge6, isBadge6, collectionTextures[5]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Odznaka7") {
-                    AddBadge(badge7, isBadge7, collectionTextures[6]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Odznaka8") {
-                    AddBadge(badge8, isBadge8, collectionTextures[7]);
+			else if (hit.collider.gameObject.tag == "CollectibleItem") {
+                    hit.transform.gameObject.GetComponent<CollectibleItem>().PickUpItem();
                 }
-            
-            else if (hit.collider.gameObject.name == "Odznaka9") {
-                    AddBadge(badge9, isBadge9, collectionTextures[8]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Odznaka10") {
-                    AddBadge(badge10, isBadge10, collectionTextures[9]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Odznaka11") {
-                    AddBadge(badge11, isBadge11, collectionTextures[10]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Odznaka12") {
-                    AddBadge(badge12, isBadge12, collectionTextures[11]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto1") {
-                AddPhoto(photo1, isPhoto1, collectionTextures[12]);
-			}  
-            
-            else if (hit.collider.gameObject.name == "Foto2") {
-                    AddPhoto(photo2, isPhoto2, collectionTextures[13]);
-                }      
-       
-            else if (hit.collider.gameObject.name == "Foto3") {
-                    AddPhoto(photo3, isPhoto3, collectionTextures[13]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto4") {
-                    AddPhoto(photo4, isPhoto4, collectionTextures[14]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto5") {
-                    AddPhoto(photo5, isPhoto5, collectionTextures[15]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto6") {
-                    AddPhoto(photo6, isPhoto6, collectionTextures[16]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto7") {
-                    AddPhoto(photo7, isPhoto7, collectionTextures[17]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto8") {
-                    AddPhoto(photo8, isPhoto8, collectionTextures[18]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto9") {
-                    AddPhoto(photo9, isPhoto9, collectionTextures[19]);
-                }
-            
-            else if (hit.collider.gameObject.name == "Foto10") {
-                    AddPhoto(photo10, isPhoto10, collectionTextures[20]);
-                }        
-
-            else if (hit.collider.gameObject.name == "Foto11") {
-                    AddPhoto(photo11, isPhoto11, collectionTextures[21]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Foto12") {
-                    AddPhoto(photo12, isPhoto12, collectionTextures[22]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka1") {
-                    AddTip(tip1, isTip1, collectionTextures[23]);
-			}
-            
-            else if (hit.collider.gameObject.name == "Wskazowka2") {
-                    AddTip(tip2, isTip2, collectionTextures[24]);
-                }  
-
-            else if (hit.collider.gameObject.name == "Wskazowka3") {
-                    AddTip(tip3, isTip3, collectionTextures[25]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka4") {
-                    AddTip(tip4, isTip4, collectionTextures[26]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka5") {
-                    AddTip(tip5, isTip5, collectionTextures[27]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka6") {
-                    AddTip(tip6, isTip6, collectionTextures[28]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka7") {
-                    AddTip(tip7, isTip7, collectionTextures[29]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka8") {
-                    AddTip(tip8, isTip8, collectionTextures[30]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka9") {
-                    AddTip(tip9, isTip9, collectionTextures[31]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka10") {
-                    AddTip(tip10, isTip10, collectionTextures[31]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka11") {
-                    AddTip(tip11, isTip11, collectionTextures[32]);
-                } 
-
-            else if (hit.collider.gameObject.name == "Wskazowka12") {
-                    AddTip(tip12, isTip12, collectionTextures[33]);
-                } 
 
-			if (hit.collider.gameObject.tag == "Zapis") {
+			if (hit.collider.gameObject.tag == "Save") {
 					SaveGameScript.Zapisz ();
 			}
-	
-
 
 		} // Klamra do Raycast
 
@@ -3042,18 +1913,18 @@ public class Inventory : MonoBehaviour {
 
 	//-------------- Funckje dodawania przedmiotow-----------------------
 
-    void AddItem(Item item, Transform itemTransform, AudioClip pickUpSound, bool isItemTaken)
+   public void AddItem(Item item, AudioClip pickUpSound)
     {
-        itemTransform.gameObject.SetActive(false);
+        //itemTransform.gameObject.SetActive(false);
         animator.SetTrigger("PickUp");
-        isItemTaken = true;
-        itemAudioSource1.PlayOneShot(keySound);
+        itemAudioSource1.PlayOneShot(pickUpSound);
 
         for (int i = 0; i < itemIcons.Length; i++)
         {
             if (itemIcons[i].sprite == null)
             {
                 items.Add(item);
+                item.isTaken = true;
                 item.id = i + 1;
                 itemIcons[i].sprite = item.icon;
                 itemIcons[i].color = Color.white;
@@ -3070,7 +1941,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i+1, "KluczPokojW", uncleKeyName, uncleKeyDescription, keyV1Icon, false));
+				items.Add(new Item(i+1, "KluczPokojW", uncleKeyName, uncleKeyDescription, keyV1Icon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = keyV1Icon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3092,7 +1963,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i+1, "Oliwa", oilName, oilDescription, oilIcon, false));
+				items.Add(new Item(i+1, "Oliwa", oilName, oilDescription, oilIcon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = oilIcon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3111,7 +1982,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSzafkaKuchnia", kitchenWardrobeKeyName, kitchenWardrobeKeyDescription, keyV2Icon, false));
+				items.Add(new Item(i + 1, "KluczSzafkaKuchnia", kitchenWardrobeKeyName, kitchenWardrobeKeyDescription, keyV2Icon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = keyV2Icon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3135,7 +2006,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSzopa", shedKeyName, shedKeyDescription, keyV4Icon, false));
+				items.Add(new Item(i + 1, "KluczSzopa", shedKeyName, shedKeyDescription, keyV4Icon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = keyV4Icon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3156,7 +2027,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc3", bone3Name, boneDescription, bone3Icon, false));
+				items.Add(new Item(i + 1, "Kosc3", bone3Name, boneDescription, bone3Icon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = bone3Icon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3180,7 +2051,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc4", bone3Name, boneDescription, bone4Icon, false));
+				items.Add(new Item(i + 1, "Kosc4", bone3Name, boneDescription, bone4Icon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = bone4Icon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3204,7 +2075,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczKamping", secretRoomKeyName, secretRoomKeyDescription, secretRoomKeyIcon, false));
+				items.Add(new Item(i + 1, "KluczKamping", secretRoomKeyName, secretRoomKeyDescription, secretRoomKeyIcon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = secretRoomKeyIcon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3223,7 +2094,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kombinerki", pliersName, pliersDescription, pliersIcon, false));
+				items.Add(new Item(i + 1, "Kombinerki", pliersName, pliersDescription, pliersIcon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = pliersIcon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3242,7 +2113,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Siekiera", axeName, axeDescription, axeIcon, false));
+				items.Add(new Item(i + 1, "Siekiera", axeName, axeDescription, axeIcon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = axeIcon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3261,7 +2132,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kaseta2", cassete2Name, cassete2Description, cassete2Icon, false));
+				items.Add(new Item(i + 1, "Kaseta2", cassete2Name, cassete2Description, cassete2Icon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = cassete2Icon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3281,7 +2152,7 @@ public class Inventory : MonoBehaviour {
 
 		for(int i=0; i<itemIcons.Length; i++){
 			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Mikstura", strongAcidName, strongAcidDescription, strongAcidIcon, false));
+				items.Add(new Item(i + 1, "Mikstura", strongAcidName, strongAcidDescription, strongAcidIcon, false, isKeyV1Taken, isKeyV1Taken));
 				itemIcons[i].sprite = strongAcidIcon;
 				itemIcons[i].color = Color.white;
 				break;
@@ -3292,7 +2163,7 @@ public class Inventory : MonoBehaviour {
 
     }
 
-    void AddSecretItem(AudioClip secretItemSound)
+   public void AddSecretItem(AudioClip secretItemSound)
     {
         itemAudioSource1.PlayOneShot(secretItemSound);
         secretItemsCount++;
@@ -3309,7 +2180,7 @@ public class Inventory : MonoBehaviour {
         animator.SetTrigger("PickUp");
     }
 
-	void AddGreenHerb(){
+	public void AddGreenHerb(AudioClip greenHerbSound){
 		itemAudioSource2.PlayOneShot (collectHerbSound);
 		greenHerbsCount++;
 		notificationScript.secretItemsTime = 0;
@@ -3326,7 +2197,8 @@ public class Inventory : MonoBehaviour {
 		greenHerbsText.text = greenHerbsCount + "";
 	}
 
-	void AddBlueHerb(){
+	public void AddBlueHerb(AudioClip blueHerbSound)
+    {
 		itemAudioSource2.PlayOneShot (collectHerbSound);
 		blueHerbsCount++;
 		notificationScript.secretItemsTime = 0;
@@ -3343,7 +2215,7 @@ public class Inventory : MonoBehaviour {
 		blueHerbsText.text = blueHerbsCount + "";
 	}
 
-    void AddVial() {
+    public void AddVial(AudioClip vialSound) {
 
         itemAudioSource2.PlayOneShot(collectVialSound);
         vialsCount++;
@@ -3361,7 +2233,7 @@ public class Inventory : MonoBehaviour {
         vialsCountText.text = vialsCount + "";
     }
 
-    void AddStaminaPot()
+    public void AddStaminaPot(AudioClip staminaPotSound)
     {
 
         itemAudioSource2.PlayOneShot(collectVialSound);
@@ -3380,7 +2252,7 @@ public class Inventory : MonoBehaviour {
         staminaPotsText.text = staminaPotsCount + "";
     }
 
-    void AddHealthPot()
+    public void AddHealthPot(AudioClip HealthPotSound)
     {
 
         itemAudioSource2.PlayOneShot(collectVialSound);
@@ -3399,10 +2271,8 @@ public class Inventory : MonoBehaviour {
         healthPotsText.text = healthPotsCount + "";
     }
 
-    void AddBadge(Transform badge, bool isBadge, Image badgeTexture)
+    public void AddBadge(AudioClip badgeSound, Image badgeTexture)
     {
-        badge.transform.gameObject.SetActive(false);
-        isBadge = true;
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
@@ -3421,10 +2291,8 @@ public class Inventory : MonoBehaviour {
         badgesCount++;
     }
 
-    void AddPhoto(Transform photo, bool isPhoto, Image photoTexture)
+   public void AddPhoto(AudioClip photoSound, Image photoTexture)
     {
-        photo.transform.gameObject.SetActive(false);
-        isPhoto = true;
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
@@ -3443,10 +2311,8 @@ public class Inventory : MonoBehaviour {
         photosCount++;
     }
 
-    void AddTip(Transform tip, bool isTip, Image tipTexture)
+    public void AddTip(AudioClip TipSound, Image tipTexture)
     {
-        tip.transform.gameObject.SetActive(false);
-        isTip = true;
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
