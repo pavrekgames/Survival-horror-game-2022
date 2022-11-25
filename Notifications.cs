@@ -1151,6 +1151,308 @@ public class Notifications : MonoBehaviour {
             KomunikatSamouczekItems();
         }
 
+        // secret place grob rocky
+
+        if (other.gameObject.CompareTag("GrobRocky_trigger") && inventoryScript.isRockyGraveSP == false)
+        {
+            DiscoverRockyGrave();
+        }
+
+        // secret place cmentarz zwierzat
+
+        else if (other.gameObject.CompareTag("CmentarzZwierzat_trigger") && inventoryScript.isAnimalCementarySP == false)
+        {
+            DiscoverAnimalCemetery();
+        }
+
+        // secret place ogrod simona
+
+        else if (other.gameObject.CompareTag("OgrodSimona_trigger") && inventoryScript.isSimonGardenSP == false)
+        {
+            DiscoverSimonGarden();
+        }
+
+        // secret place oboz Toma
+
+        else if (other.gameObject.CompareTag("ObozToma_trigger") && inventoryScript.isTomCampSP == false)
+        {
+            DiscoverTomCamp();
+        }
+
+        // secret place kryjowka diablow
+
+        else if (other.gameObject.CompareTag("KryjowkaDiablow_trigger") && inventoryScript.isDevilsShelterSP == false)
+        {
+            DiscoverDevilsShelter();
+        }
+
+        // secret place cmentarz wojna
+
+        else if (other.gameObject.CompareTag("CmentarzWojna_trigger") && inventoryScript.isWarCementarySP == false)
+        {
+            DiscoverWarCemetery();
+        }
+
+        // secret place domek 
+
+        else if (other.gameObject.CompareTag("Domek_trigger") && inventoryScript.isHutSP == false)
+        {
+            DiscoverHut();
+        }
+
+        // secret place opuszczona piwnica 
+
+        else if (other.gameObject.CompareTag("Piwnica_trigger") && inventoryScript.isBasementSP == false)
+        {
+            DiscoverAbandonedBasement();
+        }
+
+        // secret place pole grzybowe 
+
+        else if (other.gameObject.CompareTag("PoleGrzybowe_trigger") && inventoryScript.isMushroomFieldSP == false)
+        {
+            DiscoverMushroomField();
+        }
+
+        // secret place ciemny las 
+
+        else if (other.gameObject.CompareTag("CiemnyLas_trigger") && inventoryScript.isDarkForestSP == false)
+        {
+            DiscoverDarkForest();
+        }
+
+        // secret place wieza kosci 
+
+        else if (other.gameObject.CompareTag("WiezaKosci_trigger") && inventoryScript.isBonesTowerSP == false)
+        {
+            DiscoverBonesTower();
+        }
+
+        // secret place Nozowa arena 
+
+        else if (other.gameObject.CompareTag("NozowaArena_trigger") && inventoryScript.isKnifeArenaSP == false)
+        {
+            DiscoverKnifeArena();
+        }
+
+        // secret place jaskinia
+
+        else if (other.gameObject.CompareTag("Jaskinia_trigger") && inventoryScript.isCaveSP == false)
+        {
+            DiscoverCave();
+        }
+
+        // secret stary pomnik
+
+        else if (other.gameObject.CompareTag("Pomnik_trigger") && inventoryScript.isMonumentSP == false)
+        {
+            DiscoverMonument();
+        }
+
+        // secret statek kosmiczny
+
+        else if (other.gameObject.CompareTag("StatekKosmiczny_trigger") && inventoryScript.isSpaceshipSP == false)
+        {
+            DiscoverSpaceship();
+        }
+
+    }
+
+    //-------------- Funkcje do Secret Places----------------------------
+
+    void DiscoverRockyGrave()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.rockyGraveText;
+        inventoryScript.rockyGraveTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isRockyGraveSP = true;
+
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverAnimalCemetery()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.animalCemeteryText;
+        inventoryScript.animalCementaryTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isAnimalCementarySP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverSimonGarden()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.simonGardenText;
+        inventoryScript.simonGardenTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isSimonGardenSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverTomCamp()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.tomCampText;
+        inventoryScript.tomCampTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isTomCampSP = true;
+        //secretPlacesText.text = secretPlacesCount + "/15";
+
+    }
+
+    void DiscoverDevilsShelter()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.devilsShelterText;
+        //SPKryjowkaDiablyPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isDevilsShelterSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverWarCemetery()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.warCemeteryText;
+        inventoryScript.warCementaryTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isWarCementarySP = true;
+        //secretPlacesText.text = secretPlacesCount + "/15";
+
+    }
+
+    void DiscoverHut()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.hutText;
+        inventoryScript.hutTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isHutSP = true;
+        //secretPlacesText.text = secretPlacesCount + "/15";
+
+    }
+
+    void DiscoverAbandonedBasement()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.abandonedBasementText;
+        inventoryScript.basementTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isBasementSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverMushroomField()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.mushroomFieldText;
+        inventoryScript.mushroomFieldTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isMushroomFieldSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverDarkForest()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.darkForestText;
+        inventoryScript.darkForestTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isDarkForestSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverBonesTower()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.bonesTowerText;
+        inventoryScript.bonesTowerTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isBonesTowerSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverKnifeArena()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.knifeArenaText;
+        inventoryScript.knifeArenaTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isKnifeArenaSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverCave()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.caveText;
+        inventoryScript.caveTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isCaveSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverMonument()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.monumentText;
+        inventoryScript.monumentTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isMonumentSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
+    }
+
+    void DiscoverSpaceship()
+    {
+        secretPlacesTime = 0f;
+        secretPlacesNotificationTextMesh.text = inventoryScript.spaceshipText;
+        inventoryScript.spaceshipTextPointer.enabled = true;
+        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+        inventoryScript.itemAudioSource4.Play();
+        inventoryScript.secretPlacesCount++;
+        inventoryScript.isSpaceshipSP = true;
+        inventoryScript.saveGameScript.Zapisz();
+        //secretPlacesText.text = secretPlacesCount + "/15";
     }
 
 

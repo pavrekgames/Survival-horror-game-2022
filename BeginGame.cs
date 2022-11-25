@@ -1225,7 +1225,7 @@ public class BeginGame : MonoBehaviour {
         Tasks.isLabPot = false;
 		Tasks.isGrilleDestroyed = false;
 		Tasks.isThornsAcid = false;
-		Tasks.isAcid = false;
+		Tasks.isThorns = false;
 
         // Zdrowie
 

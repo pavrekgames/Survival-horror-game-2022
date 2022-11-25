@@ -5003,7 +5003,7 @@ public class GameManager : MonoBehaviour {
 
 		Tasks.hallunsTimer = 0;
 		Tasks.isThornsAcid = false;
-		Tasks.isAcid = false;
+		Tasks.isThorns = false;
 
         // komunikaty
 
