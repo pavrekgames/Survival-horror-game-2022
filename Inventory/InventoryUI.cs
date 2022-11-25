@@ -771,5 +771,10 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
+    public void HoverButton()
+    {
 
+        itemAudioSource3.PlayOneShot(itemDesciptionSound);
+
+    }
 }
