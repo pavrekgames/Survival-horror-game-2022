@@ -358,7 +358,7 @@ public class Tasks : MonoBehaviour {
     public GameObject flame2;
     public GameObject flame3;
     public bool isThornsAcid = false;
-    public bool isAcid = false;
+    public bool isThorns = false;
     public AudioSource flameAudioSource;
     public AudioSource fireAudioSource;
     public AudioClip flameSound;
@@ -1009,7 +1009,7 @@ public class Tasks : MonoBehaviour {
 
         // zniszczenie cierni
 
-        if(flameAudioSource.isPlaying == false && isThornsAcid == true && isAcid == false)
+        if(flameAudioSource.isPlaying == false && isThornsAcid == true && isThorns == false)
         {
             ZniszczenieCierni();
         }
@@ -1395,37 +1395,6 @@ public class Tasks : MonoBehaviour {
 		}
 
 
-	 /*	// Dodanie zadania o zebraniu kosci
-
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "ZadanieKosci_trigger" && ZadanieKosci_ok == false){
-			ZadanieKosci ();
-		}
-
-		// Dodanie zadania o informcji Alice
-
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "ZadanieAliceInfo_trigger" && ZadanieAliceInfo_ok == false){
-			ZadanieAliceInfo ();
-		}
-
-		// Wywolanie halucynacji
-
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Halucynacje_trigger" && Halucynacje_ok == false && ZadanieSimonElement_ok == true){
-			HalucynacjeWywolanie ();
-		}
-
-		// Dodanie zadania kieruj szlak
-
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "KierujSzlak_trigger" && ZadanieKierujSzlak_ok == false && ZadanieKierujSzlak_Usun == false && ZadanieIdzSzlak_ok == true){
-			ZadanieKierujSzlak ();
-		}
-
-		// Dodanie zadania przedostan sie
-
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "PrzedostanSie_trigger" && ZadaniePrzedostanSie_ok == false && ZadaniePrzedostanSie_Usun == false && ZadanieKierujSzlak_ok == true){
-			ZadaniePrzedostanSie ();
-		} */
-
-
 	} // klamra do Exit
 
 	void OnTriggerEnter(Collider other){
@@ -1470,39 +1439,6 @@ public class Tasks : MonoBehaviour {
         }
 
 
-
-	/*	// Dodanie zadania Tom info
-
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "TomInfo_trigger" && ZadanieTomInfo_ok == false && ZadanieTomInfo_Usun == false && ZadaniePrzedostanSie_ok == true){
-			ZadanieTomInfo ();
-		}
-
-		// Dodanie zadania Steven notatka
-
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "StevenNotatka_trigger" && ZadanieStevenNotatka_ok == false && ZadanieStevenNotatka_Usun == false && ZadanieStevenSzopa_ok == true){
-			ZadanieStevenNotatka ();
-		}
-
-		// Atak potworow
-
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "StevenNotatka_trigger" && Notes.Notatka45_ok == true && SzopaStevenMonster_ok == false){
-			SzopaStevenMonster_ok = true;
-		}
-
-		// Dodanie zadania kryjowka diably
-
-		else if (other.gameObject.GetComponent<Collider>().gameObject.name == "KryjowkaDiably_trigger" && ZadanieKryjowkaDiably_ok == false && ZadanieKryjowkaDiably_Usun == false && ZadaniePotokDiably_ok == true)
-		{
-			ZadanieKryjowkaDiably();
-		}
-
-		// Dodanie zadania kryjowka rodzina
-
-		else if (other.gameObject.GetComponent<Collider>().gameObject.name == "KryjowkaDiablow_trigger" && ZadanieKryjowkaRodzina_ok == false && ZadanieKryjowkaRodzina_Usun == false && ZadanieKryjowkaDiably_ok == true)
-		{
-			ZadanieKryjowkaRodzina();
-		} */
-
     }
 
 
@@ -1520,6 +1456,8 @@ public class Tasks : MonoBehaviour {
 				isUncleDoorLocked = false;
                 DrzwiPokojWS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1536,6 +1474,8 @@ public class Tasks : MonoBehaviour {
 				isKitchenWardrobeLocked = false;
                 SzafaKuchniaS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1552,6 +1492,8 @@ public class Tasks : MonoBehaviour {
 				isStableDoorLocked = false;
                 DrzwiStajniaS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1568,6 +1510,8 @@ public class Tasks : MonoBehaviour {
 				isToolShedDoorLocked = false;
                 DrzwiSzopaNarzedziaS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1587,6 +1531,8 @@ public class Tasks : MonoBehaviour {
 				isGardenDoorLocked = false;
                 DrzwiOgrodS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1603,6 +1549,8 @@ public class Tasks : MonoBehaviour {
 				isNicheDoorLocked = false;
                 DrzwiWnekaS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1619,6 +1567,8 @@ public class Tasks : MonoBehaviour {
 				isSecretRoomDoorLocked = false;
                 DrzwiKampingS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1629,7 +1579,9 @@ public class Tasks : MonoBehaviour {
 			if(inventoryScript.items[i].type == "Kaseta1" && inventoryScript.items[i].isUsed == true){
                 audioSource2.PlayOneShot(insertCasseteSound);
                 isCasseteInserted = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1641,7 +1593,9 @@ public class Tasks : MonoBehaviour {
                 audioSource3.clip = putBatteriesSound;
                 audioSource3.Play();
                 isBatteriesPut = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 
@@ -1656,7 +1610,9 @@ public class Tasks : MonoBehaviour {
                 audioSource4.clip = putBatteriesSound;
                 audioSource4.Play();
                 isBrokenKey = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1669,7 +1625,9 @@ public class Tasks : MonoBehaviour {
                 audioSource4.Play();
                 isWheel = true;
 				woodenWheelCollider.gameObject.SetActive(true);
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1686,6 +1644,8 @@ public class Tasks : MonoBehaviour {
 				taskFactoryScript.enabled = true;
                 DrzwiFabrykaDrewnoS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1702,6 +1662,8 @@ public class Tasks : MonoBehaviour {
 				isFactoryMetalDoorLocked = false;
                 DrzwiFabrykaMetalS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1718,6 +1680,8 @@ public class Tasks : MonoBehaviour {
 				isAliceRoomDoorLocked = false;
                 DrzwiSalonPoludnieS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1735,6 +1699,8 @@ public class Tasks : MonoBehaviour {
 				isCornfieldDoorLocked = false;
                 DrzwiKukurydzaS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1752,7 +1718,9 @@ public class Tasks : MonoBehaviour {
 				isPlanksLocked = false;
 				isPlanksDestroyed = true;
                 notesScript.isNotes = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1768,6 +1736,8 @@ public class Tasks : MonoBehaviour {
 				isCorridorWardrobeLocked = false;
                 SzafaKorytarzS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1786,6 +1756,8 @@ public class Tasks : MonoBehaviour {
                 SzafkaSzopaS.isNeedKey = false;
                 SzafkaSzopa2S.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1796,7 +1768,9 @@ public class Tasks : MonoBehaviour {
 			if(inventoryScript.items[i].type == "Kaseta2" && inventoryScript.items[i].isUsed == true){
 				audioSource.PlayOneShot(insertCasseteSound);
 				isCassete2Inserted = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1813,7 +1787,9 @@ public class Tasks : MonoBehaviour {
                 mainPumpkin.SetActive(true);
 				pumpkinKey.SetActive(true);
 				isPumpkin = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1829,6 +1805,8 @@ public class Tasks : MonoBehaviour {
 				isTomUpstairsDoorLocked = false;
                 DrzwiTomGoraS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1845,6 +1823,8 @@ public class Tasks : MonoBehaviour {
 				isTomRoomDoorLocked = false;
                 DrzwiPokojTomS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1857,7 +1837,9 @@ public class Tasks : MonoBehaviour {
                 audioSource4.clip = insertCasseteSound;
                 audioSource4.Play();
                 isCassete3Inserted = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1872,7 +1854,9 @@ public class Tasks : MonoBehaviour {
                 audioSource4.clip = putBatteriesSound;
                 audioSource4.Play();
 				isChipPut = true;
-				break;
+
+                    inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                    break;
 			}
 		}
 	}
@@ -1890,6 +1874,8 @@ public class Tasks : MonoBehaviour {
 				isOldWardrobeLocked = false;
                 SzafaStaryDomS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1902,7 +1888,9 @@ public class Tasks : MonoBehaviour {
                 audioSource4.clip = insertCasseteSound;
                 audioSource4.Play();
                 isCassete4Inserted = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1918,6 +1906,8 @@ public class Tasks : MonoBehaviour {
 				isStevenDoorLocked = false;
                 DrzwiStevenS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -1930,7 +1920,9 @@ public class Tasks : MonoBehaviour {
                 audioSource3.clip = componentSound;
                 audioSource3.Play();
                 isLabPlant = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1942,7 +1934,9 @@ public class Tasks : MonoBehaviour {
                 audioSource3.clip = componentSound;
                 audioSource3.Play();
                 isLabMushroom = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1954,7 +1948,9 @@ public class Tasks : MonoBehaviour {
                 audioSource3.clip = componentSound;
                 audioSource3.Play();
                 isLabSkull = true;
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1970,7 +1966,9 @@ public class Tasks : MonoBehaviour {
                 stevenGrille.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
 				isStevenGrille = false;
 				stevenGrille.gameObject.AddComponent<Rigidbody> ();
-				break;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
+                break;
 			}
 		}
 	}
@@ -1986,6 +1984,8 @@ public class Tasks : MonoBehaviour {
 				isPaulDoorLocked = false;
                 DrzwiZachodS.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
 			}
 		}
@@ -2014,6 +2014,8 @@ public class Tasks : MonoBehaviour {
                 flame2.SetActive(true);
                 flame3.SetActive(true);
                 isThornsAcid = true;
+
+                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
             }
         }
@@ -2030,7 +2032,7 @@ public class Tasks : MonoBehaviour {
         flame1.SetActive(false);
        // Plomien2.SetActive(false);
        // Plomien3.SetActive(false);
-        isAcid = true;
+        isThorns = true;
     }
 
 
