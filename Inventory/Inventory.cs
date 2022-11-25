@@ -1282,95 +1282,99 @@ public class Inventory : MonoBehaviour {
 
     }
 
-	void Update () {
+    void Update()
+    {
 
         if (Time.timeScale == 0)
         {
             uiCanvas.enabled = false;
         }
-        else if(Time.timeScale == 1 && beginGameScript.enabled == false)
+        else if (Time.timeScale == 1 && beginGameScript.enabled == false)
         {
             uiCanvas.enabled = true;
         }
 
-        CheckHealthCondition ();
+        CheckHealthCondition();
 
-		if(Input.GetButtonDown("Inventory") && playerManagerScript.isPlayerCanInput == true)
+        if (Input.GetButtonDown("Inventory") && playerManagerScript.isPlayerCanInput == true)
         {
 
             ShowInventory();
 
-			Time.timeScale = 0;
-			cursorScript.m_ShowCursor = true; 
+            Time.timeScale = 0;
+            cursorScript.m_ShowCursor = true;
             playerScript.audioSource.Pause();
-			playerScript.enabled = false;
+            playerScript.enabled = false;
             pauseAudioSource.pitch = 1;
-            pauseAudioSource.PlayOneShot (openInventorySound);
-			
-		}
-         
+            pauseAudioSource.PlayOneShot(openInventorySound);
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isInventoryActive == true)
+        }
+
+
+        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isInventoryActive == true)
         {
             inventoryUI.InventoryBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTasksActive == true)
+        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTasksActive == true)
         {
             tasksUI.TasksBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isNotesActive == true)
+        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isNotesActive == true)
         {
             notesUI.NotesBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
+        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
         {
             treatmentUI.TreatmentBackFunction();
         }
 
-        else if((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
+        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
         {
             collectionBadgesUI.CollectionBackFunction();
         }
 
-        else if(gameMenuScript.isMenu == true){
-			cursorScript.m_ShowCursor = true; // !Kursor.m_ShowCursor
-		}
+        else if (gameMenuScript.isMenu == true)
+        {
+            cursorScript.m_ShowCursor = true; // !Kursor.m_ShowCursor
+        }
 
 
         //------------------PODNOSZENIE PRZEDMIOTOW----------------------
 
         if (Input.GetMouseButtonDown(0) && playerManagerScript.isPlayerCanInput == true)
         {
-			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-			RaycastHit hit;
+            Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
 
-			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
+            if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9))
+            {
 
-			// Podnoszenie klucza do drzwi pokoju U
+                // Podnoszenie klucza do drzwi pokoju U
 
 
-			if(hit.collider.gameObject.tag == "TaskItem"){
+                if (hit.collider.gameObject.tag == "TaskItem")
+                {
                     hit.transform.gameObject.GetComponent<TaskItem>().PickUpItem();
-			}
+                }
 
-			else if (hit.collider.gameObject.tag == "CollectibleItem") {
+                else if (hit.collider.gameObject.tag == "CollectibleItem")
+                {
                     hit.transform.gameObject.GetComponent<CollectibleItem>().PickUpItem();
                 }
 
-			if (hit.collider.gameObject.tag == "Save") {
-					saveGameScript.Zapisz ();
-			}
+                if (hit.collider.gameObject.tag == "Save")
+                {
+                    saveGameScript.Zapisz();
+                }
 
-		} // Klamra do Raycast
+            }
 
-	} // Klamra do warunku przycisku	
+        }
 
-
-
-    } // Klamra do Update
+    }
 
     // Wlaczanie panelu
 
@@ -1412,11 +1416,6 @@ public class Inventory : MonoBehaviour {
 
     }
 
-    
-
-
-	//-------------- Funckje dodawania przedmiotow-----------------------
-
    public void AddItem(Item item, AudioClip pickUpSound)
     {
         //itemTransform.gameObject.SetActive(false);
@@ -1437,61 +1436,19 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-	void AddKeyV1(){
-		keyV1.gameObject.SetActive(false);
-		isKeyV1Taken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
+    void TymczasoweDane()
+    {
+        // AddKeyV1()
 
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i+1, "KluczPokojW", uncleKeyName, uncleKeyDescription, keyV1Icon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = keyV1Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
-        if(notificationScript.isInventoryNotification == false)
+        if (notificationScript.isInventoryNotification == false)
         {
             notificationScript.KomunikatSamouczekInventory();
         }
 
-	}
-
-	void AddOil(){
-		oil.gameObject.SetActive(false);
-		isOilTaken = true;
-		itemAudioSource1.PlayOneShot(oilSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i+1, "Oliwa", oilName, oilDescription, oilIcon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = oilIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        // AddOil()
         tasksScript.ZadanieDrzwiOgrod();
 
-	}
-
-	void AddKitchenWardrobeKey(){
-		keyV2.gameObject.SetActive(false);
-		isKeyV2Taken = true;
-		itemAudioSource1.PlayOneShot(keySound2);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSzafkaKuchnia", kitchenWardrobeKeyName, kitchenWardrobeKeyDescription, keyV2Icon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = keyV2Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
+        //AddKictenWardrobe()
 
         if (notificationScript.isInventoryNotification == false)
         {
@@ -1500,44 +1457,10 @@ public class Inventory : MonoBehaviour {
 
         tasksScript.RemoveKluczWychodekPointer();
 
-    }
-
-	void AddShedKey(){
-		keyV4.gameObject.SetActive(false);
-		isKeyV4Taken = true;
-		itemAudioSource1.PlayOneShot(keySound2);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczSzopa", shedKeyName, shedKeyDescription, keyV4Icon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = keyV4Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
-
+        // AddShedKey()
         tasksScript.AddSzopaNarzedziaPointer();
-        
 
-    }
-
-	void AddBone3(){
-		bone3.gameObject.SetActive(false);
-		isBone3Taken = true;
-		itemAudioSource1.PlayOneShot(boneSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc3", bone3Name, boneDescription, bone3Icon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = bone3Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddBone3()
         if (notificationScript.isInventoryNotification == false)
         {
             notificationScript.KomunikatSamouczekInventory();
@@ -1545,23 +1468,7 @@ public class Inventory : MonoBehaviour {
 
         tasksScript.RemoveKoscSzopaPointer();
 
-    }
-
-	void AddBone4(){
-		bone4.gameObject.SetActive(false);
-		isBone4Taken = true;
-		itemAudioSource1.PlayOneShot(boneSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kosc4", bone3Name, boneDescription, bone4Icon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = bone4Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddBone4()
         if (notificationScript.isInventoryNotification == false)
         {
             notificationScript.KomunikatSamouczekInventory();
@@ -1569,102 +1476,20 @@ public class Inventory : MonoBehaviour {
 
         tasksScript.RemoveKoscStajniaPointer();
 
-    }
-
-	void AddSecretRoomKey(){
-		secretRoomKey.gameObject.SetActive(false);
-		isSecretRoomKeyTaken = true;
-		itemAudioSource1.PlayOneShot(keySound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "KluczKamping", secretRoomKeyName, secretRoomKeyDescription, secretRoomKeyIcon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = secretRoomKeyIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddSecretRoom()
         tasksScript.AddSekretnyPokojPointer();
 
-	}
-
-	void AddPliers(){
-		itemAudioSource3.PlayOneShot(pliersSound);
-		pliers.transform.gameObject.SetActive(false);
-		isPliersTaken = true;
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kombinerki", pliersName, pliersDescription, pliersIcon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = pliersIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddPliers()
         voiceActingScript.GlosKombinerki();
 
-    }
-
-	void AddAxe(){
-		itemAudioSource1.PlayOneShot(axeSound);
-		axe.gameObject.SetActive(false);
-		isAxeTaken = true;
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Siekiera", axeName, axeDescription, axeIcon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = axeIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddAxe()
         voiceActingScript.GlosSiekiera();
-    }
 
-
-	void AddCassete2(){
-		cassete2.gameObject.SetActive(false);
-		isCassete2Taken = true;
-		itemAudioSource1.PlayOneShot(casseteSound);
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Kaseta2", cassete2Name, cassete2Description, cassete2Icon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = cassete2Icon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddCassete2()
         tasksScript.RemoveSzafkaEdwardPointer();
 
-	}
-
-	void AddStrongAcid(){
-		strongAcid.gameObject.SetActive(false);
-		isStrongAcidTaken = true;
-		itemAudioSource1.PlayOneShot(oilSound);
-		
-		animator.SetTrigger("Podnies");
-
-		for(int i=0; i<itemIcons.Length; i++){
-			if(itemIcons[i].sprite == null){
-				items.Add(new Item(i + 1, "Mikstura", strongAcidName, strongAcidDescription, strongAcidIcon, false, isKeyV1Taken, isKeyV1Taken));
-				itemIcons[i].sprite = strongAcidIcon;
-				itemIcons[i].color = Color.white;
-				break;
-			}
-		}
-
+        //AddStrongAcid()
         voiceActingScript.GlosEliksir();
-
     }
 
    public void AddSecretItem(AudioClip secretItemSound)
