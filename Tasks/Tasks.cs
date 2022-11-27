@@ -9,23 +9,23 @@ public class Tasks : MonoBehaviour {
 
     public bool DzwiekPlay_ok = false; // wznawianie i zatrzymywanie dzwiekow
 
+    // tasks
     public List<TaskData> tasksList = new List<TaskData>();
-	public TextMeshProUGUI[] tasksTextMesh;
-	private Inventory inventoryScript;
-	private Menu gameMenuScript;
-	private FactoryButton taskButtonScript;
-	private Animator uiAnimator;
-	public Twirl twirlScript;
-	private Player playerScript;
-	public Canvas axeBlackBackgroundCanvas;
-	private Screamer screamerScript;
-	private Notes notesScript;
-	private TaskWell taskWellScript;
-	private TaskBones taskBonesScript;
-	private TaskTower taskTowerScript;
-	private TaskWheel taskWheelScript;
-	private TaskFactory taskFactoryScript;
-	private Notifications notificationScript;
+    private Inventory inventoryScript;
+    private Menu gameMenuScript;
+    private FactoryButton taskButtonScript;
+    private Animator uiAnimator;
+    public Twirl twirlScript;
+    private Player playerScript;
+    public Canvas axeBlackBackgroundCanvas;
+    private Screamer screamerScript;
+    private Notes notesScript;
+    private TaskWell taskWellScript;
+    private TaskBones taskBonesScript;
+    private TaskTower taskTowerScript;
+    private TaskWheel taskWheelScript;
+    private TaskFactory taskFactoryScript;
+    private Notifications notificationScript;
     private Music musicScript;
     private RandomJumpscare randomJumpscareScript;
     private GameManager gameManagerScript;
@@ -33,104 +33,195 @@ public class Tasks : MonoBehaviour {
     private VoiceActing voiceActingScript;
     private Jumpscare jumpscareScript;
     private Compass compassScript;
+    public PlayerManager playerManagerScript;
 
-	private Ray playerAim;
-	private Camera playerCam;
-	public float rayLength = 4f;
-
-	// boole dotyczace dodawania zadan
-	public bool isFirstTask = true;
-	public bool isSearchTask = false;
-	public bool isWoodKeyTask = false;
-	public Text woodenKeyPointer;
-	public Text magicWellPointer;
-	public bool isMagicWellTask = false;
-	public bool isWellStonesTask = false;
-	public Image stonesAreaPointer;
-	public bool isCassete1Task = false;
+    // boole dotyczace dodawania zadan
+    public bool isFirstTask = true;
+    public bool isSearchTask = false;
+    public bool isWoodKeyTask = false;
+    public bool isMagicWellTask = false;
+    public bool isWellStonesTask = false;
+    public bool isCassete1Task = false;
     public bool isGardenDoorTask = false;
-    public Text gardenDoorPointer;
     public bool isBonesTask = false;
-	public Image bonesAreaPointer;
-	public bool isGoToAliceTask = false;
-	public Image aliceHousePointer;
-	public bool isAliceSearchTask = false;
-	public bool isSimonElementTask = false;
-	public Text simonElementPointer;
+    public bool isGoToAliceTask = false;
+    public bool isAliceSearchTask = false;
+    public bool isSimonElementTask = false;
     public bool isWorkshopTask = false;
-    public Text workshopPointer;
-	public bool isBrokenKeyTask = false;
-	public Text brokenKeyPointer;
-	public bool isFixKeyTask = false;
-	public bool isAnimalCemetaryTask = false;
-    public Image animalCemetaryArrowPointer;
-    public Text animalCemetaryPointer;
-	public bool isVictorBrookTask = false;
-	public Image victorArrowPointer;
-    public Image victorArrowPointer2;
+    public bool isBrokenKeyTask = false;
+    public bool isFixKeyTask = false;
+    public bool isAnimalCemetaryTask = false;
+    public bool isVictorBrookTask = false;
     public bool isAliceRoomTask = false;
-	public bool isCornfieldTask = false;
-	public Text cornfieldPointer;
-	public bool isAxeTask = false;
-	public Text axePointer;
-	public bool isCorridorWardrobeTask = false;
-	public Text corridorWardrobePointer;
-	public bool isEdwardCupboardTask = false;
-	public bool isCassete2Task = false;
-	public Text cassete2Pointer;
-	public bool isGoToTrialTask = false;
-	public Text goTrailPointer;
-	public bool isGoTrailTask = false;
-	public Image trailArrowPointer;
-	public bool isGetToTomRoadTask = false;
-	public Text getToTomRoadPointer;
-	public bool isTomSearchTask = false;
-	public Image tomHousePointer;
-	public bool isTomCornifieldTask = false;
-	public Image cornfieldAreaPointer;
-	public bool isCassete3Task = false;
-	public bool isTompCampTask = false;
-	public Text tomCampPointer;
-	public bool isTomPumpkinTask = false;
-	public Image pumpkinAreaPointer;
-	public bool isTomChipTask = false;
-	public bool isRavineTask = false; // wąwóz
-	public Text ravinePointer; // wąwóz
-	public bool isGoRavineTask = false;
-	public Image goRavineArrowPointer;
-	public bool isAbandonedSearchTask = false;
-	public Image abandonedPointer;
-	public bool isCassete4Task = false;
-	public bool isStevenSearchTask = false;
-	public Image stevenHousePointer;
-	public bool isStevenKeyTask = false;
-	public Image stevenKeyAreaPointer;
-	public Text stevenMeatPointer;
-	public bool isStevenMushroomTask = false;
-	public Text stevenMushroomPointer;
-	public bool isStevenPlantTask = false;
-	public Text stevenPlantPointer;
-	public bool isStevenSkullTask = false;
-	public Text stevenSkullPointer;
-	public bool isStevenAcidTask = false;
-	public bool isStevenShedTask = false;
-	public Text stevenShedPointer;
-	public bool isStevenNoteTask = false;
-	public bool isStevenBrookTask = false;
-	public Text stevenBrookPointer;
-	public bool isPaulSearchTask = false;
-	public Image PaulHousePointer;
-	public bool isPaulDoorTask = false;
-	public bool isHutTask = false;
-	public Text hutPointer;
-	public bool isDevilsBrookTask = false;
-	public Text devilsBrookPointer;
+    public bool isCornfieldTask = false;
+    public bool isAxeTask = false;
+    public bool isCorridorWardrobeTask = false;
+    public bool isEdwardCupboardTask = false;
+    public bool isCassete2Task = false;
+    public bool isGoToTrialTask = false;
+    public bool isGoTrailTask = false;
+    public bool isGetToTomRoadTask = false;
+    public bool isTomSearchTask = false;
+    public bool isTomCornifieldTask = false;
+    public bool isCassete3Task = false;
+    public bool isTompCampTask = false;
+    public bool isTomPumpkinTask = false;
+    public bool isTomChipTask = false;
+    public bool isRavineTask = false;
+    public bool isGoRavineTask = false;
+    public bool isAbandonedSearchTask = false;
+    public bool isCassete4Task = false;
+    public bool isStevenSearchTask = false;
+    public bool isStevenKeyTask = false;
+    public bool isStevenMushroomTask = false;
+    public bool isStevenPlantTask = false;
+    public bool isStevenSkullTask = false;
+    public bool isStevenAcidTask = false;
+    public bool isStevenShedTask = false;
+    public bool isStevenNoteTask = false;
+    public bool isStevenBrookTask = false;
+    public bool isPaulSearchTask = false;
+    public bool isPaulDoorTask = false;
+    public bool isHutTask = false;
+    public bool isDevilsBrookTask = false;
     public bool isDevilsShelterTask = false;
-    public Image KryjowkaDiablyObszar;
     public bool isShelterFamilyTask = false;
 
-    // Dodatkowe pointery
+    // boole dotyczace usuwania zadan
 
+    public bool isFirstTaskRemoved = false;
+    public bool isSearchTaskRemoved = false;
+    public bool isWoodKeyTaskRemoved = false;
+    public bool isMagicWellTaskRemoved = false;
+    public bool isWellStonesTaskRemoved = false;
+    public bool isCassete1TaskRemoved = false;
+    public bool isGardenDoorTaskRemoved = false;
+    public bool isBonesTaskRemoved = false;
+    public bool isGoToAliceTaskRemoved = false;
+    public bool isAliceSearchTaskRemoved = false;
+    public bool isSimonElementTaskRemoved = false;
+    public bool isBrokenKeyTaskRemoved = false;
+    public bool isFixKeyTaskRemoved = false;
+    public bool isWorkshopTaskRemoved = false;
+    public bool isAnimalCemetaryTaskRemoved = false;
+    public bool isVictorBrookTaskRemoved = false;
+    public bool isAliceRoomTaskRemoved = false;
+    public bool isCornfieldTaskRemoved = false;
+    public bool isAxeTaskRemoved = false;
+    public bool isCorridorWardrobeTaskRemoved = false;
+    public bool isEdwardCupboardTaskRemoved = false;
+    public bool isCassete2TaskRemoved = false;
+    public bool isGoToTrialTaskRemoved = false;
+    public bool isGoTrailTaskRemoved = false;
+    public bool isGetToTomRoadTaskRemoved = false;
+    public bool isTomSearchTaskRemoved = false;
+    public bool isTomCornifieldTaskRemoved = false;
+    public bool isCassete3TaskRemoved = false;
+    public bool isTompCampTaskRemoved = false;
+    public bool isTomPumpkinTaskRemoved = false;
+    public bool isTomChipTaskRemoved = false;
+    public bool isRavineTaskRemoved = false;
+    public bool isGoRavineTaskRemoved = false;
+    public bool isAbandonedSearchTaskRemoved = false;
+    public bool isCassete4TaskRemoved = false;
+    public bool isStevenSearchTaskRemoved = false;
+    public bool isStevenKeyTaskRemoved = false;
+    public bool isStevenMushroomTaskRemoved = false;
+    public bool isStevenPlantTaskRemoved = false;
+    public bool isStevenSkullTaskRemoved = false;
+    public bool isStevenAcidTaskRemoved = false;
+    public bool isStevenShedTaskRemoved = false;
+    public bool isStevenNoteTaskRemoved = false;
+    public bool isStevenBrookTaskRemoved = false;
+    public bool isPaulSearchTaskRemoved = false;
+    public bool isPaulDoorTaskRemoved = false;
+    public bool isHutTaskRemoved = false;
+    public bool isDevilsBrookTaskRemoved = false;
+    public bool isDevilsShelterTaskRemoved = false;
+    public bool isShelterFamilyTaskRemoved = false;
+
+    // zmienne potrzebne do rzeczy, przy wykonywaniu zadan
+    private Transform gardenCollider;
+    private Transform cornfieldCollider;
+    private Transform stableCollider;
+    private Transform corridorWardrobeCollider;
+    private Transform uncleRoomCollider;
+    private Transform kitchenWardrobeCollider;
+    private Transform secretRoomCollider;
+    private Transform planksCollider;
+    private Transform toolShedCollider;
+    private Transform nicheCollider;
+    private Transform aliceRoomCollider;
+    private Transform factoryMetalDoorCollider;
+    private Transform woodenWheelCollider;
+    private Transform factoryWoodenDoorCollider;
+    private Transform shedCupboardCollider;
+    private Transform tomRoomCollider;
+    private Transform tomUpstairsCollider;
+    private Transform oldWardrobeCollider;
+    private Transform stevenDoorCollider;
+    private Transform stevenGrille;
+    private Transform paulDoorCollider;
+    private Transform paulRoomDoorCollider;
+
+    private Transform aliceHouseCollider;
+    private Transform tomHouseCollider;
+    private Transform tomBooksCollider;
+    private Transform tomHallCollider;
+    private Transform abandonedCollider;
+    private Transform stevenHouseCollider;
+    private Transform paulHouseCollider;
+    private Transform paulBackCollider;
+    private Transform hutCollider;
+
+
+    private Ray playerAim;
+    private Camera playerCam;
+    public float rayLength = 4f;
+
+    // tasks UI
+    public TextMeshProUGUI[] tasksTextMesh;
+
+    // map UI
+    public Text woodenKeyPointer;
+    public Text magicWellPointer;
+    public Image stonesAreaPointer;
+    public Text gardenDoorPointer;
+    public Image bonesAreaPointer;
+    public Image aliceHousePointer;
+    public Text simonElementPointer;
+    public Text workshopPointer;
+    public Text brokenKeyPointer;
+    public Image animalCemetaryArrowPointer;
+    public Text animalCemetaryPointer;
+    public Image victorArrowPointer;
+    public Image victorArrowPointer2;
+    public Text cornfieldPointer;
+    public Text axePointer;
+    public Text corridorWardrobePointer;
+    public Text cassete2Pointer;
+    public Text goTrailPointer;
+    public Image trailArrowPointer;
+    public Text getToTomRoadPointer;
+    public Image tomHousePointer;
+    public Image cornfieldAreaPointer;
+    public Text tomCampPointer;
+    public Image pumpkinAreaPointer;
+    public Text ravinePointer;
+    public Image goRavineArrowPointer;
+    public Image abandonedPointer;
+    public Image stevenHousePointer;
+    public Image stevenKeyAreaPointer;
+    public Text stevenMeatPointer;
+    public Text stevenMushroomPointer;
+    public Text stevenPlantPointer;
+    public Text stevenSkullPointer;
+    public Text stevenShedPointer;
+    public Text stevenBrookPointer;
+    public Image PaulHousePointer;
+    public Text hutPointer;
+    public Text devilsBrookPointer;
+    public Image KryjowkaDiablyObszar;
     public Text EdwardCupboardPointer;
     public Text boneShedPointer;
     public Text boneStablePointer;
@@ -138,93 +229,7 @@ public class Tasks : MonoBehaviour {
     public Text keyToiletPointer;
     public Text secretRoomPointer;
 
-    // boole dotyczace usuwania zadan
-
-    public bool isFirstTaskRemoved = false;
-	public bool isSearchTaskRemoved = false;
-	public bool isWoodKeyTaskRemoved = false;
-	public bool isMagicWellTaskRemoved = false;
-	public bool isWellStonesTaskRemoved = false;
-	public bool isCassete1TaskRemoved = false;
-    public bool isGardenDoorTaskRemoved = false;
-    public bool isBonesTaskRemoved = false;
-	public bool isGoToAliceTaskRemoved = false;
-	public bool isAliceSearchTaskRemoved = false;
-	public bool isSimonElementTaskRemoved = false;
-	public bool isBrokenKeyTaskRemoved = false;
-	public bool isFixKeyTaskRemoved = false;
-    public bool isWorkshopTaskRemoved = false;
-	public bool isAnimalCemetaryTaskRemoved = false;
-	public bool isVictorBrookTaskRemoved = false;
-	public bool isAliceRoomTaskRemoved = false;
-	public bool isCornfieldTaskRemoved = false;
-	public bool isAxeTaskRemoved = false;
-	public bool isCorridorWardrobeTaskRemoved = false;
-	public bool isEdwardCupboardTaskRemoved = false;
-	public bool isCassete2TaskRemoved = false;
-	public bool isGoToTrialTaskRemoved = false;
-	public bool isGoTrailTaskRemoved = false;
-	public bool isGetToTomRoadTaskRemoved = false;
-	public bool isTomSearchTaskRemoved = false;
-	public bool isTomCornifieldTaskRemoved = false;
-	public bool isCassete3TaskRemoved = false;
-	public bool isTompCampTaskRemoved = false;
-	public bool isTomPumpkinTaskRemoved = false;
-	public bool isTomChipTaskRemoved = false;
-	public bool isRavineTaskRemoved = false;
-	public bool isGoRavineTaskRemoved = false;
-	public bool isAbandonedSearchTaskRemoved = false;
-	public bool isCassete4TaskRemoved = false;
-	public bool isStevenSearchTaskRemoved = false;
-	public bool isStevenKeyTaskRemoved = false;
-	public bool isStevenMushroomTaskRemoved = false;
-	public bool isStevenPlantTaskRemoved = false;
-	public bool isStevenSkullTaskRemoved = false;
-	public bool isStevenAcidTaskRemoved = false;
-	public bool isStevenShedTaskRemoved = false;
-	public bool isStevenNoteTaskRemoved = false;
-	public bool isStevenBrookTaskRemoved = false;
-	public bool isPaulSearchTaskRemoved = false;
-	public bool isPaulDoorTaskRemoved = false;
-	public bool isHutTaskRemoved = false;
-	public bool isDevilsBrookTaskRemoved = false;
-    public bool isDevilsShelterTaskRemoved = false;
-    public bool isShelterFamilyTaskRemoved = false;
-
-    // zmienne potrzebne do rzeczy, przy wykonywaniu zadan
-    private Transform gardenCollider;
-	private Transform cornfieldCollider;
-	private Transform stableCollider;
-	private Transform corridorWardrobeCollider;
-	private Transform uncleRoomCollider;
-	private Transform kitchenWardrobeCollider;
-	private Transform secretRoomCollider;
-	private Transform planksCollider;
-	private Transform toolShedCollider;
-	private Transform nicheCollider;
-	private Transform aliceRoomCollider;
-	private Transform factoryMetalDoorCollider;
-	private Transform woodenWheelCollider;
-	private Transform factoryWoodenDoorCollider;
-	private Transform shedCupboardCollider;
-	private Transform tomRoomCollider;
-	private Transform tomUpstairsCollider;
-	private Transform oldWardrobeCollider;
-	private Transform stevenDoorCollider;
-	private Transform stevenGrille;
-	private Transform paulDoorCollider;
-	private Transform paulRoomDoorCollider;
-
-	private Transform aliceHouseCollider;
-	private Transform tomHouseCollider;
-	private Transform tomBooksCollider;
-	private Transform tomHallCollider;
-	private Transform abandonedCollider;
-	private Transform stevenHouseCollider;
-	private Transform paulHouseCollider;
-	private Transform paulBackCollider;
-	private Transform hutCollider;
-
+   // task well
 	private Transform stone1;
 	private Transform stone2;
 	private Transform stone3;
@@ -450,11 +455,6 @@ public class Tasks : MonoBehaviour {
     private Door DrzwiDomPaulS;
     private Door DrzwiMonsterS;
     private Door DrzwiDomekS;
-
-
-    void Start () {
-
-    }
 		
 	void OnEnable(){
 
@@ -677,23 +677,17 @@ public class Tasks : MonoBehaviour {
 
 	void Update () {
 
-	/*	playerCam = Camera.main;
-		Ray playerAim = playerCam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-		RaycastHit hit; */
-
 
 		//--------------ZADANIA Z INTERACKJA------------------------
 
 
-		if (Input.GetMouseButtonDown (0) && inventoryScript.items.Count >= 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
-															// tu bylo count > 0
+		if (Input.GetMouseButtonDown (0) && inventoryScript.items.Count >= 0 && playerManagerScript.isPlayerCanInput == true) {
 
-			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 			RaycastHit hit;
 
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
-                //Debug.Log(hit.collider.gameObject.name);
+                
                 // Otwieranie drzwi do pokoju W
 
                 if (hit.collider.gameObject.name == "DrzwiPokojW") {
