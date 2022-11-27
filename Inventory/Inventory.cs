@@ -1496,32 +1496,18 @@ public class Inventory : MonoBehaviour {
     {
         itemAudioSource1.PlayOneShot(secretItemSound);
         secretItemsCount++;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isSecretItemNotification = true;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isVialNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+        notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.SecretItem;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
     }
 
 	public void AddGreenHerb(AudioClip greenHerbSound){
 		itemAudioSource2.PlayOneShot (collectHerbSound);
 		greenHerbsCount++;
-		notificationScript.secretItemsTime = 0;
-		notificationScript.isGreenHerbNotification = true;
-		notificationScript.isSecretItemNotification = false;
-		notificationScript.isBlueHerbNotification = false;
-        notificationScript.isVialNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+		notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.GreenHerb;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger ("PickUp");
 		greenHerbsText.text = greenHerbsCount + "";
 	}
@@ -1530,16 +1516,9 @@ public class Inventory : MonoBehaviour {
     {
 		itemAudioSource2.PlayOneShot (collectHerbSound);
 		blueHerbsCount++;
-		notificationScript.secretItemsTime = 0;
-		notificationScript.isBlueHerbNotification = true;
-		notificationScript.isSecretItemNotification = false;
-		notificationScript.isGreenHerbNotification = false;
-        notificationScript.isVialNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+		notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.BlueHerb;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger ("PickUp");
 		blueHerbsText.text = blueHerbsCount + "";
 	}
@@ -1548,16 +1527,9 @@ public class Inventory : MonoBehaviour {
 
         itemAudioSource2.PlayOneShot(collectVialSound);
         vialsCount++;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = true;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+        notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.Vial;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
         vialsCountText.text = vialsCount + "";
     }
@@ -1567,16 +1539,8 @@ public class Inventory : MonoBehaviour {
 
         itemAudioSource2.PlayOneShot(collectVialSound);
         staminaPotsCount++;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = true;
-        notificationScript.isHealthPotNotification = false;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.StaminaPot;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
         staminaPotsText.text = staminaPotsCount + "";
     }
@@ -1586,16 +1550,9 @@ public class Inventory : MonoBehaviour {
 
         itemAudioSource2.PlayOneShot(collectVialSound);
         healthPotsCount++;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = true;
+        notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.HealthPot;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
         healthPotsText.text = healthPotsCount + "";
     }
@@ -1605,16 +1562,9 @@ public class Inventory : MonoBehaviour {
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = true;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+        notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.Badge;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
         badgeTexture.sprite = badgeOKSprite;
         badgesCount++;
@@ -1625,16 +1575,9 @@ public class Inventory : MonoBehaviour {
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = true;
-        notificationScript.isTipNotification = false;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+        notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.Photo;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
         photoTexture.sprite = photoOKSprite;
         photosCount++;
@@ -1645,16 +1588,9 @@ public class Inventory : MonoBehaviour {
         itemAudioSource3.pitch = Random.Range(0.8f, 1.5f);
         itemAudioSource3.PlayOneShot(collectItemSound);
         itemAudioSource3.pitch = 1;
-        notificationScript.secretItemsTime = 0;
-        notificationScript.isVialNotification = false;
-        notificationScript.isSecretItemNotification = false;
-        notificationScript.isGreenHerbNotification = false;
-        notificationScript.isBlueHerbNotification = false;
-        notificationScript.isBadgeNotification = false;
-        notificationScript.isPhotoNotification = false;
-        notificationScript.isTipNotification = true;
-        notificationScript.isStaminaPotNotification = false;
-        notificationScript.isHealthPotNotification = false;
+        notificationScript.collectibleTime = 0;
+        notificationScript.collectibleNotificationType = Notifications.CollectibleNotificationType.Tip;
+        notificationScript.StartCoroutine(notificationScript.CollectibleNotificationIE());
         animator.SetTrigger("PickUp");
         tipTexture.sprite = tipOKSprite;
         tipsCount++;

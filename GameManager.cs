@@ -5008,7 +5008,7 @@ public class GameManager : MonoBehaviour {
         // komunikaty
 
 		Kom.notificationTime = 3f;
-		Kom.secretItemsTime = 3f;
+		Kom.collectibleTime = 3f;
 		Kom.secretPlacesTime = 3f;
         Kom.taskHintTime = 5f;
 		Kom.isNotificationTimeOn = false;
@@ -5026,7 +5026,7 @@ public class GameManager : MonoBehaviour {
         Kom.mainNotificationTextMesh.text = "";
         Kom.infoNotificationTextMesh.text = "";
         Kom.doorNotificationTextMesh.text = "";
-        Kom.secretItemsNotificationTextMesh.text = "";
+        Kom.collectibleNotificationTextMesh.text = "";
         Kom.secretPlacesNotificationTextMesh.text = "";
         Kom.taskHintTextMesh.text = "";
         Kom.taskHintBackground.enabled = false;

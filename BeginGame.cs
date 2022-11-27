@@ -746,7 +746,7 @@ public class BeginGame : MonoBehaviour {
         // komunikaty
 
         Kom.notificationTime = 3f;
-        Kom.secretItemsTime = 3f;
+        Kom.collectibleTime = 3f;
         Kom.secretPlacesTime = 3f;
         Kom.taskHintTime = 5f;
         Kom.isNotificationTimeOn = false;
