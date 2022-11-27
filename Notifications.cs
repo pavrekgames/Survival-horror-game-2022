@@ -154,24 +154,24 @@ public class Notifications : MonoBehaviour {
 
     // komunikaty nad drzwiami
 
-    public string uncleDoorMessage = "Uncle's room";
-    public string stableDoorMessage = "Stable";
-    public string gardenDoorMessage = "A metal door to the garden";
-    public string cornfieldDoorMessage = "Door to the corn field";
-    public string corridorWardrobeMessage = "Wardrobe in corridor";
-    public string kitchenWardrobeMessage = "Wardrobe in the kitchen";
-    public string toolShedDoorMessage = "Shed";
-    public string secretRoomDoorMessage = "Secret room";
-    public string nicheDoorMessage = "Wooden door";
-    public string aliceRoomDoorMessage = "Alice's living room";
-    public string factoryWoodenDoorMessage = "Victor's workshop";
-    public string shedCupboardMessage = "Edward's cupboard";
-    public string tomRoomDoorMessage = "Tom's room";
-    public string tomUpstairsDoorMessage = "Tom's office";
-    public string oldWardrobeMessage = "Old wardrobe";
-    public string stevenDoorMessage = "Steven's room";
-    public string paulDoorMessage = "Scientist's room";
-    public string paulJumpscareDoorMessage = "Scientist's office";
+    public string uncleDoorName = "Uncle's room";
+    public string stableDoorName = "Stable";
+    public string gardenDoorName = "A metal door to the garden";
+    public string cornfieldDoorName = "Door to the corn field";
+    public string corridorWardrobeName = "Wardrobe in corridor";
+    public string kitchenWardrobeName = "Wardrobe in the kitchen";
+    public string toolShedDoorName = "Shed";
+    public string secretRoomDoorName = "Secret room";
+    public string nicheDoorName = "Wooden door";
+    public string aliceRoomDoorName = "Alice's living room";
+    public string factoryWoodenDoorName = "Victor's workshop";
+    public string shedCupboardName = "Edward's cupboard";
+    public string tomRoomDoorName = "Tom's room";
+    public string tomUpstairsDoorName = "Tom's office";
+    public string oldWardrobeName = "Old wardrobe";
+    public string stevenDoorName = "Steven's room";
+    public string paulDoorName = "Scientist's room";
+    public string paulJumpscareDoorName = "Scientist's office";
 
     // komunikat dodania nowego zadania
 
@@ -243,15 +243,6 @@ public class Notifications : MonoBehaviour {
 
 	void Update () {
 
-		if (isNotificationTimeOn == true && notificationTime <= 3) {
-			notificationTime += 1 * Time.deltaTime;
-		} else if (notificationTime > 3) {
-			infoNotificationTextMesh.text = "";
-            doorNotificationTextMesh.text = "";
-			isNotificationTimeOn = false;
-		}
-
-
 		HideMainNotification ();
 		NotificationTime ();
 
@@ -311,65 +302,44 @@ public class Notifications : MonoBehaviour {
 
 				// Komunikat do drzwi w ogrodzie
 
-				if (hit.collider.gameObject.name == "DrzwiOgrod" && tasksScript.isGardenDoorLocked == true && isGardenDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatDrzwiOgrod ();
-                    doorNotificationTextMesh.text = gardenDoorMessage;
+				if (hit.collider.gameObject.name == "DrzwiOgrod" && tasksScript.isGardenDoorLocked == true && isGardenDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
 				}
 
 			// Komunikat do drzwi na polu kukurydzy
 
-			else if (hit.collider.gameObject.name == "DrzwiKukurydza" && tasksScript.isCornfieldDoorLocked == true && isCornfieldDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatDrzwikukurydza ();
-                    doorNotificationTextMesh.text = cornfieldDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiKukurydza" && tasksScript.isCornfieldDoorLocked == true && isCornfieldDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 				
 			// Komunikat do drzwi stajni
 
-			else if (hit.collider.gameObject.name == "DrzwiStajnia" && tasksScript.isStableDoorLocked == true && isStableDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = stableDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiStajnia" && tasksScript.isStableDoorLocked == true && isStableDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do szafki w korytarzu
 
-			else if (hit.collider.gameObject.name == "SzafaKorytarz" && tasksScript.isCorridorWardrobeLocked == true && isCorridorWardrobe == false) {  
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatSzafa ();
-                    doorNotificationTextMesh.text = corridorWardrobeMessage;
+			else if (hit.collider.gameObject.name == "SzafaKorytarz" && tasksScript.isCorridorWardrobeLocked == true && isCorridorWardrobe == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do drzwi do pokoju W
 
-			else if (hit.collider.gameObject.name == "DrzwiPokojW" && tasksScript.isUncleDoorLocked == true && isUncleDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = uncleDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiPokojW" && tasksScript.isUncleDoorLocked == true && isUncleDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do szafki w kuchni
 
-			else if (hit.collider.gameObject.name == "SzafaKuchnia" && tasksScript.isKitchenWardrobeLocked == true && isKitchenWardrobe == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatSzafa ();
-                    doorNotificationTextMesh.text = kitchenWardrobeMessage;
+			else if (hit.collider.gameObject.name == "SzafaKuchnia" && tasksScript.isKitchenWardrobeLocked == true && isKitchenWardrobe == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do drzwi od kampingu
 
-			else if (hit.collider.gameObject.name == "DrzwiKamping" && tasksScript.isSecretRoomDoorLocked == true && isSecretRoomDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = secretRoomDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiKamping" && tasksScript.isSecretRoomDoorLocked == true && isSecretRoomDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do zabitych desek przy szopie
@@ -382,20 +352,14 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi do szopy z narzedziami w 1 lokacji
 
-			else if (hit.collider.gameObject.name == "DrzwiSzopaNarzedzia" && tasksScript.isToolShedDoorLocked == true && isToolShedDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = toolShedDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiSzopaNarzedzia" && tasksScript.isToolShedDoorLocked == true && isToolShedDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do drzwi wneki
 
-			else if (hit.collider.gameObject.name == "DrzwiWneka" && tasksScript.isNicheDoorLocked == true && isNicheDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = nicheDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiWneka" && tasksScript.isNicheDoorLocked == true && isNicheDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do odtwarzacza bez kasety
@@ -416,20 +380,15 @@ public class Notifications : MonoBehaviour {
 
 				// Komunikat do drzwi do salonu na poludniu
 
-				if (hit.collider.gameObject.name == "DrzwiSalonPoludnie" && tasksScript.isAliceRoomDoorLocked == true && isAliceRoomDoor == false) {  
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = aliceRoomDoorMessage;
+				if (hit.collider.gameObject.name == "DrzwiSalonPoludnie" && tasksScript.isAliceRoomDoorLocked == true && isAliceRoomDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 				
 			// Komunikat do metalowych drzwi w fabryce 
 
-			else if (hit.collider.gameObject.name == "DrzwiFabrykaMetal" && tasksScript.isFactoryMetalDoorLocked == true && isFactoryMetalDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwiFabrykaMetal ();
-				}
+			else if (hit.collider.gameObject.name == "DrzwiFabrykaMetal" && tasksScript.isFactoryMetalDoorLocked == true && isFactoryMetalDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
+                }
 
 			// Komunikat do urzadzenia Victora bez klucza
 
@@ -449,38 +408,26 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drewnianych drzwi fabryki 
 
-			else if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno" && tasksScript.isFactoryWoodenDoorLocked == true && isFactoryWoodenDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = factoryWoodenDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno" && tasksScript.isFactoryWoodenDoorLocked == true && isFactoryWoodenDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do szafki w szopie
 
-			else if (hit.collider.gameObject.name == "SzafkaSzopa" && tasksScript.isShedCupboardLocked == true && isShedCupboard == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					infoNotificationTextMesh.text = edwardKeyMessage;
-                    doorNotificationTextMesh.text = shedCupboardMessage;
+			else if (hit.collider.gameObject.name == "SzafkaSzopa" && tasksScript.isShedCupboardLocked == true && isShedCupboard == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do drzwi do pokoju Toma 
 
-			else if (hit.collider.gameObject.name == "DrzwiPokojTom" && tasksScript.isTomRoomDoorLocked == true && isTomRoomDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = tomRoomDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiPokojTom" && tasksScript.isTomRoomDoorLocked == true && isTomRoomDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do drzwi do pokoju u Toma na gorze 
 
-			else if (hit.collider.gameObject.name == "DrzwiTomGora" && tasksScript.isTomUpstairsDoorLocked == true && isTomUpstairsDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = tomUpstairsDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiTomGora" && tasksScript.isTomUpstairsDoorLocked == true && isTomUpstairsDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do palu bez dyni
@@ -510,11 +457,8 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do szafki w opuszczonym domu
 
-			else if (hit.collider.gameObject.name == "SzafaStaryDom" && tasksScript.isOldWardrobeLocked == true && isOldWardrobe == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatSzafa ();
-                    doorNotificationTextMesh.text = oldWardrobeMessage;
+			else if (hit.collider.gameObject.name == "SzafaStaryDom" && tasksScript.isOldWardrobeLocked == true && isOldWardrobe == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do odtwarzacza 3
@@ -527,11 +471,8 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi w domu Stevena
 
-			else if (hit.collider.gameObject.name == "DrzwiSteven" && tasksScript.isStevenDoorLocked == true && isStevenDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = stevenDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiSteven" && tasksScript.isStevenDoorLocked == true && isStevenDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
 			// Komunikat do kart szopy Stevena
@@ -544,20 +485,14 @@ public class Notifications : MonoBehaviour {
 
 			// Komunikat do drzwi w domu lokatora za potokiem na zachodzie
 
-			else if (hit.collider.gameObject.name == "DrzwiZachod" && tasksScript.isPaulDoorLocked == true && isPaulDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = paulDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiZachod" && tasksScript.isPaulDoorLocked == true && isPaulDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 } 
 
 			// Komunikat do drzwi jumpscare na zachodzie
 
-			else if (hit.collider.gameObject.name == "DrzwiOtworzJmp" && screamerScript.isOpenDoor == false && isPaulJumpscareDoor == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDrzwi ();
-                    doorNotificationTextMesh.text = paulJumpscareDoorMessage;
+			else if (hit.collider.gameObject.name == "DrzwiOtworzJmp" && screamerScript.isOpenDoor == false && isPaulJumpscareDoor == false) {
+                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
                 }
 
             // Komunikat do cierni
@@ -682,7 +617,18 @@ public class Notifications : MonoBehaviour {
 
 	void NotificationTime(){
 
-		if (secretItemsTime < 3) {
+        if (isNotificationTimeOn == true && notificationTime <= 3)
+        {
+            notificationTime += 1 * Time.deltaTime;
+        }
+        else if (notificationTime > 3)
+        {
+            infoNotificationTextMesh.text = "";
+            doorNotificationTextMesh.text = "";
+            isNotificationTimeOn = false;
+        }
+
+        if (secretItemsTime < 3) {
 			
 			secretItemsTime += 1 * Time.deltaTime;
 			//CanvasKomunikaty.enabled = true;
@@ -752,49 +698,32 @@ public class Notifications : MonoBehaviour {
     public void ShowInfoNotification(string notificationText)
     {
         infoNotificationTextMesh.text = notificationText;
+        notificationTime = 0;
+        isNotificationTimeOn = true;
     }
 
     public void ShowInfoNotification(string notificationText, AudioClip notificationSound)
     {
         infoNotificationTextMesh.text = notificationText;
         audioSource.PlayOneShot(notificationSound);
+        notificationTime = 0;
+        isNotificationTimeOn = true;
     }
 
-	void KomunikatDrzwi(){
-	
-		infoNotificationTextMesh.text = lockedDoorMessage;
-		audioSource.PlayOneShot (doorLockedSound);
-	}
-		
-
-	void KomunikatSzafa(){
-		
-		infoNotificationTextMesh.text = lockedWardrobeMessage;
-		audioSource.PlayOneShot (doorLockedSound);
-	}
+    public void ShowDoorNameNotification(string notificationText, string doorName, AudioClip notificationSound)
+    {
+        infoNotificationTextMesh.text = notificationText;
+        audioSource.PlayOneShot(notificationSound);
+        notificationTime = 0;
+        isNotificationTimeOn = true;
+        doorNotificationTextMesh.text = doorName;
+    }
 
     void KomunikatCiernie()
     {
 		
         infoNotificationTextMesh.text = thornsMessage;
     }
-
-
-    void KomunikatDrzwiOgrod(){
-		
-		infoNotificationTextMesh.text = gardenDoorMessage;
-	}
-
-	void KomunikatDrzwiFabrykaMetal(){
-		
-		infoNotificationTextMesh.text = lockedFactoryDoorMessage;
-	}
-
-	void KomunikatDrzwikukurydza(){
-		
-		infoNotificationTextMesh.text = cornfieldDoorMessage;
-	}
-
 
 	void KomunikatDeskiSzopa(){
 		
