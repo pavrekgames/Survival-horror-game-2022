@@ -2088,7 +2088,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
 	}
 
@@ -2114,7 +2114,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2136,7 +2136,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2179,7 +2179,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2198,7 +2198,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2222,7 +2222,7 @@ public class Tasks : MonoBehaviour {
             }
         }
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2243,7 +2243,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2282,7 +2282,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2315,7 +2315,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2337,7 +2337,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2361,7 +2361,7 @@ public class Tasks : MonoBehaviour {
             }
         }
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2384,7 +2384,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2419,7 +2419,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2442,7 +2442,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2481,7 +2481,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2501,7 +2501,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2539,7 +2539,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2576,7 +2576,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2613,7 +2613,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2633,7 +2633,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2675,7 +2675,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2712,7 +2712,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2748,7 +2748,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2784,7 +2784,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2829,7 +2829,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2851,7 +2851,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2885,7 +2885,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2908,7 +2908,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2944,7 +2944,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -2965,7 +2965,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3002,7 +3002,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3039,7 +3039,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3077,7 +3077,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3097,7 +3097,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3136,7 +3136,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3164,7 +3164,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3192,7 +3192,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3211,7 +3211,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3230,7 +3230,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3255,7 +3255,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3293,7 +3293,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3314,7 +3314,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3354,7 +3354,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3397,7 +3397,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3416,7 +3416,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3457,7 +3457,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3499,7 +3499,7 @@ public class Tasks : MonoBehaviour {
 			}
 		}
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3537,7 +3537,7 @@ public class Tasks : MonoBehaviour {
             }
         }
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 
@@ -3571,7 +3571,7 @@ public class Tasks : MonoBehaviour {
             }
         }
 
-        notificationScript.KomunikatZadanieWskazowka();
+        notificationScript.TaskHintNotification();
 
     }
 

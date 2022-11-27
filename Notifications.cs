@@ -29,7 +29,7 @@ public class Notifications : MonoBehaviour {
 	public TextMeshProUGUI taskNotificationTextMesh;
     public TextMeshProUGUI doorNotificationTextMesh;
     public TextMeshProUGUI saveGameNotificationTextMesh;
-	public TextMeshProUGUI secretItemsNotificationTextMesh;
+	public TextMeshProUGUI collectibleNotificationTextMesh;
 	public TextMeshProUGUI secretPlacesNotificationTextMesh;
     public Canvas herbsNotificationCanvas;
     public Canvas saveGameNotificationCanvas;
@@ -37,7 +37,7 @@ public class Notifications : MonoBehaviour {
     public Canvas secretNotificationCanvas;
     public Canvas itemsNotificationCanvas;
     public Canvas inventoryNotificationCanvas;
-    public float secretItemsTime = 3f;
+    public float collectibleTime = 3f;
 	public float secretPlacesTime = 3f;
 	public float notificationTime = 3f;
 	public bool isNotificationTimeOn = false;
@@ -179,7 +179,7 @@ public class Notifications : MonoBehaviour {
     public Image taskHintBackground;
     public float taskHintTime = 5f;
 
-    public enum NotificationType
+    public enum CollectibleNotificationType
     {
         None, 
         SecretItem,
@@ -194,7 +194,7 @@ public class Notifications : MonoBehaviour {
         Tutorial
 }
 
-    public NotificationType notificationType;
+    public CollectibleNotificationType collectibleNotificationType;
 
     void OnEnable () {
 
@@ -220,7 +220,7 @@ public class Notifications : MonoBehaviour {
 		taskNotificationTextMesh = GameObject.Find ("ZadanieKomunikat").GetComponent<TextMeshProUGUI> ();
         doorNotificationTextMesh = GameObject.Find("DrzwiInfoKomunikat").GetComponent<TextMeshProUGUI>();
         saveGameNotificationTextMesh = GameObject.Find ("ZapisKomunikat").GetComponent<TextMeshProUGUI> ();
-		secretItemsNotificationTextMesh = GameObject.Find ("SecretItemKomunikat").GetComponent<TextMeshProUGUI> ();
+		collectibleNotificationTextMesh = GameObject.Find ("SecretItemKomunikat").GetComponent<TextMeshProUGUI> ();
 		secretPlacesNotificationTextMesh = GameObject.Find ("SecretPlaceKomunikat").GetComponent<TextMeshProUGUI> ();
 
 		audioSource = GameObject.Find("ZrodloPrzedmiot3_s").GetComponent<AudioSource>();
@@ -244,296 +244,23 @@ public class Notifications : MonoBehaviour {
 	void Update () {
 
 		HideMainNotification ();
-		NotificationTime ();
-
-		//Debug.Log(DystansOdtwarzacz);
-		 
-		// Komunikat przy studni w lesie na zachod od domu
-
-		if (taskWellScript.enabled == true) {
-
-			//playerCam = Camera.main;
-			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
-			RaycastHit hit; 
-
-			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
-
-				//Debug.Log(hit.collider.gameObject.name);
-
-				if (hit.collider.gameObject.name == "BlokadaStudniaKamienie" && taskWellScript.stonesCount < 5) {  //  && DystansStudnia <= 5
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					//CanvasKomunikaty.enabled = true;
-					infoNotificationTextMesh.text = keyInsideMessage;
-				}
-			}
-		}
-
-		// Komunikat do ksiazek
-
-		if (taskBooksScript.enabled == true) {
-
-			float DystansBibliotekaKsiazki = Vector3.Distance (player.position, bookShelf.position);
-
-			//playerCam = Camera.main;
-			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
-			RaycastHit hit; 
-
-			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
-
-				if (hit.collider.gameObject.tag == "Hand" && DystansBibliotekaKsiazki < 11 && taskBooksScript.isBookTaken == true) {
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					//CanvasKomunikaty.enabled = true;
-					infoNotificationTextMesh.text = booksMessage;
-				}
-			}
-		}
-
-		// glowne komunikaty
 
 		if (Input.GetMouseButtonDown (0) && playerManagerScript.isPlayerCanInput == true) {
 
-			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
 			RaycastHit hit; 
 
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
 
-				// Komunikat do drzwi w ogrodzie
+				if (hit.collider.gameObject.tag == "Door" || hit.collider.gameObject.tag == "Hand") {
 
-				if (hit.collider.gameObject.name == "DrzwiOgrod" && tasksScript.isGardenDoorLocked == true && isGardenDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
+                    if (hit.transform.gameObject.GetComponent<RaycastNotification>())
+                    {
+                        hit.transform.gameObject.GetComponent<RaycastNotification>().SendNotification();
+                    }
 				}
-
-			// Komunikat do drzwi na polu kukurydzy
-
-			else if (hit.collider.gameObject.name == "DrzwiKukurydza" && tasksScript.isCornfieldDoorLocked == true && isCornfieldDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-				
-			// Komunikat do drzwi stajni
-
-			else if (hit.collider.gameObject.name == "DrzwiStajnia" && tasksScript.isStableDoorLocked == true && isStableDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do szafki w korytarzu
-
-			else if (hit.collider.gameObject.name == "SzafaKorytarz" && tasksScript.isCorridorWardrobeLocked == true && isCorridorWardrobe == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do drzwi do pokoju W
-
-			else if (hit.collider.gameObject.name == "DrzwiPokojW" && tasksScript.isUncleDoorLocked == true && isUncleDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do szafki w kuchni
-
-			else if (hit.collider.gameObject.name == "SzafaKuchnia" && tasksScript.isKitchenWardrobeLocked == true && isKitchenWardrobe == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do drzwi od kampingu
-
-			else if (hit.collider.gameObject.name == "DrzwiKamping" && tasksScript.isSecretRoomDoorLocked == true && isSecretRoomDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do zabitych desek przy szopie
-
-			else if (hit.collider.gameObject.name == "DeskiSzopa" && tasksScript.isPlanksLocked == true && isPlanks == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatDeskiSzopa ();
-				}
-
-			// Komunikat do drzwi do szopy z narzedziami w 1 lokacji
-
-			else if (hit.collider.gameObject.name == "DrzwiSzopaNarzedzia" && tasksScript.isToolShedDoorLocked == true && isToolShedDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do drzwi wneki
-
-			else if (hit.collider.gameObject.name == "DrzwiWneka" && tasksScript.isNicheDoorLocked == true && isNicheDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do odtwarzacza bez kasety
-
-			else if (hit.collider.gameObject.name == "Odtwarzacz" && tasksScript.isCasseteInserted == false && tasksScript.isBatteriesPut == false)
-                { // DystansOdtwarzacz <= 11 && // 
-                    notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatKaseta ();
-				}
-
-            else if (hit.collider.gameObject.name == "Odtwarzacz" && tasksScript.isCasseteInserted == true && tasksScript.isBatteriesPut == false)
-                { 
-                    audioSource.clip = lackPowerSound;
-                    audioSource.Play();
-					isBatteriesNotification = true;
-				}
-
-				// Komunikat do drzwi do salonu na poludniu
-
-				if (hit.collider.gameObject.name == "DrzwiSalonPoludnie" && tasksScript.isAliceRoomDoorLocked == true && isAliceRoomDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-				
-			// Komunikat do metalowych drzwi w fabryce 
-
-			else if (hit.collider.gameObject.name == "DrzwiFabrykaMetal" && tasksScript.isFactoryMetalDoorLocked == true && isFactoryMetalDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do urzadzenia Victora bez klucza
-
-			else if ((hit.collider.gameObject.name == "UrzadzenieVictora" || hit.collider.gameObject.name == "BrakujaceDrewnianeKolo") && tasksScript.isBrokenKey == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					infoNotificationTextMesh.text = keyToFixMessage;
-				}
-
-			// Komunikat do urzadzenia Victora bez klucza
-
-			else if (hit.collider.gameObject.name == "UrzadzenieVictora" && tasksScript.isBrokenKey == true && tasksScript.isWheel == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					infoNotificationTextMesh.text = woodenWheelMessage;
-				}
-
-			// Komunikat do drewnianych drzwi fabryki 
-
-			else if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno" && tasksScript.isFactoryWoodenDoorLocked == true && isFactoryWoodenDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do szafki w szopie
-
-			else if (hit.collider.gameObject.name == "SzafkaSzopa" && tasksScript.isShedCupboardLocked == true && isShedCupboard == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do drzwi do pokoju Toma 
-
-			else if (hit.collider.gameObject.name == "DrzwiPokojTom" && tasksScript.isTomRoomDoorLocked == true && isTomRoomDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do drzwi do pokoju u Toma na gorze 
-
-			else if (hit.collider.gameObject.name == "DrzwiTomGora" && tasksScript.isTomUpstairsDoorLocked == true && isTomUpstairsDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do palu bez dyni
-
-			else if (hit.collider.gameObject.name == "PalDynia" && tasksScript.isPumpkin == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					infoNotificationTextMesh.text = pumpkinMessage;
-				}
-					
-			// Komunikat do odtwarzacza 2 bez kasety
-
-			else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == false && tasksScript.isChipPut == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					infoNotificationTextMesh.text = insertCasseteMessage;
-				}
-
-				else if (hit.collider.gameObject.name == "Odtwarzacz2" && tasksScript.isCassete3Inserted == true && tasksScript.isChipPut == false) { 
-					//ZrodloDzwieku.PlayOneShot (DzwBrakChipu);
-                    audioSource4.clip = lackChipSound;
-                    audioSource4.Play();
-					isChipNotification = true;
-					//Tasks.BrakChip_ok = true;
-				}
-				
-
-			// Komunikat do szafki w opuszczonym domu
-
-			else if (hit.collider.gameObject.name == "SzafaStaryDom" && tasksScript.isOldWardrobeLocked == true && isOldWardrobe == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do odtwarzacza 3
-
-			else if (hit.collider.gameObject.name == "Odtwarzacz3" && tasksScript.isCassete4Inserted == false) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					infoNotificationTextMesh.text = insertCasseteMessage;
-				}
-
-			// Komunikat do drzwi w domu Stevena
-
-			else if (hit.collider.gameObject.name == "DrzwiSteven" && tasksScript.isStevenDoorLocked == true && isStevenDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-			// Komunikat do kart szopy Stevena
-
-			else if (hit.collider.gameObject.name == "KratySteven" && tasksScript.isStevenGrille == true) { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;	
-					KomunikatKratySteven ();
-				}
-
-			// Komunikat do drzwi w domu lokatora za potokiem na zachodzie
-
-			else if (hit.collider.gameObject.name == "DrzwiZachod" && tasksScript.isPaulDoorLocked == true && isPaulDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                } 
-
-			// Komunikat do drzwi jumpscare na zachodzie
-
-			else if (hit.collider.gameObject.name == "DrzwiOtworzJmp" && screamerScript.isOpenDoor == false && isPaulJumpscareDoor == false) {
-                    ShowDoorNameNotification(lockedGardenDoorMessage, gardenDoorName, metalDoorLockedSound);
-                }
-
-            // Komunikat do cierni
-
-			else if (hit.collider.gameObject.name == "CiernieKryjowka2_c") { 
-					notificationTime = 0;
-					isNotificationTimeOn = true;
-					KomunikatCiernie ();
-				}
-
-			} // Klamra do Raycast 
-				
-			
-		else if (tasksScript.isBatteriesPut == true) { 
-				isBatteriesNotification = false;
-			}
-
-		} // klamra do przycisku
-
-		// kaseta 1 i bateria
-
-		if (audioSource.isPlaying == false && isBatteriesNotification == true && playerManagerScript.isPlayerCanInput == true) { 
-			isBatteriesNotification = false;
-			notificationTime = 0;
-			isNotificationTimeOn = true;
-			KomunikatEnergia();
-		}
-
-		// kaseta 3 i chip
-
-		if (audioSource.isPlaying == false && isChipNotification == true && playerManagerScript.isPlayerCanInput == true) { 
-			notificationTime = 0;
-			isNotificationTimeOn = true;	
-			//CanvasKomunikaty.enabled = true;
-			infoNotificationTextMesh.text = lackChipMessage;
-
-			if (tasksScript.isTomChipTask == true) {
-				isChipNotification = false;
-			}
-
-		}
+			} 
+		} 
 
         // Zatrzymanie odtwarzania dzwiekow oraz wylaczanie canvasa komunikatow
 
@@ -562,13 +289,11 @@ public class Notifications : MonoBehaviour {
             isPlaySound = false;
         }
 
-} // klamra do update
-
+} 
 
 	void HideMainNotification(){
 
 		if(isLightNotification == false){
-			//CanvasKomunikaty.enabled = true;
 			mainNotificationTextMesh.text = flashlightHint;
 		}
 
@@ -615,84 +340,81 @@ public class Notifications : MonoBehaviour {
         }
 	}
 
-	void NotificationTime(){
-
-        if (isNotificationTimeOn == true && notificationTime <= 3)
-        {
-            notificationTime += 1 * Time.deltaTime;
-        }
-        else if (notificationTime > 3)
-        {
-            infoNotificationTextMesh.text = "";
-            doorNotificationTextMesh.text = "";
-            isNotificationTimeOn = false;
-        }
-
-        if (secretItemsTime < 3) {
-			
-			secretItemsTime += 1 * Time.deltaTime;
-			//CanvasKomunikaty.enabled = true;
-
-			if (notificationType == NotificationType.SecretItem) {
-				secretItemsNotificationTextMesh.text = secretItemNotification;
-
-			} else if (notificationType == NotificationType.GreenHerb) {
-				secretItemsNotificationTextMesh.text = greenHerbNotification;
-
-			} else if (notificationType == NotificationType.BlueHerb) {
-				secretItemsNotificationTextMesh.text = blueHerbNotification;
-
-			} else if (notificationType == NotificationType.Vial) {
-				secretItemsNotificationTextMesh.text = vialNotification;
-
-			} else if (notificationType == NotificationType.Badge) {
-				secretItemsNotificationTextMesh.text = badgeNotification;
-
-			} else if (notificationType == NotificationType.Photo) {
-				secretItemsNotificationTextMesh.text = photoNotification;
-
-			} else if (notificationType == NotificationType.Tip) {
-				secretItemsNotificationTextMesh.text = tipNotification;
-			}
-            else if (notificationType == NotificationType.StaminaPot)
-            {
-                secretItemsNotificationTextMesh.text = staminaPotNotification;
-            }
-            else if (notificationType == NotificationType.HealthPot)
-            {
-                secretItemsNotificationTextMesh.text = healthPotNotification;
-            }
-
-
-        } else {
-			isSecretItemNotification = false;
-			isGreenHerbNotification = false;
-			isBlueHerbNotification = false;
-			secretItemsNotificationTextMesh.text = "";
-		}
-
-		if (secretPlacesTime < 3) {
-			secretPlacesTime += 1 * Time.deltaTime;
-		} else {
-			secretPlacesNotificationTextMesh.text = "";
-		}
-
-        if (taskHintTime < 5)
-        {
-            taskHintTime += 1 * Time.deltaTime;
-        }
-        else
-        {
-            taskHintTextMesh.text = "";
-            taskHintBackground.enabled = false;
-        }
+    IEnumerator NotificationTimeIE()
+    {
+        yield return new WaitForSeconds(3);
+        infoNotificationTextMesh.text = "";
+        doorNotificationTextMesh.text = "";
+        isNotificationTimeOn = false;
+        StopCoroutine("NotificationTimeIE");
     }
 
-    public void KomunikatZadanieWskazowka()
+   public IEnumerator CollectibleNotificationIE()
+    {
+        if (collectibleNotificationType == CollectibleNotificationType.SecretItem)
+        {
+            collectibleNotificationTextMesh.text = secretItemNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.GreenHerb)
+        {
+            collectibleNotificationTextMesh.text = greenHerbNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.BlueHerb)
+        {
+            collectibleNotificationTextMesh.text = blueHerbNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.Vial)
+        {
+            collectibleNotificationTextMesh.text = vialNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.Badge)
+        {
+            collectibleNotificationTextMesh.text = badgeNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.Photo)
+        {
+            collectibleNotificationTextMesh.text = photoNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.Tip)
+        {
+            collectibleNotificationTextMesh.text = tipNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.StaminaPot)
+        {
+            collectibleNotificationTextMesh.text = staminaPotNotification;
+        }
+        else if (collectibleNotificationType == CollectibleNotificationType.HealthPot)
+        {
+            collectibleNotificationTextMesh.text = healthPotNotification;
+        }
+
+        yield return new WaitForSeconds(3);
+        collectibleNotificationType = CollectibleNotificationType.None;
+        collectibleNotificationTextMesh.text = "";
+        StopCoroutine("CollectibleNotificationIE");
+    }
+
+    IEnumerator SecretPlaceNotificationIE()
+    {
+        yield return new WaitForSeconds(3);
+        secretPlacesNotificationTextMesh.text = "";
+        StopCoroutine("SecretPlaceNotificationIE");
+    }
+
+    IEnumerator TaskHintTimeIE()
+    {
+        yield return new WaitForSeconds(5);
+        taskHintTextMesh.text = "";
+        taskHintBackground.enabled = false;
+        StopCoroutine("TaskHintTimeIE");
+    }
+
+    public void TaskHintNotification()
     {
         taskHintTime = 0;
         taskHintBackground.enabled = true;
         taskHintTextMesh.text = tasksHint;
+        StartCoroutine("TaskHintTimeIE");
     }
 
     public void ShowInfoNotification(string notificationText)
@@ -700,6 +422,7 @@ public class Notifications : MonoBehaviour {
         infoNotificationTextMesh.text = notificationText;
         notificationTime = 0;
         isNotificationTimeOn = true;
+        StartCoroutine("NotificationTimeIE");
     }
 
     public void ShowInfoNotification(string notificationText, AudioClip notificationSound)
@@ -708,6 +431,7 @@ public class Notifications : MonoBehaviour {
         audioSource.PlayOneShot(notificationSound);
         notificationTime = 0;
         isNotificationTimeOn = true;
+        StartCoroutine("NotificationTimeIE");
     }
 
     public void ShowDoorNameNotification(string notificationText, string doorName, AudioClip notificationSound)
@@ -717,35 +441,8 @@ public class Notifications : MonoBehaviour {
         notificationTime = 0;
         isNotificationTimeOn = true;
         doorNotificationTextMesh.text = doorName;
+        StartCoroutine("NotificationTimeIE");
     }
-
-    void KomunikatCiernie()
-    {
-		
-        infoNotificationTextMesh.text = thornsMessage;
-    }
-
-	void KomunikatDeskiSzopa(){
-		
-		infoNotificationTextMesh.text = planksMessage;
-		audioSource.PlayOneShot (planksSound);
-	}
-		
-
-	void KomunikatKaseta(){
-		
-		infoNotificationTextMesh.text = insertCasseteMessage;
-	}
-
-	void KomunikatEnergia(){
-		
-		infoNotificationTextMesh.text = factoryLeverMessage;
-	}
-
-	void KomunikatKratySteven(){
-		
-		infoNotificationTextMesh.text = stevenGrilleMessage;
-	}
 
     public void ShowMainNotification(string notificationText)
     {
@@ -760,11 +457,12 @@ public class Notifications : MonoBehaviour {
         inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
         inventoryScript.itemAudioSource4.Play();
         inventoryScript.secretPlacesCount++;
+        StartCoroutine("SecretPlaceNotificationIE");
     }
 
     public void ShowTutorialNotification(Canvas tutorialCanvas)
     {
-        notificationType = NotificationType.Tutorial;
+        collectibleNotificationType = CollectibleNotificationType.Tutorial;
         tutorialCanvas.enabled = true;
         tutorialAudioSource.PlayOneShot(tutorialSound);
         Time.timeScale = 0;
@@ -778,7 +476,7 @@ public class Notifications : MonoBehaviour {
 
     public void HideTutorialNotification(Canvas tutorialCanvas)
     {
-        notificationType = NotificationType.None;
+        collectibleNotificationType = CollectibleNotificationType.None;
         tutorialCanvas.enabled = false;
         tutorialAudioSource.PlayOneShot(tutorialSound);
         Time.timeScale = 1;
