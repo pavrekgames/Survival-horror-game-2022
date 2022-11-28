@@ -245,6 +245,10 @@ public class Screamer : MonoBehaviour {
     public bool isFallTree = false;
     public bool isOpenJumpscareDoor = false;
 
+    private AudioSource audioSource;
+    private AudioClip screamerSound;
+    public bool isCalled;
+
     void OnEnable () {
 		
 
@@ -348,6 +352,13 @@ public class Screamer : MonoBehaviour {
 
 	}
 
+    void CallScreamer()
+    {
+        audioSource.clip = screamerSound;
+        audioSource.Play();
+        audioSource.loop = false;
+        isCalled = true;
+    }
 
 	void Update () {
 
@@ -356,15 +367,9 @@ public class Screamer : MonoBehaviour {
 
 		if (isClock == false) { 
 
-			/*float Dystans_z = Vector3.Distance (Gracz.position, Zegar.position);
-
-			if (Dystans_z <= 7) {
-				ZegarScr ();
-			} */
-
             if(notesScript.isNote2 == true && Time.timeScale == 1)
             {
-                ZegarScr();
+                CallScreamer();
             }
 
 		}
@@ -401,14 +406,14 @@ public class Screamer : MonoBehaviour {
 		}
 
 		if (tasksScript.isKitchenWardrobeLocked == false && isRadioSpain == false) {
-			RadioSpainScr ();
-		}
+            CallScreamer();
+        }
 
 
 
 		if (tasksScript.isCasseteInserted == true && isRadioFires == false) {
-			RadioStrzalyScr ();
-		}
+            CallScreamer();
+        }
 
 		if (headAudioSource.isPlaying == false && isRadioFires == true && Time.timeScale == 1) {
 			radioChoirAudioSource.clip = null;
@@ -423,8 +428,8 @@ public class Screamer : MonoBehaviour {
 
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
 				if (hit.collider.gameObject.name == "WrednySmiech_trigger") { // && WrednySmiech_ok == true && AktywujSmiech_ok == false
-					WrednySmiechScr ();
-				} 
+                    CallScreamer();
+                } 
 			} 
 		}
 
@@ -442,28 +447,12 @@ public class Screamer : MonoBehaviour {
 				} 
 			}
 		}
-
-		// screamer ciernie
-
-		if (isThorns == false && inventoryScript.isStrongAcidRemoved == false && Input.GetMouseButtonDown (0) && gameMenuScript.isMenu == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1) {
-			//playerCam = Camera.main;
-			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
-			RaycastHit hit; 
-
-			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
-			 	if (hit.collider.gameObject.name == "CiernieKryjowka2_c") 
-				{
-					Ciernie();
-				}
-			}
-		}
 			
-
 		// Oddech Tom
 
 		if (hitAudioSource.isPlaying == false && isClock == true && isBreath2 == false && Time.timeScale == 1) {
-			Oddech2 ();
-		}
+            CallScreamer();
+        }
 
 
 		// Wlaczanie dzwieku pozytywki lub telefonu
@@ -477,12 +466,12 @@ public class Screamer : MonoBehaviour {
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
 				
 				if (hit.collider.gameObject.name == "Pozytywka_s" && isMusicBox == false) {
-					PozytywkaScr ();
-				}
+                    CallScreamer();
+                }
 
 				else if (hit.collider.gameObject.name == "TelefonGlos" && isPhone == false) {
-					TelefonScr ();
-				}
+                    CallScreamer();
+                }
 
 			}
 		} 
@@ -495,17 +484,9 @@ public class Screamer : MonoBehaviour {
             isWindEffect = true;
         }
 
-		//if (Physics.Raycast (playerAim, out hit, RayLength)){
-		//if(hit.collider.gameObject.name == "MonsterDrzwiZachod" && DrzwiMonsterZachod_ok == false){
-		//	ZrodloDzwDrzwiMonsterZachod.PlayOneShot(DzwDrzwiMonsterZachod);
-		//	DrzwiMonsterZachod_ok = true;
-		//}
-
-		//}
-
 		if (notesScript.isNote35 == true && isKnock == false && Time.timeScale == 1) {
-				PukanieScr ();
-		}
+            CallScreamer();
+        }
 
         // Zatrzymanie odtwarzania dzwiekow
 
@@ -661,235 +642,31 @@ public class Screamer : MonoBehaviour {
     }
 
 	void OnTriggerExit(Collider other){
-		if(other.gameObject.CompareTag("Wilk_trigger") && isWolf == false){
-			WilkTrigger ();
-		}
 
-		else if(other.gameObject.CompareTag("Szelest2_trigger") && isRustle2 == false){
-			Szelest2Trigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Swiatlo2_trigger") && isLight == false){
-			Swiatlo2Trigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Klimat_trigger") && isAtmosphere == false && inventoryScript.isKeyV1Taken == false){
-			klimatTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Szept_trigger") && isWhisper == false && inventoryScript.isKeyV1Taken == true){
-			SzeptTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("DrewnoSzopa_trigger") && isWoodShed == false){
-			DrewnoSzopaTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Szczur_trigger") && isRat == false){
-			SzczurTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Szelest_trigger") && isRustle == false){
-			SzelestTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("LampaPrzed_trigger") && isLampBefore == false){
+		if(other.gameObject.CompareTag("LampaPrzed_trigger") && isLampBefore == false){
 			isLampBefore = true;
-		}
-
-		else if(other.gameObject.CompareTag("Lampa_trigger")&& isKitchenLamp == false && isLampBefore == true){
-			LampaKuchniaTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Siano_trigger") && isHay == false){
-			SianoTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("DrewnoPrzed_trigger") && isWood == false){
-			DrewnoPrzedTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("OdglosyFabryka_trigger") && isFactory == false){
-			OdglosyFabrykaTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Lancuchy_trigger") && isChains == false){
-			LancuchyTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("OdglosyFabryka2_trigger") && isFactory2 == false){
-			OdglosyFabryka2Trigger ();
 		}
 
 		else if(other.gameObject.CompareTag("WrednySmiech_trigger") && isMeanLaugh == false){
 			isMeanLaugh = true;
 		}
 
-		else if(other.gameObject.CompareTag("Kruki_trigger") && isRaven == false){
-			KrukiTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("SmiechDzw_trigger") && isGirlLaugh == false){
-			SmiechDzwTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("KrzykDzw_trigger") && isClock == false){
-			KrzykDzwTrigger ();
-		}
-
-		else if(other.gameObject.CompareTag("Szklo_trigger") && isGlass == false){
-			SzkloTrigger();
-		}
-
-        else if(other.gameObject.CompareTag("KrzykSteven_trigger") && isStevenScream == false && tasksScript.isStevenKeyTask == true){
-			KrzykStevenTrigger();
-		}
-
 		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "DzwonekDrzwiWlacz_trigger" && isDoorBell == false && isDoorBellActive == false){
 			isDoorBellActive = true;
 		}
-
-		else if(other.gameObject.CompareTag("DzwonekDrzwi_trigger") && isDoorBell == false && isDoorBellActive == true){
-			DzwonekDrzwiTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("SkrzypienieZachod_trigger") && isPaulCreak == false){
-			SkrzypienieZachodTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("Kroki_trigger") && isSteps == false){
-			krokiTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("SkrzypienieSchodyZachod_trigger") && isPaulStairsCreak == false){
-			SkrzypienieSchodyZachodTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("DrzwiZamknij_trigger") && isCloseDoor == false){
-			DrzwiZamknijTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("DrzwiOtworz_trigger") && isOpenDoor == false && tasksScript.isPaulDoorLocked == false){
-			DrzwiOtworzTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("Trup_trigger") && isCorpse == false){
-			TrupTrigger();
-		}
-
-		else if(other.gameObject.CompareTag("Szept2_trigger") && isWhisper2 == false){
-			Szept2Trigger();
-		}
-		else if (other.gameObject.CompareTag("Wiatr_trigger") && isTool == false && isWind == true)
-        {
-            NarzedziaTrigger();
-        }
-		else if (other.gameObject.CompareTag("Kosci_trigger") && isBones == false)
-        {
-            KosciTrigger();
-        }
-		else if (other.gameObject.CompareTag("Jedzenie_trigger") && isFood == false)
-        {
-            JedzenieTrigger();
-        }
-		else if (other.gameObject.CompareTag("Pies_trigger") && isDog == false)
-		{
-			PiesTrigger();
-		}
-		else if (other.gameObject.CompareTag("Potok_trigger") && isBrook == false && inventoryScript.isAliceKeyTaken == true)
-		{
-			PotokTrigger();
-		}
-		else if (other.gameObject.CompareTag("MonsterPotokWylacz_trigger") && isBreath == false && inventoryScript.isAliceKeyTaken == true)
-		{
-			Oddech1();
-		}
-        else if (other.gameObject.CompareTag("RykPsa_trigger") && isDogRoar == false)
-        {
-            RykPsaTrigger();
-        }
-
 
     }
 
 	void OnTriggerEnter(Collider other){
 
-		if(other.gameObject.CompareTag("StudniaWoda_trigger") && isWellWater == false){
-			StudniaWodaTrigger ();
-		} 
-		else if(other.gameObject.CompareTag("SzeptyStudnia_trigger") && isWellWhispers == false && tasksScript.isWellStonesTask == true){
-			SzeptyStudniaTrigger();
-		}
-		else if(other.gameObject.CompareTag("Kryjowka_trigger") && isShelterWhispers == false){
-			SzeptyKryjowkaTrigger();
-		}
-
-        else if (other.gameObject.CompareTag("OddechSzopaKosc_trigger") && isBoneShedBreath == false)
+        if (other.gameObject.CompareTag("OddechSzopaKosc_trigger") && isBoneShedBreath == false)
         {
             OddechSzopaKoscTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("PtakSzalas_trigger") && isWoodBird == false)
-        {
-            PtakLasTrigger();
-        }
-        else if (other.gameObject.CompareTag("Halucynacje_trigger") && isLeaves == false && inventoryScript.isWoodenWheelTaken == true)
-        {
-            LiscieGanjaTrigger();
-        }
-        else if (other.gameObject.CompareTag("SzopaMeble_trigger") && isShedFurniture == false)
-        {
-            SzopaMebleTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("KrzykPotok_trigger") && isBrookScream == false && tasksScript.isTompCampTask == true)
-        {
-            KrzykPotokTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("Klimat_trigger") && isGrandmaGlass == false && tasksScript.isWoodKeyTask == true)
-        {
-            SzkloBabciaTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("PukanieSzyba_trigger") && isGlassKnock == false && inventoryScript.isKeyV1Taken == false)
-        {
-            PukanieSzybaTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("SzopaAlice_trigger") && isAliceShed == false && tasksScript.isGoToAliceTask == true)
-        {
-            SzopaAliceTrigger();
         }
 
         else if (other.gameObject.CompareTag("SwiatloChatka_trigger") && isHutLight == false)
         {
             SwiatloChatkaTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("MonsterKorytarz_trigger") && isFloorCreak == false)
-        {
-            SkrzypPodlogaTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("StrasznaSowa_trigger") && isScaryOwl == false && tasksScript.isSearchTask == false)
-        {
-            StrasznaSowaTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("PtakSzalas_trigger") && isScaryOwl2 == false && tasksScript.isWoodKeyTask == true)
-        {
-            //StrasznaSowa2Trigger();
-        }
-
-        else if (other.gameObject.CompareTag("WodaPlusk_trigger") && isWaterSplash == false)
-        {
-            WodaPluskTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("KrzykLisa_trigger") && isFoxScream == false)
-        {
-            KrzykLisaTrigger();
         }
 
         else if (other.gameObject.CompareTag("KrzykShock_trigger") && isShockScream == false)
@@ -907,400 +684,25 @@ public class Screamer : MonoBehaviour {
             isStairsCreak = false;
         }
 
-        else if (other.gameObject.CompareTag("SkrzypienieSchody_trigger") && isStairsCreak == false)
-        {
-            SkrzypienieSchodyTrigger();
-        }
-
-        /*  else if ((other.gameObject.GetComponent<Collider>().gameObject.name == "CiernieKryjowka1_t" || other.gameObject.GetComponent<Collider>().gameObject.name == "CiernieKryjowka2_t" || other.gameObject.GetComponent<Collider>().gameObject.name == "CiernieKryjowka3_t") && Ciernie_ok == false)
-          {
-              Ciernie();
-          }*/
-
     }
 		
-
-	void WilkTrigger(){
-        //ZrodloDzwWilk.PlayOneShot(Dzw_wilk);
-        wolfAudioSource.clip = wolfSound;
-        wolfAudioSource.Play();
-        isWolf = true;
-	}
-
-	void Szelest2Trigger(){
-        //ZrodloDzwWilk.PlayOneShot(Dzw_szelest2);
-        rustle2AudioSource.clip = rustle2Sound;
-        rustle2AudioSource.Play();
-        isRustle2 = true;
-	}
-
-	void Swiatlo2Trigger(){
-		isLight = true;
-		houseLight.gameObject.SetActive(false);
-	}
-
-	void klimatTrigger(){
-        //ZrodloDzwKlimat.PlayOneShot(Dzw_klimat);
-        atmosphereAudioSource.clip = atmopshereSound;
-        atmosphereAudioSource.Play();
-        isAtmosphere = true;
-	}
-
-	void SzeptTrigger(){
-        //ZrodloDzwSzept.PlayOneShot(Dzw_Szept);
-        whisperAudioSource.clip = whisperSound;
-        whisperAudioSource.Play();
-        isWhisper = true;
-	}
-
-	void DrewnoSzopaTrigger(){
-        //ZrodloDzwDrewnoSzopa.PlayOneShot(DzwDrewnoSzopa);
-        woodShedAudioSource.clip = woodShedSound;
-        woodShedAudioSource.Play();
-        isWoodShed = true;
-	}
-
-	void SzczurTrigger(){
-        //ZrodloDzwSzczur.PlayOneShot(DzwSzczur);
-        ratAudioSource.clip = ratSound;
-        ratAudioSource.Play();
-        isRat = true;
-	}
-
-	void SzelestTrigger(){
-        //ZrodloDzwSzelest.PlayOneShot(Dzw_szelest);
-        rustleAudioSource.clip = rustleSound;
-        rustleAudioSource.Play();
-        isRustle = true;
-	}
-
-	void LampaKuchniaTrigger(){
-        //ZrodloDzwieku.PlayOneShot(Dzw_lampa);
-        kitchenLampAudioSource.clip = kitchenLampSound;
-        kitchenLampAudioSource.Play();
-        isKitchenLamp = true;
-        kitchenLampAnimator.SetTrigger("Lampa_ok");
-	}
-
-	void SianoTrigger(){
-        //ZrodloDzwSiano.PlayOneShot(Dzw_siano);
-        hayAudioSource.clip = haySound;
-        hayAudioSource.Play();
-        isHay = true;
-	}
-
-	void DrewnoPrzedTrigger(){
-        //ZrodloDzwDrewno.PlayOneShot(Dzw_drewno);
-        woodAudioSource.clip = woodSound;
-        woodAudioSource.Play();
-        isWood = true;
-	}
-
-	void OdglosyFabrykaTrigger(){
-        //ZrodloDzwOdglosyFabryka.PlayOneShot(DzwOdglosyFabryka);
-        factoryAudioSource.clip = factorySound;
-        factoryAudioSource.Play();
-        isFactory = true;
-	}
-
-	void LancuchyTrigger(){
-        //ZrodloDzwLancuchy.PlayOneShot(DzwLancuchy);
-        chainsAudioSource.clip = chainsSound;
-        chainsAudioSource.Play();
-        isChains = true;
-	}
-
-	void OdglosyFabryka2Trigger(){
-        //ZrodloDzwOdglosyFabryka2.PlayOneShot(DzwOdglosyFabryka2);
-        factory2AudioSource.clip = factory2Sound;
-        factory2AudioSource.Play();
-        isFactory2 = true;
-	}
-
-	void KrukiTrigger(){
-        //ZrodloDzwKruki.PlayOneShot(DzwKruki);
-        ravenAudioSource.clip = ravenSound;
-        ravenAudioSource.Play();
-        isRaven = true;
-	}
-
-	void SmiechDzwTrigger(){
-        //ZrodloDzwSmiechDzw.PlayOneShot(DzwSmiechDzw);
-        girlLaughAudioSource.clip = girlLaughSound;
-        girlLaughAudioSource.Play();
-        isGirlLaugh = true;
-	}
-
-	void KrzykDzwTrigger(){
-        //ZrodloDzwUderzenie.PlayOneShot(DzwUderzenie);
-        hitAudioSource.clip = hitSound;
-        hitAudioSource.Play();
-        // ZrodloDzwKrzykDzw.PlayOneShot(DzwKrzykDzw);
-        girlScreamAudioSource.clip = girlScreamSound;
-        girlScreamAudioSource.Play();
-        isClock = true;
-	}
-
-	void SzkloTrigger(){
-        //ZrodloDzwSzklo.PlayOneShot(DzwSzklo);
-        glassAudioSource.clip = glassSound;
-        glassAudioSource.Play();
-        isGlass = true;
-	}
-
-	void SkrzypienieSchodyTrigger(){
-        //ZrodloDzwSkrzypienieSchody.PlayOneShot(DzwSkrzypienieSchody);
-        starsCreakAudioSource.clip = stairsCreakSound;
-        starsCreakAudioSource.Play();
-        isStairsCreak = true;
-	}
-
-	void KrzykStevenTrigger(){
-        //ZrodloDzwKrzykSteven.PlayOneShot(DzwKrzykSteven);
-        stevenScreamAudioSource.clip = stevenScreamSound;
-        stevenScreamAudioSource.Play();
-        isStevenScream = true;
-	}
-
-	void DzwonekDrzwiTrigger(){
-        //ZrodloDzwDzwonekDrzwi.PlayOneShot(DzwDzwonekDrzwi);
-        doorBellAudioSource.clip = doorBellSound;
-        doorBellAudioSource.Play();
-        isDoorBell = true;
-	}
-
-	void SkrzypienieZachodTrigger(){
-        //ZrodloDzwSkrzypienieZachod.PlayOneShot(DzwSkrzypienieZachod);
-        paulCreakAudioSource.clip = paulCreakSound;
-        paulCreakAudioSource.Play();
-        isPaulCreak = true;
-	}
-
-	void krokiTrigger(){
-        //ZrodloDzwKroki.PlayOneShot(DzwKroki);
-        stepsAudioSource.clip = stepsSound;
-        stepsAudioSource.Play();
-        isSteps = true;
-	}
-
-	void SkrzypienieSchodyZachodTrigger(){
-        //ZrodloDzwSkrzypienieSchodyZachod.PlayOneShot(DzwSkrzypienieSchodyZachod);
-        paulStairsCreakAudioSource.clip = paulStairsCreakSound;
-        paulStairsCreakAudioSource.Play();
-        isPaulStairsCreak = true;
-	}
-
-	void DrzwiZamknijTrigger(){
-        //ZrodloDzwDrzwiZamknij.PlayOneShot(DzwDrzwiZamknij);
-        closeDoorAudioSource.clip = closeDoorSound;
-        closeDoorAudioSource.Play();
-        //Drzwikontroler1.SetTrigger("Zamknij_ok");
-		isCloseDoor = true;
-	}
-
-	void DrzwiOtworzTrigger(){
-        //ZrodloDzwDrzwiOtworz.PlayOneShot(DzwDrzwiOtworz);
-        openDoorJumpscareScript.enabled = false;
-        openDoorAudioSource.clip = openDoorSound;
-        openDoorAudioSource.Play();
-        openDoorCollider.SetActive(true); // to bylo zakomentowane
-		isOpenDoor = true;
-		openDoorCollider.gameObject.AddComponent<Rigidbody>();
-		openDoorCollider.gameObject.GetComponent<Rigidbody>().mass = 2;
-        openDoorCollider.gameObject.GetComponent<Rigidbody>().AddForce(openDoorCollider.transform.forward * 100);
-        //DrzwiOtworzJmp.OtwZam_ok = true;
-        openDoorJumpscareScript.isNeedKey = false;
-        //KoliderOtworzDrzwi.SetActive(false);
-        openDoorJumpscareScript.enabled = true;
-        openDoorJumpscareScript.isOpen = false;
-        openDoorJumpscareScript.isOpenClose = false;
-    }
-
-	void TrupTrigger(){
-		//Trup.SetActive(true);
-		corpse.gameObject.AddComponent<Rigidbody>();
-        corpse.gameObject.GetComponent<Rigidbody>().mass = 2;
-        corpse.gameObject.GetComponent<Rigidbody>().AddForce(-corpse.transform.up * 1000f);
-        paulWardrobeSoundScript.isCloseOpen = true;
-		isCorpse = true;
-	}
-
-	void Szept2Trigger(){
-        //ZrodloDzwSzept2.PlayOneShot(DzwSzept2);
-        whisper2AudioSource.clip = whisper2Sound;
-        whisper2AudioSource.Play();
-        isWhisper2 = true;
-	}
-
-	void StudniaWodaTrigger(){
-        //ZrodloDzwStudniaWoda.PlayOneShot(DzwStudniaWoda);
-        wellWaterAudioSource.clip = wellWaterSound;
-        wellWaterAudioSource.Play();
-        //StudniaWoda.gameObject.GetComponent<Collider>().enabled = false;
-        isWellWater = true;
-	}
-
-	void ZegarScr(){
-		isClock = true;
-        //ZrodloDzwZegar.PlayOneShot(Dzw_zegar);
-        clockAudioSource.clip = clockSound;
-        clockAudioSource.Play();
-	}
-
-	void RadioSpainScr(){
-		radioAudioSource.clip = radioSpainSound;
-		radioAudioSource.loop = false;
-		isRadioSpain = true;
-		radioAudioSource.Play();
-	}
-
-	void RadioStrzalyScr(){
-		headAudioSource.clip = radioFiresSound;
-		headAudioSource.Play ();
-		headAudioSource.loop = false;
-		isRadioFires = true;
-	}
-
-	void WrednySmiechScr(){
-        //ZrodloDzwWrednySmiech.PlayOneShot(DzwWrednySmiech);
-        meanLaughAudioSource.clip = meanLaughSound;
-        meanLaughAudioSource.Play();
-        isActiveLaugh = true;
-	}
-
-	void PozytywkaScr(){
-        //ZrodloDzwPozytywka.PlayOneShot(DzwPozytywka);
-        musicBoxAudioSource.clip = musicBoxSound;
-        musicBoxAudioSource.Play();
-        isMusicBox = true;
-	}
-
-	void PukanieScr(){
-        //ZrodloDzwPukanie.PlayOneShot (DzwPukanie);
-        knockAudioSource.clip = knockSound;
-        knockAudioSource.Play();
-        isKnock = true;
-	}
+    // wylaczanie obiektu
+    // dzwiek i animacja
+    // 2 dzwieki z 2 zrodel
+    // cuda i dziwy
+    // cuda i dziwy 2
+    // dzwiek i wylaczenie swiatla latarki
+    // 2 dzwieki z 2 zrodel i wylaczanie obiektu
+    // dzwiek i wlaczanie obiektu
+    // 2 dzwieki z 2 zrodel i animacja
+    // dzwiek i animacja
 
     void WiatrScr()
     {
         windAudioSource.clip = windSound;
         windAudioSource.Play();
-        //ZrodloDzwWiatr.time = 0.070f;
         flashlightScript.TurnOffFlashlight();
         isWind = true;
-    }
-
-    void NarzedziaTrigger()
-    {
-        //ZrodloDzwNarzedzia.PlayOneShot(DzwNarzedzia);
-        toolsAudioSource.clip = toolsSound;
-        toolsAudioSource.Play();
-        isTool = true;
-    }
-
-    void KosciTrigger()
-    {
-        //ZrodloDzwKosci.PlayOneShot(DzwKosci);
-        bonesAudioSource.clip = bonesSound;
-        bonesAudioSource.Play();
-        isBones = true;
-    }
-
-    void JedzenieTrigger()
-    {
-        // ZrodloDzwJedzenie.PlayOneShot(DzwJedzenie);
-        foodAudioSource.clip = foodSound;
-        foodAudioSource.Play();
-        isFood = true;
-    }
-
-    void Ciernie()
-    {
-        //ZrodloDzwCiernie.PlayOneShot(DzwCiernie);
-
-        for (int i = 0; i < inventoryScript.items.Count; i++)
-        {
-            if (inventoryScript.items[i].type == "Mikstura" && inventoryScript.items[i].isUsed == true)
-            {
-                isThorns = true;
-                break;
-            }else
-            {
-                thornsAudioSource.clip = thornsSound;
-                thornsAudioSource.Play();
-                isThorns = true;
-                healthScript.health = 25;
-                break;
-            }
-        }
-
-
-        
-    }
-
-	void PiesTrigger()
-	{
-        //ZrodloDzwPies.PlayOneShot(DzwPies);
-        dogAudioSource.clip = dogSound;
-        dogAudioSource.Play();
-        isDog = true;
-	}
-
-	void PotokTrigger()
-	{
-        //ZrodloDzwPotok.PlayOneShot(DzwPotok);
-        brookAudioSource.clip = brookSound;
-        brookAudioSource.Play();
-        isBrook = true;
-	}
-
-	void Oddech1()
-	{
-        //ZrodloDzwGracz.PlayOneShot(DzwOddech1);
-        playerAudioSource.clip = breathSound;
-        playerAudioSource.Play();
-        isBreath = true;
-        treeDust.SetActive(false);
-	}
-
-	void Oddech2()
-	{
-        //ZrodloDzwGracz.PlayOneShot(DzwOddech2);
-        playerAudioSource.clip = breath2Sound;
-        playerAudioSource.Play();
-        isBreath2 = true;
-	}
-
-	void TelefonScr()
-	{
-        //ZrodloDzwTelefon.PlayOneShot(DzwTelefonGlos);
-        phoneAudioSource.clip = phoneVoiceSound;
-        phoneAudioSource.Play();
-        isPhone = true;
-	}
-
-	void SzeptyStudniaTrigger()
-	{
-        //ZrodloDzwSzepty.PlayOneShot(DzwSzeptyStudnia);
-        whispersAudioSource.clip = wellWhispersSound;
-        whispersAudioSource.Play();
-        isWellWhispers = true;
-	}
-
-	void SzeptyKryjowkaTrigger()
-	{
-        //ZrodloDzwSzepty2.PlayOneShot(DzwSzeptyKryjowka);
-        whispersAudioSource.clip = shelterWhispersSound;
-        whispersAudioSource.Play();
-        isShelterWhispers = true;
-	}
-
-    void RykPsaTrigger()
-    {
-        dogRoarDzwRykPsa.clip = dogRoarSound;
-        dogRoarDzwRykPsa.Play();
-        isDogRoar = true;
     }
 
     void OddechSzopaKoscTrigger()
@@ -1313,96 +715,12 @@ public class Screamer : MonoBehaviour {
         smallShedLight.gameObject.SetActive(false);
     }
 
-    void PtakLasTrigger()
-    {
-        woodBirdAudioSource.clip = woodBirdSound;
-        woodBirdAudioSource.Play();
-        isWoodBird = true;
-    }
-
-    void LiscieGanjaTrigger()
-    {
-        ganjaLeavesAudioSource.clip = leavesSound;
-        ganjaLeavesAudioSource.Play();
-        isLeaves = true;
-    }
-
-    void SzopaMebleTrigger()
-    {
-        shedFurnitureAudioSource.clip = shedFurnitureSound;
-        shedFurnitureAudioSource.Play();
-        isShedFurniture = true;
-    }
-
-    void KrzykPotokTrigger()
-    {
-        brookScreeamAudioSource.clip = brookScreamSound;
-        brookScreeamAudioSource.Play();
-        isBrookScream = true;
-    }
-
-    void SzkloBabciaTrigger()
-    {
-        grandmaGlassAudioSource.clip = grandmaGlassSound;
-        grandmaGlassAudioSource.Play();
-        isGrandmaGlass = true;
-    }
-
-    void PukanieSzybaTrigger()
-    {
-        glassKnockAudioSource.clip = glassKnockSound;
-        glassKnockAudioSource.Play();
-        isGlassKnock = true;
-    }
-
-    void SzopaAliceTrigger()
-    {
-        aliceShedAudioSource.clip = aliceShedSound;
-        aliceShedAudioSource.Play();
-        isAliceShed = true;
-    }
-
     void SwiatloChatkaTrigger()
     {
         hutLightAudioSource.clip = hutLightSound;
         hutLightAudioSource.Play();
         hutLight.GetComponent<Light>().enabled = true;
         isHutLight = true;
-    }
-
-    void SkrzypPodlogaTrigger()
-    {
-        floorCreakAudioSource.clip = floorScreakSound;
-        floorCreakAudioSource.Play();
-        isFloorCreak = true;
-    }
-
-    void StrasznaSowaTrigger()
-    {
-        scaryOwlAudioSource.clip = scaryOwlSound;
-        scaryOwlAudioSource.Play();
-        isScaryOwl = true;
-    }
-
-    void StrasznaSowa2Trigger()
-    {
-        scaryOwl2AudioSource.clip = scaryOwl2Sound;
-        scaryOwl2AudioSource.Play();
-        isScaryOwl2 = true;
-    }
-
-    void WodaPluskTrigger()
-    {
-        waterSplashAudioSource.clip = waterSplashSound;
-        waterSplashAudioSource.Play();
-        isWaterSplash = true;
-    }
-
-    void KrzykLisaTrigger()
-    {
-        foxScreamAudioSource.clip = foxScreamSound;
-        foxScreamAudioSource.Play();
-        isFoxScream = true;
     }
 
     void KrzykShockTrigger()
@@ -1421,7 +739,6 @@ public class Screamer : MonoBehaviour {
         fallTreeAudioSource.Play();
         isFallTree = true;
         fallTreeAnimator.SetTrigger("DrzewoFall");
-        //KurzDrzewoFall.SetActive(true);
     }
 
 }
