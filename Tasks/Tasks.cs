@@ -690,202 +690,15 @@ public class Tasks : MonoBehaviour {
                 
                 // Otwieranie drzwi do pokoju W
 
-                if (hit.collider.gameObject.name == "DrzwiPokojW") {
-					DrzwiPokojW ();
+                if (hit.collider.gameObject.tag == "Door" || hit.collider.gameObject.tag == "Hand") {
+
+                    IRaycastTask raycastTask = hit.transform.GetComponent<IRaycastTask>() as IRaycastTask;
+                    if(raycastTask != null)
+                    {
+                        raycastTask.Execute();
+                    }
+
 				}
-
-				// Otwieranie drzwi do szafki w kuchni
-				else if (hit.collider.gameObject.name == "SzafaKuchnia") {
-					SzafaKuchnia ();
-				}
-
-				// Otwieranie drzwi do stajni
-
-				else if (hit.collider.gameObject.name == "DrzwiStajnia") {
-					DrzwiStajnia ();
-				}
-
-				// Otwieranie drzwi do szopy
-
-				else if (hit.collider.gameObject.name == "DrzwiSzopaNarzedzia") {
-					DrzwiSzopaNarzedzia ();
-				}
-
-				// Otwieranie drzwi w ogrodzie
-
-				else if (hit.collider.gameObject.name == "DrzwiOgrod") {
-					DrzwiOgrod ();
-				}
-
-				// Otwieranie drzwi wneki
-
-				else if (hit.collider.gameObject.name == "DrzwiWneka") {
-					DrzwiWneka ();
-				}
-
-				// Otwieranie drzwi kampingu
-
-				else if (hit.collider.gameObject.name == "DrzwiKamping") {
-					DrzwiKamping ();
-				}
-
-				// Wkladanie kasety 1 
-
-				else if (hit.collider.gameObject.name == "Odtwarzacz" && isCasseteInserted == false) {
-					OdtwarzaczKaseta ();
-				}
-
-                // wkladanie baterii
-
-                else if (hit.collider.gameObject.name == "Odtwarzacz" && isCasseteInserted == true && isBatteriesPut == false)
-                {
-                    
-                    OdtwarzaczBateria();
-                }
-
-                // wkladanie kasety 2
-
-                else if (hit.collider.gameObject.name == "Odtwarzacz" && isCasseteInserted == true && isCassete2Inserted == false)
-                {
-                    OdtwarzaczKaseta2();
-                }
-
-                // Wkladanie zepsutego klucza
-
-                else if ((hit.collider.gameObject.name == "UrzadzenieVictora" || hit.collider.gameObject.name == "BrakujaceDrewnianeKolo") ) {
-					UrzadzenieVictoraKlucz ();
-				}
-
-				// Umieszczanie drewnianego kola
-
-				if (hit.collider.gameObject.name == "UrzadzenieVictora" && isBrokenKey == true) {
-					UrzadzenieVictoraKolo ();
-				}
-
-				// Otwieranie drewnianych drzwi fabryki
-
-				else if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno") {
-					DrzwiFabrykaDrewno ();
-				}
-
-				// Otwieranie metalowych drzwi fabryki
-
-				else if (hit.collider.gameObject.name == "DrzwiFabrykaMetal") {
-					DrzwiFabrykaMetal ();
-				}
-
-				// Wlaczanie przycisku
-
-				else if (hit.collider.gameObject.name == "PrzyciskZad") {
-					taskButtonScript.isButton = true;
-				}
-
-				// Otwieranie drzwi salonu na poludniu dom Alice
-				else if (hit.collider.gameObject.name == "DrzwiSalonPoludnie") {
-					DrzwiSalonPoludnie ();
-				}
-
-				// Otwieranie drzwi do pola kukurydzy
-
-				else if (hit.collider.gameObject.name == "DrzwiKukurydza") {
-					DrzwiKukurydza ();
-				}
-
-				// Niszczenie desek przy szopie
-
-				else if (hit.collider.gameObject.name == "DeskiSzopa") {
-					Deski ();
-				}
-
-				// Otwieranie drzwi szafy w korytarzu
-
-				else if (hit.collider.gameObject.name == "SzafaKorytarz") {
-					SzafaKorytarz ();
-				}
-
-				// Otwieranie szafki w szopie
-				else if (hit.collider.gameObject.name == "SzafkaSzopa" || hit.collider.gameObject.name == "SzafkaSzopa2") {
-					SzafkaSzopa ();
-				}
-
-				// Zadanie z dynia
-				else if (hit.collider.gameObject.name == "PalDynia") {
-					PalDynia ();
-				}
-
-				// Otwieranie drzwi do pokoju Toma na gorze
-
-				else if (hit.collider.gameObject.name == "DrzwiTomGora") {
-					DrzwiTomGora ();
-				}
-
-				// Otwieranie drzwi do pokoju Toma 
-
-				else if (hit.collider.gameObject.name == "DrzwiPokojTom") {
-					DrzwiPokojTom ();
-				}
-
-				// Wkladanie kasety 3 
-
-				else if (hit.collider.gameObject.name == "Odtwarzacz2" && isCassete3Inserted == false) {
-					Odtwarzacz2Kaseta ();
-				}
-
-                // Wkladanie chipu
-
-                else if (hit.collider.gameObject.name == "Odtwarzacz2" && isCassete3Inserted == true && isChipPut == false)
-                {
-                    Odtwarzacz2Chip();
-                }
-
-                // Otwieranie szafki w opuszczonym domu
-
-                else if (hit.collider.gameObject.name == "SzafaStaryDom") {
-					SzafaStaryDom ();
-				}
-
-				// Wkladanie kasety 4
-
-				else if (hit.collider.gameObject.name == "Odtwarzacz3") {
-					Odtwarzacz3 ();
-				}
-
-				// Otwieranie drzwi w domu Stevena
-
-				else if (hit.collider.gameObject.name == "DrzwiSteven") {
-					DrzwiSteven ();
-				}
-
-				// Zniszczenie krat szopy Stevena
-
-				else if (hit.collider.gameObject.name == "KratySteven" && isStevenGrille == true) {
-					KratyStevena ();
-				}
-					
-				// Dawanie Rosliny, Grzyba lub Czaszki do labolatorium
-
-				else if (hit.collider.gameObject.name == "Labolatorium") {
-					LaboratoriumRoslina ();
-					LaboratoriumGrzyb ();
-					LaboratoriumCzaszka ();
-				}
-
-				// Otwieranie drzwi w domu na zachodzie
-
-				else if (hit.collider.gameObject.name == "DrzwiZachod") {
-					DrzwiZachod ();
-				}
-
-                // Zniszczenie cierni 
-
-                else if (hit.collider.gameObject.name == "CiernieKryjowka1_c" || hit.collider.gameObject.name == "CiernieKryjowka2_c" || hit.collider.gameObject.name == "CiernieKryjowka3_c")
-                {
-                    CiernieMikstura();
-                }
-				else if (hit.collider.gameObject.name == "ObrazKapturek") {
-					tomPainting.gameObject.AddComponent<Rigidbody>();
-				}
-
 
                 //-------------------- Odtwarzanie kaset---------------------------------
 
@@ -1438,61 +1251,6 @@ public class Tasks : MonoBehaviour {
 
 	//--------------ZADANIA Z INTERACKJA------------------------
 
-
-	void DrzwiPokojW(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczPokojW" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                uncleRoomCollider.gameObject.SetActive(false);
-				isUncleDoorLocked = false;
-                DrzwiPokojWS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void SzafaKuchnia(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczSzafkaKuchnia" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeySzafaOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenWardrobeSound;
-                audioSource4.Play();
-                kitchenWardrobeCollider.gameObject.SetActive(false);
-				isKitchenWardrobeLocked = false;
-                SzafaKuchniaS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiStajnia(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczStajnia" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                stableCollider.gameObject.SetActive(false);
-				isStableDoorLocked = false;
-                DrzwiStajniaS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
 	void DrzwiSzopaNarzedzia(){
 		for(int i=0; i<inventoryScript.items.Count; i++){
 			if(inventoryScript.items[i].type == "KluczSzopa" && inventoryScript.items[i].isUsed == true){
@@ -1512,60 +1270,6 @@ public class Tasks : MonoBehaviour {
 
         RemoveSzopaNarzedziaPointer();
 
-	}
-
-	void DrzwiOgrod(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "Oliwa" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku3.PlayOneShot(DzwOliwa);
-                openCloseObjectsScript.enabled = false;
-                audioSource3.clip = oilSound;
-                audioSource3.Play();
-                gardenCollider.gameObject.SetActive(false);
-				isGardenDoorLocked = false;
-                DrzwiOgrodS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiWneka(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczWneka" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                nicheCollider.gameObject.SetActive(false);
-				isNicheDoorLocked = false;
-                DrzwiWnekaS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiKamping(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczKamping" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                secretRoomCollider.gameObject.SetActive(false);
-				isSecretRoomDoorLocked = false;
-                DrzwiKampingS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
 	}
 
 	void OdtwarzaczKaseta(){
@@ -1645,61 +1349,6 @@ public class Tasks : MonoBehaviour {
 		}
 	}
 
-	void DrzwiFabrykaMetal(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "Lom" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwLomOtworz);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = crowbarOpenSound;
-                audioSource4.Play();
-                factoryMetalDoorCollider.gameObject.SetActive(false);
-				isFactoryMetalDoorLocked = false;
-                DrzwiFabrykaMetalS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiSalonPoludnie(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczSalonPoludnie" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                aliceRoomCollider.gameObject.SetActive(false);
-				isAliceRoomDoorLocked = false;
-                DrzwiSalonPoludnieS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiKukurydza(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "Kombinerki" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKombinerki);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = usePliersSound;
-                audioSource4.Play();
-                cornfieldCollider.gameObject.SetActive(false);
-                cornfieldWire.SetActive(false);
-				isCornfieldDoorLocked = false;
-                DrzwiKukurydzaS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
 	void Deski(){
 		for(int i=0; i<inventoryScript.items.Count; i++){
 			if(inventoryScript.items[i].type == "Siekiera" && inventoryScript.items[i].isUsed == true){
@@ -1712,24 +1361,6 @@ public class Tasks : MonoBehaviour {
 				isPlanksLocked = false;
 				isPlanksDestroyed = true;
                 notesScript.isNotes = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void SzafaKorytarz(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczSzafaKorytarz" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                corridorWardrobeCollider.gameObject.SetActive(false);
-				isCorridorWardrobeLocked = false;
-                SzafaKorytarzS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
 
                 inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
@@ -1788,42 +1419,6 @@ public class Tasks : MonoBehaviour {
 		}
 	}
 
-	void DrzwiTomGora(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczTomGora" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                tomUpstairsCollider.gameObject.SetActive(false);
-				isTomUpstairsDoorLocked = false;
-                DrzwiTomGoraS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiPokojTom(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczPokojTom" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                tomRoomCollider.gameObject.SetActive(false);
-				isTomRoomDoorLocked = false;
-                DrzwiPokojTomS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
 	void Odtwarzacz2Kaseta(){
 		for(int i=0; i<inventoryScript.items.Count; i++){
 			if(inventoryScript.items[i].type == "Kaseta3" && inventoryScript.items[i].isUsed == true){
@@ -1857,24 +1452,6 @@ public class Tasks : MonoBehaviour {
 
 	}
 
-	void SzafaStaryDom(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczStaryDom" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                oldWardrobeCollider.gameObject.SetActive(false);
-				isOldWardrobeLocked = false;
-                SzafaStaryDomS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
 	void Odtwarzacz3(){
 		for(int i=0; i<inventoryScript.items.Count; i++){
 			if(inventoryScript.items[i].type == "Kaseta4" && inventoryScript.items[i].isUsed == true){
@@ -1882,24 +1459,6 @@ public class Tasks : MonoBehaviour {
                 audioSource4.clip = insertCasseteSound;
                 audioSource4.Play();
                 isCassete4Inserted = true;
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiSteven(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczSteven" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                stevenDoorCollider.gameObject.SetActive(false);
-				isStevenDoorLocked = false;
-                DrzwiStevenS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
 
                 inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
@@ -1960,24 +1519,6 @@ public class Tasks : MonoBehaviour {
                 stevenGrille.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
 				isStevenGrille = false;
 				stevenGrille.gameObject.AddComponent<Rigidbody> ();
-
-                inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-                break;
-			}
-		}
-	}
-
-	void DrzwiZachod(){
-		for(int i=0; i<inventoryScript.items.Count; i++){
-			if(inventoryScript.items[i].type == "KluczPokojZachod" && inventoryScript.items[i].isUsed == true){
-                //ZrodloDzwieku.PlayOneShot(DzwKeyOpen);
-                openCloseObjectsScript.enabled = false;
-                audioSource4.clip = keyOpenSound;
-                audioSource4.Play();
-                paulDoorCollider.gameObject.SetActive(false);
-				isPaulDoorLocked = false;
-                DrzwiZachodS.isNeedKey = false;
-                openCloseObjectsScript.enabled = true;
 
                 inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
                 break;
