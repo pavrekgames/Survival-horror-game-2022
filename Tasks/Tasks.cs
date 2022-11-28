@@ -768,23 +768,6 @@ public class Tasks : MonoBehaviour {
 			} // klamra ray
 
 		} // Klamra do warunku z przyciskiem
-			
-
-		// Halucynacje
-
-		if(isHalluns == true && hallunsTimer < 30){
-			hallunsTimer += 1 * Time.deltaTime;
-		}else{
-			twirlScript.enabled = false;
-		}
-
-        if(isHalluns == true && hallunsTimer > 17 && hallunsTimer < 18 && isHallunsFlashback == false)
-        {
-            hallunsCanvas.enabled = true;
-            hallunsScreenScript.enabled = true;
-            hallunsAnimator.SetTrigger("HalunyOgrod");
-            isHallunsFlashback = true;
-        }
 
 		if(screamerScript.isOpenDoor == true){
 			paulRoomDoorCollider.gameObject.SetActive(false);
@@ -1171,12 +1154,6 @@ public class Tasks : MonoBehaviour {
 			ZadanieAliceInfo ();
 		}
 
-		// Wywolanie halucynacji
-
-		else if(other.gameObject.CompareTag("Halucynacje_trigger") && isHalluns == false && isSimonElementTask == true){
-			HalucynacjeWywolanie ();
-		}
-
 		// Dodanie zadania przedostan sie
 
 		else if(other.gameObject.CompareTag("PrzedostanSie_trigger") && isGetToTomRoadTask == false && isGetToTomRoadTaskRemoved == false && isGoTrailTask == true){
@@ -1230,17 +1207,6 @@ public class Tasks : MonoBehaviour {
 
     }
 
-
-	//--------------ZADANIA Z INTERACKJA------------------------
-
-	void HalucynacjeWywolanie(){
-        //ZrodloDzwieku3.PlayOneShot(DzwHalucynacje);
-        audioSource3.clip = hallunsSound;
-        audioSource3.Play();
-        twirlScript.enabled = true;
-		isHalluns = true;
-	}
-
 	//-------------------Zadania Glowne ----------------------
 
 	 public void ZadaniePoczatek(){
@@ -1265,22 +1231,12 @@ public class Tasks : MonoBehaviour {
         tasksTextMesh[3].text = "";
         tasksTextMesh[4].text = "";
 
-        /*	for (int i = 0; i <= ZadanieText.Length; i++) {
-                if (ZadanieText[i].text == ZadaniePoczatekT) {
-                    ZadanieText[i].text = "";
-                    break;
-                }
-            } */
-
-
         isSearchTask = true;
 		uiAnimator.SetTrigger("NoweZadanie");
 
-        //ZrodloDzwieku.PlayOneShot(DzwNoweZadanie);
         audioSource.clip = newTaskSound;
         audioSource.Play();
-        //ListaZadan.RemoveAt(0);
-        //ZadanieText[0].text = "";
+        
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
                 tasksList.Add(new TaskData("ZadanieSzukajInfo", searchTaskText));
