@@ -922,7 +922,7 @@ public class Menu : MonoBehaviour {
         player.GetComponent<Crouch>().enabled = false;
         player.GetComponent<OpenCloseObject>().enabled = false;
         player.GetComponent<Compass>().tasksPoints.Clear();
-        notesScript.WylaczNotatke();
+        notesScript.HideNote();
         playerScript.enabled = false;
 		PlayerInstance.isRespown = true;
 		PlayerInstance.startNr = "MenuGlowne";
