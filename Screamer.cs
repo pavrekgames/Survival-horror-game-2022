@@ -641,104 +641,12 @@ public class Screamer : MonoBehaviour {
 
     }
 
-	void OnTriggerExit(Collider other){
-
-		if(other.gameObject.CompareTag("LampaPrzed_trigger") && isLampBefore == false){
-			isLampBefore = true;
-		}
-
-		else if(other.gameObject.CompareTag("WrednySmiech_trigger") && isMeanLaugh == false){
-			isMeanLaugh = true;
-		}
-
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "DzwonekDrzwiWlacz_trigger" && isDoorBell == false && isDoorBellActive == false){
-			isDoorBellActive = true;
-		}
-
-    }
-
-	void OnTriggerEnter(Collider other){
-
-        if (other.gameObject.CompareTag("OddechSzopaKosc_trigger") && isBoneShedBreath == false)
-        {
-            OddechSzopaKoscTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("SwiatloChatka_trigger") && isHutLight == false)
-        {
-            SwiatloChatkaTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("KrzykShock_trigger") && isShockScream == false)
-        {
-            KrzykShockTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("DrzewoFall_trigger") && isFallTree == false && inventoryScript.isAliceKeyTaken == true)
-        {
-            DrzewoFallTrigger();
-        }
-
-        else if (other.gameObject.CompareTag("SkrzypienieSchodyWylacz_trigger") && isStairsCreak == true)
-        {
-            isStairsCreak = false;
-        }
-
-    }
-		
-    // wylaczanie obiektu
-    // dzwiek i animacja
-    // 2 dzwieki z 2 zrodel
-    // cuda i dziwy
-    // cuda i dziwy 2
-    // dzwiek i wylaczenie swiatla latarki
-    // 2 dzwieki z 2 zrodel i wylaczanie obiektu
-    // dzwiek i wlaczanie obiektu
-    // 2 dzwieki z 2 zrodel i animacja
-    // dzwiek i animacja
-
     void WiatrScr()
     {
         windAudioSource.clip = windSound;
         windAudioSource.Play();
         flashlightScript.TurnOffFlashlight();
         isWind = true;
-    }
-
-    void OddechSzopaKoscTrigger()
-    {
-        breathBoneShedAudioSource.clip = boneShedBreathSound;
-        breathBoneShedAudioSource.Play();
-        smallShedBulbAudioSource.clip = lampSound;
-        smallShedBulbAudioSource.Play();
-        isBoneShedBreath = true;
-        smallShedLight.gameObject.SetActive(false);
-    }
-
-    void SwiatloChatkaTrigger()
-    {
-        hutLightAudioSource.clip = hutLightSound;
-        hutLightAudioSource.Play();
-        hutLight.GetComponent<Light>().enabled = true;
-        isHutLight = true;
-    }
-
-    void KrzykShockTrigger()
-    {
-        shockScreamAudioSource.clip = shockScreamSound;
-        shockScreamAudioSource.Play();
-        suffocateAudioSource.clip = suffocateSound;
-        suffocateAudioSource.Play();
-        isShockScream = true;
-        deadSimonAnimator.SetTrigger("Shock");
-    }
-
-    void DrzewoFallTrigger()
-    {
-        fallTreeAudioSource.clip = fallTreeSound;
-        fallTreeAudioSource.Play();
-        isFallTree = true;
-        fallTreeAnimator.SetTrigger("DrzewoFall");
     }
 
 }
