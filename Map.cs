@@ -138,7 +138,7 @@ public class Map : MonoBehaviour {
 
 	}
 
-	void HideMap(){
+	public void HideMap(){
 		
 		mapCanvas.enabled = false;
 		isMap = false;
@@ -169,107 +169,6 @@ public class Map : MonoBehaviour {
 
     }
 
-    public void FastTravel()
-    {
-        fastTravleCanvas.enabled = true;
-        audioSource.PlayOneShot(buttonSound);
-
-        // czy mozliwa podroz do domu Alice
-
-        if(tasksScript.isAliceSearchTask == true)
-        {
-            aliceHouseTravelImage.enabled = true;
-        }else
-        {
-            aliceHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Tom
-
-        if (tasksScript.isTomPumpkinTask == true || tasksScript.isTomCornifieldTask == true)
-        {
-            tomHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            tomHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Opuszczony
-
-        if (tasksScript.isStevenSearchTask == true)
-        {
-            abandonedHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            abandonedHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Steven
-
-        if (tasksScript.isStevenKeyTask == true)
-        {
-            stevenHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            stevenHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Paul
-
-        if (tasksScript.isHutTask == true)
-        {
-            PaulHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            PaulHouseTravelImage.enabled = false;
-        }
-
-    }
-
-    public void TravelToGrandmaHouse()
-    {
-        player.transform.position = new Vector3(grandmaHousePoint.transform.position.x, grandmaHousePoint.transform.position.y, grandmaHousePoint.transform.position.z);
-        audioSource.PlayOneShot(fastTravelSound);
-        HideMap();
-    }
-
-    public void TravelToAliceHouse()
-    {
-        player.transform.position = new Vector3(aliceHousePoint.transform.position.x, aliceHousePoint.transform.position.y, aliceHousePoint.transform.position.z);
-        audioSource.PlayOneShot(fastTravelSound);
-        HideMap();
-    }
-
-    public void TravelToTomHouse()
-    {
-        player.transform.position = new Vector3(tomHousePoint.transform.position.x, tomHousePoint.transform.position.y, tomHousePoint.transform.position.z);
-        audioSource.PlayOneShot(fastTravelSound);
-        HideMap();
-    }
-
-    public void TravelToAbandonedHouse()
-    {
-        player.transform.position = new Vector3(abandonedHousePoint.transform.position.x, abandonedHousePoint.transform.position.y, abandonedHousePoint.transform.position.z);
-        audioSource.PlayOneShot(fastTravelSound);
-        HideMap();
-    }
-
-    public void TravelToStevenHouse()
-    {
-        player.transform.position = new Vector3(stevenHousePoint.transform.position.x, stevenHousePoint.transform.position.y, stevenHousePoint.transform.position.z);
-        audioSource.PlayOneShot(fastTravelSound);
-        HideMap();
-    }
-
-    public void TravelToPaulHouse()
-    {
-        player.transform.position = new Vector3(paulHousePoint.transform.position.x, paulHousePoint.transform.position.y, paulHousePoint.transform.position.z);
-        audioSource.PlayOneShot(fastTravelSound);
-        HideMap();
-    }
+   
 
 }
