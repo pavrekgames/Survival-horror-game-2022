@@ -796,67 +796,12 @@ public class Tasks : MonoBehaviour {
             ZadanieSzukajInfo();
         }
 
-
-        // Dodanie zadania klucz drewno
-
-        if (notesScript.isNote10 == true && isWoodKeyTask == false && isWoodKeyTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieKluczDrewno ();
-		}
-
-		// Dodanie zadania magiczna studnia
-
-		if (notesScript.isNote12 == true && isMagicWellTask == false && isMagicWellTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieMagicznaStudnia ();
-		}
-
-		// Dodanie zadania kamienie studnia
-
-		if (notesScript.isNote13 == true && isWellStonesTask == false && isWellStonesTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieKamienieStudnia ();
-		}
-
-		// Dodanie zadania kaseta 1 
-
-		if (inventoryScript.isCassete1Taken == true && isCassete1Task == false && isCassete1TaskRemoved == false) {
-			ZadanieKaseta1 ();
-		}
-
 		// Dodanie zadania idz Alice
 
 		if (voiceActingScript.playerAudioSource1.isPlaying == false && voiceActingScript.isSecretRoomRecording == true && isGoToAliceTask == false && isGoToAliceTaskRemoved == false && Time.timeScale == 1) { // bylo ZrodloKaseta1.isPlaying == false && Kaseta1Odtworzona == true
 			ZadanieIdzAlice ();
             RemoveSekretnyPokojPointer();
         } 
-
-		// Dodanie zadania Simon Element
-
-		if (notesScript.isNote16 == true && isSimonElementTask == false && isSimonElementTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieSimonElement ();
-		}
-
-		// Dodanie zadania zepsuty klucz
-
-		if (notesScript.isNote19 == true && isBrokenKeyTask == false && isBrokenKeyTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieZepsutyKlucz ();
-		}
-
-		// dodanie zadania napraw klucz
-
-		if (inventoryScript.isBrokenFactoryKeyTaken == true && isFixKeyTask == false && isFixKeyTaskRemoved == false) {
-			ZadanieNaprawKlucz ();
-		}
-
-		// dodanie zadania cmentarz zwierzat
-
-		if (notesScript.isNote23 == true && isAnimalCemetaryTask == false && isAnimalCemetaryTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieCmentarzZwierz ();
-		}
-
-		// dodanie zadania victor potok
-
-		if (notesScript.isNote24 == true && isVictorBrookTask == false && isVictorBrookTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieVictorPotok ();
-		}
 
 		// dodanie zadania kukurydza
 
@@ -876,18 +821,6 @@ public class Tasks : MonoBehaviour {
 			ZadanieSzafaKorytarz ();
 		}
 
-		// dodanie zadania szafka edwarda
-
-		if (notesScript.isNote27 == true && isEdwardCupboardTask == false && isEdwardCupboardTaskRemoved == false && notesScript.isNotes == false && isCassete2Task == false && Input.GetMouseButtonDown(0) )  {
-			ZadanieSzafkaEdward ();
-		}
-
-		// Dodanie zadania kaseta 2
-
-		if (inventoryScript.isCassete2Taken == true && isCassete2Task == false && isCassete2TaskRemoved == false) {
-			ZadanieKaseta2 ();
-		}
-
 		// Dodanie zadania idz szlak
 
 		if (cassete1_AudioSource.isPlaying == false && isCassete2Played == true && isGoTrailVoice == false && isGoToTrialTask == false && isGoToTrialTaskRemoved == false && Time.timeScale == 1) {
@@ -897,30 +830,6 @@ public class Tasks : MonoBehaviour {
 
 		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && isGoTrailVoice == true && isGoToTrialTask == false && isGoToTrialTaskRemoved == false) {
 			ZadanieIdzSzlak ();
-		}
-			
-		// dodanie zadania tom kukurydza
-
-		if (notesScript.isNote31 == true && isTomCornifieldTask == false && isTomCornifieldTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieTomKukurydza ();
-		}
-
-		// Dodanie zadania kaseta 3
-
-		if (inventoryScript.isCassete3Taken == true && isCassete3Task == false && isCassete3TaskRemoved == false) {
-			ZadanieKaseta3 ();
-		}
-
-		// Dodanie zadania Tom oboz
-
-		if (notesScript.isNote33 == true && isTompCampTask == false && isTompCampTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieTomOboz ();
-		}
-
-		// Dodanie zadania Tom dynia
-
-		if (notesScript.isNote34 == true && isTomPumpkinTask == false && isTomPumpkinTaskRemoved == false && isTompCampTask == true && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieTomDynia ();
 		}
 
 		// Dodanie zadania Chip
@@ -942,64 +851,16 @@ public class Tasks : MonoBehaviour {
             ZadanieIdzWawoz();
         }
 
-        // Dodanie zadania opuszczony dom
-
-        if (notesScript.isNote36 == true && isAbandonedSearchTask == false && isAbandonedSearchTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieOpuszczonyInfo ();
-		}
-
-		// Dodanie zadania kaseta 4
-
-		if (inventoryScript.isCassete4Taken == true && isCassete4Task == false && isCassete4TaskRemoved == false) {
-			ZadanieKaseta4 ();
-		}
-
 		// Dodanie zadania Steven info
 
 		if (cassete4_AudioSource.isPlaying == false && isCassete4Played == true && isStevenSearchTask == false && isStevenSearchTaskRemoved == false && Time.timeScale == 1) {
 			ZadanieStevenInfo ();
 		} 
 
-		// Dodanie zadania Steven klucz
-
-		if (notesScript.isNote41 == true && isStevenKeyTask == false && isStevenKeyTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieStevenKlucz ();
-		}
-
-		// Dodanie zadania Steven grzyb
-
-		if (notesScript.isNote44 == true && isStevenMushroomTask == false && isStevenMushroomTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieStevenGrzyb ();
-		}
-
-		// Dodanie zadania Steven roslina
-
-		if (notesScript.isNote44 == true && isStevenPlantTask == false && isStevenPlantTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieStevenRoslina ();
-		}
-
-		// Dodanie zadania Steven czaszka
-
-		if (notesScript.isNote44 == true && isStevenSkullTask == false && isStevenSkullTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieStevenCzaszka ();
-		}
-
-		// Ddoanie zadania kwas
-
-		if (inventoryScript.isLabMushroomTaken == true && inventoryScript.isLabPlantTaken == true && inventoryScript.isLabSkullTaken == true && isStevenAcidTask == false && isStevenAcidTaskRemoved == false) {
-			ZadanieKwas ();
-		}
-
 		// dodanie zadania Steven szopa
 
 		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && inventoryScript.isStrongAcidTaken == true && isStevenShedTask == false && isStevenShedTaskRemoved == false) {
 			ZadanieStevenSzopa ();
-		}
-
-		// Dodanie zadania Steven potok
-
-		if (notesScript.isNote45 == true && isStevenBrookTask == false && isStevenBrookTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieStevenPotok ();
 		}
 
         // Dodanie zadania Paul info
@@ -1008,12 +869,6 @@ public class Tasks : MonoBehaviour {
         {  
             ZadaniePaulInfo();
         }
-
-        // Dodanie zadania chatka
-
-        if (notesScript.isNote53 == true && isHutTask == false && isHutTaskRemoved == false && notesScript.isNotes == false && Input.GetMouseButtonDown(0)) {
-			ZadanieChatka ();
-		}
 
 		// Dodanie zadania diably
 
@@ -1137,77 +992,8 @@ public class Tasks : MonoBehaviour {
         }
 
 
-    } // klamra Update
+    } 
 
-
-	void OnTriggerExit(Collider other){
-
-		// Dodanie zadania o zebraniu kosci
-
-		if(other.gameObject.CompareTag("ZadanieKosci_trigger") && isBonesTask == false){
-			ZadanieKosci ();
-		}
-
-		// Dodanie zadania o informcji Alice
-
-		else if(other.gameObject.CompareTag("ZadanieAliceInfo_trigger") && isAliceSearchTask == false && isGoToAliceTask == true){
-			ZadanieAliceInfo ();
-		}
-
-		// Dodanie zadania przedostan sie
-
-		else if(other.gameObject.CompareTag("PrzedostanSie_trigger") && isGetToTomRoadTask == false && isGetToTomRoadTaskRemoved == false && isGoTrailTask == true){
-			ZadaniePrzedostanSie ();
-		}
-
-
-	} // klamra do Exit
-
-	void OnTriggerEnter(Collider other){
-	
-
-		// Dodanie zadania kieruj szlak
-
-		if(other.gameObject.CompareTag("IdzWawoz_trigger") && isGoTrailTask == false && isGoTrailTaskRemoved == false && isGoToTrialTask == true){
-			ZadanieKierujSzlak ();
-		}
-
-		// Dodanie zadania Tom info
-
-		else if(other.gameObject.CompareTag("TomInfo_trigger") && isTomSearchTask == false && isTomSearchTaskRemoved == false && isGetToTomRoadTask == true){
-			ZadanieTomInfo ();
-		}
-
-		// Dodanie zadania Steven notatka
-
-		else if(other.gameObject.CompareTag("StevenNotatka_trigger") && isStevenNoteTask == false && isStevenNoteTaskRemoved == false && isStevenShedTask == true){
-			ZadanieStevenNotatka ();
-		}
-
-		// Atak potworow
-
-		else if(other.gameObject.CompareTag("StevenNotatka_trigger") && notesScript.isNote45 == true && isStevenShedLocked == false){
-			isStevenShedLocked = true;
-		}
-
-        // Dodanie zadania kryjowka diably
-
-		else if (other.gameObject.CompareTag("KryjowkaDiably_trigger") && isDevilsShelterTask == false && isDevilsShelterTaskRemoved == false && isDevilsBrookTask == true)
-        {
-            ZadanieKryjowkaDiably();
-        }
-
-        // Dodanie zadania kryjowka rodzina
-
-		else if (other.gameObject.CompareTag("KryjowkaDiablow_trigger") && isShelterFamilyTask == false && isShelterFamilyTaskRemoved == false && isDevilsShelterTask == true)
-        {
-            ZadanieKryjowkaRodzina();
-        }
-
-
-    }
-
-	//-------------------Zadania Glowne ----------------------
 
     public void AddTask(TaskData task)
     {
@@ -1279,7 +1065,7 @@ public class Tasks : MonoBehaviour {
         gameManagerScript.MonsterLosowy2.gameObject.SetActive(true);
         gameManagerScript.MonsterLosowy3.gameObject.SetActive(true);
         randomJumpscareScript.enabled = true;
-        compassScript.AddTaskPoint(compassScript.keyWoodPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1301,7 +1087,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         notesScript.notes [12].gameObject.SetActive (true);
-        compassScript.AddTaskPoint(compassScript.magicWellPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[1]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1386,7 +1172,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         gardenDoorPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.gardenDoorPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i = 0; i < tasksTextMesh.Length; i++)
         {
@@ -1444,7 +1230,7 @@ public class Tasks : MonoBehaviour {
         aliceHousePointer.enabled = true;
 		aliceHouseCollider.gameObject.SetActive (false);
         DrzwiDomAliceS.isNeedKey = false;
-        compassScript.AddTaskPoint(compassScript.aliceHousePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1503,7 +1289,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         simonElementPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.simonElementPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1525,7 +1311,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         workshopPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.workshopPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i = 0; i < tasksTextMesh.Length; i++)
         {
@@ -1550,7 +1336,7 @@ public class Tasks : MonoBehaviour {
         audioSource.Play();
         taskTowerScript.enabled = true;
 		brokenKeyPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.brokenKeyPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1570,7 +1356,7 @@ public class Tasks : MonoBehaviour {
 		isBrokenKeyTaskRemoved = true;
 		taskWheelScript.enabled = true;
         brokenKeyPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.brokenKeyPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1608,7 +1394,7 @@ public class Tasks : MonoBehaviour {
         audioSource.Play();
         animalCemetaryPointer.enabled = true;
         animalCemetaryArrowPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.animalCementaryPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1628,7 +1414,7 @@ public class Tasks : MonoBehaviour {
 		isAnimalCemetaryTaskRemoved = true;
         animalCemetaryPointer.enabled = false;
         animalCemetaryArrowPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.animalCementaryPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1701,7 +1487,7 @@ public class Tasks : MonoBehaviour {
         inventoryScript.axe.gameObject.SetActive(true);
         jumpscareScript.staticCornfieldMonster.gameObject.SetActive(true);
         musicScript.isMusicOff = true;
-        compassScript.AddTaskPoint(compassScript.cornfieldPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1724,7 +1510,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll (x => x.title == "ZadanieKukurydza");
         isCornfieldTaskRemoved = true;
 		cornfieldPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.cornfieldPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1738,7 +1524,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         axePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.axePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1761,7 +1547,7 @@ public class Tasks : MonoBehaviour {
 		tasksList.RemoveAll (x => x.title == "ZadanieSiekiera");
 		isAxeTaskRemoved = true;
 		axePointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.axePoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1775,7 +1561,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         corridorWardrobePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.wardrobeCorridorPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1837,7 +1623,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         cassete2Pointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.cassete2Point);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1860,7 +1646,7 @@ public class Tasks : MonoBehaviour {
 		tasksList.RemoveAll (x => x.title == "ZadanieKaseta2");
 		isCassete2TaskRemoved = true;
 		cassete2Pointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.cassete2Point);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1874,7 +1660,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         goTrailPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.goTrailPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1897,7 +1683,7 @@ public class Tasks : MonoBehaviour {
 		tasksList.RemoveAll (x => x.title == "ZadanieIdzSzlak");
 		isGoToTrialTaskRemoved = true;
 		goTrailPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.goTrailPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1946,7 +1732,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         getToTomRoadPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.getToPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -1969,7 +1755,7 @@ public class Tasks : MonoBehaviour {
 		tasksList.RemoveAll (x => x.title == "ZadaniePrzedostanSie");
 		isGetToTomRoadTaskRemoved = true;
 		getToTomRoadPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.getToPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -1983,7 +1769,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         tomHousePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.tomHousePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         tomHouseCollider.gameObject.SetActive (false);
 		tomBooksCollider.gameObject.SetActive (false);
@@ -2074,7 +1860,7 @@ public class Tasks : MonoBehaviour {
         //ZrodloDzwieku.PlayOneShot(DzwNoweZadanie);
         audioSource.clip = newTaskSound;
         audioSource.Play();
-        compassScript.AddTaskPoint(compassScript.tomCampPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2164,7 +1950,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         ravinePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.ravibePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2187,7 +1973,7 @@ public class Tasks : MonoBehaviour {
 		tasksList.RemoveAll (x => x.title == "ZadanieWawoz");
 		isRavineTaskRemoved = true;
 		ravinePointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.ravibePoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2239,7 +2025,7 @@ public class Tasks : MonoBehaviour {
         abandonedPointer.enabled = true;
 		abandonedCollider.gameObject.SetActive (false);
         DrzwiOpuszczonyS.isNeedKey = false;
-        compassScript.AddTaskPoint(compassScript.abandonedHousePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2298,7 +2084,7 @@ public class Tasks : MonoBehaviour {
         stevenHousePointer.enabled = true;
 		stevenHouseCollider.gameObject.SetActive (false);
         DrzwiDomStevenS.isNeedKey = false;
-        compassScript.AddTaskPoint(compassScript.stevenHousePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2327,7 +2113,7 @@ public class Tasks : MonoBehaviour {
         //ZrodloDzwieku.PlayOneShot(DzwNoweZadanie);
         audioSource.clip = newTaskSound;
         audioSource.Play();
-        compassScript.AddTaskPoint(compassScript.stevenMeatPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
         meat1.gameObject.SetActive(true);
         meat2.gameObject.SetActive(true);
         meat3.gameObject.SetActive(true);
@@ -2354,7 +2140,7 @@ public class Tasks : MonoBehaviour {
         //ZrodloDzwieku.PlayOneShot(DzwNoweZadanie);
         audioSource.clip = newTaskSound;
         audioSource.Play();
-        compassScript.AddTaskPoint(compassScript.stevenMushroomPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2377,7 +2163,7 @@ public class Tasks : MonoBehaviour {
 		isStevenPlantTask = true;
 		inventoryScript.labPlant.gameObject.SetActive (true);
 		stevenPlantPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.stevenPlantPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2396,7 +2182,7 @@ public class Tasks : MonoBehaviour {
 		isStevenSkullTask = true;
 		inventoryScript.labSkull.gameObject.SetActive (true);
 		stevenSkullPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.stevenSkullPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2455,7 +2241,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         stevenShedPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.stevenShedPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2502,7 +2288,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieStevenSzopa");
         isStevenShedTaskRemoved = true;
         stevenShedPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.stevenShedPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2516,7 +2302,7 @@ public class Tasks : MonoBehaviour {
         //ZrodloDzwieku.PlayOneShot(DzwNoweZadanie);
         audioSource.clip = newTaskSound;
         audioSource.Play();
-        compassScript.AddTaskPoint(compassScript.stevenBrookPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2539,7 +2325,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll (x => x.title == "ZadanieStevenPotok");
         stevenBrookPointer.enabled = false;
         isStevenBrookTaskRemoved = true;
-        compassScript.RemoveTaskPoint(compassScript.stevenBrookPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2553,7 +2339,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         PaulHousePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.scientistHousePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         paulHouseCollider.gameObject.SetActive (false);
 		paulBackCollider.gameObject.SetActive (false);
@@ -2619,7 +2405,7 @@ public class Tasks : MonoBehaviour {
         //ZrodloDzwieku.PlayOneShot(DzwNoweZadanie);
         audioSource.clip = newTaskSound;
         audioSource.Play();
-        compassScript.AddTaskPoint(compassScript.hutPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2644,7 +2430,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll (x => x.title == "ZadanieChatka");
 		hutPointer.enabled = false;
 		isHutTaskRemoved = true;
-        compassScript.RemoveTaskPoint(compassScript.hutPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2661,7 +2447,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         devilsBrookPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.devilsBrookPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
@@ -2685,7 +2471,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll (x => x.title == "ZadaniePotokDiably");
 		devilsBrookPointer.enabled = false;
 		isDevilsBrookTaskRemoved = true;
-        compassScript.RemoveTaskPoint(compassScript.devilsBrookPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2756,38 +2542,38 @@ public class Tasks : MonoBehaviour {
     public void AddSzafkaEdwardPointer()
     {
         EdwardCupboardPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.edwardCupboardPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
 
     }
 
     public void AddKoscSzopaPointer()
     {
         boneShedPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.bonesShedPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void AddKoscStajniaPointer()
     {
         boneStablePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.boneStablePoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void AddSzopaNarzedziaPointer()
     {
         toolShedPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.toolShedPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void AddKluczWychodekPointer()
     {
         keyToiletPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.keyToiletPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void AddSekretnyPokojPointer()
     {
         secretRoomPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.secretRoomPoint);
+        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     // ----------------------Usuwanie pointerow z notatek a nie zadania-----------------------
@@ -2795,38 +2581,38 @@ public class Tasks : MonoBehaviour {
     public void RemoveSzafkaEdwardPointer()
     {
         EdwardCupboardPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.edwardCupboardPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
     }
 
     public void RemoveKoscSzopaPointer()
     {
         boneShedPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.bonesShedPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void RemoveKoscStajniaPointer()
     {
         boneStablePointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.boneStablePoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void RemoveSzopaNarzedziaPointer()
     {
         toolShedPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.toolShedPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void RemoveKluczWychodekPointer()
     {
         keyToiletPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.keyToiletPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     public void RemoveSekretnyPokojPointer()
     {
         secretRoomPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.secretRoomPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
     }
 
     // -----------------------Usuwanie zadan----------------------------------------------------
@@ -2855,7 +2641,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieKluczDrewno");
         isWoodKeyTaskRemoved = true;
         woodenKeyPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.keyWoodPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2878,7 +2664,7 @@ public class Tasks : MonoBehaviour {
 		taskWellScript.enabled = false;
         magicWellPointer.enabled = false;
         stonesAreaPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.magicWellPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2921,7 +2707,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieDrzwiOgrod");
         isGardenDoorTaskRemoved = true;
         gardenDoorPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.gardenDoorPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2942,7 +2728,7 @@ public class Tasks : MonoBehaviour {
 		tasksList.RemoveAll (x => x.title == "ZadanieSimonElement");
 		isSimonElementTaskRemoved = true;
         simonElementPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.simonElementPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -2983,7 +2769,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieWarsztat");
         isWorkshopTaskRemoved = true;
         workshopPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.workshopPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -3046,7 +2832,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieSzafaKorytarz");
         isCorridorWardrobeTaskRemoved = true;
         corridorWardrobePointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.wardrobeCorridorPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         AddSzafkaEdwardPointer();
         
@@ -3071,7 +2857,7 @@ public class Tasks : MonoBehaviour {
         isTomPumpkinTaskRemoved = true;
 		pumpkinAreaPointer.enabled = false;
         tomCampPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.tomCampPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -3114,7 +2900,7 @@ public class Tasks : MonoBehaviour {
         isStevenKeyTaskRemoved = true;
         stevenKeyAreaPointer.enabled = false;
         stevenMeatPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.stevenMeatPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -3137,7 +2923,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieStevenGrzyb");
         isStevenMushroomTaskRemoved = true;
         stevenMushroomPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.stevenMushroomPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -3160,7 +2946,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieStevenRoslina");
         isStevenPlantTaskRemoved = true;
         stevenPlantPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.stevenPlantPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
@@ -3183,7 +2969,7 @@ public class Tasks : MonoBehaviour {
         tasksList.RemoveAll(x => x.title == "ZadanieStevenCzaszka");
         isStevenSkullTaskRemoved = true;
         stevenSkullPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.stevenSkullPoint);
+        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
 
         tasksTextMesh[0].text = "";
         tasksTextMesh[1].text = "";
