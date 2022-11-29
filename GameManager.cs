@@ -2727,7 +2727,7 @@ public class GameManager : MonoBehaviour {
         if (Tasks.isFirstTask == true && Tasks.isFirstTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadaniePoczatek", Tasks.beginTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadaniePoczatek", Tasks.beginTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.beginTaskText;
 					break;
 				}
@@ -2742,7 +2742,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isSearchTask == true && Tasks.isSearchTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieSzukajInfo", Tasks.searchTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieSzukajInfo", Tasks.searchTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.searchTaskText;
 					break;
 				}
@@ -2761,7 +2761,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKluczDrewno", Tasks.woodKeyTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKluczDrewno", Tasks.woodKeyTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.woodKeyTaskText;
 					break;
 				}
@@ -2776,7 +2776,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieMagicznaStudnia", Tasks.magicWellTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieMagicznaStudnia", Tasks.magicWellTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.magicWellTaskText;
 					break;
 				}
@@ -2806,7 +2806,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKamienieStudnia", Tasks.wellStonesTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKamienieStudnia", Tasks.wellStonesTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.wellStonesTaskText;
 					break;
 				}
@@ -2816,7 +2816,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isCassete1Task == true && Tasks.isCassete1TaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKaseta1", Tasks.casseteTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKaseta1", Tasks.casseteTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.casseteTaskText;
 					break;
 				}
@@ -2832,7 +2832,7 @@ public class GameManager : MonoBehaviour {
             {
                 if (Tasks.tasksTextMesh[i].text.Length == 0)
                 {
-                    Tasks.tasksList.Add(new TaskData("ZadanieDrzwiOgrod", Tasks.gardenDoorTaskText));
+                    Tasks.tasksList.Add(new TaskData("ZadanieDrzwiOgrod", Tasks.gardenDoorTaskText, true, false));
                     Tasks.tasksTextMesh[i].text = Tasks.gardenDoorTaskText;
                     break;
                 }
@@ -2849,7 +2849,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKosci", Tasks.bonesTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKosci", Tasks.bonesTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.bonesTaskText;
 					break;
 				}
@@ -2866,7 +2866,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isGoToAliceTask == true && Tasks.isGoToAliceTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieIdzAlice", Tasks.ZadanieIdzAliceT));
+					Tasks.tasksList.Add(new TaskData("ZadanieIdzAlice", Tasks.ZadanieIdzAliceT, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.ZadanieIdzAliceT;
 					break;
 				}
@@ -2876,7 +2876,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isAliceSearchTask == true && Tasks.isAliceSearchTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieAliceInfo", Tasks.goToAliceTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieAliceInfo", Tasks.goToAliceTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.goToAliceTaskText;
 					break;
 				}
@@ -2890,7 +2890,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieSimonElement", Tasks.simonElementTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieSimonElement", Tasks.simonElementTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.simonElementTaskText;
 					break;
 				}
@@ -2907,7 +2907,7 @@ public class GameManager : MonoBehaviour {
             {
                 if (Tasks.tasksTextMesh[i].text.Length == 0)
                 {
-                    Tasks.tasksList.Add(new TaskData("ZadanieWarsztat", Tasks.workshopTaskText));
+                    Tasks.tasksList.Add(new TaskData("ZadanieWarsztat", Tasks.workshopTaskText, true, false));
                     Tasks.tasksTextMesh[i].text = Tasks.workshopTaskText;
                     break;
                 }
@@ -2923,7 +2923,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieZepsutyKlucz", Tasks.brokenKeyTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieZepsutyKlucz", Tasks.brokenKeyTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.brokenKeyTaskText;
 					break;
 				}
@@ -2937,7 +2937,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieNaprawKlucz", Tasks.fixKeyTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieNaprawKlucz", Tasks.fixKeyTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.fixKeyTaskText;
 					break;
 				}
@@ -2953,7 +2953,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieCmentarzZwierz", Tasks.animalCemetaryTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieCmentarzZwierz", Tasks.animalCemetaryTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.animalCemetaryTaskText;
 					break;
 				}
@@ -2969,7 +2969,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieVictorPotok", Tasks.victorBrookTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieVictorPotok", Tasks.victorBrookTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.victorBrookTaskText;
 					break;
 				}
@@ -2980,7 +2980,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isAliceRoomTask == true && Tasks.isAliceRoomTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieSalonAlice", Tasks.aliceRoomTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieSalonAlice", Tasks.aliceRoomTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.aliceRoomTaskText;
 					break;
 				}
@@ -2994,7 +2994,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKukurydza", Tasks.cornfieldTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKukurydza", Tasks.cornfieldTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.cornfieldTaskText;
 					break;
 				}
@@ -3009,7 +3009,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieSiekiera", Tasks.axeTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieSiekiera", Tasks.axeTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.axeTaskText;
 					break;
 				}
@@ -3024,7 +3024,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieSzafaKorytarz", Tasks.corridorWardrobeTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieSzafaKorytarz", Tasks.corridorWardrobeTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.corridorWardrobeTaskText;
 					break;
 				}
@@ -3035,7 +3035,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isEdwardCupboardTask == true && Tasks.isEdwardCupboardTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieSzafkaEdward", Tasks.edwardCupboardTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieSzafkaEdward", Tasks.edwardCupboardTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.edwardCupboardTaskText;
 					break;
 				}
@@ -3049,7 +3049,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKaseta2", Tasks.Cassete2TaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKaseta2", Tasks.Cassete2TaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.Cassete2TaskText;
 					break;
 				}
@@ -3064,7 +3064,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieIdzSzlak", Tasks.goToTrialTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieIdzSzlak", Tasks.goToTrialTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.goToTrialTaskText;
 					break;
 				}
@@ -3078,7 +3078,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKierujSzlak", Tasks.goTrailTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKierujSzlak", Tasks.goTrailTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.goTrailTaskText;
 					break;
 				}
@@ -3093,7 +3093,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadaniePrzedostanSie", Tasks.getToTomRoadTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadaniePrzedostanSie", Tasks.getToTomRoadTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.getToTomRoadTaskText;
 					break;
 				}
@@ -3119,7 +3119,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isTomSearchTask== true && Tasks.isTomSearchTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieTomInfo", Tasks.tomSearchTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieTomInfo", Tasks.tomSearchTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.tomSearchTaskText;
 					break;
 				}
@@ -3132,7 +3132,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieTomKukurydza", Tasks.ZadanieTomKukurydzaT));
+					Tasks.tasksList.Add(new TaskData("ZadanieTomKukurydza", Tasks.ZadanieTomKukurydzaT, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.ZadanieTomKukurydzaT;
 					break;
 				}
@@ -3143,7 +3143,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isCassete3Task== true && Tasks.isCassete3TaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKaseta3", Tasks.cassete3TaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKaseta3", Tasks.cassete3TaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.cassete3TaskText;
 					break;
 				}
@@ -3157,7 +3157,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieTomOboz", Tasks.tomCampTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieTomOboz", Tasks.tomCampTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.tomCampTaskText;
 					break;
 				}
@@ -3173,7 +3173,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieTomDynia", Tasks.tomPumpkinTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieTomDynia", Tasks.tomPumpkinTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.tomPumpkinTaskText;
 					break;
 				}
@@ -3184,7 +3184,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isTomChipTask == true && Tasks.isTomChipTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieTomChip", Tasks.tomChipTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieTomChip", Tasks.tomChipTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.tomChipTaskText;
 					break;
 				}
@@ -3198,7 +3198,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieWawoz", Tasks.ravineTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieWawoz", Tasks.ravineTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.ravineTaskText;
 					break;
 				}
@@ -3212,7 +3212,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieIdzWawoz", Tasks.goTrialTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieIdzWawoz", Tasks.goTrialTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.goTrialTaskText;
 					break;
 				}
@@ -3233,7 +3233,7 @@ public class GameManager : MonoBehaviour {
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieOpuszczonyInfo", Tasks.abandonedSearchTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieOpuszczonyInfo", Tasks.abandonedSearchTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.abandonedSearchTaskText;
 					break;
 				}
@@ -3245,7 +3245,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isCassete4Task == true && Tasks.isCassete4TaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKaseta4", Tasks.cassete4TaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKaseta4", Tasks.cassete4TaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.cassete4TaskText;
 					break;
 				}
@@ -3264,7 +3264,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenSearchTask == true && Tasks.isStevenSearchTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenInfo", Tasks.stevenSearchTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenInfo", Tasks.stevenSearchTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenSearchTaskText;
 					break;
 				}
@@ -3289,7 +3289,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenKlucz", Tasks.stevenKeyTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenKlucz", Tasks.stevenKeyTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenKeyTaskText;
 					break;
 				}
@@ -3304,7 +3304,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenGrzyb", Tasks.stevenMushroomTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenGrzyb", Tasks.stevenMushroomTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenMushroomTaskText;
 					break;
 				}
@@ -3319,7 +3319,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenRoslina", Tasks.stevenPlantTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenRoslina", Tasks.stevenPlantTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenPlantTaskText;
 					break;
 				}
@@ -3334,7 +3334,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenCzaszka", Tasks.stevenSkullTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenCzaszka", Tasks.stevenSkullTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenSkullTaskText;
 					break;
 				}
@@ -3345,7 +3345,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenAcidTask == true && Tasks.isStevenAcidTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKwas", Tasks.acidTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKwas", Tasks.acidTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.acidTaskText;
 					break;
 				}
@@ -3359,7 +3359,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenSzopa", Tasks.stevenShedTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenSzopa", Tasks.stevenShedTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenShedTaskText;
 					break;
 				}
@@ -3370,7 +3370,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenNoteTask == true && Tasks.isStevenNoteTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenNotatka", Tasks.stevenNoteTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenNotatka", Tasks.stevenNoteTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenNoteTaskText;
 					break;
 				}
@@ -3384,7 +3384,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieStevenPotok", Tasks.stevenBrookTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieStevenPotok", Tasks.stevenBrookTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.stevenBrookTaskText;
 					break;
 				}
@@ -3407,7 +3407,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isPaulSearchTask == true && Tasks.isPaulSearchTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadaniePaulInfo", Tasks.paulSearchTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadaniePaulInfo", Tasks.paulSearchTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.paulSearchTaskText;
 					break;
 				}
@@ -3417,7 +3417,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isPaulDoorTask == true && Tasks.isPaulDoorTaskRemoved == false){
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadaniePaulDrzwi", Tasks.paulDoorTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadaniePaulDrzwi", Tasks.paulDoorTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.paulDoorTaskText;
 					break;
 				}
@@ -3437,7 +3437,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieChatka", Tasks.hutTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieChatka", Tasks.hutTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.hutTaskText;
 					break;
 				}
@@ -3458,7 +3458,7 @@ public class GameManager : MonoBehaviour {
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadaniePotokDiably", Tasks.devilsBrookTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadaniePotokDiably", Tasks.devilsBrookTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.devilsBrookTaskText; 
 					break;
 				}
@@ -3472,7 +3472,7 @@ public class GameManager : MonoBehaviour {
 
 			for (int i = 0; i < Tasks.tasksTextMesh.Length; i++){
 				if (Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKryjowkaDiably", Tasks.devilsShelterTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKryjowkaDiably", Tasks.devilsShelterTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.devilsShelterTaskText; // # Find the Devil's hide
 					break;
 				}
@@ -3483,7 +3483,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isShelterFamilyTask == true && Tasks.isShelterFamilyTaskRemoved == false){
 			for (int i = 0; i < Tasks.tasksTextMesh.Length; i++){
 				if (Tasks.tasksTextMesh[i].text.Length == 0){
-					Tasks.tasksList.Add(new TaskData("ZadanieKryjowkaRodzina", Tasks.endTaskText));
+					Tasks.tasksList.Add(new TaskData("ZadanieKryjowkaRodzina", Tasks.endTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.endTaskText; // # Find the Devil's hide
 					break;
 				}

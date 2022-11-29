@@ -8,6 +8,8 @@ public class TasksUI : MonoBehaviour {
 
     public Canvas tasksCanvas;
     public bool isTasksActive = false;
+    public List<TaskData> tasksList = new List<TaskData>();
+    public TextMeshProUGUI[] tasksTextMesh;
 
     // inventory UI
 
@@ -137,6 +139,14 @@ public class TasksUI : MonoBehaviour {
     public Image skill4_Icon;
 
     public int skillsCount = 0;
+
+    public void UpdateTasksUI()
+    {
+        for (int i = 0; i < tasksList.Count; i++)
+        {
+             tasksTextMesh[i].text = tasksList[i].content;   
+        }
+    }
 
     public void ShowTasks()
     {

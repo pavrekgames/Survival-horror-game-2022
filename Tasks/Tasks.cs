@@ -1209,10 +1209,25 @@ public class Tasks : MonoBehaviour {
 
 	//-------------------Zadania Glowne ----------------------
 
+    public void AddTask(TaskData task)
+    {
+        task.isAdded = true;
+        tasksList.Add(task);
+        audioSource.clip = newTaskSound;
+        audioSource.Play();
+        uiAnimator.SetTrigger("NewTask");
+    }
+
+    public void RemoveTask(TaskData task)
+    {
+        task.isRemoved = true;
+        tasksList.Remove(task);
+    }
+
 	 public void ZadaniePoczatek(){
 		for(int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadaniePoczatek", beginTaskText));
+                tasksList.Add(new TaskData("ZadaniePoczatek", beginTaskText, true, false));
                 tasksTextMesh[i].text = beginTaskText;
 				isFirstTask = true;
 				break;
@@ -1239,7 +1254,7 @@ public class Tasks : MonoBehaviour {
         
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieSzukajInfo", searchTaskText));
+                tasksList.Add(new TaskData("ZadanieSzukajInfo", searchTaskText, true, false));
                 tasksTextMesh[i].text = searchTaskText;
                 for(int j=0; j<tasksList.Count; j++)
                 {
@@ -1268,7 +1283,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKluczDrewno", woodKeyTaskText));
+                tasksList.Add(new TaskData("ZadanieKluczDrewno", woodKeyTaskText, true, false));
                 tasksTextMesh[i].text = woodKeyTaskText;
 				woodenKeyPointer.enabled = true;
 				break;
@@ -1290,7 +1305,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieMagicznaStudnia", magicWellTaskText));
+                tasksList.Add(new TaskData("ZadanieMagicznaStudnia", magicWellTaskText, true, false));
                 tasksTextMesh[i].text = magicWellTaskText;
 				magicWellPointer.enabled = true;
 				break;
@@ -1329,7 +1344,7 @@ public class Tasks : MonoBehaviour {
 		//MagicznaStudniaPointer.enabled = false;
 		for(int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKamienieStudnia", wellStonesTaskText));
+                tasksList.Add(new TaskData("ZadanieKamienieStudnia", wellStonesTaskText, true, false));
                 tasksTextMesh[i].text = wellStonesTaskText;
 				stonesAreaPointer.enabled = true;
                 for (int j = 0; j < tasksList.Count; j++)
@@ -1353,7 +1368,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKaseta1", casseteTaskText));
+                tasksList.Add(new TaskData("ZadanieKaseta1", casseteTaskText, true, false));
                 tasksTextMesh[i].text = casseteTaskText;
 				break;
 			}
@@ -1377,7 +1392,7 @@ public class Tasks : MonoBehaviour {
         {
             if (tasksTextMesh[i].text.Length == 0)
             {
-                tasksList.Add(new TaskData("ZadanieDrzwiOgrod", gardenDoorTaskText));
+                tasksList.Add(new TaskData("ZadanieDrzwiOgrod", gardenDoorTaskText, true, false));
                 tasksTextMesh[i].text = gardenDoorTaskText;
                 break;
             }
@@ -1398,7 +1413,7 @@ public class Tasks : MonoBehaviour {
 
 		for(int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKosci", bonesTaskText));
+                tasksList.Add(new TaskData("ZadanieKosci", bonesTaskText, true, false));
                 tasksTextMesh[i].text = bonesTaskText;
 				break;
 			}
@@ -1433,7 +1448,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieIdzAlice", ZadanieIdzAliceT));
+                tasksList.Add(new TaskData("ZadanieIdzAlice", ZadanieIdzAliceT, true, false));
                 tasksTextMesh[i].text = ZadanieIdzAliceT;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1466,7 +1481,7 @@ public class Tasks : MonoBehaviour {
 
 		for(int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieAliceInfo", goToAliceTaskText));
+                tasksList.Add(new TaskData("ZadanieAliceInfo", goToAliceTaskText, true, false));
                 tasksTextMesh[i].text = goToAliceTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1492,7 +1507,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieSimonElement", simonElementTaskText));
+                tasksList.Add(new TaskData("ZadanieSimonElement", simonElementTaskText, true, false));
                 tasksTextMesh[i].text = simonElementTaskText;
 				break;
 			}
@@ -1516,7 +1531,7 @@ public class Tasks : MonoBehaviour {
         {
             if (tasksTextMesh[i].text.Length == 0)
             {
-                tasksList.Add(new TaskData("ZadanieWarsztat", workshopTaskText));
+                tasksList.Add(new TaskData("ZadanieWarsztat", workshopTaskText, true, false));
                 tasksTextMesh[i].text = workshopTaskText;
                 break;
             }
@@ -1539,7 +1554,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieZepsutyKlucz", brokenKeyTaskText));
+                tasksList.Add(new TaskData("ZadanieZepsutyKlucz", brokenKeyTaskText, true, false));
                 tasksTextMesh[i].text = brokenKeyTaskText;
 				break;
 			}
@@ -1570,7 +1585,7 @@ public class Tasks : MonoBehaviour {
         audioSource.Play();
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieNaprawKlucz", fixKeyTaskText));
+                tasksList.Add(new TaskData("ZadanieNaprawKlucz", fixKeyTaskText, true, false));
                 tasksTextMesh[i].text = fixKeyTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1597,7 +1612,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieCmentarzZwierz", animalCemetaryTaskText));
+                tasksList.Add(new TaskData("ZadanieCmentarzZwierz", animalCemetaryTaskText, true, false));
                 tasksTextMesh[i].text = animalCemetaryTaskText;
 				break;
 			}
@@ -1632,7 +1647,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieVictorPotok", victorBrookTaskText));
+                tasksList.Add(new TaskData("ZadanieVictorPotok", victorBrookTaskText, true, false));
                 tasksTextMesh[i].text = victorBrookTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1656,7 +1671,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieSalonAlice", aliceRoomTaskText));
+                tasksList.Add(new TaskData("ZadanieSalonAlice", aliceRoomTaskText, true, false));
                 tasksTextMesh[i].text = aliceRoomTaskText;
 				break;
 			}
@@ -1690,7 +1705,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKukurydza", cornfieldTaskText));
+                tasksList.Add(new TaskData("ZadanieKukurydza", cornfieldTaskText, true, false));
                 tasksTextMesh[i].text = cornfieldTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1727,7 +1742,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieSiekiera", axeTaskText));
+                tasksList.Add(new TaskData("ZadanieSiekiera", axeTaskText, true, false));
                 tasksTextMesh[i].text = axeTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1764,7 +1779,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieSzafaKorytarz", corridorWardrobeTaskText));
+                tasksList.Add(new TaskData("ZadanieSzafaKorytarz", corridorWardrobeTaskText, true, false));
                 tasksTextMesh[i].text = corridorWardrobeTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1788,7 +1803,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieSzafkaEdward", edwardCupboardTaskText));
+                tasksList.Add(new TaskData("ZadanieSzafkaEdward", edwardCupboardTaskText, true, false));
                 tasksTextMesh[i].text = edwardCupboardTaskText;
 				break;
 			}
@@ -1826,7 +1841,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKaseta2", Cassete2TaskText));
+                tasksList.Add(new TaskData("ZadanieKaseta2", Cassete2TaskText, true, false));
                 tasksTextMesh[i].text = Cassete2TaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1863,7 +1878,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieIdzSzlak", goToTrialTaskText));
+                tasksList.Add(new TaskData("ZadanieIdzSzlak", goToTrialTaskText, true, false));
                 tasksTextMesh[i].text = goToTrialTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1899,7 +1914,7 @@ public class Tasks : MonoBehaviour {
 
 		for(int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKierujSzlak", goTrailTaskText));
+                tasksList.Add(new TaskData("ZadanieKierujSzlak", goTrailTaskText, true, false));
                 tasksTextMesh[i].text = goTrailTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1935,7 +1950,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadaniePrzedostanSie", getToTomRoadTaskText));
+                tasksList.Add(new TaskData("ZadaniePrzedostanSie", getToTomRoadTaskText, true, false));
                 tasksTextMesh[i].text = getToTomRoadTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -1980,7 +1995,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieTomInfo", tomSearchTaskText));
+                tasksList.Add(new TaskData("ZadanieTomInfo", tomSearchTaskText, true, false));
                 tasksTextMesh[i].text = tomSearchTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2006,7 +2021,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieTomKukurydza", ZadanieTomKukurydzaT));
+                tasksList.Add(new TaskData("ZadanieTomKukurydza", ZadanieTomKukurydzaT, true, false));
                 tasksTextMesh[i].text = ZadanieTomKukurydzaT;
 				break;
 			}
@@ -2036,7 +2051,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKaseta3", cassete3TaskText));
+                tasksList.Add(new TaskData("ZadanieKaseta3", cassete3TaskText, true, false));
                 tasksTextMesh[i].text = cassete3TaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2063,7 +2078,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieTomOboz", tomCampTaskText));
+                tasksList.Add(new TaskData("ZadanieTomOboz", tomCampTaskText, true, false));
                 tasksTextMesh[i].text = tomCampTaskText;
 				break;
 			}
@@ -2095,7 +2110,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieTomDynia", tomPumpkinTaskText));
+                tasksList.Add(new TaskData("ZadanieTomDynia", tomPumpkinTaskText, true, false));
                 tasksTextMesh[i].text = tomPumpkinTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2120,7 +2135,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieTomChip", tomChipTaskText));
+                tasksList.Add(new TaskData("ZadanieTomChip", tomChipTaskText, true, false));
                 tasksTextMesh[i].text = tomChipTaskText;
 				break;
 			}
@@ -2153,7 +2168,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieWawoz", ravineTaskText));
+                tasksList.Add(new TaskData("ZadanieWawoz", ravineTaskText, true, false));
                 tasksTextMesh[i].text = ravineTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2190,7 +2205,7 @@ public class Tasks : MonoBehaviour {
 
 		for(int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieIdzWawoz", goTrialTaskText));
+                tasksList.Add(new TaskData("ZadanieIdzWawoz", goTrialTaskText, true, false));
                 tasksTextMesh[i].text = goTrialTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2228,7 +2243,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieOpuszczonyInfo", abandonedSearchTaskText));
+                tasksList.Add(new TaskData("ZadanieOpuszczonyInfo", abandonedSearchTaskText, true, false));
                 tasksTextMesh[i].text = abandonedSearchTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2252,7 +2267,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKaseta4", cassete4TaskText));
+                tasksList.Add(new TaskData("ZadanieKaseta4", cassete4TaskText, true, false));
                 tasksTextMesh[i].text = cassete4TaskText;
 				break;
 			}
@@ -2287,7 +2302,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenInfo", stevenSearchTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenInfo", stevenSearchTaskText, true, false));
                 tasksTextMesh[i].text = stevenSearchTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2319,7 +2334,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenKlucz", stevenKeyTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenKlucz", stevenKeyTaskText, true, false));
                 tasksTextMesh[i].text = stevenKeyTaskText;
 				break;
 			}
@@ -2343,7 +2358,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenGrzyb", stevenMushroomTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenGrzyb", stevenMushroomTaskText, true, false));
                 tasksTextMesh[i].text = stevenMushroomTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2366,7 +2381,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenRoslina", stevenPlantTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenRoslina", stevenPlantTaskText, true, false));
                 tasksTextMesh[i].text = stevenPlantTaskText;
 				break;
 			}
@@ -2385,7 +2400,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenCzaszka", stevenSkullTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenCzaszka", stevenSkullTaskText, true, false));
                 tasksTextMesh[i].text = stevenSkullTaskText;
 				break;
 			}
@@ -2406,7 +2421,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKwas", acidTaskText));
+                tasksList.Add(new TaskData("ZadanieKwas", acidTaskText, true, false));
                 tasksTextMesh[i].text = acidTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2444,7 +2459,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenSzopa", stevenShedTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenSzopa", stevenShedTaskText, true, false));
                 tasksTextMesh[i].text = stevenShedTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2469,7 +2484,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenNotatka", stevenNoteTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenNotatka", stevenNoteTaskText, true, false));
                 tasksTextMesh[i].text = stevenNoteTaskText;
 				break;
 			}
@@ -2505,7 +2520,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieStevenPotok", stevenBrookTaskText));
+                tasksList.Add(new TaskData("ZadanieStevenPotok", stevenBrookTaskText, true, false));
                 tasksTextMesh[i].text = stevenBrookTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2548,7 +2563,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadaniePaulInfo", paulSearchTaskText));
+                tasksList.Add(new TaskData("ZadaniePaulInfo", paulSearchTaskText, true, false));
                 tasksTextMesh[i].text = paulSearchTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2571,7 +2586,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadaniePaulDrzwi", paulDoorTaskText));
+                tasksList.Add(new TaskData("ZadaniePaulDrzwi", paulDoorTaskText, true, false));
                 tasksTextMesh[i].text = paulDoorTaskText;
 				break;
 			}
@@ -2608,7 +2623,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieChatka", hutTaskText));
+                tasksList.Add(new TaskData("ZadanieChatka", hutTaskText, true, false));
                 tasksTextMesh[i].text = hutTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2650,7 +2665,7 @@ public class Tasks : MonoBehaviour {
 
         for (int i=0; i<tasksTextMesh.Length; i++){
 			if(tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadaniePotokDiably", devilsBrookTaskText));
+                tasksList.Add(new TaskData("ZadaniePotokDiably", devilsBrookTaskText, true, false));
                 tasksTextMesh[i].text = devilsBrookTaskText;
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2688,7 +2703,7 @@ public class Tasks : MonoBehaviour {
 
 		for (int i = 0; i < tasksTextMesh.Length; i++){
 			if (tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKryjowkaDiably", devilsShelterTaskText));
+                tasksList.Add(new TaskData("ZadanieKryjowkaDiably", devilsShelterTaskText, true, false));
                 tasksTextMesh[i].text = devilsShelterTaskText; // # Find the Devil's hide
                 for (int j = 0; j < tasksList.Count; j++)
                 {
@@ -2722,7 +2737,7 @@ public class Tasks : MonoBehaviour {
         audioSource.Play();
         for (int i = 0; i < tasksTextMesh.Length; i++){
 			if (tasksTextMesh[i].text.Length == 0){
-                tasksList.Add(new TaskData("ZadanieKryjowkaRodzina", endTaskText));
+                tasksList.Add(new TaskData("ZadanieKryjowkaRodzina", endTaskText, true, false));
                 tasksTextMesh[i].text = endTaskText; // # Find the Devil's hide
                 for (int j = 0; j < tasksList.Count; j++)
                 {
