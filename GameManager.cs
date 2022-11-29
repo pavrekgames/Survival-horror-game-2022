@@ -2757,7 +2757,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isWoodKeyTask == true && Tasks.isWoodKeyTaskRemoved == false){
 
 			KluczDrewnoPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.keyWoodPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
 			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -2772,7 +2772,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isMagicWellTask == true && Tasks.isMagicWellTaskRemoved == false){
 
 			MagicznaStudniaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.magicWellPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -2795,7 +2795,7 @@ public class GameManager : MonoBehaviour {
 
 			ZadStudnia.enabled = true;
             MagicznaStudniaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.magicWellPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
             KamienieObszar.enabled = true;
 			Kamien1.gameObject.SetActive (true);
 			Kamien2.gameObject.SetActive (true);
@@ -2826,7 +2826,7 @@ public class GameManager : MonoBehaviour {
         if (Tasks.isGardenDoorTask == true && Tasks.isGardenDoorTaskRemoved == false)
         {
             DrzwiOgrodPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.gardenDoorPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i = 0; i < Tasks.tasksTextMesh.Length; i++)
             {
@@ -2858,7 +2858,7 @@ public class GameManager : MonoBehaviour {
 
 		if (Tasks.isGoToAliceTask == true) {
 			DomAlicePointer.enabled = true;
-            Compass.AddTaskPoint(Compass.aliceHousePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
             KoliderDomAlice.gameObject.SetActive (false);
             DrzwiDomAliceS.isNeedKey = false;
 		}
@@ -2886,7 +2886,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isSimonElementTask == true && Tasks.isSimonElementTaskRemoved == false){
 
 			SimonElementPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.simonElementPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -2901,7 +2901,7 @@ public class GameManager : MonoBehaviour {
         if (Tasks.isWorkshopTask == true && Tasks.isWorkshopTaskRemoved == false)
         {
             WarsztatPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.workshopPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i = 0; i < Tasks.tasksTextMesh.Length; i++)
             {
@@ -2919,7 +2919,7 @@ public class GameManager : MonoBehaviour {
 			
 			ZepsutyKluczPointer.enabled = true;
 			ZadAmbona.enabled = true;
-            Compass.AddTaskPoint(Compass.brokenKeyPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -2949,7 +2949,7 @@ public class GameManager : MonoBehaviour {
 			CmentarzZwierzPointer.enabled = true;
             StrzalkaCmentarzZwierzPointer.enabled = true;
             Music.KlimatWarsztatSimon();
-            Compass.AddTaskPoint(Compass.animalCementaryPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -2990,7 +2990,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isCornfieldTask == true && Tasks.isCornfieldTaskRemoved == false){
 			
 			KukurydzaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.cornfieldPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3005,7 +3005,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isAxeTask == true && Tasks.isAxeTaskRemoved == false){
 			
 			SiekieraPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.axePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3020,7 +3020,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isCorridorWardrobeTask == true && Tasks.isCorridorWardrobeTaskRemoved == false){
 			
 			SzafaKorytarzPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.wardrobeCorridorPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3045,7 +3045,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isCassete2Task == true && Tasks.isCassete2TaskRemoved == false){
 			
 			Kaseta2Pointer.enabled = true;
-            Compass.AddTaskPoint(Compass.cassete2Point);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3060,7 +3060,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isGoToTrialTask == true && Tasks.isGoToTrialTaskRemoved == false){
 			
 			IdzSzlakPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.goTrailPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3089,7 +3089,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isGetToTomRoadTask == true && Tasks.isGetToTomRoadTaskRemoved == false){
 			
 			PrzedostanSiePointer.enabled = true;
-            Compass.AddTaskPoint(Compass.getToPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3104,7 +3104,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isTomSearchTask == true){
 
 			DomTomPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.tomHousePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             KoliderDomTom.gameObject.SetActive (false);
 			KoliderTomKsiazki.gameObject.SetActive (false);
@@ -3153,7 +3153,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isTompCampTask == true && Tasks.isTompCampTaskRemoved == false){
 			
 			TomObozPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.tomCampPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3168,7 +3168,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isTomPumpkinTask == true && Tasks.isTomPumpkinTaskRemoved == false){
 
             TomObozPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.tomCampPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
             DyniaObszar.enabled = true;
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
@@ -3194,7 +3194,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isRavineTask == true && Tasks.isRavineTaskRemoved == false){
 			
 			WawozPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.ravibePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3223,7 +3223,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isAbandonedSearchTask == true){
 			
 			DomOpuszczonyPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.abandonedHousePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
             KoliderOpuszczonyDom.gameObject.SetActive (false);
             DrzwiOpuszczonyS.isNeedKey = false;
 
@@ -3256,7 +3256,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenSearchTask == true){
 
 			DomStevenPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenHousePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
             KoliderDomStevena.gameObject.SetActive (false);
             DrzwiDomStevenS.isNeedKey = false;
         }
@@ -3285,7 +3285,7 @@ public class GameManager : MonoBehaviour {
 			
 			ObszarStevenKlucz.enabled = true;
 			StevenMiesoPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenMeatPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3300,7 +3300,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenMushroomTask == true && Tasks.isStevenMushroomTaskRemoved == false){
 			
 			StevenGrzybPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenMushroomPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3315,7 +3315,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenPlantTask == true && Tasks.isStevenPlantTaskRemoved == false){
 
 			StevenRoslinaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenPlantPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3330,7 +3330,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenSkullTask == true && Tasks.isStevenSkullTaskRemoved == false){
 			
 			StevenCzaszkaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenSkullPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3355,7 +3355,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenShedTask == true && Tasks.isStevenShedTaskRemoved == false){
 			
 			StevenSzopaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenShedPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3380,7 +3380,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isStevenBrookTask == true && Tasks.isStevenBrookTaskRemoved == false){
 			
 			StevenPotokPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.stevenBrookPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3395,7 +3395,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isPaulSearchTask == true){
 
 			DomNaukowcaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.scientistHousePoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             KoliderDomPaul.gameObject.SetActive (false);
 			KoliderPaulTyl.gameObject.SetActive (false);
@@ -3433,7 +3433,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isHutTask == true && Tasks.isHutTaskRemoved == false){
 			
 			ChatkaPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.hutPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -3454,7 +3454,7 @@ public class GameManager : MonoBehaviour {
 		if(Tasks.isDevilsBrookTask == true && Tasks.isDevilsBrookTaskRemoved == false){
 
 			PotokDiablyPointer.enabled = true;
-            Compass.AddTaskPoint(Compass.devilsBrookPoint);
+            Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
@@ -5170,44 +5170,44 @@ public class GameManager : MonoBehaviour {
 
         // Usuwanie punktow zadan do kompasu
 
-        Compass.RemoveTaskPoint(Compass.keyWoodPoint);
-        Compass.RemoveTaskPoint(Compass.magicWellPoint);
-        Compass.RemoveTaskPoint(Compass.gardenDoorPoint);
-        Compass.RemoveTaskPoint(Compass.simonElementPoint);
-        Compass.RemoveTaskPoint(Compass.workshopPoint);
-        Compass.RemoveTaskPoint(Compass.brokenKeyPoint);
-        Compass.RemoveTaskPoint(Compass.animalCementaryPoint);
-        Compass.RemoveTaskPoint(Compass.cornfieldPoint);
-        Compass.RemoveTaskPoint(Compass.axePoint);
-        Compass.RemoveTaskPoint(Compass.wardrobeCorridorPoint);
-        Compass.RemoveTaskPoint(Compass.cassete2Point);
-        Compass.RemoveTaskPoint(Compass.goTrailPoint);
-        Compass.RemoveTaskPoint(Compass.getToPoint);
-        Compass.RemoveTaskPoint(Compass.tomCampPoint);
-        Compass.RemoveTaskPoint(Compass.ravibePoint);
-        Compass.RemoveTaskPoint(Compass.stevenMeatPoint);
-        Compass.RemoveTaskPoint(Compass.stevenMushroomPoint);
-        Compass.RemoveTaskPoint(Compass.stevenPlantPoint);
-        Compass.RemoveTaskPoint(Compass.stevenSkullPoint);
-        Compass.RemoveTaskPoint(Compass.stevenShedPoint);
-        Compass.RemoveTaskPoint(Compass.stevenBrookPoint);
-        Compass.RemoveTaskPoint(Compass.hutPoint);
-        Compass.RemoveTaskPoint(Compass.devilsBrookPoint);
-        Compass.RemoveTaskPoint(Compass.grandmaHousePoint);
-        Compass.RemoveTaskPoint(Compass.aliceHousePoint);
-        Compass.RemoveTaskPoint(Compass.tomHousePoint);
-        Compass.RemoveTaskPoint(Compass.abandonedHousePoint);
-        Compass.RemoveTaskPoint(Compass.stevenHousePoint);
-        Compass.RemoveTaskPoint(Compass.scientistHousePoint);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
 
-        Compass.RemoveTaskPoint(Compass.edwardCupboardPoint);
-        Compass.RemoveTaskPoint(Compass.bonesShedPoint);
-        Compass.RemoveTaskPoint(Compass.boneStablePoint);
-        Compass.RemoveTaskPoint(Compass.toolShedPoint);
-        Compass.RemoveTaskPoint(Compass.keyToiletPoint);
-        Compass.RemoveTaskPoint(Compass.secretRoomPoint);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
+        Compass.RemoveTaskPoint(Compass.taskPointsArray[0]);
 
-        Compass.AddTaskPoint(Compass.grandmaHousePoint);
+        Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
         // wartosci poczatkowe dla skrypow na scenie glownej
 

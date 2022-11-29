@@ -15,42 +15,6 @@ public class Compass : MonoBehaviour {
 
     public TaskPoint[] taskPointsArray;
 
-    public TaskPoint keyWoodPoint;
-    public TaskPoint magicWellPoint;
-    public TaskPoint gardenDoorPoint;
-    public TaskPoint simonElementPoint;
-    public TaskPoint workshopPoint;
-    public TaskPoint brokenKeyPoint;
-    public TaskPoint animalCementaryPoint;
-    public TaskPoint cornfieldPoint;
-    public TaskPoint axePoint;
-    public TaskPoint wardrobeCorridorPoint;
-    public TaskPoint cassete2Point;
-    public TaskPoint goTrailPoint;
-    public TaskPoint getToPoint;
-    public TaskPoint tomCampPoint;
-    public TaskPoint ravibePoint;
-    public TaskPoint stevenMeatPoint;
-    public TaskPoint stevenMushroomPoint;
-    public TaskPoint stevenPlantPoint;
-    public TaskPoint stevenSkullPoint;
-    public TaskPoint stevenShedPoint;
-    public TaskPoint stevenBrookPoint;
-    public TaskPoint hutPoint;
-    public TaskPoint devilsBrookPoint;
-    public TaskPoint grandmaHousePoint;
-    public TaskPoint aliceHousePoint;
-    public TaskPoint tomHousePoint;
-    public TaskPoint abandonedHousePoint;
-    public TaskPoint stevenHousePoint;
-    public TaskPoint scientistHousePoint;
-    public TaskPoint edwardCupboardPoint;
-    public TaskPoint bonesShedPoint;
-    public TaskPoint boneStablePoint;
-    public TaskPoint toolShedPoint;
-    public TaskPoint keyToiletPoint;
-    public TaskPoint secretRoomPoint;
-
     void OnEnable () {
 
         compassUnit = compassImage.rectTransform.rect.width / 360f;

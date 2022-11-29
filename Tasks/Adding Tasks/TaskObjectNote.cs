@@ -2,25 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskObject : MonoBehaviour {
+public class TaskObjectNote : MonoBehaviour {
 
     private Tasks tasksScript;
 
     public TaskData task;
-    public TaskItem taskItem;
+    public Note note;
 
-	void Start () {
-
+    void Start()
+    {
         tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
 
-        taskItem.OnPickUpItem += SendTask;
-
-	}
+        note.OnPickUpNote += SendTask;
+    }
 
     public void SendTask()
     {
         tasksScript.AddTask(task);
 
-        taskItem.OnPickUpItem -= SendTask;
+        note.OnPickUpNote -= SendTask;
     }
+
 }
