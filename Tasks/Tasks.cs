@@ -598,13 +598,6 @@ public class Tasks : MonoBehaviour {
 
     }
 
-    void OnDisable()
-    {
-
-        hallunsScreenScript.enabled = false;
-
-    }
-
 	void Update () {
 
 		if (Input.GetMouseButtonDown (0) && inventoryScript.items.Count >= 0 && playerManagerScript.isPlayerCanInput == true) {
@@ -662,7 +655,6 @@ public class Tasks : MonoBehaviour {
             DzwiekPlay_ok = false;
         }
     } 
-
 
     public void AddTask(TaskData task)
     {
