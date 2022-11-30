@@ -670,18 +670,18 @@ public class Notes : MonoBehaviour {
         //notatka3
         if (inventoryScript.isBone3Taken == false)
         {
-            tasksScript.AddKoscSzopaPointer();
+            //tasksScript.AddKoscSzopaPointer();
         }
 
         if (inventoryScript.isBone4Taken == false)
         {
-            tasksScript.AddKoscStajniaPointer();
+            //tasksScript.AddKoscStajniaPointer();
         }
 
         //notatka7
         if (inventoryScript.isKeyV2Taken == false)
         {
-            tasksScript.AddKluczWychodekPointer();
+            //tasksScript.AddKluczWychodekPointer();
         }
 
     }
