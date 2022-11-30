@@ -140,40 +140,6 @@ public class Tasks : MonoBehaviour {
     public bool isDevilsShelterTaskRemoved = false;
     public bool isShelterFamilyTaskRemoved = false;
 
-    // zmienne potrzebne do rzeczy, przy wykonywaniu zadan
-    private Transform gardenCollider;
-    private Transform cornfieldCollider;
-    private Transform stableCollider;
-    private Transform corridorWardrobeCollider;
-    private Transform uncleRoomCollider;
-    private Transform kitchenWardrobeCollider;
-    private Transform secretRoomCollider;
-    private Transform planksCollider;
-    private Transform toolShedCollider;
-    private Transform nicheCollider;
-    private Transform aliceRoomCollider;
-    private Transform factoryMetalDoorCollider;
-    private Transform woodenWheelCollider;
-    private Transform factoryWoodenDoorCollider;
-    private Transform shedCupboardCollider;
-    private Transform tomRoomCollider;
-    private Transform tomUpstairsCollider;
-    private Transform oldWardrobeCollider;
-    private Transform stevenDoorCollider;
-    private Transform stevenGrille;
-    private Transform paulDoorCollider;
-    private Transform paulRoomDoorCollider;
-
-    private Transform aliceHouseCollider;
-    private Transform tomHouseCollider;
-    private Transform tomBooksCollider;
-    private Transform tomHallCollider;
-    private Transform abandonedCollider;
-    private Transform stevenHouseCollider;
-    private Transform paulHouseCollider;
-    private Transform paulBackCollider;
-    private Transform hutCollider;
-
 
     private Ray playerAim;
     private Camera playerCam;
@@ -573,42 +539,6 @@ public class Tasks : MonoBehaviour {
 		stone4 = GameObject.Find ("KamienStudnia4").transform;
 		stone5 = GameObject.Find ("KamienStudnia5").transform;
 
-		//ZrodloDzwieku = ZrodloDzwieku.GetComponent<AudioSource>();
-		gardenCollider = GameObject.Find("KoliderDrzwiOgrod").transform;
-		cornfieldCollider = GameObject.Find("KoliderDrzwiKukurydza").transform;
-		stableCollider = GameObject.Find("KoliderDrzwiStajnia").transform;
-		corridorWardrobeCollider = GameObject.Find("KoliderSzafkaKorytarz").transform;
-		uncleRoomCollider = GameObject.Find("KoliderDrzwiPokojW").transform;
-		kitchenWardrobeCollider = GameObject.Find("KoliderSzafkaKuchnia").transform;
-		secretRoomCollider = GameObject.Find("KoliderDrzwiKamping").transform;
-		planksCollider = GameObject.Find("DeskiSzopa").transform;
-		toolShedCollider = GameObject.Find("KoliderDrzwiSzopaNarzedzia").transform;
-		nicheCollider = GameObject.Find("KoliderDrzwiWneka").transform;
-		aliceRoomCollider = GameObject.Find("KoliderDrzwiSalonPoludnie").transform;
-		factoryMetalDoorCollider = GameObject.Find("KoliderDrzwiFabrykaMetal").transform;
-		woodenWheelCollider = GameObject.Find("BrakujaceDrewnianeKolo").transform;
-		//DrewnianeKolo.gameObject.SetActive(false);
-		factoryWoodenDoorCollider = GameObject.Find("KoliderDrzwiFabrykaDrewno").transform;
-		shedCupboardCollider = GameObject.Find("KoliderSzafkaSzopa").transform;
-		tomRoomCollider = GameObject.Find("KoliderDrzwiPokojTom").transform;
-		tomUpstairsCollider = GameObject.Find("KoliderDrzwiTomGora").transform;
-		oldWardrobeCollider = GameObject.Find("KoliderSzafaStaryDom").transform;
-		stevenDoorCollider = GameObject.Find("KoliderDrzwiSteven").transform;
-		stevenGrille = GameObject.Find("KratySteven").transform;
-		paulDoorCollider = GameObject.Find("KoliderDrzwiZachod").transform;
-		paulRoomDoorCollider = GameObject.Find("KoliderDrzwiPokojZachod").transform;
-		aliceHouseCollider = GameObject.Find("KoliderDomAlice").transform;
-		tomHouseCollider = GameObject.Find("KoliderDomTom").transform;
-		tomBooksCollider = GameObject.Find("KoliderTomKsiazki").transform;
-		tomHallCollider = GameObject.Find("KoliderTomSala").transform;
-		abandonedCollider = GameObject.Find("KoliderOpuszczonyDom").transform;
-		stevenHouseCollider = GameObject.Find("KoliderDomStevena").transform;
-		paulHouseCollider = GameObject.Find("KoliderDomPaul").transform;
-		paulBackCollider = GameObject.Find("KoliderPaulTyl").transform;
-		hutCollider = GameObject.Find("KoliderChatka").transform;
-		//Ciernie1 = GameObject.Find("CiernieKryjowka1").gameObject;
-		//Ciernie2 = GameObject.Find("CiernieKryjowka2").gameObject;
-		//Ciernie3 = GameObject.Find("CiernieKryjowka3").gameObject;
 		flame1 = GameObject.Find("Plomien1").gameObject;
 		flame2 = GameObject.Find("Plomien2").gameObject;
 		flame3 = GameObject.Find("Plomien3").gameObject;
@@ -677,18 +607,12 @@ public class Tasks : MonoBehaviour {
 
 	void Update () {
 
-
-		//--------------ZADANIA Z INTERACKJA------------------------
-
-
 		if (Input.GetMouseButtonDown (0) && inventoryScript.items.Count >= 0 && playerManagerScript.isPlayerCanInput == true) {
 
 			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 			RaycastHit hit;
 
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
-                
-                // Otwieranie drzwi do pokoju W
 
                 if (hit.collider.gameObject.tag == "Door" || hit.collider.gameObject.tag == "Hand") {
 
@@ -697,183 +621,8 @@ public class Tasks : MonoBehaviour {
                     {
                         raycastTask.Execute();
                     }
-
 				}
-
-                //-------------------- Odtwarzanie kaset---------------------------------
-
-                // kaseta 1
-
-                if (hit.collider.gameObject.name == "Odtwarzacz" && isCasseteInserted == true && isBatteriesPut == true && isCassete1Played == false && audioSource4.isPlaying == false) {
-					//ZrodloKaseta1.PlayOneShot (Nagranie1);
-					isCassete1Played = true;
-					cassete1_AudioSource.clip = recording1;
-					cassete1_AudioSource.Play ();
-                    musicScript.MuzykaMonsterPoczatekFunction();
-                }
-
-				// kaseta 2
-
-				if (hit.collider.gameObject.name == "Odtwarzacz" && isCassete2Inserted == true && isCassete2Played == false && audioSource.isPlaying == false) {
-					//ZrodloKaseta1.PlayOneShot (Nagranie2);
-					isCassete2Played = true;
-					cassete1_AudioSource.clip = recording2;
-					cassete1_AudioSource.Play ();
-				}
-
-				// kaseta 3
-
-				if (hit.collider.gameObject.name == "Odtwarzacz2" && isCassete3Inserted == true && isCassete3Played == false && isChipPut == true && audioSource4.isPlaying == false) { 
-					//ZrodloKaseta3.PlayOneShot (Nagranie3);
-					isCassete3Played = true;
-					cassete3_AudioSource.clip = recording3;
-					cassete3_AudioSource.Play ();
-                    musicScript.MuzykaMonsterPoczatekFunction();
-				}
-
-				// kaseta 4
-
-				if (hit.collider.gameObject.name == "Odtwarzacz3" && isCassete4Inserted == true && isCassete4Played == false && audioSource4.isPlaying == false) {
-					//ZrodloKaseta4.PlayOneShot (Nagranie4);
-					isCassete4Played = true;
-					cassete4_AudioSource.clip = recording4;
-					cassete4_AudioSource.Play ();
-				}
-
-				// kaseta 5
-
-				if (hit.collider.gameObject.name == "Odtwarzacz4" && isCassete5Played == false) {
-					//ZrodloKaseta5.PlayOneShot (Nagranie5);
-					isCassete5Played = true;
-					cassete5_AudioSource.clip = recording5;
-					cassete5_AudioSource.Play ();
-				}
-
-				//----------------------------- Zadania glowne zalezne od fizyki------------------------------------------------
-
-				if (hit.collider.gameObject.name == "DrzwiSalonPoludnie" && isAliceRoomTask == false && isAliceRoomTaskRemoved == false) {
-					
-				}
-
-                if (hit.collider.gameObject.name == "DrzwiFabrykaDrewno" && isWorkshopTask == false && isWorkshopTaskRemoved == false && isGoToAliceTask == true)
-                {
-                    
-                }
-
-                if (hit.collider.gameObject.name == "DrzwiZachod" && isPaulDoorTask == false && isPaulDoorTaskRemoved == false) {
-					
-				}
-
-				
-			} // klamra ray
-
-		} // Klamra do warunku z przyciskiem
-
-		if(screamerScript.isOpenDoor == true){
-			paulRoomDoorCollider.gameObject.SetActive(false);
-		}
-
-		// Zadanie labolatorium
-
-		if(isLabMushroom == true && isLabPlant == true && isLabSkull == true && isLab == false){
-            labAudioSource.clip = potSound;
-            labAudioSource.Play();
-			isLab = true;
-            musicScript.MuzykaStevenLab();
-		}
-
-		if(labAudioSource.isPlaying == false && isLab == true && isLabPot == false && Time.timeScale == 1 && labAudioSource.clip != null){
-			acid.SetActive(true);
-			isLabPot = true;
-		}
-
-        // -------------------------Dodawanie zadan-------------------------------------------
-
-        // Dodanie zadania o szukaniu informacji
-
-		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && voiceActingAudioSourceScript.isKitchenRecording == true && isSearchTask == false && Time.timeScale == 1)
-        {
-            
-        }
-
-		// Dodanie zadania idz Alice
-
-		if (voiceActingScript.playerAudioSource1.isPlaying == false && voiceActingScript.isSecretRoomRecording == true && isGoToAliceTask == false && isGoToAliceTaskRemoved == false && Time.timeScale == 1) { // bylo ZrodloKaseta1.isPlaying == false && Kaseta1Odtworzona == true
-			
-            RemoveSekretnyPokojPointer();
-        } 
-
-		// dodanie zadania kukurydza
-
-		if (voiceActingAudioSourceScript.playerAudioSource3.isPlaying == false && inventoryScript.isPliersTaken == true && isCornfieldTask == false && isCornfieldTaskRemoved == false && Time.timeScale == 1) {
-			
-		}
-
-		// dodanie zadania siekiera
-
-		if (voiceActingAudioSourceScript.playerAudioSource3.isPlaying == false && inventoryScript.isAxeTaken == true && isAxeTask == false && isAxeTaskRemoved == false && Time.timeScale == 1) {
-			
-		}
-
-		// dodanie zadania szafa korytarz
-
-		if (voiceActingScript.playerAudioSource2.isPlaying == false && voiceActingScript.isWardrobeCorridorRecording == true && isCorridorWardrobeTask == false && isCorridorWardrobeTaskRemoved == false) { // bylo Inventory.KluczSzafaKorytarz_ok == true 
-			
-		}
-
-		// Dodanie zadania idz szlak
-
-		if (cassete1_AudioSource.isPlaying == false && isCassete2Played == true && isGoTrailVoice == false && isGoToTrialTask == false && isGoToTrialTaskRemoved == false && Time.timeScale == 1) {
-			isGoTrailVoice = true;
-			//voiceActingAudioSourceScript.GlosNagranie();
-		} 
-
-		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && isGoTrailVoice == true && isGoToTrialTask == false && isGoToTrialTaskRemoved == false) {
-			
-		}
-
-		// Dodanie zadania Chip
-
-		if (notificationScript.audioSource.isPlaying == false && isLackChip == false && notificationScript.isChipNotification == true && isTomChipTask == false && isTomChipTaskRemoved == false && Time.timeScale == 1) {  
-			
-		}
-
-		// Dodanie zadania wąwóz
-
-		if (cassete3_AudioSource.isPlaying == false && isCassete3Played == true && isRavineTask == false && isRavineTaskRemoved == false && Time.timeScale == 1) {
-			
-		}
-
-        // Dodanie zadania idz wawoz
-
-		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && isGoRavineTask == false && isGoRavineTaskRemoved == false && isRavineTask == true && voiceActingAudioSourceScript.isRavineRecording == true && Time.timeScale == 1)
-        {
-            
-        }
-
-		// Dodanie zadania Steven info
-
-		if (cassete4_AudioSource.isPlaying == false && isCassete4Played == true && isStevenSearchTask == false && isStevenSearchTaskRemoved == false && Time.timeScale == 1) {
-			
-		} 
-
-		// dodanie zadania Steven szopa
-
-		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && inventoryScript.isStrongAcidTaken == true && isStevenShedTask == false && isStevenShedTaskRemoved == false) {
-			
-		}
-
-        // Dodanie zadania Paul info
-
-		if (voiceActingAudioSourceScript.playerAudioSource2.isPlaying == false && isPaulSearchTask == false && isPaulSearchTaskRemoved == false && voiceActingAudioSourceScript.isDevilsBrookRecording == true && isStevenBrookTask == true && Time.timeScale == 1)
-        {  
-            
-        }
-
-		// Dodanie zadania diably
-
-		if (cassete5_AudioSource.isPlaying == false && isCassete5Played == true && isDevilsBrookTask == false && isDevilsBrookTaskRemoved == false && Time.timeScale == 1) {
-			
+			} 
 		} 
 
         // Zatrzymanie odtwarzania dzwiekow
@@ -929,84 +678,6 @@ public class Tasks : MonoBehaviour {
     {
         task.isRemoved = true;
         tasksList.Remove(task);
-    }
-
-    // ----------------------Dodawanie pointerow z notatek a nie zadania-----------------------
-
-    public void AddSzafkaEdwardPointer()
-    {
-        EdwardCupboardPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
-
-    }
-
-    public void AddKoscSzopaPointer()
-    {
-        boneShedPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void AddKoscStajniaPointer()
-    {
-        boneStablePointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void AddSzopaNarzedziaPointer()
-    {
-        toolShedPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void AddKluczWychodekPointer()
-    {
-        keyToiletPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void AddSekretnyPokojPointer()
-    {
-        secretRoomPointer.enabled = true;
-        compassScript.AddTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    // ----------------------Usuwanie pointerow z notatek a nie zadania-----------------------
-
-    public void RemoveSzafkaEdwardPointer()
-    {
-        EdwardCupboardPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
-
-    }
-
-    public void RemoveKoscSzopaPointer()
-    {
-        boneShedPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void RemoveKoscStajniaPointer()
-    {
-        boneStablePointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void RemoveSzopaNarzedziaPointer()
-    {
-        toolShedPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void RemoveKluczWychodekPointer()
-    {
-        keyToiletPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
-    }
-
-    public void RemoveSekretnyPokojPointer()
-    {
-        secretRoomPointer.enabled = false;
-        compassScript.RemoveTaskPoint(compassScript.taskPointsArray[0]);
     }
 
 }

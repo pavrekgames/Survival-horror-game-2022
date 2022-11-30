@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityStandardAssets.ImageEffects;
 using TMPro;
 
 public class VoiceActing : MonoBehaviour {
+
+    public event Action OnStopTalking;
 
 	public AudioSource playerAudioSource1;
 	public AudioSource playerAudioSource2;
@@ -305,6 +308,17 @@ public class VoiceActing : MonoBehaviour {
 	private AudioSource deadAudioSource;
 	private AudioSource whisperAudioSource;
 
+    public enum RetroEffectState
+    {
+        None,
+        StartEffect1,
+        StartEffect2,
+        EndEffect1,
+        EndEffect2
+    }
+
+    public RetroEffectState retroEffectState;
+
     void OnEnable () {
 
 		subtitlesTextMesh = GameObject.Find("NapisyNagrania").GetComponent<TextMeshProUGUI>();
@@ -368,7 +382,7 @@ public class VoiceActing : MonoBehaviour {
         if(isBigRoomRecording == true && isRetroBigRoomRecording == false)
         {
        
-			Retrospekcja();
+			Retrospection();
 
             if(isResetRetro == true)
             {
@@ -379,7 +393,7 @@ public class VoiceActing : MonoBehaviour {
         if (isArthurRoomRecording == true && isRetroArthurRoomRecording == false)
         {
             
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -389,7 +403,7 @@ public class VoiceActing : MonoBehaviour {
 
         if (isToolShedRecording == true && isRetroToolShedRecording == false)
         {
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -399,7 +413,7 @@ public class VoiceActing : MonoBehaviour {
 
         if (isAliceHouseRecording == true && isRetroAliceHouseRecording == false)
         {
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -410,7 +424,7 @@ public class VoiceActing : MonoBehaviour {
         if (isWorkshopRecording == true && isRetroWorkshopRecording == false)
         {
 
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -421,7 +435,7 @@ public class VoiceActing : MonoBehaviour {
         if (isCornfieldRecording == true && isRetroCornfieldRecording == false)
         {
             
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -431,7 +445,7 @@ public class VoiceActing : MonoBehaviour {
 
         if (isOldShedRecording == true && isRetroOldShedRecording == false)
         {
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -441,7 +455,7 @@ public class VoiceActing : MonoBehaviour {
 
         if (isBooksRecording == true && isRetroBooksRecording == false)
         {
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -451,7 +465,7 @@ public class VoiceActing : MonoBehaviour {
 
         if (isStevenHouseRecording == true && isRetroStevenHouseRecording == false)
         {
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -462,7 +476,7 @@ public class VoiceActing : MonoBehaviour {
 
         if (isStevenShedRecording == true && isRetroStevenShedRecording == false)
         {
-			Retrospekcja();
+			Retrospection();
 
             if (isResetRetro == true)
             {
@@ -876,13 +890,17 @@ public class VoiceActing : MonoBehaviour {
 
 		if (playerAudioSource1.isPlaying == false && playerAudioSource1.clip != null && Time.timeScale == 1) {
 			playerAudioSource1.clip = null;
+            StopTalking();
 		} else if (playerAudioSource2.isPlaying == false && playerAudioSource2.clip != null && Time.timeScale == 1) {
 			playerAudioSource2.clip = null;
-		} else if (playerAudioSource3.isPlaying == false && playerAudioSource3.clip != null && Time.timeScale == 1) {
+            StopTalking();
+        } else if (playerAudioSource3.isPlaying == false && playerAudioSource3.clip != null && Time.timeScale == 1) {
 			playerAudioSource3.clip = null;
-		} else if (playerAudioSource4.isPlaying == false && playerAudioSource4.clip != null && Time.timeScale == 1) {
+            StopTalking();
+        } else if (playerAudioSource4.isPlaying == false && playerAudioSource4.clip != null && Time.timeScale == 1) {
 			playerAudioSource4.clip = null;
-		} else if (retrospectionAudioSource.isPlaying == false && retrospectionAudioSource.clip != null && Time.timeScale == 1) {
+            StopTalking();
+        } else if (retrospectionAudioSource.isPlaying == false && retrospectionAudioSource.clip != null && Time.timeScale == 1) {
 			retrospectionAudioSource.clip = null;
 		} else if (tasksScript.cassete1_AudioSource.isPlaying == false && tasksScript.cassete1_AudioSource.clip != null && Time.timeScale == 1) {
 			tasksScript.cassete1_AudioSource.clip = null;
@@ -1028,27 +1046,27 @@ public class VoiceActing : MonoBehaviour {
 
 		else if (other.gameObject.CompareTag("GlosDuzyPokoj_trigger") && isBigRoomRecording == false)
         {
-            GlosDuzyPokoj();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosPokojArtura_trigger") && isArthurRoomRecording == false)
         {
-            GlosPokojArtura();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosSzopaNarzedzia_trigger") && isToolShedRecording == false)
         {
-            GlosSzopaNarzedzia();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosDomAlice_trigger") && isAliceHouseRecording == false)
         {
-            GlosDomAlice();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosWarsztat_trigger") && isWorkshopRecording == false)
         {
-            GlosWarsztat();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosLewyPotok_trigger") && isLeftBrookRecording == false && tasksScript.isVictorBrookTask == true && inventoryScript.isAliceKeyTaken == false)
@@ -1058,17 +1076,17 @@ public class VoiceActing : MonoBehaviour {
 
 		else if (other.gameObject.CompareTag("GlosKukurydza_trigger") && isCornfieldRecording == false)
         {
-            GlosKukurydza();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosStaraSzopa_trigger") && isOldShedRecording == false)
         {
-            GlosStaraSzopa();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("MuzykaKlimat13_trigger") && isBooksRecording == false) 
         {
-            GlosKsiazki();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("IdzWawoz_trigger") && isRavineRecording == false && tasksScript.isRavineTask == true && notesScript.isNote36 == false) 
@@ -1078,12 +1096,12 @@ public class VoiceActing : MonoBehaviour {
 
 		else if (other.gameObject.CompareTag("GlosDomStevena_trigger") && isStevenHouseRecording == false)
         {
-            GlosDomStevena();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("MuzykaKlimat21_trigger") && isStevenShedRecording == false)
         {
-            GlosSzopaSteven();
+            PlayRetrospection(bigRoomRecording);
         }
 
 		else if (other.gameObject.CompareTag("PaulInfo_trigger") && isDevilsBrookRecording == false && tasksScript.isStevenBrookTask == true && tasksScript.isHutTask == false)
@@ -1103,6 +1121,14 @@ public class VoiceActing : MonoBehaviour {
 
     }
 
+    public void StopTalking()
+    {
+        if(OnStopTalking != null)
+        {
+            OnStopTalking.Invoke();
+        }
+    }
+
     void TymczasoweDane()
     {
         // glos halucynajce
@@ -1116,6 +1142,14 @@ public class VoiceActing : MonoBehaviour {
     {
         audioSource.clip = voiceRecording;
         audioSource.Play();
+        playerScript.audioSource.Stop();
+    }
+
+    public void PlayRetrospection(AudioClip retroRecording)
+    {
+        retrospectionAudioSource.clip = bigRoomRecording;
+        retrospectionAudioSource.Play();
+        retroEffectState = RetroEffectState.StartEffect1;
         playerScript.audioSource.Stop();
     }
 
@@ -1160,20 +1194,6 @@ public class VoiceActing : MonoBehaviour {
 		}   
 	}
 
-    void GlosDuzyPokoj()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosDuzyPokoj);
-        playerAudioSource2.Stop();
-        isBigRoomRecording = true;
-		retrospectionAudioSource.clip = bigRoomRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
-
-
 	public void DuzyPokojNapisy()
 	{
 		if (retrospectionAudioSource.time > 0.5f && retrospectionAudioSource.time < 7f && retrospectionAudioSource.isPlaying == true) {
@@ -1190,19 +1210,6 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-
-    void GlosPokojArtura()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosPokojArtura);
-        isArthurRoomRecording = true;
-		retrospectionAudioSource.clip = arthurRoomRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
-
 	public void PokojArthurNapisy()
 	{
 		if (retrospectionAudioSource.time > 1.6f && retrospectionAudioSource.time < 9f && retrospectionAudioSource.isPlaying == true) {
@@ -1214,18 +1221,6 @@ public class VoiceActing : MonoBehaviour {
 		} 
 
 	}
-
-    void GlosSzopaNarzedzia()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosSzopaNarzedzia);
-        isToolShedRecording = true;
-		retrospectionAudioSource.clip = toolShedRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
 
 	public void SzopaNarzedziaNapisy()
 	{
@@ -1323,18 +1318,6 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-    void GlosDomAlice()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosDomAlice);
-        isAliceHouseRecording = true;
-		retrospectionAudioSource.clip = aliceHouseRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
-
 	void DomAliceNapisy()
 	{
 		if (retrospectionAudioSource.time > 0.5f && retrospectionAudioSource.time < 5.6f && retrospectionAudioSource.isPlaying == true) {
@@ -1361,18 +1344,6 @@ public class VoiceActing : MonoBehaviour {
 			subtitlesTextMesh.text = hallunsSubtitles;
 		}  
 	}
-
-    void GlosWarsztat()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosWarsztat);
-        isWorkshopRecording = true;
-		retrospectionAudioSource.clip = workshopRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
 
 	void WarsztatNapisy()
 	{
@@ -1411,18 +1382,6 @@ public class VoiceActing : MonoBehaviour {
 		} 
 	}
 
-    void GlosKukurydza()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosKukurydza);
-        isCornfieldRecording = true;
-		retrospectionAudioSource.clip = cornfieldRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
-
 	void KukurydzaNapisy()
 	{
 		if (retrospectionAudioSource.time > 0.9f && retrospectionAudioSource.time < 7.2f && retrospectionAudioSource.isPlaying == true) {
@@ -1442,18 +1401,6 @@ public class VoiceActing : MonoBehaviour {
 		}  
 	}
 
-    void GlosStaraSzopa()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosStaraSzopa);
-        isOldShedRecording = true;
-		retrospectionAudioSource.clip = oldShedRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
-
 	void StaraSzopaNapisy()
 	{
 		if (retrospectionAudioSource.time > 0.6f && retrospectionAudioSource.isPlaying == true) {
@@ -1467,18 +1414,6 @@ public class VoiceActing : MonoBehaviour {
 			subtitlesTextMesh.text = afterCasseteSubtitles;
 		} 
 	}
-
-    void GlosKsiazki()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosKsiazki);
-        isBooksRecording = true;
-		retrospectionAudioSource.clip = booksRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
 
 	void KsiazkiNapisy()
 	{
@@ -1507,18 +1442,6 @@ public class VoiceActing : MonoBehaviour {
 		}  
 	}
 
-    void GlosDomStevena()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosDomStevena);
-        isStevenHouseRecording = true;
-		retrospectionAudioSource.clip = stevenHouseRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
-
 	void DomStevenaNapisy()
 	{
 		if (retrospectionAudioSource.time > 0.4f && retrospectionAudioSource.time < 6.9f && retrospectionAudioSource.isPlaying == true) {
@@ -1541,18 +1464,6 @@ public class VoiceActing : MonoBehaviour {
 			subtitlesTextMesh.text = acidSubtitles;
 		} 
 	}
-
-    void GlosSzopaSteven()
-    {
-        //ZrodloDzwiekuR.PlayOneShot(DzwGlosSzopaSteven);
-        isStevenShedRecording = true;
-		retrospectionAudioSource.clip = stevenShedRecording;
-		retrospectionAudioSource.Play ();
-        isStartRetro = false;
-        isMidRetro = false;
-        isEndRetro = false;
-        playerScript.audioSource.Stop();
-    }
 
 	void SzopaStevenNapisy()
 	{
@@ -1677,9 +1588,17 @@ public class VoiceActing : MonoBehaviour {
         }
     }
 
-    void Retrospekcja()
+    void Retrospection()
     {
-        if (isStartRetro == false && isMidRetro == false && isEndRetro == false)
+
+        RetroStartEffect();
+        RetroEndEffect();
+      
+    }
+
+    void RetroStartEffect()
+    {
+        if (retroEffectState == RetroEffectState.StartEffect1)
         {
             isResetRetro = false;
             mapScript.isFastTravel = false;
@@ -1687,23 +1606,29 @@ public class VoiceActing : MonoBehaviour {
             if (retroEffectScript.intensity <= 1.7)
             {
                 retroEffectScript.intensity += 1.3f * Time.deltaTime;
-            }else
-            {
-                isStartRetro = true;
             }
-        }else if(isStartRetro == true && isMidRetro == false && isEndRetro == false)
+            else
+            {
+                retroEffectState = RetroEffectState.StartEffect2;
+            }
+
+        }
+        else if (retroEffectState == RetroEffectState.StartEffect2)
         {
-            if (retroEffectScript.intensity >= 0.25) // wczesniej 0.45
+            if (retroEffectScript.intensity >= 0.25)
             {
                 retroEffectScript.intensity -= 1.3f * Time.deltaTime;
             }
             else
             {
-                isMidRetro = true;
+                retroEffectState = RetroEffectState.EndEffect1;
             }
         }
+    }
 
-        if(retrospectionAudioSource.isPlaying == false && isStartRetro == true && isMidRetro == true && isEndRetro == false && isResetRetro == false)
+    void RetroEndEffect()
+    {
+        if (retrospectionAudioSource.isPlaying == false && retroEffectState == RetroEffectState.EndEffect1)
         {
             if (retroEffectScript.intensity <= 1.7)
             {
@@ -1711,9 +1636,10 @@ public class VoiceActing : MonoBehaviour {
             }
             else
             {
-                isEndRetro = true;
+                retroEffectState = RetroEffectState.EndEffect2;
             }
-        }else if (retrospectionAudioSource.isPlaying == false && isStartRetro == true && isMidRetro == true && isEndRetro == true && isResetRetro == false)
+        }
+        else if (retrospectionAudioSource.isPlaying == false && retroEffectState == RetroEffectState.EndEffect2)
         {
             if (retroEffectScript.intensity >= 0)
             {
@@ -1721,12 +1647,11 @@ public class VoiceActing : MonoBehaviour {
             }
             else
             {
-                isResetRetro = true;
-				retroEffectScript.intensity = 0;
+                retroEffectState = RetroEffectState.None;
+                retroEffectScript.intensity = 0;
                 mapScript.isFastTravel = true;
             }
         }
-
     }
 
 	void ZakonczenieGry(){

@@ -3494,32 +3494,32 @@ public class GameManager : MonoBehaviour {
 
         if(Inventory.isShedCupboardKeyTaken == true && Inventory.isCassete2Taken == false)
         {
-            Tasks.AddSzafkaEdwardPointer();
+            //Tasks.AddSzafkaEdwardPointer();
         }
 
         if(Notes.isNote3 == true && Inventory.isBone3Taken == false)
         {
-            Tasks.AddKoscSzopaPointer();
+            //Tasks.AddKoscSzopaPointer();
         }
 
         if (Notes.isNote3 == true && Inventory.isBone4Taken == false)
         {
-            Tasks.AddKoscStajniaPointer();
+            //Tasks.AddKoscStajniaPointer();
         }
 
         if(Notes.isNote7 == true && Inventory.isKeyV2Taken == false)
         {
-            Tasks.AddKluczWychodekPointer();
+            //Tasks.AddKluczWychodekPointer();
         }
 
         if(Inventory.isKeyV4Taken == true && Tasks.isToolShedDoorLocked == true)
         {
-            Tasks.AddSzopaNarzedziaPointer();
+            //Tasks.AddSzopaNarzedziaPointer();
         }
 
         if(Inventory.isSecretRoomKeyTaken == true && Tasks.isCassete1Played == false)
         {
-            Tasks.AddSekretnyPokojPointer();
+            //Tasks.AddSekretnyPokojPointer();
         }
 
         // notatki

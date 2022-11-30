@@ -4,13 +4,37 @@ using UnityEngine;
 
 public class TaskObjectAudio : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private Tasks tasksScript;
+
+    public TaskData taskToAdd;
+    public TaskData taskToRemove;
+    public TaskData previosTask;
+
+    public VoiceActing voiceActingScript;
+
+    void Start()
+    {
+        tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
+
+        voiceActingScript.OnStopTalking += AddTask;
+        voiceActingScript.OnStopTalking += RemoveTask;
+    }
+
+    public void AddTask()
+    {
+        tasksScript.AddTask(taskToAdd);
+
+        voiceActingScript.OnStopTalking -= AddTask;
+    }
+
+    public void RemoveTask()
+    {
+        if (taskToRemove != null)
+        {
+            tasksScript.RemoveTask(taskToRemove);
+
+            voiceActingScript.OnStopTalking -= RemoveTask;
+        }
+    }
+
 }
