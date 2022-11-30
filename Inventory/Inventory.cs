@@ -1477,16 +1477,16 @@ public class Inventory : MonoBehaviour {
         tasksScript.AddSekretnyPokojPointer();
 
         //AddPliers()
-        voiceActingScript.GlosKombinerki();
+       // voiceActingScript.GlosKombinerki();
 
         //AddAxe()
-        voiceActingScript.GlosSiekiera();
+        //voiceActingScript.GlosSiekiera();
 
         //AddCassete2()
-        tasksScript.RemoveSzafkaEdwardPointer();
+        //tasksScript.RemoveSzafkaEdwardPointer();
 
         //AddStrongAcid()
-        voiceActingScript.GlosEliksir();
+        //voiceActingScript.GlosEliksir();
     }
 
    public void AddSecretItem(AudioClip secretItemSound)

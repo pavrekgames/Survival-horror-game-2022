@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class UnlockDoor : MonoBehaviour, IRaycastTask {
 
+    public event Action OnDoorUnlocked;
+
     private Inventory inventoryScript;
     private OpenCloseObject openCloseObjectsScript;
     public AudioSource audioSource;
@@ -41,6 +43,9 @@ public class UnlockDoor : MonoBehaviour, IRaycastTask {
                 }
 
                 inventoryScript.RemoveItem(inventoryScript.items[i], true);
+
+                CallEvent();
+
                 break;
             }
         }
@@ -48,6 +53,14 @@ public class UnlockDoor : MonoBehaviour, IRaycastTask {
         // RemoveSzopaNarzedziaPointer(); pointer musi obserwować czy drzwi sa zamkniete czy otwarte
         // taskFactoryScript.enabled = true; game manager musi obserwac czy drzwi sa zamkniete czy otwarte
 
+    }
+
+    private void CallEvent()
+    {
+        if(OnDoorUnlocked != null)
+        {
+            OnDoorUnlocked.Invoke();
+        }
     }
 
 }
