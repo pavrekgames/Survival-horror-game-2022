@@ -356,13 +356,13 @@ public class VoiceActing : MonoBehaviour {
 
 
 		if (isGameBegin == true && isBeginGameRecording == false) {
-			GlosPoczatek ();
+			//GlosPoczatek ();
 		}
 			
 
         if (notesScript.isNote25 == true && Time.timeScale == 1 && isAnnaNoteRecording == false)
         {
-            GlosNotatkaAnna();
+           // GlosNotatkaAnna();
         }
 
         if(isBigRoomRecording == true && isRetroBigRoomRecording == false)
@@ -471,7 +471,7 @@ public class VoiceActing : MonoBehaviour {
         }
 
 		if (tasksScript.hallunsTimer > 5 && isHallunsRecording == false) {
-			GlosHalucynacje ();
+			//GlosHalucynacje ();
 		}
 
 		// napisy do nagran
@@ -941,70 +941,70 @@ public class VoiceActing : MonoBehaviour {
 
         if (screamerScript.woodBirdAudioSource.isPlaying == false && screamerScript.isWoodBird == true && Time.timeScale == 1 && isWellRecording == false)
         {
-            GlosSzalas();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos stajnia
 
         if (jumpscareScript.stableMonsterAudioSource.time > 3 && jumpscareScript.isStableMonster == true && Time.timeScale == 1 && isGardenRecording == false)
         {
-            GlosStajnia();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos ogrod
 
         if (screamerScript.rustleAudioSource.isPlaying == false && screamerScript.isRustle == true && Time.timeScale == 1 && isGardenRecording == false)
         {
-            GlosOgrod();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos kamping
 
         if (tasksScript.cassete1_AudioSource.isPlaying == false && tasksScript.isCassete1Played == true && isSecretRoomRecording == false && Time.timeScale == 1)
         {
-            GlosKamping();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos urzadzenie Victora
 
         if (inventoryScript.isWoodenWheelRemoved == true && isInventionRecording == false && Time.timeScale == 1)
         {
-            GlosUrzadzenieVictora();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos szafa korytarz
 
         if (inventoryScript.isWardrobeCorridorKeyTaken == true && isWardrobeCorridorRecording == false && Time.timeScale == 1)
         {
-            GlosSzafaKorytarz();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos chip
 
         if (chipAudioSource.isPlaying == false && taskBooksScript.isTaskDone == true && isChipRecording == false && Time.timeScale == 1)
         {
-            GlosChip();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos wskazowki Artura
 
         if (tasksScript.cassete3_AudioSource.isPlaying == false && tasksScript.isCassete3Played == true && isArthurTipRecording == false && Time.timeScale == 1)
         {
-            GlosWskazowkiArtura();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos rosliny potworow
 
         if (notesScript.isNote48 == true && isMonstersPlantsRecording == false && Time.timeScale == 1)
         {
-            GlosRoslinyPotworow();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         // glos Zeno
 
         if (notesScript.isNote52 == true && isZenoRecording == false && Time.timeScale == 1)
         {
-            GlosZeno();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
     }
@@ -1013,17 +1013,17 @@ public class VoiceActing : MonoBehaviour {
 
 		if (other.gameObject.CompareTag("GlosOgrodzenie_trigger") && isFenceRecording == false && isKitchenRecording == false)
         {
-            GlosOgrodzenie();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosSwiatloDomu_trigger") && isHouseLightRecording == false && isKitchenRecording == false)
         {
-            GlosSwiatloDomu();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosKuchnia_trigger") && isKitchenRecording == false)
         {
-            GlosKuchnia();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosDuzyPokoj_trigger") && isBigRoomRecording == false)
@@ -1053,7 +1053,7 @@ public class VoiceActing : MonoBehaviour {
 
 		else if (other.gameObject.CompareTag("GlosLewyPotok_trigger") && isLeftBrookRecording == false && tasksScript.isVictorBrookTask == true && inventoryScript.isAliceKeyTaken == false)
         {
-            GlosLewyPotok();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosKukurydza_trigger") && isCornfieldRecording == false)
@@ -1073,7 +1073,7 @@ public class VoiceActing : MonoBehaviour {
 
 		else if (other.gameObject.CompareTag("IdzWawoz_trigger") && isRavineRecording == false && tasksScript.isRavineTask == true && notesScript.isNote36 == false) 
         {
-            GlosWawoz();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosDomStevena_trigger") && isStevenHouseRecording == false)
@@ -1088,28 +1088,36 @@ public class VoiceActing : MonoBehaviour {
 
 		else if (other.gameObject.CompareTag("PaulInfo_trigger") && isDevilsBrookRecording == false && tasksScript.isStevenBrookTask == true && tasksScript.isHutTask == false)
         {
-            GlosPotokDiably();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
 		else if (other.gameObject.CompareTag("GlosKryjowka_trigger") && isDevilsShelterRecording == false)
         {
-            GlosKryjowka();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
         else if (other.gameObject.CompareTag("GlosStudnia_trigger") && isStableRecording == false && tasksScript.isMagicWellTask == true)
         {
-            GlosStudnia();
+            PlayVoice(playerAudioSource1, acidRecording);
         }
 
     }
 
-	void GlosPoczatek()
-	{
-		//ZrodloDzwiekuB.PlayOneShot(DzwGlosOgrodzenie);
-		isBeginGameRecording = true;
-		playerAudioSource2.clip = beginGameRecording;
-		playerAudioSource2.Play ();
-	}
+    void TymczasoweDane()
+    {
+        // glos halucynajce
+        musicScript.KlimatAlice();
+        //glos nagranie
+        musicScript.KlimatPoKasecie2();
+        // glos kryjowka
+    }
+
+    public void PlayVoice(AudioSource audioSource, AudioClip voiceRecording)
+    {
+        audioSource.clip = voiceRecording;
+        audioSource.Play();
+        playerScript.audioSource.Stop();
+    }
 
 	void PoczatekGryNapisy()
 	{
@@ -1131,15 +1139,6 @@ public class VoiceActing : MonoBehaviour {
 
 	}
 
-    void GlosOgrodzenie()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosOgrodzenie);
-        isFenceRecording = true;
-		playerAudioSource2.clip = fenceRecording;
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	void OgrodzenieNapisy()
 	{
 		if (playerAudioSource2.isPlaying == true && playerAudioSource2.time > 0.6f) {
@@ -1147,31 +1146,12 @@ public class VoiceActing : MonoBehaviour {
 		} 
 	}
 
-    void GlosSwiatloDomu()
-    {
-        //ZrodloDzwiekuB2.PlayOneShot(DzwGlosSwiatloDomu);
-        isHouseLightRecording = true;
-		playerAudioSource2.clip = houseLightRecording;
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	void SwiatloDomuNapisy()
 	{
 		if (playerAudioSource2.isPlaying == true && playerAudioSource2.time > 0.9f) {
 			subtitlesTextMesh.text = houseLightSubtitles;
 		} 
 	}
-
-    void GlosKuchnia()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKuchnia);
-        retrospectionAudioSource.Stop();
-        isKitchenRecording = true;
-		playerAudioSource2.clip = kitchenRecording;
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
 
 	void KuchniaNapisy()
 	{
@@ -1375,16 +1355,6 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-	void GlosHalucynacje()
-	{
-		//ZrodloDzwiekuB.PlayOneShot(DzwGlosHalucynacje);
-		isHallunsRecording = true;
-		playerAudioSource1.clip = hallunsRecording;
-		playerAudioSource1.Play ();
-        musicScript.KlimatAlice();
-        playerScript.audioSource.Stop();
-    }
-
 	void HalucynacjeNapisy()
 	{
 		if (playerAudioSource1.time > 0.4f && playerAudioSource1.isPlaying == true) {
@@ -1420,15 +1390,6 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-    void GlosLewyPotok()
-    {
-		//ZrodloDzwiekuB2.PlayOneShot(DzwGlosLewyPotok);
-		isLeftBrookRecording = true;
-		playerAudioSource2.clip = leftBrookRecording; //
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	void LewyPotokNapisy()
 	{
 		if (playerAudioSource2.time > 0.1f && playerAudioSource2.isPlaying == true) {
@@ -1436,30 +1397,12 @@ public class VoiceActing : MonoBehaviour {
 		}  
 	}
 
-    void GlosNotatkaAnna()
-    {
-        //ZrodloDzwiekuB3.PlayOneShot(DzwGlosNotatkaAnna);
-        isAnnaNoteRecording = true;
-		playerAudioSource3.clip = annaNoteRecording;
-		playerAudioSource3.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	void NotatkaAnnaNapisy()
 	{
 		if (playerAudioSource3.time > 0.1f && playerAudioSource3.isPlaying == true) {
 			subtitlesTextMesh.text = annaNoteSubtitles;
 		} 
 	}
-
-	public void GlosKombinerki()
-	{
-		//ZrodloDzwiekuB3.PlayOneShot(DzwGlosKombinerki);
-		isPliersRecording = true;
-		playerAudioSource3.clip = pliersRecording;
-		playerAudioSource3.Play ();
-        playerScript.audioSource.Stop();
-    }
 
 	public void KombinerkiNapisy()
 	{
@@ -1492,15 +1435,6 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-	public void GlosSiekiera()
-	{
-		//ZrodloDzwiekuB.PlayOneShot(DzwGlosSiekiera);
-		isAxeRecording = true;
-		playerAudioSource3.clip = axeRecording;
-		playerAudioSource3.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	public void SiekieraNapisy()
 	{
 		if (playerAudioSource3.time > 0.6f && playerAudioSource3.isPlaying == true) {
@@ -1526,16 +1460,6 @@ public class VoiceActing : MonoBehaviour {
 			subtitlesTextMesh.text = oldShedSubtitles;
 		}  
 	}
-
-	public void GlosNagranie()
-	{
-		//ZrodloDzwiekuB.PlayOneShot(DzwGlosNagranie);
-		isAfterCasseteRecording = true;
-		playerAudioSource2.clip = afterCasseteRecording;
-		playerAudioSource2.Play ();
-        musicScript.KlimatPoKasecie2();
-        playerScript.audioSource.Stop();
-    }
 
 	public void NagranieNapisy()
 	{
@@ -1576,15 +1500,6 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-    void GlosWawoz()
-    {
-        //ZrodloDzwiekuB4.PlayOneShot(DzwGlosWawoz);
-        isRavineRecording = true;
-		playerAudioSource2.clip = ravineRecording;
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	void WawozNapisy()
 	{
 		if (playerAudioSource2.time > 2.5f && playerAudioSource2.isPlaying == true) {
@@ -1619,15 +1534,6 @@ public class VoiceActing : MonoBehaviour {
 		}
 			
 	}
-
-	public void GlosEliksir()
-	{
-		//ZrodloDzwiekuB2.PlayOneShot(DzwGlosEliksir);
-		isAcidRecording = true;
-		playerAudioSource2.clip = acidRecording;
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
 
 	public void EliksirNapisy()
 	{
@@ -1664,32 +1570,12 @@ public class VoiceActing : MonoBehaviour {
 			
 	}
 
-    void GlosPotokDiably()
-    {
-        //ZrodloDzwiekuB2.PlayOneShot(DzwGlosPotokDiably);
-        isDevilsBrookRecording = true;
-		playerAudioSource2.clip = devilsBrookRecording;
-		playerAudioSource2.Play ();
-        playerScript.audioSource.Stop();
-    }
-
 	void PotokDiablyNapisy()
 	{
 		if (playerAudioSource2.time > 1.2f && playerAudioSource2.isPlaying == true) {
 			subtitlesTextMesh.text = devilsBrookSubtitles;
 		} 
 	}
-
-    void GlosKryjowka()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isDevilsShelterRecording = true;
-		playerAudioSource1.clip = devilsShelterRecording;
-		playerAudioSource1.Play ();
-        screamerScript.whisper2AudioSource.Stop();
-        screamerScript.whisper2AudioSource.clip = null;
-        playerScript.audioSource.Stop();
-    }
 
 	void KryjowkaNapisy()
 	{
@@ -1698,32 +1584,12 @@ public class VoiceActing : MonoBehaviour {
 		} 
 	}
 
-    // dodatkowe nagrania
-
-    void GlosSzalas()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isWellRecording = true;
-        playerAudioSource1.clip = woodRecording;
-        playerAudioSource1.Play();
-        playerScript.audioSource.Stop();
-    }
-
     void SzalasNapisy()
     {
         if (playerAudioSource1.time > 0.4f && playerAudioSource1.isPlaying == true)
         {
             subtitlesTextMesh.text = woodSubtitles;
         }
-    }
-
-    void GlosStudnia()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isStableRecording = true;
-        playerAudioSource1.clip = wellRecording;
-        playerAudioSource1.Play();
-        playerScript.audioSource.Stop();
     }
 
     void StudniaNapisy()
@@ -1734,15 +1600,6 @@ public class VoiceActing : MonoBehaviour {
         }
     }
 
-    void GlosStajnia()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isGardenRecording = true;
-        playerAudioSource1.clip = stableRecording;
-        playerAudioSource1.Play();
-        playerScript.audioSource.Stop();
-    }
-
     void StajniaNapisy()
     {
         if (playerAudioSource1.time > 0.7f && playerAudioSource1.isPlaying == true)
@@ -1751,30 +1608,12 @@ public class VoiceActing : MonoBehaviour {
         }
     }
 
-    void GlosOgrod()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka); //
-        isGardenRecording = true;
-        playerAudioSource3.clip = gardenRecording;
-        playerAudioSource3.Play();
-        playerScript.audioSource.Stop();
-    }
-
     void OgrodNapisy()
     {
         if (playerAudioSource3.time > 1.2f && playerAudioSource3.isPlaying == true)
         {
             subtitlesTextMesh.text = gardenSubtitles;
         }
-    }
-
-    void GlosKamping()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isSecretRoomRecording = true;
-        playerAudioSource1.clip = secretRoomRecording;
-        playerAudioSource1.Play();
-        playerScript.audioSource.Stop();
     }
 
     void KampingNapisy()
@@ -1790,30 +1629,12 @@ public class VoiceActing : MonoBehaviour {
         }
     }
 
-    void GlosUrzadzenieVictora()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isInventionRecording = true;
-        playerAudioSource1.clip = inventionRecording;
-        playerAudioSource1.Play();
-        playerScript.audioSource.Stop();
-    }
-
     void UrzadzenieVictoraNapisy()
     {
         if (playerAudioSource1.time > 0.3f && playerAudioSource1.isPlaying == true)
         {
             subtitlesTextMesh.text = inventionSubtitles;
         }
-    }
-
-    void GlosSzafaKorytarz()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isWardrobeCorridorRecording = true;
-        playerAudioSource2.clip = wardrobeCorridorRecording;
-        playerAudioSource2.Play();
-        playerScript.audioSource.Stop();
     }
 
     void SzafaKorytarzNapisy()
@@ -1824,30 +1645,12 @@ public class VoiceActing : MonoBehaviour {
         }
     }
 
-    void GlosChip()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isChipRecording = true;
-        playerAudioSource2.clip = chipRecording;
-        playerAudioSource2.Play();
-        playerScript.audioSource.Stop();
-    }
-
     void ChipNapisy()
     {
         if (playerAudioSource2.time > 0.3f && playerAudioSource2.isPlaying == true)
         {
             subtitlesTextMesh.text = chipSubtitles;
         }
-    }
-
-    void GlosWskazowkiArtura()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isArthurTipRecording = true;
-        playerAudioSource1.clip = arthurTipRecording;
-        playerAudioSource1.Play();
-        playerScript.audioSource.Stop();
     }
 
     void WskazowkiArturaNapisy()
@@ -1858,30 +1661,12 @@ public class VoiceActing : MonoBehaviour {
         }
     }
 
-    void GlosRoslinyPotworow()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isMonstersPlantsRecording = true;
-        playerAudioSource2.clip = monstersPlantsRecording;
-        playerAudioSource2.Play();
-        playerScript.audioSource.Stop();
-    }
-
     void RoslinyPotworowNapisy()
     {
         if (playerAudioSource2.time > 0.3f && playerAudioSource2.isPlaying == true)
         {
             subtitlesTextMesh.text = monstersPlantsSubtitles;
         }
-    }
-
-    void GlosZeno()
-    {
-        //ZrodloDzwiekuB.PlayOneShot(DzwGlosKryjowka);
-        isZenoRecording = true;
-        playerAudioSource2.clip = zenoRecording;
-        playerAudioSource2.Play();
-        playerScript.audioSource.Stop();
     }
 
     void ZenoNapisy()

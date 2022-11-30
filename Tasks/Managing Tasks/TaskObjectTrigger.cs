@@ -8,6 +8,7 @@ public class TaskObjectTrigger : MonoBehaviour {
 
     public TaskData previousTask;
     public TaskData taskToAdd;
+    public TaskData taskToRemove;
     public bool isAdded;
 
     void OnTriggerEnter(Collider other)
@@ -16,6 +17,12 @@ public class TaskObjectTrigger : MonoBehaviour {
         {
             tasksScript.AddTask(taskToAdd);
             isAdded = true;
+
+            if(taskToRemove != null)
+            {
+                tasksScript.RemoveTask(taskToRemove);
+            }
+
         }
     }
 
