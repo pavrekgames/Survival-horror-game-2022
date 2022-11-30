@@ -57,7 +57,7 @@ public class TaskWheel : MonoBehaviour {
 
         if(tasksScript.isWorkshopTask == false)
         {
-            tasksScript.ZadanieWarsztat();
+            //tasksScript.ZadanieWarsztat();
         }
 
     }
