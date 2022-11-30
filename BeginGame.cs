@@ -1406,8 +1406,6 @@ public class BeginGame : MonoBehaviour {
 		TasksZadanie4.text = "";
 		TasksZadanie5.text = "";
 
-		Tasks.ZadaniePoczatek ();
-
 		// dodatkowe ustawienia
 
 		CanvasPoczatekGry.enabled = true;

@@ -1445,9 +1445,6 @@ public class Inventory : MonoBehaviour {
             notificationScript.ShowTutorialNotification(notificationScript.inventoryNotificationCanvas);
         }
 
-        // AddOil()
-        tasksScript.ZadanieDrzwiOgrod();
-
         //AddKictenWardrobe()
 
         if (notificationScript.isInventoryNotification == false)
