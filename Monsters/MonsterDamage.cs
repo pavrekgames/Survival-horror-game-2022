@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class MonsterDamage : MonoBehaviour {
 
-	private Transform player;
-	private Health healthScript;
+	[SerializeField] private Health healthScript;
+    [SerializeField] private Canvas damageCanvas;
+    [SerializeField] private float damage;
 
 	void Start () {
-		player = GameObject.Find("Player").transform;
-		healthScript = player.GetComponent<Health>();
+		healthScript = GameObject.Find("Player").GetComponent<Health>();
 	}
 	
-
-	void Damage(){
-		healthScript.PlayerDamage();
+	void InflictDamage(){
+		healthScript.ReceiveDamage(damage, damageCanvas);
 	}
 }
