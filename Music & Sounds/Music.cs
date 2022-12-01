@@ -163,8 +163,8 @@ public class Music : MonoBehaviour {
     public bool isPlantMonsterMusic = false;
     public bool isStevenMonsterMusic = false;
 
-
-
+    public delegate void PlayMonsterMusicDelegate();
+    public PlayMonsterMusicDelegate PlayMonsterMusic; 
 
     void OnEnable () {
 
@@ -200,70 +200,7 @@ public class Music : MonoBehaviour {
 
 	void Update () {
 
-        if (voiceActingScript.isGameBegin == true && isBeginMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-
-        }
-
-        if(isBeginMusic == true && voiceActingScript.playerAudioSource2.isPlaying == false && isBeginMonsterMusicStop == false)
-        {
-            isBeginMonsterMusicStop = true;
-            isMusicOff = true;
-
-        }
-
-        // potok lewy skrzypce
-
-        if(jumpscareScript.isBrookMonster1_On == true && isLeftBrookMusic == false && brookMonsterScript.enabled == true)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-
-        }
-
-		if (screamerScript.wolfAudioSource.isPlaying == false && isAfterWolfMusic == false && screamerScript.isWolf == true) {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if (notesScript.isNote13 == true && isWellMusic == false) {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if (notesScript.isNote36 == true && isFeederMusic == false) {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if (screamerScript.wellScreamAudioSource.isPlaying == false && screamerScript.isWellScream == true && isWellAnxiousMusic == false) {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if(screamerScript.isKnock == true && isTomUpstairs2Music == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if(backgroundAudioSource1.isPlaying == false && backgroundAudioSource1.clip == null && isMonsterUpstairsMusic == true && isMonsterUpstairs2Music == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if (backgroundAudioSource1.isPlaying == false && backgroundAudioSource1.clip == null && isShelterMusic == true && isShelter2Music == false)
-        {
-            //KlimatKryjowka2();
-        }
-
-		if (jumpscareScript.isShedMonster1 == true && jumpscareScript.shedMonster1_AudioSource.isPlaying == false && isOldShedMusic == false) {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
         // Zwiekszanie glosnosci muzyki
-
-        if (monsterBackgroundAudioSource1.volume < 0.5) {
-			monsterBackgroundAudioSource1.volume = monsterBackgroundAudioSource1.volume += (Time.deltaTime / 25);
-		}
-
-		if (monsterBackgroundAudioSource2.volume < 0.5) {
-			monsterBackgroundAudioSource2.volume = monsterBackgroundAudioSource1.volume += (Time.deltaTime / 25);
-		}
 
 		if (backgroundAudioSource1.volume < 1 && Time.timeScale == 1 && isMusicOff == false && backgroundAudioSource2.clip == null) {
 			backgroundAudioSource1.volume = backgroundAudioSource1.volume += (Time.deltaTime / 25);
@@ -319,46 +256,53 @@ public class Music : MonoBehaviour {
         // Zatrzymywanie muzyki
 
         if (Time.timeScale == 0) {
-			if (backgroundAudioSource1.clip != null) {
-				backgroundAudioSource1.Pause ();
-			} else if (backgroundAudioSource2.clip != null) {
-				backgroundAudioSource2.Pause ();
-			} else if (backgroundAudioSource3.clip != null) {
-				backgroundAudioSource3.Pause ();
-			}
-		}
+            if (backgroundAudioSource1.clip != null)
+            {
+                backgroundAudioSource1.Pause();
+            }
+            else if (backgroundAudioSource2.clip != null)
+            {
+                backgroundAudioSource2.Pause();
+            }
+            else if (backgroundAudioSource3.clip != null)
+            {
+                backgroundAudioSource3.Pause();
+            }
+            else if (monsterBackgroundAudioSource1.clip != null)
+            {
+                monsterBackgroundAudioSource1.Pause();
+            }
+            else if (monsterBackgroundAudioSource2.clip != null)
+            {
+                monsterBackgroundAudioSource2.Pause();
+            }
+        }
 
 		// Wznawianie muzyki
 
 		if (Time.timeScale == 1) {
-			if (backgroundAudioSource1.clip != null) {
-				backgroundAudioSource1.UnPause ();
-			} else if (backgroundAudioSource2.clip != null) {
-				backgroundAudioSource2.UnPause ();
-			} else if (backgroundAudioSource3.clip != null) {
-				backgroundAudioSource3.UnPause ();
-			}
-		}
+            if (backgroundAudioSource1.clip != null)
+            {
+                backgroundAudioSource1.UnPause();
+            }
+            else if (backgroundAudioSource2.clip != null)
+            {
+                backgroundAudioSource2.UnPause();
+            }
+            else if (backgroundAudioSource3.clip != null)
+            {
+                backgroundAudioSource3.UnPause();
+            }
+            else if (monsterBackgroundAudioSource1.clip != null)
+            {
+                monsterBackgroundAudioSource1.UnPause();
+            }
+            else if (monsterBackgroundAudioSource2.clip != null)
+            {
+                monsterBackgroundAudioSource2.UnPause();
+            }
+        }
 
-		// Zatrzymawanie muzyki powtorow
-
-		if (Time.timeScale == 0) {
-			if (monsterBackgroundAudioSource1.clip != null) {
-				monsterBackgroundAudioSource1.Pause ();
-			} else if (monsterBackgroundAudioSource2.clip != null) {
-				monsterBackgroundAudioSource2.Pause ();
-			} 
-		}
-
-		// Wznawianie muzyki potworow
-
-		if (Time.timeScale == 1) {
-			if (monsterBackgroundAudioSource1.clip != null) {
-				monsterBackgroundAudioSource1.UnPause ();
-			} else if (monsterBackgroundAudioSource2.clip != null) {
-				monsterBackgroundAudioSource2.UnPause ();
-			} 
-		}
 			
 		// muzyka bez zadania
 
@@ -384,351 +328,7 @@ public class Music : MonoBehaviour {
 			backgroundAudioSource3.clip = null;
 		}
 
-
-		// Klimat kosci
-
-		if (bonesTaskScript.isGrille == true && isBonesMusic == false) {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-			
-
-		// Klimat Potwor Piwnica
-
-        if(tasksScript.isCassete4Played == true && tasksScript.cassete4_AudioSource.isPlaying == false && isBasementMonsterMusic == false)
-        {
-            PotworOpuszczonyPiwnica();
-        } 
-
-
-		// Wylaczanie muzyki
-
-		if (voiceActingScript.isHouseLightRecording == true && voiceActingScript.playerAudioSource2.clip == null && isHouseLightMusicOff == false) {
-			isMusicOff = true;
-			isHouseLightMusicOff = true;
-		}
-
-        if(inventoryScript.isWardrobeCorridorKeyTaken == true && isOldShedMusicOff == false)
-        {
-            isMusicOff = true;
-            isOldShedMusicOff = true;
-        }
-
-	/*	if (Inventory.KluczSalonPoludnie_ok == true && WylaczWarsztatSimon_ok == false) {
-			WylaczMuzyke_ok = true;
-			WylaczWarsztatSimon_ok = true;
-		} */
-
-		// Muzyka potwor ogrod
-
-		PotworOgrod ();
-
-		// Muzyka potwor warsztat
-
-		PotworWarsztat ();
-
-		// Muzyka potwor potok lewy
-
-		PotworPotokLewy ();
-
-		// Muzyka potwor korytarz
-
-		PotworKorytarz ();
-
-		// Muzyka potwor kukurydza
-
-		PotworKukurydza ();
-
-		// Muzyka potwor dynia
-
-		PotworDynia ();
-
-		// Muzyka potwor opuszczony dom
-
-		PotworOpuszczonyDom ();
-
-		// Muzyka potwor mieso
-
-		PotworMieso ();
-
-        // Muzyka potwor roslina
-
-        PotworRoslina();
-
-        // Muzyka potwor Steven
-
-        PotworSteven();
-
-
-    }
-
-	void OnTriggerExit(Collider other){
-		
-		if(other.gameObject.CompareTag("Swiatlo2_trigger") && isBehindHouseMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat1_trigger") && isUncleRoomMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat2_trigger") && isToolShedMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat3_trigger") && isStableMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat4_trigger") && isGardenMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaPotwor1_trigger") && isGardenMonsterMusic == false && tasksScript.isBonesTask == true){
-			isGardenMonsterMusic = true;
-		}
-	
-		else if(other.gameObject.CompareTag("MuzykaPotworStop1_trigger") && isGardenMonsterMusic == true && tasksScript.isBonesTask == true){
-			isGardenMonsterMusic = false;
-		}
-
-		else if(other.gameObject.CompareTag("MonsterOgrod_trigger") && isGardenMonsterMusic == false && tasksScript.isBonesTask == true){
-			isGardenMonsterMusic = true;
-		}
-
-		else if(other.gameObject.CompareTag("MonsterOgrodStop_trigger") && isGardenMonsterMusic == true && tasksScript.isBonesTask == true){
-			isGardenMonsterMusic = false;
-            mapScript.isFastTravel = true;
-		}
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat6_trigger") && isAliceShedMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		if(other.gameObject.CompareTag("MuzykaKlimat7_trigger") && isWorkshopMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaPotwor2_trigger") && isWorkshopMonsterMusic == false){
-			isWorkshopMonsterMusic = true;
-		}
-
-		else if(other.gameObject.CompareTag("MuzykaPotworStop2_trigger") && isWorkshopMonsterMusic == true){
-			isWorkshopMonsterMusic = false;
-            mapScript.isFastTravel = true;
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat8_trigger") && isWorkshopSimonMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat9_trigger") && isAliceRoomMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-			
-		else if(other.gameObject.CompareTag("MuzykaKlimat10_trigger") && isShedMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat10_trigger") && jumpscareScript.isShedMonster1 == true && isOldShedMusic2Off == false && isMusicOff == false){
-			isMusicOff = true;
-			isOldShedMusic2Off = true;
-            mapScript.isFastTravel = true;
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat10_trigger") && jumpscareScript.isShedMonster1 == true && inventoryScript.isCassete2Taken == false && isOldShedMusic2Off == true){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-            isOldShedMusic2Off = false;
-		}
-
-		else if (other.gameObject.CompareTag("MonsterTom_trigger") && isBeforeTomMusic == false)
-		{
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-            isBeforeTomMusic = true;
-		}
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat11_trigger") && isTomMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat12_trigger") && isTomHallMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("KrzykDzw_trigger") && isTom2Music == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat13_trigger") && isBooksMusic == false && inventoryScript.isChipTaken == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-            inventoryScript.chip.gameObject.SetActive (true);
-			booksTaskScript.enabled = true;
-            isMusicOff = false;
-            mapScript.isFastTravel = false;
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimatStop13_trigger") && isBooksMusic == true && inventoryScript.isChipTaken == false){
-			isMusicOff = true;
-			isBooksMusic = false;
-			booksTaskScript.enabled = false;
-            mapScript.isFastTravel = true;
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat14_trigger") && isTom3Music == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		//else if(other.gameObject.CompareTag("MuzykaKlimat15_trigger") && KlimatKukurydza_ok == false){
-			//KlimatKukurydza ();
-		//}
-
-		//else if(other.gameObject.CompareTag("MuzykaKlimatStop15_trigger") && KlimatKukurydza_ok == true){
-			//ZrodloDzwTlo.Stop ();
-			//KlimatKukurydza_ok = false;
-		//}
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat16_trigger") && isTomCampMusic == false && notesScript.isNote34 == true){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat17_trigger") && isTomUpstairsMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if (other.gameObject.CompareTag("MonsterTom_trigger") && isAfterTomMusic == false && tasksScript.isCassete3Played == true)
-		{
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-	/*	else if (other.gameObject.CompareTag("PrzedostanSie_trigger") && KlimatPoTom_ok == true && WylaczPoTom_ok == false)
-		{
-			WylaczMuzyke_ok = true;
-			WylaczPoTom_ok = true;
-		} */
-
-		
-
-		else if(other.gameObject.CompareTag("MuzykaKlimatStop18_trigger") && isAbandonedMonsterMusic == true){
-			isAbandonedMonsterMusic = false;
-			monsterBackgroundAudioSource1.Stop ();
-		}
-
-		else if(other.gameObject.CompareTag("MuzykaPrzedSteven_trigger") && isBeforeStevenMusic == false && tasksScript.isCassete4Played == true){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat19_trigger") && isStevenMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat20_trigger") && isStevenUpstairsMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat21_trigger") && isStevenShedMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("PaulInfo_trigger") && isBeforePaulMusic == false && notesScript.isNote45 == true){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-            isBeforePaulMusic = true;
-		}
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat22_trigger") && isPaulMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat23_trigger") && isPaulUpstairsMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if(other.gameObject.CompareTag("MuzykaKlimat24_trigger") && isHutMusic == false){
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if (other.gameObject.CompareTag("ZachodGora_trigger") && isMonsterUpstairsMusic == false && notesScript.isNote53 == true)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if (other.gameObject.CompareTag("Chatka_trigger") && isBeforeShelterMusic == false && tasksScript.isDevilsBrookTask == true)
-		{
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-		else if (other.gameObject.CompareTag("Kryjowka_trigger") && isShelterMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("MonsterPoczatek_trigger") && isBeginMonsterMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("GlosDuzyPokoj_trigger") && isBigRoomMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-    }
-
-	void OnTriggerEnter(Collider other){
-
-		if (other.gameObject.CompareTag("GlosKryjowka_trigger") && isEndGameMusic == false)
-		{
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("GlosKuchnia_trigger") && isKitchenMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("GlosKukurydza_trigger") && isCornfield1Music == false && inventoryScript.isAxeTaken == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("GlosDomAlice_trigger") && isAliceMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if ((other.gameObject.CompareTag("MuzykaKlimat18_trigger") || other.gameObject.CompareTag("Piwnica_trigger")) && isAbandonedMonsterMusic == false)
-        {
-            isAbandonedMonsterMusic = true;
-        }
-
-        else if (other.gameObject.CompareTag("MuzykaKlimat22Wylacz_trigger") && isPaulMusic == true && tasksScript.isHutTask == false)
-        {
-            KlimatWylaczPaul();
-            mapScript.isFastTravel = true;
-        }
-
-        else if (other.gameObject.CompareTag("KomunikatLatarka") && isAfterFlashlightMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("KomunikatDrzwiWskazowka") && isGrandmaDoorMusic == false)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("MonstersLasMieso_trigger") && isMeatMonsterMusic == false && tasksScript.isStevenKeyTask == true)
-        {
-            PlayMusic(backgroundAudioSource1, mysteryMusic, 1, false);
-        }
-
-        else if (other.gameObject.CompareTag("MonstersLasMiesoWylacz_trigger") && isMeatMonsterMusic == true)
-        {
-            isMeatMonsterMusic = false;
-            isMusicOff = true;
-            monsterBackgroundAudioSource1.Stop();
-            monsterBackgroundAudioSource1.clip = null;
-            isMeatMonsterMusic_On = false;
-            mapScript.isFastTravel = true;
-        }
+        PlayMonsterMusic();
 
     }
 
@@ -760,16 +360,7 @@ public class Music : MonoBehaviour {
         isBehindHouseMusic = true;
     }	
 
-    void KlimatWylaczPaul()
-    {
-        isMusicOff = true;
-        isPaulMusic = false;
-
-    }
-
-    // funkcje muzyka potwory
-
-    void PotworOgrod(){
+    void PlayMonsterGardenMusic(){
 		if (isGardenMonsterMusic == true && isGardenMonsterMusic_On == false) {
 			monsterBackgroundAudioSource1.volume = 0;
 			monsterBackgroundAudioSource1.clip = monsterMusic1;
@@ -783,7 +374,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworWarsztat(){
+	void PlayMonsterWorkshopMusic(){
 		if (isWorkshopMonsterMusic == true && isWorkshopMonsterMusic_On == false) {
 			monsterBackgroundAudioSource1.volume = 0;
 			monsterBackgroundAudioSource1.clip = monsterMusic2;
@@ -797,7 +388,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworPotokLewy(){
+	void PlayMonsterLeftBrookMusic(){
 		if (jumpscareScript.brookMonster1.activeSelf) {
 			isLeftBrookMonsterMusic = true;
 		}
@@ -819,7 +410,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworKorytarz(){
+	void PlayMonsterCorridorMusic(){
 		if (jumpscareScript.corridorMonster.activeSelf) {
 			isCorridorMonsterMusic = true;
 		}
@@ -841,7 +432,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworKukurydza(){
+	void PlayMonsterCornfieldMusic(){
 		if ((cornfieldMonsterScript.Widzi_ok == true || cornfieldMonsterScript.WidzialSwiatlo_ok == true || cornfieldMonsterScript.WidzialGracza_ok == true) && jumpscareScript.cornfieldMonster2.activeSelf) {
 			isCornfieldMonsterMusic = true;
 		}
@@ -863,7 +454,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworDynia(){
+	void PlayMonsterPumpkinMusic(){
 		if (inventoryScript.isPumpkinTaken == true && jumpscareScript.pumpkinMonster.activeSelf) {
 			isPumpkinMonsterMusic = true;
 		}
@@ -885,7 +476,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworOpuszczonyDom(){
+	void PlayMonsterAbandonedMusic(){
 		if (isAbandonedMonsterMusic == true && isAbandonedMonsterMusic_On == false) {
 			monsterBackgroundAudioSource2.volume = 0;
 			monsterBackgroundAudioSource2.clip = monsterMusic6;
@@ -899,7 +490,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-	void PotworMieso(){
+	void PlayMonsterMeatMusic(){
 		if ((meatMonsterScript.isSawPlayer == true || meatMonsterScript.isRayPlayer == true || meatMonsterScript.isSawLight == true) && isMeatMonsterMusic_On == false) {
 			monsterBackgroundAudioSource1.volume = 0.5f;
 			monsterBackgroundAudioSource1.clip = monsterMusic1;
@@ -913,7 +504,7 @@ public class Music : MonoBehaviour {
 		}
 	}
 
-    void PotworOpuszczonyPiwnica()
+    void PlayMonsterBasementMusic()
     {
         monsterBackgroundAudioSource1.volume = 0;
         monsterBackgroundAudioSource1.clip = cornfieldMusic;
@@ -921,7 +512,7 @@ public class Music : MonoBehaviour {
         isBasementMonsterMusic = true;
     }
 
-    void PotworRoslina()
+    void PlayMonsterPlantMusic()
     {
         if (jumpscareScript.plantMonster.activeSelf == true && isPlantMonsterMusic == false) {
             monsterBackgroundAudioSource1.volume = 0;
@@ -938,7 +529,7 @@ public class Music : MonoBehaviour {
 
     }
 
-    void PotworSteven()
+    void PlayMonsterStevenMusic()
     {
         if ((stevenMonster1_Script.Widzi_ok == true || stevenMonster2_Script.Widzi_ok == true) && isStevenMonsterMusic == false)
         {

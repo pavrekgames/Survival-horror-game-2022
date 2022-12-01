@@ -28,12 +28,26 @@ public class MusicTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-
+        if(triggerType == TriggerType.TriggerEnter)
+        {
+            if(other.gameObject.CompareTag("Player") && isPlay == false)
+            {
+                musicScript.PlayMusic(audioSource, music, musicVolume, musicLoopState);
+                isPlay = true;
+            }
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-
+        if (triggerType == TriggerType.TriggerExit)
+        {
+            if (other.gameObject.CompareTag("Player") && isPlay == false)
+            {
+                musicScript.PlayMusic(audioSource, music, musicVolume, musicLoopState);
+                isPlay = true;
+            }
+        }
     }
 
 }
