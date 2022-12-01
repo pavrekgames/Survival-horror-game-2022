@@ -1281,7 +1281,7 @@ public class BeginGame : MonoBehaviour {
         Halucynacje.isEndGanja5 = false;
         Halucynacje.isStartCount = false;
         Halucynacje.counter = 0;
-        Halucynacje.fireCount = 0;
+        Halluns.fireCount = 0;
 
         // scarecrow straszak
 

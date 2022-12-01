@@ -1046,7 +1046,7 @@ public class SaveGame : MonoBehaviour {
             Dane.KoniecMarysia3_ok = player.GetComponent<Halluns>().isEndGanja3;
             Dane.KoniecMarysia4_ok = player.GetComponent<Halluns>().isEndGanja4;
             Dane.KoniecMarysia5_ok = player.GetComponent<Halluns>().isEndGanja5;
-            Dane.IloscZapalen = player.GetComponent<Halluns>().fireCount;
+            Dane.IloscZapalen = Halluns.fireCount;
 
             // scarecrow straszak
 
@@ -1955,7 +1955,7 @@ public class SaveGame : MonoBehaviour {
             player.GetComponent<Halluns>().isEndGanja3 = Dane.KoniecMarysia3_ok;
             player.GetComponent<Halluns>().isEndGanja4 = Dane.KoniecMarysia4_ok;
             player.GetComponent<Halluns>().isEndGanja5 = Dane.KoniecMarysia5_ok;
-            player.GetComponent<Halluns>().fireCount = Dane.IloscZapalen;
+            Halluns.fireCount = Dane.IloscZapalen;
 
             // scarecrow straszak
 

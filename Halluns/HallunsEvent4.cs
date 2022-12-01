@@ -6,20 +6,17 @@ using UnityEngine.UI;
 
 public class HallunsEvent4 : MonoBehaviour {
 
-    private AudioSource audioSource;
-    public AudioClip flashbackSound;
-    private Image halluns4Image;
-    public Sprite flashbackSprite;
-
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip flashbackSound;
+    [SerializeField] private Image halluns4Image;
+    [SerializeField] private Sprite flashbackSprite;
 
     void OnEnable () {
 
-        audioSource = GameObject.Find("GanjaHalucynacje3").GetComponent<AudioSource>();
-        halluns4Image = GameObject.Find("ObrazHaluny4").GetComponent<Image>();
-
+        audioSource = GameObject.Find("GanjaHaluns3").GetComponent<AudioSource>();
+        halluns4Image = GameObject.Find("HallunsImage4").GetComponent<Image>();
     }
 	
-
     public void Flashback3()
     {
 
@@ -34,6 +31,4 @@ public class HallunsEvent4 : MonoBehaviour {
         audioSource.PlayOneShot(flashbackSound);
 
     }
-
-
 }

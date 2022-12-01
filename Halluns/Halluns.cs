@@ -61,7 +61,7 @@ public class Halluns : MonoBehaviour {
     private Camera playerCam;
     public float rayLength = 4f;
 
-    public int fireCount = 0;
+    public static int fireCount = 0;
 
     void OnEnable () {
 
@@ -121,106 +121,21 @@ public class Halluns : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0) && playerManager.isPlayerCanInput == true)
         {
+
             Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
 
             if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9))
             {
-                if (hit.collider.gameObject.name == "GanjaHalucynacje1" && isStartGanja1 == false)
+                if (hit.collider.gameObject.tag == "Hand")
                 {
-                    FireGanja1();
+                    if (hit.transform.gameObject.GetComponent<HallunsBush>())
+                    {
+                        hit.transform.gameObject.GetComponent<HallunsBush>().FireBush();
+                    }
                 }
-
-                else if (hit.collider.gameObject.name == "GanjaHalucynacje2" && isStartGanja2 == false)
-                {
-                    FireGanja2();
-                }
-
-                else if (hit.collider.gameObject.name == "GanjaHalucynacje3" && isStartGanja3 == false)
-                {
-                    FireGanja3();
-                }
-
-                else if (hit.collider.gameObject.name == "GanjaHalucynacje4" && isStartGanja4 == false)
-                {
-                    FireGanja4();
-                }
-
-               else if (hit.collider.gameObject.name == "GanjaHalucynacje5" && isStartGanja5 == false)
-                {
-                    FireGanja5();
-                }
-
-            } // klamra do raya
-
-
-            } // klamra do ifa z przyciskiem
-
-        if (isStartCount == true)
-        {
-
-            counter = counter += 1 * Time.deltaTime;
-
-            if (isStartGanja1 == true && isEndGanja1 == false && counter >= 30)
-            {
-                ganja1Canvas.enabled = false;
-                isEndGanja1 = true;
-                isStartCount = false;
-                counter = 0;
             }
-
-            if (isStartGanja2 == true && isEndGanja2 == false && counter >= 30)
-            {
-                ganja2Canvas.enabled = false;
-                isEndGanja2 = true;
-                isStartCount = false;
-                counter = 0;
-            }
-
-            if (isStartGanja2 == true && isEndGanja2 == false && counter  > 4 && counter < 5) {
-                ganjaAudioSource.clip = whistleSound;
-                ganjaAudioSource.Play();
-            }
-
-            if (isStartGanja3 == true && isEndGanja3 == false && counter >= 30)
-            {
-                ganja3Canvas.enabled = false;
-                isEndGanja3 = true;
-                isStartCount = false;
-                counter = 0;
-            }
-
-            if (isStartGanja4 == true && isEndGanja4 == false && counter >= 30)
-            {
-                ganja4Canvas.enabled = false;
-                isEndGanja4 = true;
-                isStartCount = false;
-                counter = 0;
-            }
-
-            if (isStartGanja4 == true && isEndGanja4 == false && counter > 4 && counter < 5)
-            {
-                ganjaAudioSource.clip = whistleSound;
-                ganjaAudioSource.Play();
-            }
-
-            if (isStartGanja5 == true && isEndGanja5 == false && counter > 4 && counter < 5)
-            {
-                ganjaAudioSource.clip = backgroundSound;
-                ganjaAudioSource.Play();
-            }
-
-            if (isStartGanja5 == true && isEndGanja5 == false && counter >= 30)
-            {
-                ganja5Canvas.enabled = false;
-                isEndGanja5 = true;
-                isStartCount = false;
-                counter = 0;
-                ganjaAudioSource.Stop();
-            }
-
-
-        }
+        } 
 
         // pauza dzwieku haluny
 
@@ -239,62 +154,6 @@ public class Halluns : MonoBehaviour {
 
         } // klamra do update
 
-    public void FireGanja1() {
-
-        isStartCount = true;
-        isStartGanja1 = true;
-        fireAudioSource.PlayOneShot(fireSound);
-        ganja1Canvas.enabled = true;
-        halluns1Animator.SetTrigger("Haluny1");
-        fire1Animator.SetTrigger("OdpalanieGanji");
-        fireCount++;
-    }
-
-    public void FireGanja2()
-    {
-        isStartCount = true;
-        isStartGanja2 = true;
-        fireAudioSource.PlayOneShot(fireSound);
-        ganja2Canvas.enabled = true;
-        halluns2Animator.SetTrigger("Haluny2");
-        fire2Animator.SetTrigger("OdpalanieGanji");
-        fireCount++;
-    }
-
-    public void FireGanja3()
-    {
-        isStartCount = true;
-        isStartGanja3 = true;
-        fireAudioSource.PlayOneShot(fireSound);
-        ganja3Canvas.enabled = true;
-        halluns3Animator.SetTrigger("Haluny3");
-        fire3Animator.SetTrigger("OdpalanieGanji");
-        fireCount++;
-    }
-
-    public void FireGanja4()
-    {
-
-        isStartCount = true;
-        isStartGanja4 = true;
-        fireAudioSource.PlayOneShot(fireSound);
-        ganja4Canvas.enabled = true;
-        halluns4Animator.SetTrigger("Haluny4");
-        fire4Animator.SetTrigger("OdpalanieGanji");
-        fireCount++;
-    }
-
-    public void FireGanja5()
-    {
-
-        isStartCount = true;
-        isStartGanja5 = true;
-        fireAudioSource.PlayOneShot(fireSound);
-        ganja5Canvas.enabled = true;
-        halluns5Animator.SetTrigger("Haluny5");
-        fire5Animator.SetTrigger("OdpalanieGanji");
-        fireCount++;
-    }
 
     public void DefaultScriptSettings()
     {
