@@ -442,9 +442,9 @@ public class VoiceActing : MonoBehaviour {
     void TymczasoweDane()
     {
         // glos halucynajce
-        musicScript.KlimatAlice();
+        musicScript.PlayMusic(musicScript.backgroundAudioSource1, musicScript.mysteryMusic, 1, false);
         //glos nagranie
-        musicScript.KlimatPoKasecie2();
+        musicScript.PlayMusic(musicScript.backgroundAudioSource1, musicScript.mysteryMusic, 1, false);
         // glos kryjowka
     }
 
