@@ -71,62 +71,9 @@ public class Health : MonoBehaviour {
 	void Update () {
 		
 		HealthCondition ();
-
-		if(health <= 0 && isDead == false){
-			PlayerDead ();
-		}
-			
-		if (isDead == true && isGameLoaded == false) { // animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("Smierc") && !animator.IsInTransition(0) && 
-			isGameLoaded = true;
-			gameMenuScript.passCanvas.enabled = true;
-			gameMenuScript.isLoadedGame = true;
-			passAnimator.SetTrigger("Przejscie1");
-			gameMenuScript.isPass2 = true;
-			player.GetComponent<PlayerSounds> ().enabled = false;
-			//Player.GetComponent<Kucanie> ().enabled = false;
-			player.GetComponent<EndGame> ().enabled = false;
-            player.GetComponent<RandomJumpscare>().enabled = false;
-            player.GetComponent<Halluns>().enabled = false;
-            player.GetComponent<OpenCloseObject>().enabled = false;
-            player.GetComponent<DragObject>().SetDefaultValues();
-            player.GetComponent<DragObject>().enabled = false;
-            player.GetComponent<DragRigidbody>().enabled = false;
-            gameMenuScript.voiceActingScript.retroEffectScript.intensity = 0;
-			//MenuGlowne.enabled = true;
-			gameMenuScript.playerScript.enabled = false;
-			gameMenuScript.headbobberScript.enabled = false;
-			gameMenuScript.inventoryScript.enabled = false;
-			gameMenuScript.mapScript.enabled = false;
-			gameMenuScript.screamerScript.enabled = false;
-			gameMenuScript.tasksScript.enabled = false;
-			gameMenuScript.notificationScript.enabled = false;
-			gameMenuScript.flashlightScript.enabled = false;
-			gameMenuScript.notesScript.enabled = false;
-			gameMenuScript.voiceActingScript.enabled = false;
-			gameMenuScript.gameManagerScript.enabled = false;
-			gameMenuScript.jumpscareScript.enabled = false;
-			gameMenuScript.musicScript.enabled = false;
-			gameMenuScript.taskBooksScript.enabled = false;
-			gameMenuScript.taskMeatScript.enabled = false;
-			gameMenuScript.cursorScript.enabled = false;
-			gameMenuScript.flashlightLight.enabled = false;
-			gameMenuScript.KomNapisy.text = "";
-			gameMenuScript.KomGlowny.text = "";
-			gameMenuScript.KomInfo.text = "";
-			gameMenuScript.KomItem.text = "";
-			gameMenuScript.KomPlace.text = "";
-			gameMenuScript.healthScript.enabled = false;
-
-			saveGameScript.Wczytano_ok = false;
-
-            // czy mozna uzyc szybkiej podrozy
-
-            if(health > 50 && isTravel == false)
-            {
-                mapScript.isFastTravel = true;
-                isTravel = true;
-            }
-
+	
+		if (isDead == true && isGameLoaded == false) {
+            gameMenuScript.LoadGame();
 		}
 
         // Zatrzymanie odtwarzania dzwiekow
@@ -152,129 +99,31 @@ public class Health : MonoBehaviour {
 
     }
 
-	public void PlayerDamage(){
-
-        if (randomSound < 4)
-        {
-            randomSound = Random.Range(4, 9);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-        else
-        {
-            randomSound = Random.Range(0, 4);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-
-        playerDamageCanvas1.enabled = true;
-		isStartCount = true;
-		health = health - 20;
-	}
-
-	public void PlayerDamage2(){
-
-        if (randomSound < 4)
-        {
-            randomSound = Random.Range(4, 9);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-        else
-        {
-            randomSound = Random.Range(0, 4);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-
-        playerDamageCanvas1.enabled = true;
-		isStartCount = true;
-		health = health - 50;
-	}
-		
-	public void PlayerDamage3(){
-
-        if (randomSound < 4)
-        {
-            randomSound = Random.Range(4, 9);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-        else
-        {
-            randomSound = Random.Range(0, 4);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-
-        playerDamageCanvas2.enabled = true;
-		isStartCount = true;
-		health = health - 35;
-	}
-
-	public void PlayerDamage4(){
-
-        if (randomSound < 4)
-        {
-            randomSound = Random.Range(4, 9);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-        else
-        {
-            randomSound = Random.Range(0, 4);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-
-        playerDamageCanvas3.enabled = true;
-		isStartCount = true;
-		health = health - 20;
-	}
-
-    public void PlayerDamage5()
+    public void ReceiveDamage(float damage, Canvas damageCanvas)
     {
-
-        if (randomSound < 4)
-        {
-            randomSound = Random.Range(4, 9);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-        else
-        {
-            randomSound = Random.Range(0, 4);
-            damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }
-
-        playerDamageCanvas3.enabled = true;
+        damageCanvas.enabled = true;
         isStartCount = true;
-        health = health - 110;
+        health -= damage;
     }
 
-    public void PlayerDamage6()
+    public void PlayDamageSound()
     {
-
-        if(randomSound < 4)
+        if (randomSound < 4)
         {
             randomSound = Random.Range(4, 9);
             damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
             damageAudioSource.PlayOneShot(damageSounds[randomSound]);
-        }else
+        }
+        else
         {
             randomSound = Random.Range(0, 4);
             damageAudioSource.pitch = Random.Range(0.8f, 1.5f);
             damageAudioSource.PlayOneShot(damageSounds[randomSound]);
         }
-
-        playerDamageCanvas3.enabled = true;
-        isStartCount = true;
-        health = health - 10;
     }
-
 
     public void HealthCondition(){
+
 		if(health < maxHealth && health > 0 && (!Input.GetKey("left shift") || inventoryScript.isSkill4_Unlocked == true) ){
 			health += 2 * Time.deltaTime;
 		}
@@ -289,46 +138,61 @@ public class Health : MonoBehaviour {
             mapScript.isFastTravel = false;
 		}else{
 			noisesScreenScript.enabled = false;
-		} 
+		}
 
-		//if(AktualneZdrowie <= 30){
-			//ObrazGracza.grainIntensityMin = 0.9f;
-		//}
+        if (health <= 0 && isDead == false)
+        {
+            PlayerDead();
+        }
 
-		if(health <= 30 && isPlayerInjured == false && isDead == false){
-			isPlayerInjured = true;
-			playerInjuredCanvas.enabled = true;
-			audioSource2.clip = playerInjuredSound;
-			audioSource2.Play();
-			audioSource2.loop = true;
+        CriticalHealthEffect();
+        CheckDamageCanvas();
+	
+	}
+
+    public void CriticalHealthEffect()
+    {
+        if (health <= 30 && isPlayerInjured == false && isDead == false)
+        {
+            isPlayerInjured = true;
+            playerInjuredCanvas.enabled = true;
+            audioSource2.clip = playerInjuredSound;
+            audioSource2.Play();
+            audioSource2.loop = true;
             noisesScreenScript.grainIntensityMin = 0.9f;
         }
-        else if(health > 30 || isDead == true){
-			isPlayerInjured = false;
-			playerInjuredCanvas.enabled = false;
-			noisesScreenScript.grainIntensityMin = 0.3f;
-			audioSource2.clip = null;
-			audioSource2.loop = false;
-		} 
+        else if (health > 30 || isDead == true)
+        {
+            isPlayerInjured = false;
+            playerInjuredCanvas.enabled = false;
+            noisesScreenScript.grainIntensityMin = 0.3f;
+            audioSource2.clip = null;
+            audioSource2.loop = false;
+        }
+    }
 
-
-		if(isStartCount == true && counter < 5){
-			counter +=  1 * Time.deltaTime;
-		}else{
-			isStartCount = false;
-			counter = 0;
-			playerDamageCanvas1.enabled = false;
-			playerDamageCanvas2.enabled = false;
-			playerDamageCanvas3.enabled = false;
-		}
-	}
+    public void CheckDamageCanvas()
+    {
+        if (isStartCount == true && counter < 5)
+        {
+            counter += 1 * Time.deltaTime;
+        }
+        else
+        {
+            isStartCount = false;
+            counter = 0;
+            playerDamageCanvas1.enabled = false;
+            playerDamageCanvas2.enabled = false;
+            playerDamageCanvas3.enabled = false;
+        }
+    }
 
 	public void PlayerDead(){
 		player.GetComponent<Crouch> ().GetUp();
 		playerScript.enabled = false;
         damageAudioSource.PlayOneShot(playerDeadSound);
 		isDead = true;
-		animator.SetTrigger("Smierc");
+		animator.SetTrigger("Death");
 		deadScreenScript.enabled = true;
 	}
 		
