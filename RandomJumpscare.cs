@@ -76,14 +76,6 @@ public class RandomJumpscare : MonoBehaviour {
 	
 	void Update () {
 
-     /*    if (Input.GetKeyDown("n"))
-         {
-
-            //WlaczMonsterStraszak();
-            WlaczStraszak();
-
-         }  */
-
         if (counter < randomDuration)
         {
             isOn = false;
@@ -338,7 +330,6 @@ public class RandomJumpscare : MonoBehaviour {
             MonsterJumpscare1();
             counter = 0;
         }
-
 
     }
 
