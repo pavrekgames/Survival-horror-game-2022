@@ -2802,9 +2802,9 @@ public class GameManager : MonoBehaviour {
 			Kamien3.gameObject.SetActive (true);
 			Kamien4.gameObject.SetActive (true);
 			Kamien5.gameObject.SetActive (true);
-            Music.KlimatStudnia();
+            Music.PlayMusic(Music.backgroundAudioSource1, Music.mysteryMusic, 1, false);
 
-			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
+            for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
 					Tasks.tasksList.Add(new TaskData("ZadanieKamienieStudnia", Tasks.wellStonesTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.wellStonesTaskText;
@@ -2845,9 +2845,9 @@ public class GameManager : MonoBehaviour {
 			KosciObszar.enabled = true;
 			Jumpscare.gardenMonster.SetActive (true);
 			Jumpscare.gardenMonster.GetComponent<Monster1_v1> ().enabled = true;
-            Music.KlimatOgrod();
+            Music.PlayMusic(Music.backgroundAudioSource1, Music.mysteryMusic, 1, false);
 
-			for(int i=0; i<Tasks.tasksTextMesh.Length; i++){
+            for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
 					Tasks.tasksList.Add(new TaskData("ZadanieKosci", Tasks.bonesTaskText, true, false));
 					Tasks.tasksTextMesh[i].text = Tasks.bonesTaskText;
@@ -2948,7 +2948,7 @@ public class GameManager : MonoBehaviour {
 			
 			CmentarzZwierzPointer.enabled = true;
             StrzalkaCmentarzZwierzPointer.enabled = true;
-            Music.KlimatWarsztatSimon();
+            Music.PlayMusic(Music.backgroundAudioSource1, Music.mysteryMusic, 1, false);
             Compass.AddTaskPoint(Compass.taskPointsArray[0]);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
@@ -2965,7 +2965,7 @@ public class GameManager : MonoBehaviour {
 			
 			StrzalkaVictorPointer.enabled = true;
             StrzalkaVictorPointer2.enabled = true;
-            Music.KlimatWarsztatSimon();
+            Music.PlayMusic(Music.backgroundAudioSource1, Music.mysteryMusic, 1, false);
 
             for (int i=0; i<Tasks.tasksTextMesh.Length; i++){
 				if(Tasks.tasksTextMesh[i].text.Length == 0){
