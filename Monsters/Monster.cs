@@ -24,9 +24,9 @@ public abstract class Monster : MonoBehaviour {
     [SerializeField] protected AudioClip monsterAttackSound;
 
     [Header("Monster state")]
-    [SerializeField] protected bool isSawPlayer = false;
-    [SerializeField] protected bool isRayPlayer = false;
-    [SerializeField] protected bool isSawLight = false;
+    public bool isSawPlayer = false;
+    public bool isRayPlayer = false;
+    public bool isSawLight = false;
     [SerializeField] protected bool isAttack = false;
 
     [Header("Monster movement")]
