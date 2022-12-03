@@ -1,347 +1,79 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Spider_v3 : MonoBehaviour {
+public class Spider_v3 : Monster {
 
-    public bool isPlaySound = false; 
+    public bool isPlaySound = false;
 
-    private Transform player;
-    public Transform playerHead;
-    private Transform spider;
-    public Animator spideranimator;
-    private NavMeshAgent spiderAgent;
-    public AudioSource audioSource;
-    public AudioClip spiderWalkSound;
-    public AudioClip spiderRunSound;
-    public AudioClip spiderAttackSound;
-    private CharacterController spiderController;
-    private Flashlight flashlihtScript;
-    private Health healthScript;
-    private Crouch crouchScript;
-    private Map mapScript;
-    public NavMeshPath mainPath;
-    public bool isPathPossible = true;
-
-    public bool isRun = false;
-
+    private NavMeshPath mainPath;
     private Transform monsterPoint1;
     private Transform monsterPoint2;
     private Transform monsterPoint3;
 
-    public bool isPoint1 = true;
-    public bool isPoint2 = false;
-    public bool isPoint3 = false;
+    [SerializeField] private AudioClip spiderRunSound;
+    [SerializeField] private bool isRun = false;
+    [SerializeField] private bool isSpiderOffConfirmed = false;
 
-    public bool isSawPlayer = false;
-    public bool isRayPlayer = false;
-    public bool isSawLight = false;
-    public bool isAttack = false;
-
+    public bool isPathPossible = true;
     public bool isSpiderOff = false;
-    public bool isSpiderOffConfirmed = false;
 
-    public float walkVelocity = 5f;
-    public float runVelocity = 10f;
+    public enum CurrentPoint
+    {
+        Point1,
+        Point2,
+        Point3
+    }
 
-    public float currentVelocity = 4.0f;
-    public float rotationVelocity = 5.0f;
-    public float height = 0f;
-
-    private Ray monsterAim;
-    public float rayLength = 30f;
-
-
+    public CurrentPoint currentPoint;
 
     void Start()
     {
-
         player = GameObject.Find("Player").transform;
-        spider = GameObject.Find("Pajak_v3").transform;
-        monsterPoint1 = GameObject.Find("Pajak3Punkt1").transform;
-        monsterPoint2 = GameObject.Find("Pajak3Punkt2").transform;
-        monsterPoint3 = GameObject.Find("Pajak3Punkt3").transform;
-        //AnimatorMonster = GetComponent<Animator>();
-        //KontrolerWilk = GetComponent<CharacterController>();
-        flashlihtScript = GameObject.Find("Latarka").GetComponent<Flashlight>();
+        monster = GameObject.Find("Spider_v3").transform;
+        monsterPoint1 = GameObject.Find("Spider3Point1").transform;
+        monsterPoint2 = GameObject.Find("Spider3Point2").transform;
+        monsterPoint3 = GameObject.Find("Spider3Point3").transform;
         healthScript = player.GetComponent<Health>();
         crouchScript = player.GetComponent<Crouch>();
         mapScript = GameObject.Find("Player").GetComponent<Map>();
-        playerHead = GameObject.Find("GraczGora").transform;
-        spiderAgent = spider.GetComponent<NavMeshAgent>();
+        playerHead = GameObject.Find("PlayerHead").transform;
+        monsterAgent = monster.GetComponent<NavMeshAgent>();
     }
 
     void OnEnable()
     {
-
         isSpiderOff = false;
         isSpiderOffConfirmed = false;
         audioSource.pitch = 1;
 
         isPathPossible = true;
         mainPath = new NavMeshPath();
-
     }
-
 
     void Update()
     {
 
-        //Ray MonsterAim = MonsterCam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        //Ray MonsterAim = new Ray(transform.position, transform.right);
-
-        //AnimacjaMonster();
-        float Dystans = Vector3.Distance(player.position, spider.position);
+        float distance = Vector3.Distance(player.position, monster.position);
         mapScript.isFastTravel = false;
-        //Vector3 ruch = new Vector3(Pajak.forward.x, Wysokosc, Pajak.forward.z);
-        //Debug.DrawRay(Wilk.transform.position, Wilk.transform.forward * RayLength, Color.green);
-        //Debug.Log(Dystans);
-
-        // sprawdzanie czy cel osiagalny 
-
-        if ((mainPath.status == NavMeshPathStatus.PathInvalid || mainPath.status == NavMeshPathStatus.PathPartial))
-        {
-
-            isPathPossible = false;
-            //Debug.Log("FAILED");
-
-        }
-
-        else
-
-        {
-            isPathPossible = true;
-            //Debug.Log("SUCCESS");
-        }
-
-        // Wylaczanie pajaka
+        CheckPath();
 
         if (isSpiderOff == true && isSpiderOffConfirmed == false)
         {
-
-            isSawPlayer = false;
-            isRayPlayer = false;
-            isSawLight = false;
-            spideranimator.SetBool("Widzi_ok", true);
-            spideranimator.SetBool("Atak_ok", false);
-            isSpiderOffConfirmed = true;
-            spiderAgent.speed = runVelocity;
-            spiderAgent.SetDestination(monsterPoint2.transform.position);
-            spiderAgent.Resume();
-            spiderAgent.updatePosition = true;
-
+            DisableMonster();
         }
 
-        // podazanie pajaka do punktow
-
-        if ((isSawPlayer == false && isRayPlayer == false && isSawLight == false && isSpiderOff == false) || isPathPossible == false) {
-
-            if (isPoint3 == true)
-            {
-
-                spiderAgent.speed = walkVelocity;
-                spiderAgent.SetDestination(monsterPoint3.transform.position);
-                spiderAgent.Resume();
-                spiderAgent.updatePosition = true;
-            }
-
-            else if (isPoint1 == true)
-            {
-
-                spiderAgent.speed = walkVelocity;
-                spiderAgent.SetDestination(monsterPoint1.transform.position);
-                spiderAgent.Resume();
-                spiderAgent.updatePosition = true;
-            }
-
-            else if (isPoint2 == true)
-            {
-
-                spiderAgent.speed = walkVelocity;
-                spiderAgent.SetDestination(monsterPoint2.transform.position);
-                spiderAgent.Resume();
-                spiderAgent.updatePosition = true;
-            }
-
-        }
-
-        // Linie odpowiedzialne za podazanie przeciwnika za graczem
-
-        // dlugie swiatlo latarki
-
-        if (Dystans <= 40 && Input.GetMouseButtonDown(2) && flashlihtScript.isFlashlightOn == true && isSawLight == false && healthScript.health > 0 && isSpiderOff == false)
-        {
-            isSawLight = true;
-            spiderAgent.speed = runVelocity;
-        }
-        else if (Dystans >= 50 && flashlihtScript.isFlashlightOn == true && healthScript.health > 0 && isSpiderOff == false)
-        {
-            isSawLight = false;
-            spideranimator.SetBool("Widzi_ok", false);
-
-        }
-        else if (Dystans >= 40 && flashlihtScript.isFlashlightOn == false && isSpiderOff == false)
-        {
-            isSawLight = false;
-            spideranimator.SetBool("Widzi_ok", false);
-
-        }
-        else if (Dystans >= 30 && flashlihtScript.isFlashlightOn == true && crouchScript.isCrouch == true && isSpiderOff == false)
-        {
-            isSawLight = false;
-            spideranimator.SetBool("Widzi_ok", false);
-
-        }
-        else if (Dystans >= 20 && flashlihtScript.isFlashlightOn == false && crouchScript.isCrouch == true && isSpiderOff == false)
-        {
-            isSawLight = false;
-            spideranimator.SetBool("Widzi_ok", false);
-
-        }
-
-        // normalnie z latarka
-
-        if (Dystans <= 25 && isSawPlayer == false && flashlihtScript.isFlashlightOn == true && healthScript.health > 0 && isSpiderOff == false)
-        {
-            isSawPlayer = true;
-            spiderAgent.speed = runVelocity;
-        }
-        else if (Dystans > 40 && flashlihtScript.isFlashlightOn == true && healthScript.health > 0 && isSpiderOff == false)
-        {
-            isSawPlayer = false;
-            spideranimator.SetBool("Widzi_ok", false);
-        }
-        else if (Dystans > 30 && flashlihtScript.isFlashlightOn == false && isSpiderOff == false)
-        {
-            isSawPlayer = false;
-            spideranimator.SetBool("Widzi_ok", false);
-        }
-        else if (Dystans > 13 && flashlihtScript.isFlashlightOn == false && crouchScript.isCrouch == true && isSpiderOff == false)
-        {
-            isSawPlayer = false;
-            spideranimator.SetBool("Widzi_ok", false);
-        }
-
-        // Bez wlaczonej latarki
-
-        if (Dystans <= 11 && flashlihtScript.isFlashlightOn == false && isSawPlayer == false && healthScript.health > 0 && isSpiderOff == false)
-        {
-            isSawPlayer = true;
-            spiderAgent.speed = runVelocity;
-        }
-
-        // gracz w zasiegu wzroku
-
-        if (Dystans <= 25 && isRayPlayer == false && healthScript.health > 0 && isSpiderOff == false)
-        {
-            RaycastHit hit;
-
-            if (Physics.Raycast(spider.transform.position, spider.transform.forward, out hit, rayLength, 1 << 10))
-            {
-
-                if (hit.collider.gameObject.name == "Player")
-                {
-                    isRayPlayer = true;
-                    spiderAgent.speed = runVelocity;
-                    Debug.Log("Wykryl");
-                }
-
-            }
-
-        }
-
-        else if (Dystans > 40)
-        {
-            isRayPlayer = false;
-            spideranimator.SetBool("Widzi_ok", false);
-        }
-
-        // kalkulowanie czy podazac za graczem
-
-        if (isSawLight == true || isSawPlayer == true || isRayPlayer == true)
-        {
-            NavMesh.CalculatePath(spider.transform.position, player.transform.position, -1, mainPath);
-        }
-
-        // podazanie za graczem
-
-        if ((isSawLight == true || isSawPlayer == true || isRayPlayer == true) && Dystans >= 5 && isPathPossible == true && isSpiderOff == false)
-        {
-            spideranimator.SetBool("Widzi_ok", true);
-            spideranimator.SetBool("Punkt_ok", false);
-            spiderAgent.SetDestination(player.transform.position);
-            spiderAgent.Resume();
-            spiderAgent.updatePosition = true;
-        }
-
-        // atak pajaka
-
-        if (Dystans < 5 && healthScript.health > 0 && isSpiderOff == false)
-        {
-            spiderAgent.Stop();
-            spiderAgent.velocity = Vector3.zero;
-            isSawLight = false;
-            spiderAgent.speed = runVelocity;
-            spideranimator.SetBool("Atak_ok", true);
-            spiderAgent.updatePosition = true; // bylo na false
-            spider.rotation = Quaternion.Slerp(spider.rotation, Quaternion.LookRotation(player.position - spider.position), rotationVelocity * Time.deltaTime);
-        }
-        else
-        {
-            spideranimator.SetBool("Atak_ok", false);
-        }
-
-        // dzwiek ataku pajaka
-
-        if (Dystans < 6 && isAttack == false && healthScript.health > 0)
-        {
-            audioSource.clip = spiderAttackSound;
-            audioSource.pitch = 1;
-            audioSource.Play();
-            isAttack = true;
-            isRun = false;
-
-        }
-        else if (Dystans >= 6 && isAttack == true && healthScript.health > 0)
-        {
-            audioSource.clip = spiderRunSound;
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.Play();
-            isAttack = false;
-        }
-
-        // dzwiek biegu pajaka
-
-        if ((isSawPlayer == true || isRayPlayer == true || isSawLight == true) && Dystans > 7 && isRun == false)
-        {
-            audioSource.clip = spiderRunSound;
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.Play();
-            isRun = true;
-
-        }
-        else if ((isSawPlayer == false && isRayPlayer == false && isSawLight == false) && isRun == true)
-        {
-            audioSource.clip = spiderWalkSound;
-            audioSource.pitch = 1;
-            audioSource.Play();
-            isRun = false;
-        }
-
-        // smierc gracza
-
-        if (healthScript.health <= 0)
-        {
-            isSawPlayer = false;
-            isRayPlayer = false;
-            isSawLight = false;
-            spideranimator.SetBool("Widzi_ok", false);
-            spiderAgent.speed = walkVelocity;
-            isAttack = false;
-            spideranimator.SetBool("Atak_ok", false);
-        }
-
+        MonsterFollowsPoint();
+        MonsterLongLight(distance);
+        MonsterFlashlight(distance);
+        MonsterRaycast(distance);
+        MonsterAttack(distance);
+        MonsterAttackSound(distance);
+        MonsterRunSound(distance);
+        MonsterFollowsPlayer(distance);
+ 
         // Zatrzymanie odtwarzania dzwiekow
 
         if (Time.timeScale == 0 && isPlaySound == false)
@@ -362,37 +94,250 @@ public class Spider_v3 : MonoBehaviour {
 
             isPlaySound = false;
         }
-
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Pajak3Punkt1")
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point1")
         {
-            isPoint1 = false;
-            isPoint2 = true;
+            currentPoint = CurrentPoint.Point2;
         }
 
-       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Pajak3Punkt2" && isSpiderOff == false)
+       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point2" && isSpiderOff == false)
         {
-            isPoint2 = false;
-            isPoint3 = true;
+            currentPoint = CurrentPoint.Point3;
         }
 
-       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Pajak3Punkt3")
+       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point3")
         {
-            isPoint3 = false;
-            isPoint1 = true;
+            currentPoint = CurrentPoint.Point1;
         }
 
-       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Pajak3Punkt2" && isSpiderOff == true)
+       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point2" && isSpiderOff == true)
         {
-            spider.gameObject.SetActive(false);
-            spider.gameObject.GetComponent<Spider_v3>().enabled = false;
+            monster.gameObject.SetActive(false);
+            monster.gameObject.GetComponent<Spider_v3>().enabled = false;
             mapScript.isFastTravel = true;
         }
-
     }
 
+    void DisableMonster()
+    {
+        isSawPlayer = false;
+        isRayPlayer = false;
+        isSawLight = false;
+        monsterAnimator.SetBool("isSaw", true);
+        monsterAnimator.SetBool("Attack", false);
+        isSpiderOffConfirmed = true;
+        monsterAgent.speed = runVelocity;
+        monsterAgent.SetDestination(monsterPoint2.transform.position);
+        monsterAgent.Resume();
+        monsterAgent.updatePosition = true;
+    }
+
+    void CheckPath()
+    {
+        if (isSawLight == true || isSawPlayer == true || isRayPlayer == true)
+        {
+            NavMesh.CalculatePath(monster.transform.position, player.transform.position, -1, mainPath);
+        }
+
+        if ((mainPath.status == NavMeshPathStatus.PathInvalid || mainPath.status == NavMeshPathStatus.PathPartial))
+        {
+            isPathPossible = false;
+        }
+        else
+        {
+            isPathPossible = true;
+        }
+    }
+
+    public override void MonsterFollowsPoint()
+    {
+        if ((isSawPlayer == false && isRayPlayer == false && isSawLight == false && isSpiderOff == false) || isPathPossible == false)
+        {
+            switch (currentPoint)
+            {
+                case CurrentPoint.Point1:
+                    SetPoint(monsterPoint1);
+                    break;
+                case CurrentPoint.Point2:
+                    SetPoint(monsterPoint2);
+                    break;
+                case CurrentPoint.Point3:
+                    SetPoint(monsterPoint3);
+                    break;
+            }
+        }
+    }
+
+    void SetPoint(Transform monsterPoint)
+    {
+        monsterAgent.SetDestination(monsterPoint.transform.position);
+        monsterAgent.speed = walkVelocity;
+        monsterAgent.Resume();
+        monsterAgent.updatePosition = true;
+    }
+
+    public override void MonsterFollowsPlayer(float _distance)
+    {
+        if ((isSawLight == true || isSawPlayer == true || isRayPlayer == true) && _distance >= 5 && isPathPossible == true && isSpiderOff == false)
+        {
+            monsterAnimator.SetBool("isSaw", true);
+            monsterAnimator.SetBool("Point", false);
+            monsterAgent.SetDestination(player.transform.position);
+            monsterAgent.Resume();
+            monsterAgent.updatePosition = true;
+        }
+
+        if (healthScript.health <= 0)
+        {
+            isSawPlayer = false;
+            isRayPlayer = false;
+            isSawLight = false;
+            monsterAnimator.SetBool("isSaw", false);
+            monsterAgent.speed = walkVelocity;
+            isAttack = false;
+            monsterAnimator.SetBool("Attack", false);
+        }
+    }
+
+    public override void MonsterLongLight(float _distance)
+    {
+        if (_distance <= 40 && Input.GetMouseButtonDown(2) && flashlightScript.isFlashlightOn == true && isSawLight == false && healthScript.health > 0 && isSpiderOff == false)
+        {
+            isSawLight = true;
+            monsterAgent.speed = runVelocity;
+        }
+        else if (_distance >= 50 && flashlightScript.isFlashlightOn == true && healthScript.health > 0 && isSpiderOff == false)
+        {
+            isSawLight = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+        else if (_distance >= 40 && flashlightScript.isFlashlightOn == false && isSpiderOff == false)
+        {
+            isSawLight = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+        else if (_distance >= 30 && flashlightScript.isFlashlightOn == true && crouchScript.isCrouch == true && isSpiderOff == false)
+        {
+            isSawLight = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+        else if (_distance >= 20 && flashlightScript.isFlashlightOn == false && crouchScript.isCrouch == true && isSpiderOff == false)
+        {
+            isSawLight = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+    }
+
+    public override void MonsterFlashlight(float _distance)
+    {
+        if (_distance <= 25 && isSawPlayer == false && flashlightScript.isFlashlightOn == true && healthScript.health > 0 && isSpiderOff == false)
+        {
+            isSawPlayer = true;
+            monsterAgent.speed = runVelocity;
+        }
+        else if (_distance > 40 && flashlightScript.isFlashlightOn == true && healthScript.health > 0 && isSpiderOff == false)
+        {
+            isSawPlayer = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+        else if (_distance > 30 && flashlightScript.isFlashlightOn == false && isSpiderOff == false)
+        {
+            isSawPlayer = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+        else if (_distance > 13 && flashlightScript.isFlashlightOn == false && crouchScript.isCrouch == true && isSpiderOff == false)
+        {
+            isSawPlayer = false;
+            monsterAnimator.SetBool("IsSaw", false);
+        }
+
+        if (_distance <= 11 && flashlightScript.isFlashlightOn == false && isSawPlayer == false && healthScript.health > 0 && isSpiderOff == false)
+        {
+            isSawPlayer = true;
+            monsterAgent.speed = runVelocity;
+        }
+    }
+
+    public override void MonsterRaycast(float _distance)
+    {
+        if (_distance <= 25 && isRayPlayer == false && healthScript.health > 0 && isSpiderOff == false)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(monster.transform.position, monster.transform.forward, out hit, rayLength, 1 << 10))
+            {
+                if (hit.collider.gameObject.name == "Player")
+                {
+                    isRayPlayer = true;
+                    monsterAgent.speed = runVelocity;
+                }
+            }
+        }
+        else if (_distance > 40)
+        {
+            isRayPlayer = false;
+            monsterAnimator.SetBool("Widzi_ok", false);
+        }
+    }
+
+    public override void MonsterAttack(float _distance)
+    {
+        if (_distance < 5 && healthScript.health > 0 && isSpiderOff == false)
+        {
+            monsterAgent.Stop();
+            monsterAgent.velocity = Vector3.zero;
+            isSawLight = false;
+            monsterAgent.speed = runVelocity;
+            monsterAnimator.SetBool("Attack", true);
+            monsterAgent.updatePosition = true; 
+            monster.rotation = Quaternion.Slerp(monster.rotation, Quaternion.LookRotation(player.position - monster.position), rotationVelocity * Time.deltaTime);
+        }
+        else
+        {
+            monsterAnimator.SetBool("Attack", false);
+        }
+    }
+
+    void MonsterAttackSound(float _distance)
+    {
+        if (_distance < 6 && isAttack == false && healthScript.health > 0)
+        {
+            audioSource.clip = monsterAttackSound;
+            audioSource.pitch = 1;
+            audioSource.Play();
+            isAttack = true;
+            isRun = false;
+
+        }
+        else if (_distance >= 6 && isAttack == true && healthScript.health > 0)
+        {
+            audioSource.clip = spiderRunSound;
+            audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.5f);
+            audioSource.Play();
+            isAttack = false;
+        }
+    }
+
+    void MonsterRunSound(float _distance)
+    {
+        if ((isSawPlayer == true || isRayPlayer == true || isSawLight == true) && _distance > 7 && isRun == false)
+        {
+            audioSource.clip = spiderRunSound;
+            audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.5f);
+            audioSource.Play();
+            isRun = true;
+
+        }
+        else if ((isSawPlayer == false && isRayPlayer == false && isSawLight == false) && isRun == true)
+        {
+            audioSource.clip = monsterSound;
+            audioSource.pitch = 1;
+            audioSource.Play();
+            isRun = false;
+        }
+    }
 
 }
