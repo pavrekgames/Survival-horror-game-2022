@@ -150,6 +150,14 @@ public class InventoryUI : MonoBehaviour {
 
     }
 
+    void Update()
+    {
+        if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isInventoryActive == true)
+        {
+            InventoryBackFunction();
+        }
+    }
+
     void UpdateInventorySlots()
     {
 

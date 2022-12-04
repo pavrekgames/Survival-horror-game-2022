@@ -326,22 +326,7 @@ public class BeginGame : MonoBehaviour {
 		Inventory.staminaPotsCount = 0;
         Inventory.vialsCount = 0;
 
-		Inventory.isRockyGraveSP = false;
-		Inventory.isAnimalCementarySP = false;
-		Inventory.isSimonGardenSP = false;
-		Inventory.isTomCampSP = false;
-		Inventory.isDevilsShelterSP = false;
-		Inventory.isWarCementarySP = false;
-		Inventory.isHutSP = false;
-		Inventory.isBasementSP = false;
-		Inventory.isMushroomFieldSP = false;
-		Inventory.isDarkForestSP = false;
-		Inventory.isBonesTowerSP = false;
-		Inventory.isKnifeArenaSP = false;
-		Inventory.isCaveSP = false;
-		Inventory.isMonumentSP = false;
-		Inventory.isSpaceshipSP = false;
-
+	
 	
 	
 

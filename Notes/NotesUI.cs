@@ -197,6 +197,14 @@ public class NotesUI : MonoBehaviour {
     public bool isNote53 = false;
     public bool isNote54 = false;
 
+    void Update()
+    {
+        if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isNotesActive == true)
+        {
+            NotesBackFunction();
+        }
+    }
+
     public void ShowNotes()
     {
 

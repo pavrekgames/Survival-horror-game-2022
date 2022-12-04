@@ -166,16 +166,21 @@ public class CollectionBadgesUI : MonoBehaviour {
 
     public string[] collectionTitles;
 
+    void Update()
+    {
+        if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
+        {
+            CollectionBackFunction();
+        }
+    }
+
     public void CollectionBackFunction()
     {
-        //Panel.enabled = true;
-        //Panel_ok = true;
         badgeCollectionCanvas.enabled = false;
         photoCollectionCanvas.enabled = false;
         tipCollectionCanvas.enabled = false;
         isCollectionActive = false;
-        //ZrodloDzwieku3.PlayOneShot(PrzyciskMenu);
-
+  
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
 

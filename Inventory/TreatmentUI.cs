@@ -133,6 +133,14 @@ public class TreatmentUI : MonoBehaviour {
     public string stateTiredText = "<color=#BF42C7FF>Tired</color>";
     public string lackComponentsText = "<color=#FF0000FF>You don't have enough herbs or a vial</color>";
 
+    void Update()
+    {
+        if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
+        {
+            TreatmentBackFunction();
+        }
+    }
+
     public void ShowTreatment()
     {
 

@@ -200,28 +200,7 @@ public class SaveGame : MonoBehaviour {
 			Dane.IloscMiksturaZdrowie = player.GetComponent<Inventory> ().healthPotsCount;
 			Dane.IloscMiksturaStamina = player.GetComponent<Inventory> ().staminaPotsCount;
             Dane.IloscFiolek = player.GetComponent<Inventory> ().vialsCount;
-
-			Dane.SPGrobRocky_ok = player.GetComponent<Inventory> ().isRockyGraveSP;
-			Dane.SPCmentarzZwierzat_ok = player.GetComponent<Inventory> ().isAnimalCementarySP;
-			Dane.SPOgrodSimona_ok = player.GetComponent<Inventory> ().isSimonGardenSP;
-			Dane.SPObozToma_ok = player.GetComponent<Inventory> ().isTomCampSP;
-			Dane.SPKryjowkaDiably_ok = player.GetComponent<Inventory> ().isDevilsShelterSP;
-			Dane.SPCmentarzWojna_ok = player.GetComponent<Inventory> ().isWarCementarySP;
-			Dane.SPDomek_ok = player.GetComponent<Inventory> ().isHutSP;
-			Dane.SPPiwnica_ok = player.GetComponent<Inventory> ().isBasementSP;
-			Dane.SPPoleGrzybowe_ok = player.GetComponent<Inventory> ().isMushroomFieldSP;
-			Dane.SPCiemnyLas_ok = player.GetComponent<Inventory> ().isDarkForestSP;
-			Dane.SPWiezaKosci_ok = player.GetComponent<Inventory> ().isBonesTowerSP;
-			Dane.SPNozowaArena_ok = player.GetComponent<Inventory> ().isKnifeArenaSP;
-			Dane.SPJaskinia_ok = player.GetComponent<Inventory> ().isCaveSP;
-			Dane.SPPomnik_ok = player.GetComponent<Inventory> ().isMonumentSP;
-			Dane.SPStatekKosmiczny_ok = player.GetComponent<Inventory> ().isSpaceshipSP;
-
-		
         
-        
-			
-         
 			
         
             Dane.IloscOdznak = player.GetComponent<Inventory> ().badgesCount;
@@ -870,28 +849,6 @@ public class SaveGame : MonoBehaviour {
 			player.GetComponent<Inventory> ().staminaPotsCount = Dane.IloscMiksturaStamina;
             player.GetComponent<Inventory>().vialsCount = Dane.IloscFiolek;
 
-            player.GetComponent<Inventory> ().isRockyGraveSP = Dane.SPGrobRocky_ok;
-			player.GetComponent<Inventory> ().isAnimalCementarySP = Dane.SPCmentarzZwierzat_ok;
-			player.GetComponent<Inventory> ().isSimonGardenSP = Dane.SPOgrodSimona_ok;
-			player.GetComponent<Inventory> ().isTomCampSP = Dane.SPObozToma_ok;
-			player.GetComponent<Inventory> ().isDevilsShelterSP = Dane.SPKryjowkaDiably_ok;
-			player.GetComponent<Inventory> ().isWarCementarySP = Dane.SPCmentarzWojna_ok;
-			player.GetComponent<Inventory> ().isHutSP = Dane.SPDomek_ok;
-			player.GetComponent<Inventory> ().isBasementSP = Dane.SPPiwnica_ok;
-			player.GetComponent<Inventory> ().isMushroomFieldSP = Dane.SPPoleGrzybowe_ok;
-			player.GetComponent<Inventory> ().isDarkForestSP = Dane.SPCiemnyLas_ok;
-			player.GetComponent<Inventory> ().isBonesTowerSP = Dane.SPWiezaKosci_ok;
-			player.GetComponent<Inventory> ().isKnifeArenaSP = Dane.SPNozowaArena_ok;
-			player.GetComponent<Inventory> ().isCaveSP = Dane.SPJaskinia_ok;
-			player.GetComponent<Inventory> ().isMonumentSP = Dane.SPPomnik_ok;
-			player.GetComponent<Inventory> ().isSpaceshipSP = Dane.SPStatekKosmiczny_ok;
-
-
-			
-
-            
-
-         
 
 
             player.GetComponent<Inventory>().badgesCount = Dane.IloscOdznak;

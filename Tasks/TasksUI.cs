@@ -140,6 +140,14 @@ public class TasksUI : MonoBehaviour {
 
     public int skillsCount = 0;
 
+    void Update()
+    {
+        if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTasksActive == true)
+        {
+            TasksBackFunction();
+        }
+    }
+
     public void UpdateTasksUI()
     {
         for (int i = 0; i < tasksList.Count; i++)
