@@ -1324,68 +1324,7 @@ public class GameManager : MonoBehaviour {
             Trup.gameObject.SetActive(false);
         }
 			
-		// Mapa
-
-		if (Inventory.isRockyGraveSP == true) {
-			SPGrobRockyPointer.enabled = true;
-		}
-
-		if (Inventory.isAnimalCementarySP == true) {
-			SPCmentarzZwierzatPointer.enabled = true;
-		}
-
-		if (Inventory.isSimonGardenSP == true) {
-			SPOgrodSimonaPointer.enabled = true;
-		}
-
-		if (Inventory.isTomCampSP == true) {
-			SPObozTomaPointer.enabled = true;
-		}
-
-		if (Inventory.isDevilsShelterSP == true) {
-			//SP.enabled = true;
-		}
-
-		if (Inventory.isWarCementarySP == true) {
-			SPCmentarzWojnaPointer.enabled = true;
-		}
-
-		if (Inventory.isHutSP == true) {
-			SPDomekPointer.enabled = true;
-		}
-
-		if (Inventory.isBasementSP == true) {
-			SPPiwnicaPointer.enabled = true;
-		}
-
-		if (Inventory.isMushroomFieldSP == true) {
-			SPPoleGrzybowePointer.enabled = true;
-		}
-
-		if (Inventory.isDarkForestSP == true) {
-			SPCiemnyLasPointer.enabled = true;
-		}
-
-		if (Inventory.isBonesTowerSP == true) {
-			SPWiezaKosciPointer.enabled = true;
-		}
-
-		if (Inventory.isKnifeArenaSP == true) {
-			SPNozowaArenaPointer.enabled = true;
-		}
-
-		if (Inventory.isCaveSP == true) {
-			SPJaskiniaPointer.enabled = true;
-		}
-
-		if (Inventory.isMonumentSP == true) {
-			SPPomnikPointer.enabled = true;
-		}
-
-		if (Inventory.isSpaceshipSP == true) {
-			SPStatekKosmicznyPointer.enabled = true;
-		}
-
+	
 	
 
 

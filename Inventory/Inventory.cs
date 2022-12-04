@@ -51,7 +51,6 @@ public class Inventory : MonoBehaviour {
     public AudioClip collectItemSound;
     public AudioClip openInventorySound;
 
-
     // tasks UI
 
     public Canvas tasksCanvas;
@@ -65,28 +64,18 @@ public class Inventory : MonoBehaviour {
     public Canvas treatmentCanvas;
     public bool isTreatmentActive = false;
 
-    // collection badges
-
-
     // collection badges UI
 
     public Canvas badgeCollectionCanvas;
     public Canvas[] collectionCanvas;
-    private TextMeshProUGUI badgeCollectionTitleText;
     public bool isCollectionActive = false;
 
     public Sprite badgeSprite;
     public Sprite badgeOKSprite;
-    public Image[] collectionTextures;
-
-    // collection photos
-
 
     // collection photos UI
 
     public Canvas photoCollectionCanvas;
-    private TextMeshProUGUI photoCollectionTitleText;
-    public Sprite photoSprite;
     public Sprite photoOKSprite;
 
     // collection tips
@@ -95,51 +84,12 @@ public class Inventory : MonoBehaviour {
     // collection tips UI
 
     public Canvas tipCollectionCanvas;
-    private TextMeshProUGUI tipCollectionTitleText;
     public Sprite tipSprite;
     public Sprite tipOKSprite;
-
-    // Notification
-
-    public bool isRockyGraveSP = false;
-	public Text rockyGraveTextPointer;
-	public bool isAnimalCementarySP = false;
-	public Text animalCementaryTextPointer;
-	public bool isSimonGardenSP = false;
-	public Text simonGardenTextPointer;
-	public bool isTomCampSP = false;
-	public Text tomCampTextPointer;
-	public bool isDevilsShelterSP = false;
-	public bool isWarCementarySP = false;
-	public Text warCementaryTextPointer;
-	public bool isHutSP = false;
-	public Text hutTextPointer;
-	public bool isBasementSP = false;
-	public Text basementTextPointer;
-	public bool isMushroomFieldSP = false;
-	public Text mushroomFieldTextPointer;
-	public bool isDarkForestSP = false;
-	public Text darkForestTextPointer;
-	public bool isBonesTowerSP = false;
-	public Text bonesTowerTextPointer;
-	public bool isKnifeArenaSP = false;
-	public Text knifeArenaTextPointer;
-	public bool isCaveSP = false;
-	public Text caveTextPointer;
-	public bool isMonumentSP = false;
-	public Text monumentTextPointer;
-	public bool isSpaceshipSP = false;
-	public Text spaceshipTextPointer;
-
-    //------------------------------------------------------------------------
 
     private Ray playerAim;
 	private Camera playerCam;
 	public float rayLength = 4f;
-
-    // teksty do kolekcji
-
-    public string[] collectionTitles;
 
     // tekst aktualny item
 
@@ -184,63 +134,6 @@ public class Inventory : MonoBehaviour {
 		itemAudioSource3 = GameObject.Find ("ZrodloPrzedmiot3_s").GetComponent<AudioSource>();    // srednie
 		itemAudioSource4 = GameObject.Find ("ZrodloPrzedmiot4_s").GetComponent<AudioSource>();    // ciche
         pauseAudioSource = GameObject.Find("ZrodloPrzedmiotPause_s").GetComponent<AudioSource>();
-
-
-        rockyGraveTextPointer = GameObject.Find ("SPGrobRockyPointer").GetComponent<Text>();
-		animalCementaryTextPointer = GameObject.Find ("SPCmentarzZwierzatPointer").GetComponent<Text>();
-		simonGardenTextPointer = GameObject.Find ("SPOgrodSimonaPointer").GetComponent<Text>();
-		tomCampTextPointer = GameObject.Find ("SPObozTomaPointer").GetComponent<Text>();
-		warCementaryTextPointer = GameObject.Find ("SPCmentarzWojnaPointer").GetComponent<Text>();
-		hutTextPointer = GameObject.Find ("SPDomekPointer").GetComponent<Text>();
-		basementTextPointer = GameObject.Find ("SPPiwnicaPointer").GetComponent<Text>();
-		mushroomFieldTextPointer = GameObject.Find ("SPPoleGrzybowePointer").GetComponent<Text>();
-		darkForestTextPointer = GameObject.Find ("SPCiemnyLasPointer").GetComponent<Text>();
-		bonesTowerTextPointer = GameObject.Find ("SPWiezaKosciPointer").GetComponent<Text>();
-		knifeArenaTextPointer = GameObject.Find ("SPNozowaArenaPointer").GetComponent<Text>();
-		caveTextPointer = GameObject.Find ("SPJaskiniaPointer").GetComponent<Text>();
-		monumentTextPointer = GameObject.Find ("SPPomnikPointer").GetComponent<Text>();
-		spaceshipTextPointer = GameObject.Find ("SPStatekKosmicznyPointer").GetComponent<Text>();
-
-        // kolekcja tekstury
-
-        collectionTextures = new Image[36];
-        collectionTextures[0] = GameObject.Find("Odznaka1Image").GetComponent<Image>();
-        collectionTextures[1] = GameObject.Find("Odznaka2Image").GetComponent<Image>();
-        collectionTextures[2] = GameObject.Find("Odznaka3Image").GetComponent<Image>();
-        collectionTextures[3] = GameObject.Find("Odznaka4Image").GetComponent<Image>();
-        collectionTextures[4] = GameObject.Find("Odznaka5Image").GetComponent<Image>();
-        collectionTextures[5] = GameObject.Find("Odznaka6Image").GetComponent<Image>();
-        collectionTextures[6] = GameObject.Find("Odznaka7Image").GetComponent<Image>();
-        collectionTextures[7] = GameObject.Find("Odznaka8Image").GetComponent<Image>();
-        collectionTextures[8] = GameObject.Find("Odznaka9Image").GetComponent<Image>();
-        collectionTextures[9] = GameObject.Find("Odznaka10Image").GetComponent<Image>();
-        collectionTextures[10] = GameObject.Find("Odznaka11Image").GetComponent<Image>();
-        collectionTextures[11] = GameObject.Find("Odznaka12Image").GetComponent<Image>();
-        collectionTextures[12] = GameObject.Find("Foto1Image").GetComponent<Image>();
-        collectionTextures[13] = GameObject.Find("Foto2Image").GetComponent<Image>();
-        collectionTextures[14] = GameObject.Find("Foto3Image").GetComponent<Image>();
-        collectionTextures[15] = GameObject.Find("Foto4Image").GetComponent<Image>();
-        collectionTextures[16] = GameObject.Find("Foto5Image").GetComponent<Image>();
-        collectionTextures[17] = GameObject.Find("Foto6Image").GetComponent<Image>();
-        collectionTextures[18] = GameObject.Find("Foto7Image").GetComponent<Image>();
-        collectionTextures[19] = GameObject.Find("Foto8Image").GetComponent<Image>();
-        collectionTextures[20] = GameObject.Find("Foto9Image").GetComponent<Image>();
-        collectionTextures[21] = GameObject.Find("Foto10Image").GetComponent<Image>();
-        collectionTextures[22] = GameObject.Find("Foto11Image").GetComponent<Image>();
-        collectionTextures[23] = GameObject.Find("Foto12Image").GetComponent<Image>();
-        collectionTextures[24] = GameObject.Find("Wskazowki1Image").GetComponent<Image>();
-        collectionTextures[25] = GameObject.Find("Wskazowki2Image").GetComponent<Image>();
-        collectionTextures[26] = GameObject.Find("Wskazowki3Image").GetComponent<Image>();
-        collectionTextures[27] = GameObject.Find("Wskazowki4Image").GetComponent<Image>();
-        collectionTextures[28] = GameObject.Find("Wskazowki5Image").GetComponent<Image>();
-        collectionTextures[29] = GameObject.Find("Wskazowki6Image").GetComponent<Image>();
-        collectionTextures[30] = GameObject.Find("Wskazowki7Image").GetComponent<Image>();
-        collectionTextures[31] = GameObject.Find("Wskazowki8Image").GetComponent<Image>();
-        collectionTextures[32] = GameObject.Find("Wskazowki9Image").GetComponent<Image>();
-        collectionTextures[33] = GameObject.Find("Wskazowki10Image").GetComponent<Image>();
-        collectionTextures[34] = GameObject.Find("Wskazowki11Image").GetComponent<Image>();
-        collectionTextures[35] = GameObject.Find("Wskazowki12Image").GetComponent<Image>();
-
     
         // Canvasy kolekcje z tablicy
 
@@ -283,54 +176,6 @@ public class Inventory : MonoBehaviour {
         collectionCanvas[35] = GameObject.Find("CanvasCollectionWskazowka11").GetComponent<Canvas>();
         collectionCanvas[36] = GameObject.Find("CanvasCollectionWskazowka12").GetComponent<Canvas>();
 
-        badgeCollectionTitleText = GameObject.Find("TytulCollectionOdznaki").GetComponent<TextMeshProUGUI>();
-        photoCollectionTitleText = GameObject.Find("TytulCollectionFoto").GetComponent<TextMeshProUGUI>();
-        tipCollectionTitleText = GameObject.Find("TytulCollectionWskazowki").GetComponent<TextMeshProUGUI>();
-
-        // tablica tekstow do kolekcji
-        collectionTitles = new string[39];
-        collectionTitles[0] = "Badges";
-        collectionTitles[1] = "Photos";
-        collectionTitles[2] = "Tips";
-        collectionTitles[3] = "Fresh Blood Badge";
-        collectionTitles[4] = "Sun Badge ";
-        collectionTitles[5] = "Nature Badge";
-        collectionTitles[6] = "A Badge Of Endurance";
-        collectionTitles[7] = "Heaven Badge";
-        collectionTitles[8] = "War Badge";
-        collectionTitles[9] = "Infinity Badge";
-        collectionTitles[10] = "A Badge Of Holiness";
-        collectionTitles[11] = "Death Badge";
-        collectionTitles[12] = "Badge Of Life ";
-        collectionTitles[13] = "Combat Badge";
-        collectionTitles[14] = "Fire Badge";
-        collectionTitles[15] = "Old photo 1";
-        collectionTitles[16] = "Old photo 2";
-        collectionTitles[17] = "Old photo 3";
-        collectionTitles[18] = "Old photo 4";
-        collectionTitles[19] = "Old photo 5";
-        collectionTitles[20] = "Old photo 6";
-        collectionTitles[21] = "Old photo 7";
-        collectionTitles[22] = "Old photo 8";
-        collectionTitles[23] = "Old photo 9";
-        collectionTitles[24] = "Old photo 10";
-        collectionTitles[25] = "Old photo 11";
-        collectionTitles[26] = "Old photo 12";
-        collectionTitles[27] = "Tip 1";
-        collectionTitles[28] = "Tip 2";
-        collectionTitles[29] = "Tip 3";
-        collectionTitles[30] = "Tip 4";
-        collectionTitles[31] = "Tip 5";
-        collectionTitles[32] = "Tip 6";
-        collectionTitles[33] = "Tip 7";
-        collectionTitles[34] = "Tip 8";
-        collectionTitles[35] = "Tip 9";
-        collectionTitles[36] = "Tip 10";
-        collectionTitles[37] = "Tip 11";
-        collectionTitles[38] = "Tip 12";
-
-
-
         // aktualny przedmiot
 
         uiCanvas = GameObject.Find("CanvasUI").GetComponent<Canvas>();
@@ -364,38 +209,11 @@ public class Inventory : MonoBehaviour {
             playerScript.enabled = false;
             pauseAudioSource.pitch = 1;
             pauseAudioSource.PlayOneShot(openInventorySound);
-
-        }
-
-
-        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isInventoryActive == true)
-        {
-            inventoryUI.InventoryBackFunction();
-        }
-
-        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTasksActive == true)
-        {
-            tasksUI.TasksBackFunction();
-        }
-
-        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isNotesActive == true)
-        {
-            notesUI.NotesBackFunction();
-        }
-
-        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
-        {
-            treatmentUI.TreatmentBackFunction();
-        }
-
-        else if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
-        {
-            collectionBadgesUI.CollectionBackFunction();
         }
 
         else if (gameMenuScript.isMenu == true)
         {
-            cursorScript.m_ShowCursor = true; // !Kursor.m_ShowCursor
+            cursorScript.m_ShowCursor = true; 
         }
 
 
