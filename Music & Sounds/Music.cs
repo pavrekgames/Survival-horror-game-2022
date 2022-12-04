@@ -455,7 +455,7 @@ public class Music : MonoBehaviour {
 	}
 
 	void PlayMonsterPumpkinMusic(){
-		if (inventoryScript.isPumpkinTaken == true && jumpscareScript.pumpkinMonster.activeSelf) {
+		if (jumpscareScript.pumpkinMonster.activeSelf) {
 			isPumpkinMonsterMusic = true;
 		}
 

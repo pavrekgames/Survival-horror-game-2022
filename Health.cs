@@ -124,7 +124,7 @@ public class Health : MonoBehaviour {
 
     public void HealthCondition(){
 
-		if(health < maxHealth && health > 0 && (!Input.GetKey("left shift") || inventoryScript.isSkill4_Unlocked == true) ){
+		if(health < maxHealth && health > 0 && (!Input.GetKey("left shift")) ){
 			health += 2 * Time.deltaTime;
 		}
 
