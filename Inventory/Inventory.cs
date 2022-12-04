@@ -187,15 +187,6 @@ public class Inventory : MonoBehaviour {
     void Update()
     {
 
-        if (Time.timeScale == 0)
-        {
-            uiCanvas.enabled = false;
-        }
-        else if (Time.timeScale == 1)
-        {
-            uiCanvas.enabled = true;
-        }
-
         CheckHealthCondition();
 
         if (Input.GetButtonDown("Inventory") && playerManagerScript.isPlayerCanInput == true)
