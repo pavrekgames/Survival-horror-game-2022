@@ -41,41 +41,6 @@ public class TaskBones : MonoBehaviour {
 		bonesCollider = GameObject.Find("KoliderKosci").transform;
 		grille = GameObject.Find("KratyKosci").transform;
 
-		if (inventoryScript.isBone1Taken == true && inventoryScript.isBone1Removed == true) {
-			bone1.gameObject.SetActive(true);
-			isBone1 = true;
-            inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-            bonesCount++;
-		}
-
-		if (inventoryScript.isBone2Taken == true && inventoryScript.isBone2Removed == true) {
-			bone2.gameObject.SetActive(true);
-			isBone2 = true;
-            inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-            bonesCount++;
-		}
-
-		if (inventoryScript.isBone3Taken == true && inventoryScript.isBone3Removed == true) {
-			bone3.gameObject.SetActive(true);
-			isBone3 = true;
-            inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-            bonesCount++;
-		}
-
-		if (inventoryScript.isBone4Taken == true && inventoryScript.isBone4Removed == true) {
-			bone4.gameObject.SetActive(true);
-			isBone4 = true;
-            inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-            bonesCount++;
-		}
-
-		if (inventoryScript.isBone5Taken == true && inventoryScript.isBone5Removed == true) {
-			bone5.gameObject.SetActive(true);
-			isBone5 = true;
-            inventoryScript.RemoveItem(inventoryScript.allItems[0], true);
-            bonesCount++;
-		}
-
 
 	}
 

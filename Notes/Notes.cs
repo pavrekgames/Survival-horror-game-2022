@@ -665,27 +665,6 @@ public class Notes : MonoBehaviour {
         }
     }
 
-    void TymczasoweDane()
-    {
-        //notatka3
-        if (inventoryScript.isBone3Taken == false)
-        {
-            //tasksScript.AddKoscSzopaPointer();
-        }
-
-        if (inventoryScript.isBone4Taken == false)
-        {
-            //tasksScript.AddKoscStajniaPointer();
-        }
-
-        //notatka7
-        if (inventoryScript.isKeyV2Taken == false)
-        {
-            //tasksScript.AddKluczWychodekPointer();
-        }
-
-    }
-
     public void ReadNote(Canvas noteCanvas)
     {
         audioSource.pitch = 1;

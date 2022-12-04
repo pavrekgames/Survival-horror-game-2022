@@ -89,30 +89,14 @@ public class SaveGame : MonoBehaviour {
 			Zapisz ();
 		}
 
-		if(BrakujaceKoloZapis_ok == false && inventoryScript.isWoodenWheelTaken == true){
-			BrakujaceKoloZapis_ok = true;
-			Zapisz ();
-		}
-
-		if(NaprawionyKluczZapis_ok == false && inventoryScript.isFixedKeyTaken == true){
-			NaprawionyKluczZapis_ok = true;
-			Zapisz ();
-		}
-
-		if(KombinerkiZapis_ok == false && inventoryScript.isPliersTaken == true){
-			KombinerkiZapis_ok = true;
-			Zapisz ();
-		}
+	
 
 		if(KukurydzaZapis_ok == false && tasksScript.isCornfieldDoorLocked == false){
 			KukurydzaZapis_ok = true;
 			Zapisz ();
 		}
 
-		if(KluczSzafaKorytarzZapis_ok == false && inventoryScript.isWardrobeCorridorKeyTaken == true){
-			KluczSzafaKorytarzZapis_ok = true;
-			Zapisz ();
-		} 
+		
 
 		if(IdzSzlakZapis_ok == false && tasksScript.isGoToTrialTask == true){
 			IdzSzlakZapis_ok = true;
@@ -140,10 +124,7 @@ public class SaveGame : MonoBehaviour {
 			Zapisz ();
 		}
 
-		if(GrzybZapis_ok == false && inventoryScript.isLabMushroomTaken == true){
-			GrzybZapis_ok = true;
-			Zapisz ();
-		}
+	
 
         if (SzopaStevenZapis_ok == false && voiceActingScript.isStevenShedRecording == true && voiceActingScript.isEndRetro == true && voiceActingScript.retroEffectScript.intensity == 0)
         {
@@ -236,218 +217,13 @@ public class SaveGame : MonoBehaviour {
 			Dane.SPPomnik_ok = player.GetComponent<Inventory> ().isMonumentSP;
 			Dane.SPStatekKosmiczny_ok = player.GetComponent<Inventory> ().isSpaceshipSP;
 
-			Dane.KluczV1_ok = player.GetComponent<Inventory> ().isKeyV1Taken;
-			Dane.Oliwa_ok = player.GetComponent<Inventory> ().isOilTaken;
-			Dane.KluczV2_ok = player.GetComponent<Inventory> ().isKeyV2Taken;
-			Dane.KluczV3_ok = player.GetComponent<Inventory> ().isKeyV3Taken;
-			Dane.KluczV4_ok = player.GetComponent<Inventory> ().isKeyV4Taken;
-			Dane.Baterie_ok = player.GetComponent<Inventory> ().isBatteriesTaken;
-			Dane.Kaseta1_ok = player.GetComponent<Inventory> ().isCassete1Taken;
-			Dane.Kosc1_ok = player.GetComponent<Inventory> ().isBone1Taken;
-			Dane.Kosc2_ok = player.GetComponent<Inventory> ().isBone2Taken;
-			Dane.Kosc3_ok = player.GetComponent<Inventory> ().isBone3Taken;
-			Dane.Kosc4_ok = player.GetComponent<Inventory> ().isBone4Taken;
-			Dane.Kosc5_ok = player.GetComponent<Inventory> ().isBone5Taken;
-			Dane.KluczWneka_ok = player.GetComponent<Inventory> ().isNicheKeyTaken;
-			Dane.KluczKamping_ok = player.GetComponent<Inventory> ().isSecretRoomKeyTaken;
-			Dane.KluczFabrykaBroken_ok = player.GetComponent<Inventory> ().isBrokenFactoryKeyTaken;
-			Dane.BrakujaceKolo_ok = player.GetComponent<Inventory> ().isWoodenWheelTaken;
-			Dane.KluczFabrykaFixed_ok = player.GetComponent<Inventory> ().isFixedKeyTaken;
-			Dane.Lom_ok = player.GetComponent<Inventory> ().isCrowbarTaken;
-			Dane.KluczSalonPoludnie_ok = player.GetComponent<Inventory> ().isAliceKeyTaken;
-			Dane.Kombinerki_ok = player.GetComponent<Inventory> ().isPliersTaken;
-			Dane.Siekiera_ok = player.GetComponent<Inventory> ().isAxeTaken;
-			Dane.KluczSzafaKorytarz_ok = player.GetComponent<Inventory> ().isWardrobeCorridorKeyTaken;
-			Dane.KluczSzafkaSzopa_ok = player.GetComponent<Inventory> ().isShedCupboardKeyTaken;
-			Dane.Kaseta2_ok = player.GetComponent<Inventory> ().isCassete2Taken;
-			Dane.Dynia_ok = player.GetComponent<Inventory> ().isPumpkinTaken;
-			Dane.KluczTomGora_ok = player.GetComponent<Inventory> ().isTomUpstairsKeyTaken;
-			Dane.KluczPokojTom_ok = player.GetComponent<Inventory> ().isTomRoomKeyTaken;
-			Dane.Kaseta3_ok = player.GetComponent<Inventory> ().isCassete3Taken;
-			Dane.Chip_ok = player.GetComponent<Inventory> ().isChipTaken;
-			Dane.KluczSzafaStaryDom_ok = player.GetComponent<Inventory> ().isOldWardrobeKeyTaken;
-			Dane.Kaseta4_ok = player.GetComponent<Inventory> ().isCassete4Taken;
-			Dane.KluczStevena_ok = player.GetComponent<Inventory> ().isStevenKeyTaken;
-			Dane.RoslinaLab_ok = player.GetComponent<Inventory> ().isLabPlantTaken;
-			Dane.GrzybLab_ok = player.GetComponent<Inventory> ().isLabMushroomTaken;
-			Dane.CzaszkaLab_ok = player.GetComponent<Inventory> ().isLabSkullTaken;
-			Dane.Mikstura_ok = player.GetComponent<Inventory> ().isStrongAcidTaken;
-			Dane.KluczPokojZachod_ok = player.GetComponent<Inventory> ().isPaulKeyTaken;
-
-			Dane.KluczV1_Usun = player.GetComponent<Inventory> ().isKeyV1Removed;
-			Dane.Oliwa_Usun = player.GetComponent<Inventory> ().isOilRemoved;
-			Dane.KluczV2_Usun = player.GetComponent<Inventory> ().isKeyV2Removed;
-			Dane.KluczV3_Usun = player.GetComponent<Inventory> ().isKeyV3Removed;
-			Dane.KluczV4_Usun = player.GetComponent<Inventory> ().isKeyV4Removed;
-			Dane.Baterie_Usun = player.GetComponent<Inventory> ().isBatteriesRemoved;
-			Dane.Kaseta1_Usun = player.GetComponent<Inventory> ().isCassete1Removed;
-			Dane.Kosc1_Usun = player.GetComponent<Inventory> ().isBone1Removed;
-			Dane.Kosc2_Usun = player.GetComponent<Inventory> ().isBone2Removed;
-			Dane.Kosc3_Usun = player.GetComponent<Inventory> ().isBone3Removed;
-			Dane.Kosc4_Usun = player.GetComponent<Inventory> ().isBone4Removed;
-			Dane.Kosc5_Usun = player.GetComponent<Inventory> ().isBone5Removed;
-			Dane.KluczWneka_Usun = player.GetComponent<Inventory> ().isNicheKeyRemoved;
-			Dane.KluczKamping_Usun = player.GetComponent<Inventory> ().isSecretRoomKeyRemoved;
-			Dane.KluczFabrykaBroken_Usun = player.GetComponent<Inventory> ().isBrokenFactoryKeyRemoved;
-			Dane.BrakujaceKolo_Usun = player.GetComponent<Inventory> ().isWoodenWheelRemoved;
-			Dane.KluczFabrykaFixed_Usun = player.GetComponent<Inventory> ().isFixedKeyRemoved;
-			Dane.Lom_Usun = player.GetComponent<Inventory> ().isCrowbarRemoved;
-			Dane.KluczSalonPoludnie_Usun = player.GetComponent<Inventory> ().isAliceKeyRemoved;
-			Dane.Kombinerki_Usun = player.GetComponent<Inventory> ().isPliersRemoved;
-			Dane.Siekiera_Usun = player.GetComponent<Inventory> ().isAxeRemoved;
-			Dane.KluczSzafaKorytarz_Usun = player.GetComponent<Inventory> ().isWardrobeCorridorKeyRemoved;
-			Dane.KluczSzafkaSzopa_Usun = player.GetComponent<Inventory> ().isShedCupboardKeyRemoved;
-			Dane.Kaseta2_Usun = player.GetComponent<Inventory> ().isCassete2Removed;
-			Dane.Dynia_Usun = player.GetComponent<Inventory> ().isPumpkinRemoved;
-			Dane.KluczTomGora_Usun = player.GetComponent<Inventory> ().isTomUpstairsKeyRemoved;
-			Dane.KluczPokojTom_Usun = player.GetComponent<Inventory> ().isTomRoomKeyRemoved;
-			Dane.Kaseta3_Usun = player.GetComponent<Inventory> ().isCassete3Removed;
-			Dane.Chip_Usun = player.GetComponent<Inventory> ().isChipRemoved;
-			Dane.KluczSzafaStaryDom_Usun = player.GetComponent<Inventory> ().isOldWardrobeKeyRemoved;
-			Dane.Kaseta4_Usun = player.GetComponent<Inventory> ().isCassete4Removed;
-			Dane.KluczStevena_Usun = player.GetComponent<Inventory> ().isStevenKeyRemoved;
-			Dane.RoslinaLab_Usun = player.GetComponent<Inventory> ().isLabPlantRemoved;
-			Dane.GrzybLab_Usun = player.GetComponent<Inventory> ().isLabMushroomRemoved;
-			Dane.CzaszkaLab_Usun = player.GetComponent<Inventory> ().isLabSkullRemoved;
-			Dane.Mikstura_Usun = player.GetComponent<Inventory> ().isStrongAcidRemoved;
-			Dane.KluczPokojZachod_Usun = player.GetComponent<Inventory> ().isPaulKeyRemoved;
-
-			Dane.SecretItem1_ok = player.GetComponent<Inventory> ().isSecretIem1;
-			Dane.SecretItem2_ok = player.GetComponent<Inventory> ().isSecretIem2;
-			Dane.SecretItem3_ok = player.GetComponent<Inventory> ().isSecretIem3;
-			Dane.SecretItem4_ok = player.GetComponent<Inventory> ().isSecretIem4;
-			Dane.SecretItem5_ok = player.GetComponent<Inventory> ().isSecretIem5;
-			Dane.SecretItem6_ok = player.GetComponent<Inventory> ().isSecretIem6;
-			Dane.SecretItem7_ok = player.GetComponent<Inventory> ().isSecretIem7;
-			Dane.SecretItem8_ok = player.GetComponent<Inventory> ().isSecretIem8;
-			Dane.SecretItem9_ok = player.GetComponent<Inventory> ().isSecretIem9;
-			Dane.SecretItem10_ok = player.GetComponent<Inventory> ().isSecretIem10;
-			Dane.SecretItem11_ok = player.GetComponent<Inventory> ().isSecretIem11;
-			Dane.SecretItem12_ok = player.GetComponent<Inventory> ().isSecretIem12;
-			Dane.SecretItem13_ok = player.GetComponent<Inventory> ().isSecretIem13;
-			Dane.SecretItem14_ok = player.GetComponent<Inventory> ().isSecretIem14;
-			Dane.SecretItem15_ok = player.GetComponent<Inventory> ().isSecretIem15;
-			Dane.SecretItem16_ok = player.GetComponent<Inventory> ().isSecretIem16;
-			Dane.SecretItem17_ok = player.GetComponent<Inventory> ().isSecretIem17;
-			Dane.SecretItem18_ok = player.GetComponent<Inventory> ().isSecretIem18;
-			Dane.SecretItem19_ok = player.GetComponent<Inventory> ().isSecretIem19;
-			Dane.SecretItem20_ok = player.GetComponent<Inventory> ().isSecretIem20;
-			Dane.SecretItem21_ok = player.GetComponent<Inventory> ().isSecretIem21;
-			Dane.SecretItem22_ok = player.GetComponent<Inventory> ().isSecretIem22;
-			Dane.SecretItem23_ok = player.GetComponent<Inventory> ().isSecretIem23;
-			Dane.SecretItem24_ok = player.GetComponent<Inventory> ().isSecretIem24;
-			Dane.SecretItem25_ok = player.GetComponent<Inventory> ().isSecretIem25;
-            Dane.SecretItem26_ok = player.GetComponent<Inventory> ().isSecretIem26;
-            Dane.SecretItem27_ok = player.GetComponent<Inventory> ().isSecretIem27;
-            Dane.SecretItem28_ok = player.GetComponent<Inventory> ().isSecretIem28;
-            Dane.SecretItem29_ok = player.GetComponent<Inventory> ().isSecretIem29;
-            Dane.SecretItem30_ok = player.GetComponent<Inventory> ().isSecretIem30;
-            Dane.SecretItem31_ok = player.GetComponent<Inventory> ().isSecretIem31;
-            Dane.SecretItem32_ok = player.GetComponent<Inventory> ().isSecretIem32;
-
+		
+        
+        
 			
-            Dane.ZieloneZiolo1_ok = player.GetComponent<Inventory> ().isGreenHerb1;
-			Dane.ZieloneZiolo2_ok = player.GetComponent<Inventory> ().isGreenHerb2;
-			Dane.ZieloneZiolo3_ok = player.GetComponent<Inventory> ().isGreenHerb3;
-			Dane.ZieloneZiolo4_ok = player.GetComponent<Inventory> ().isGreenHerb4;
-			Dane.ZieloneZiolo5_ok = player.GetComponent<Inventory> ().isGreenHerb5;
-			Dane.ZieloneZiolo6_ok = player.GetComponent<Inventory> ().isGreenHerb6;
-			Dane.ZieloneZiolo7_ok = player.GetComponent<Inventory> ().isGreenHerb7;
-			Dane.ZieloneZiolo8_ok = player.GetComponent<Inventory> ().isGreenHerb8;
-			Dane.ZieloneZiolo9_ok = player.GetComponent<Inventory> ().isGreenHerb9;
-			Dane.ZieloneZiolo10_ok = player.GetComponent<Inventory> ().isGreenHerb10;
-			Dane.ZieloneZiolo11_ok = player.GetComponent<Inventory> ().isGreenHerb11;
-			Dane.ZieloneZiolo12_ok = player.GetComponent<Inventory> ().isGreenHerb12;
-			Dane.ZieloneZiolo13_ok = player.GetComponent<Inventory> ().isGreenHerb13;
-			Dane.ZieloneZiolo14_ok = player.GetComponent<Inventory> ().isGreenHerb14;
-			Dane.ZieloneZiolo15_ok = player.GetComponent<Inventory> ().isGreenHerb15;
-			Dane.ZieloneZiolo16_ok = player.GetComponent<Inventory> ().isGreenHerb16;
-			Dane.ZieloneZiolo17_ok = player.GetComponent<Inventory> ().isGreenHerb17;
-			Dane.ZieloneZiolo18_ok = player.GetComponent<Inventory> ().isGreenHerb18;
-			Dane.ZieloneZiolo19_ok = player.GetComponent<Inventory> ().isGreenHerb19;
-			Dane.ZieloneZiolo20_ok = player.GetComponent<Inventory> ().isGreenHerb20;
-			Dane.ZieloneZiolo21_ok = player.GetComponent<Inventory> ().isGreenHerb21;
-			Dane.ZieloneZiolo22_ok = player.GetComponent<Inventory> ().isGreenHerb22;
-            Dane.ZieloneZiolo23_ok = player.GetComponent<Inventory> ().isGreenHerb23;
-            Dane.ZieloneZiolo24_ok = player.GetComponent<Inventory> ().isGreenHerb24;
-			Dane.ZieloneZiolo25_ok = player.GetComponent<Inventory> ().isGreenHerb25;
-			Dane.ZieloneZiolo26_ok = player.GetComponent<Inventory> ().isGreenHerb26;
-			Dane.ZieloneZiolo27_ok = player.GetComponent<Inventory> ().isGreenHerb27;
-			Dane.ZieloneZiolo28_ok = player.GetComponent<Inventory> ().isGreenHerb28;
-			Dane.ZieloneZiolo29_ok = player.GetComponent<Inventory> ().isGreenHerb29;
-			Dane.ZieloneZiolo30_ok = player.GetComponent<Inventory> ().isGreenHerb30;
-			Dane.ZieloneZiolo31_ok = player.GetComponent<Inventory> ().isGreenHerb31;
-            Dane.ZieloneZiolo32_ok = player.GetComponent<Inventory>().isGreenHerb32;
-
-			Dane.NiebieskieZiolo1_ok = player.GetComponent<Inventory> ().isBlueHerb1;
-			Dane.NiebieskieZiolo2_ok = player.GetComponent<Inventory> ().isBlueHerb2;
-			Dane.NiebieskieZiolo3_ok = player.GetComponent<Inventory> ().isBlueHerb3;
-			Dane.NiebieskieZiolo4_ok = player.GetComponent<Inventory> ().isBlueHerb4;
-			Dane.NiebieskieZiolo5_ok = player.GetComponent<Inventory> ().isBlueHerb5;
-			Dane.NiebieskieZiolo6_ok = player.GetComponent<Inventory> ().isBlueHerb6;
-			Dane.NiebieskieZiolo7_ok = player.GetComponent<Inventory> ().isBlueHerb7;
-			Dane.NiebieskieZiolo8_ok = player.GetComponent<Inventory> ().isBlueHerb8;
-			Dane.NiebieskieZiolo9_ok = player.GetComponent<Inventory> ().isBlueHerb9;
-			Dane.NiebieskieZiolo10_ok = player.GetComponent<Inventory> ().isBlueHerb10;
-			Dane.NiebieskieZiolo11_ok = player.GetComponent<Inventory> ().isBlueHerb11;
-			Dane.NiebieskieZiolo12_ok = player.GetComponent<Inventory> ().isBlueHerb12;
-			Dane.NiebieskieZiolo13_ok = player.GetComponent<Inventory> ().isBlueHerb13;
-			Dane.NiebieskieZiolo14_ok = player.GetComponent<Inventory> ().isBlueHerb14;
-			Dane.NiebieskieZiolo15_ok = player.GetComponent<Inventory> ().isBlueHerb15;
-			Dane.NiebieskieZiolo16_ok = player.GetComponent<Inventory> ().isBlueHerb16;
-			Dane.NiebieskieZiolo17_ok = player.GetComponent<Inventory> ().isBlueHerb17;
-			Dane.NiebieskieZiolo18_ok = player.GetComponent<Inventory> ().isBlueHerb18;
-			Dane.NiebieskieZiolo19_ok = player.GetComponent<Inventory> ().isBlueHerb19;
-			Dane.NiebieskieZiolo20_ok = player.GetComponent<Inventory> ().isBlueHerb20;
-			Dane.NiebieskieZiolo21_ok = player.GetComponent<Inventory> ().isBlueHerb21;
-			Dane.NiebieskieZiolo22_ok = player.GetComponent<Inventory> ().isBlueHerb22;
-            Dane.NiebieskieZiolo23_ok = player.GetComponent<Inventory> ().isBlueHerb23;
-			Dane.NiebieskieZiolo24_ok = player.GetComponent<Inventory> ().isBlueHerb24;
-			Dane.NiebieskieZiolo25_ok = player.GetComponent<Inventory> ().isBlueHerb25;
-			Dane.NiebieskieZiolo26_ok = player.GetComponent<Inventory> ().isBlueHerb26;
-			Dane.NiebieskieZiolo27_ok = player.GetComponent<Inventory> ().isBlueHerb27;
-			Dane.NiebieskieZiolo28_ok = player.GetComponent<Inventory> ().isBlueHerb28;
-			Dane.NiebieskieZiolo29_ok = player.GetComponent<Inventory> ().isBlueHerb29;
-			Dane.NiebieskieZiolo30_ok = player.GetComponent<Inventory> ().isBlueHerb30;
-			Dane.NiebieskieZiolo31_ok = player.GetComponent<Inventory> ().isBlueHerb31;
-			Dane.NiebieskieZiolo32_ok = player.GetComponent<Inventory> ().isBlueHerb32;
-
-            Dane.Fiolka1_ok = player.GetComponent<Inventory> ().isVial1;
-            Dane.Fiolka2_ok = player.GetComponent<Inventory> ().isVial2;
-            Dane.Fiolka3_ok = player.GetComponent<Inventory> ().isVial3;
-            Dane.Fiolka4_ok = player.GetComponent<Inventory> ().isVial4;
-            Dane.Fiolka5_ok = player.GetComponent<Inventory> ().isVial5;
-            Dane.Fiolka6_ok = player.GetComponent<Inventory> ().isVial6;
-            Dane.Fiolka7_ok = player.GetComponent<Inventory> ().isVial7;
-            Dane.Fiolka8_ok = player.GetComponent<Inventory> ().isVial8;
-            Dane.Fiolka9_ok = player.GetComponent<Inventory> ().isVial9;
-            Dane.Fiolka10_ok = player.GetComponent<Inventory> ().isVial10;
-            Dane.Fiolka11_ok = player.GetComponent<Inventory> ().isVial11;
-            Dane.Fiolka12_ok = player.GetComponent<Inventory> ().isVial12;
-            Dane.Fiolka13_ok = player.GetComponent<Inventory> ().isVial13;
-            Dane.Fiolka14_ok = player.GetComponent<Inventory> ().isVial14;
-            Dane.Fiolka15_ok = player.GetComponent<Inventory> ().isVial15;
-            Dane.Fiolka16_ok = player.GetComponent<Inventory> ().isVial16;
-
-            Dane.EliksirStamina1_ok = player.GetComponent<Inventory> ().isStaminaPot1;
-            Dane.EliksirStamina2_ok = player.GetComponent<Inventory> ().isStaminaPot2;
-            Dane.EliksirStamina3_ok = player.GetComponent<Inventory> ().isStaminaPot3;
-            Dane.EliksirStamina4_ok = player.GetComponent<Inventory> ().isStaminaPot4;
-            Dane.EliksirStamina5_ok = player.GetComponent<Inventory> ().isStaminaPot5;
-
-            Dane.EliksirZdrowie1_ok = player.GetComponent<Inventory> ().isHealthPot1;
-            Dane.EliksirZdrowie2_ok = player.GetComponent<Inventory> ().isHealthPot2;
-            Dane.EliksirZdrowie3_ok = player.GetComponent<Inventory> ().isHealthPot3;
-            Dane.EliksirZdrowie4_ok = player.GetComponent<Inventory> ().isHealthPot4;
-            Dane.EliksirZdrowie5_ok = player.GetComponent<Inventory> ().isHealthPot5;
-            Dane.EliksirZdrowie6_ok = player.GetComponent<Inventory> ().isHealthPot6;
-
-
-            Dane.Skill1_ok = player.GetComponent<Inventory> ().isSkill1_Unlocked;
-			Dane.Skill2_ok = player.GetComponent<Inventory> ().isSkill2_Unlocked;
-			Dane.Skill3_ok = player.GetComponent<Inventory> ().isSkill3_Unlocked;
-			Dane.Skill4_ok = player.GetComponent<Inventory> ().isSkill4_Unlocked;
-
+         
+			
+        
             Dane.IloscOdznak = player.GetComponent<Inventory> ().badgesCount;
             Dane.IloscWskazowek = player.GetComponent<Inventory> ().tipsCount;
             Dane.IloscFoto = player.GetComponent<Inventory> ().photosCount;
@@ -995,44 +771,7 @@ public class SaveGame : MonoBehaviour {
 
             // kolekcja
 
-            Dane.Odznaka1_ok = player.GetComponent<Inventory> ().isBadge1;
-            Dane.Odznaka2_ok = player.GetComponent<Inventory> ().isBadge2;
-            Dane.Odznaka3_ok = player.GetComponent<Inventory> ().isBadge3;
-            Dane.Odznaka4_ok = player.GetComponent<Inventory> ().isBadge4;
-            Dane.Odznaka5_ok = player.GetComponent<Inventory> ().isBadge5;
-            Dane.Odznaka6_ok = player.GetComponent<Inventory> ().isBadge6;
-            Dane.Odznaka7_ok = player.GetComponent<Inventory> ().isBadge7;
-            Dane.Odznaka8_ok = player.GetComponent<Inventory> ().isBadge8;
-            Dane.Odznaka9_ok = player.GetComponent<Inventory> ().isBadge9;
-            Dane.Odznaka10_ok = player.GetComponent<Inventory> ().isBadge10;
-            Dane.Odznaka11_ok = player.GetComponent<Inventory> ().isBadge11;
-            Dane.Odznaka12_ok = player.GetComponent<Inventory> ().isBadge12;
-
-            Dane.Foto1_ok = player.GetComponent<Inventory>().isPhoto1;
-            Dane.Foto2_ok = player.GetComponent<Inventory>().isPhoto2;
-            Dane.Foto3_ok = player.GetComponent<Inventory>().isPhoto3;
-            Dane.Foto4_ok = player.GetComponent<Inventory>().isPhoto4;
-            Dane.Foto5_ok = player.GetComponent<Inventory>().isPhoto5;
-            Dane.Foto6_ok = player.GetComponent<Inventory>().isPhoto6;
-            Dane.Foto7_ok = player.GetComponent<Inventory>().isPhoto7;
-            Dane.Foto8_ok = player.GetComponent<Inventory>().isPhoto8;
-            Dane.Foto9_ok = player.GetComponent<Inventory>().isPhoto9;
-            Dane.Foto10_ok = player.GetComponent<Inventory>().isPhoto10;
-            Dane.Foto11_ok = player.GetComponent<Inventory>().isPhoto11;
-            Dane.Foto12_ok = player.GetComponent<Inventory>().isPhoto12;
-
-            Dane.Wskazowka1_ok = player.GetComponent<Inventory>().isTip1;
-            Dane.Wskazowka2_ok = player.GetComponent<Inventory>().isTip2;
-            Dane.Wskazowka3_ok = player.GetComponent<Inventory>().isTip3;
-            Dane.Wskazowka4_ok = player.GetComponent<Inventory>().isTip4;
-            Dane.Wskazowka5_ok = player.GetComponent<Inventory>().isTip5;
-            Dane.Wskazowka6_ok = player.GetComponent<Inventory>().isTip6;
-            Dane.Wskazowka7_ok = player.GetComponent<Inventory>().isTip7;
-            Dane.Wskazowka8_ok = player.GetComponent<Inventory>().isTip8;
-            Dane.Wskazowka9_ok = player.GetComponent<Inventory>().isTip9;
-            Dane.Wskazowka10_ok = player.GetComponent<Inventory>().isTip10;
-            Dane.Wskazowka11_ok = player.GetComponent<Inventory>().isTip11;
-            Dane.Wskazowka12_ok = player.GetComponent<Inventory>().isTip12;
+         
 
             // haluny 
 
@@ -1147,215 +886,13 @@ public class SaveGame : MonoBehaviour {
 			player.GetComponent<Inventory> ().isMonumentSP = Dane.SPPomnik_ok;
 			player.GetComponent<Inventory> ().isSpaceshipSP = Dane.SPStatekKosmiczny_ok;
 
-			player.GetComponent<Inventory> ().isKeyV1Taken = Dane.KluczV1_ok;
-			player.GetComponent<Inventory> ().isOilTaken = Dane.Oliwa_ok;
-			player.GetComponent<Inventory> ().isKeyV2Taken = Dane.KluczV2_ok;
-			player.GetComponent<Inventory> ().isKeyV3Taken = Dane.KluczV3_ok;
-			player.GetComponent<Inventory> ().isKeyV4Taken = Dane.KluczV4_ok;
-			player.GetComponent<Inventory> ().isBatteriesTaken = Dane.Baterie_ok;
-			player.GetComponent<Inventory> ().isCassete1Taken = Dane.Kaseta1_ok;
-			player.GetComponent<Inventory> ().isBone1Taken = Dane.Kosc1_ok;
-			player.GetComponent<Inventory> ().isBone2Taken = Dane.Kosc2_ok;
-			player.GetComponent<Inventory> ().isBone3Taken = Dane.Kosc3_ok;
-			player.GetComponent<Inventory> ().isBone4Taken = Dane.Kosc4_ok;
-			player.GetComponent<Inventory> ().isBone5Taken = Dane.Kosc5_ok;
-			player.GetComponent<Inventory> ().isNicheKeyTaken = Dane.KluczWneka_ok;
-			player.GetComponent<Inventory> ().isSecretRoomKeyTaken = Dane.KluczKamping_ok;
-			player.GetComponent<Inventory> ().isBrokenFactoryKeyTaken = Dane.KluczFabrykaBroken_ok;
-			player.GetComponent<Inventory> ().isWoodenWheelTaken = Dane.BrakujaceKolo_ok;
-			player.GetComponent<Inventory> ().isFixedKeyTaken = Dane.KluczFabrykaFixed_ok;
-			player.GetComponent<Inventory> ().isCrowbarTaken = Dane.Lom_ok;
-			player.GetComponent<Inventory> ().isAliceKeyTaken = Dane.KluczSalonPoludnie_ok;
-			player.GetComponent<Inventory> ().isPliersTaken = Dane.Kombinerki_ok;
-			player.GetComponent<Inventory> ().isAxeTaken = Dane.Siekiera_ok;
-			player.GetComponent<Inventory> ().isWardrobeCorridorKeyTaken = Dane.KluczSzafaKorytarz_ok;
-			player.GetComponent<Inventory> ().isShedCupboardKeyTaken = Dane.KluczSzafkaSzopa_ok;
-			player.GetComponent<Inventory> ().isCassete2Taken = Dane.Kaseta2_ok;
-			player.GetComponent<Inventory> ().isPumpkinTaken = Dane.Dynia_ok;
-			player.GetComponent<Inventory> ().isTomUpstairsKeyTaken = Dane.KluczTomGora_ok;
-			player.GetComponent<Inventory> ().isTomRoomKeyTaken = Dane.KluczPokojTom_ok;
-			player.GetComponent<Inventory> ().isCassete3Taken = Dane.Kaseta3_ok;
-			player.GetComponent<Inventory> ().isChipTaken = Dane.Chip_ok;
-			player.GetComponent<Inventory> ().isOldWardrobeKeyTaken = Dane.KluczSzafaStaryDom_ok;
-			player.GetComponent<Inventory> ().isCassete4Taken = Dane.Kaseta4_ok;
-			player.GetComponent<Inventory> ().isStevenKeyTaken = Dane.KluczStevena_ok;
-			player.GetComponent<Inventory> ().isLabPlantTaken = Dane.RoslinaLab_ok;
-			player.GetComponent<Inventory> ().isLabMushroomTaken = Dane.GrzybLab_ok;
-			player.GetComponent<Inventory> ().isLabSkullTaken = Dane.CzaszkaLab_ok;
-			player.GetComponent<Inventory> ().isStrongAcidTaken = Dane.Mikstura_ok;
-			player.GetComponent<Inventory> ().isPaulKeyTaken = Dane.KluczPokojZachod_ok;
 
-			player.GetComponent<Inventory> ().isKeyV1Removed = Dane.KluczV1_Usun;
-			player.GetComponent<Inventory> ().isOilRemoved = Dane.Oliwa_Usun;
-			player.GetComponent<Inventory> ().isKeyV2Removed = Dane.KluczV2_Usun;
-			player.GetComponent<Inventory> ().isKeyV3Removed = Dane.KluczV3_Usun;
-			player.GetComponent<Inventory> ().isKeyV4Removed = Dane.KluczV4_Usun;
-			player.GetComponent<Inventory> ().isBatteriesRemoved = Dane.Baterie_Usun;
-			player.GetComponent<Inventory> ().isCassete1Removed = Dane.Kaseta1_Usun;
-			player.GetComponent<Inventory> ().isBone1Removed = Dane.Kosc1_Usun;
-			player.GetComponent<Inventory> ().isBone2Removed = Dane.Kosc2_Usun;
-			player.GetComponent<Inventory> ().isBone3Removed = Dane.Kosc3_Usun;
-			player.GetComponent<Inventory> ().isBone4Removed = Dane.Kosc4_Usun;
-			player.GetComponent<Inventory> ().isBone5Removed = Dane.Kosc5_Usun;
-			player.GetComponent<Inventory> ().isNicheKeyRemoved = Dane.KluczWneka_Usun;
-			player.GetComponent<Inventory> ().isSecretRoomKeyRemoved = Dane.KluczKamping_Usun;
-			player.GetComponent<Inventory> ().isBrokenFactoryKeyRemoved = Dane.KluczFabrykaBroken_Usun;
-			player.GetComponent<Inventory> ().isWoodenWheelRemoved = Dane.BrakujaceKolo_Usun;
-			player.GetComponent<Inventory> ().isFixedKeyRemoved = Dane.KluczFabrykaFixed_Usun;
-			player.GetComponent<Inventory> ().isCrowbarRemoved = Dane.Lom_Usun;
-			player.GetComponent<Inventory> ().isAliceKeyRemoved = Dane.KluczSalonPoludnie_Usun;
-			player.GetComponent<Inventory> ().isPliersRemoved = Dane.Kombinerki_Usun;
-			player.GetComponent<Inventory> ().isAxeRemoved = Dane.Siekiera_Usun;
-			player.GetComponent<Inventory> ().isWardrobeCorridorKeyRemoved = Dane.KluczSzafaKorytarz_Usun;
-			player.GetComponent<Inventory> ().isShedCupboardKeyRemoved = Dane.KluczSzafkaSzopa_Usun;
-			player.GetComponent<Inventory> ().isCassete2Removed = Dane.Kaseta2_Usun;
-			player.GetComponent<Inventory> ().isPumpkinRemoved = Dane.Dynia_Usun;
-			player.GetComponent<Inventory> ().isTomUpstairsKeyRemoved = Dane.KluczTomGora_Usun;
-			player.GetComponent<Inventory> ().isTomRoomKeyRemoved = Dane.KluczPokojTom_Usun;
-			player.GetComponent<Inventory> ().isCassete3Removed = Dane.Kaseta3_Usun;
-			player.GetComponent<Inventory> ().isChipRemoved = Dane.Chip_Usun;
-			player.GetComponent<Inventory> ().isOldWardrobeKeyRemoved = Dane.KluczSzafaStaryDom_Usun;
-			player.GetComponent<Inventory> ().isCassete4Removed = Dane.Kaseta4_Usun;
-			player.GetComponent<Inventory> ().isStevenKeyRemoved = Dane.KluczStevena_Usun;
-			player.GetComponent<Inventory> ().isLabPlantRemoved = Dane.RoslinaLab_Usun;
-			player.GetComponent<Inventory> ().isLabMushroomRemoved = Dane.GrzybLab_Usun;
-			player.GetComponent<Inventory> ().isLabSkullRemoved = Dane.CzaszkaLab_Usun;
-			player.GetComponent<Inventory> ().isStrongAcidRemoved = Dane.Mikstura_Usun;
-			player.GetComponent<Inventory> ().isPaulKeyRemoved = Dane.KluczPokojZachod_Usun;
+			
 
-			player.GetComponent<Inventory> ().isSecretIem1 = Dane.SecretItem1_ok;
-			player.GetComponent<Inventory> ().isSecretIem2 = Dane.SecretItem2_ok;
-			player.GetComponent<Inventory> ().isSecretIem3 = Dane.SecretItem3_ok;
-			player.GetComponent<Inventory> ().isSecretIem4 = Dane.SecretItem4_ok;
-			player.GetComponent<Inventory> ().isSecretIem5 = Dane.SecretItem5_ok;
-			player.GetComponent<Inventory> ().isSecretIem6 = Dane.SecretItem6_ok;
-			player.GetComponent<Inventory> ().isSecretIem7 = Dane.SecretItem7_ok;
-			player.GetComponent<Inventory> ().isSecretIem8 = Dane.SecretItem8_ok;
-			player.GetComponent<Inventory> ().isSecretIem9 = Dane.SecretItem9_ok;
-			player.GetComponent<Inventory> ().isSecretIem10 = Dane.SecretItem10_ok;
-			player.GetComponent<Inventory> ().isSecretIem11 = Dane.SecretItem11_ok;
-			player.GetComponent<Inventory> ().isSecretIem12 = Dane.SecretItem12_ok;
-			player.GetComponent<Inventory> ().isSecretIem13 = Dane.SecretItem13_ok;
-			player.GetComponent<Inventory> ().isSecretIem14 = Dane.SecretItem14_ok;
-			player.GetComponent<Inventory> ().isSecretIem15 = Dane.SecretItem15_ok;
-			player.GetComponent<Inventory> ().isSecretIem16 = Dane.SecretItem16_ok;
-			player.GetComponent<Inventory> ().isSecretIem17 = Dane.SecretItem17_ok;
-			player.GetComponent<Inventory> ().isSecretIem18 = Dane.SecretItem18_ok;
-			player.GetComponent<Inventory> ().isSecretIem19 = Dane.SecretItem19_ok;
-			player.GetComponent<Inventory> ().isSecretIem20 = Dane.SecretItem20_ok;
-			player.GetComponent<Inventory> ().isSecretIem21 = Dane.SecretItem21_ok;
-			player.GetComponent<Inventory> ().isSecretIem22 = Dane.SecretItem22_ok;
-			player.GetComponent<Inventory> ().isSecretIem23 = Dane.SecretItem23_ok;
-			player.GetComponent<Inventory> ().isSecretIem24 = Dane.SecretItem24_ok;
-			player.GetComponent<Inventory> ().isSecretIem25 = Dane.SecretItem25_ok;
-            player.GetComponent<Inventory> ().isSecretIem26 = Dane.SecretItem26_ok;
-            player.GetComponent<Inventory> ().isSecretIem27 = Dane.SecretItem27_ok;
-            player.GetComponent<Inventory> ().isSecretIem28 = Dane.SecretItem28_ok;
-            player.GetComponent<Inventory> ().isSecretIem29 = Dane.SecretItem29_ok;
-            player.GetComponent<Inventory> ().isSecretIem30 = Dane.SecretItem30_ok;
-            player.GetComponent<Inventory> ().isSecretIem31 = Dane.SecretItem31_ok;
-            player.GetComponent<Inventory> ().isSecretIem32 = Dane.SecretItem32_ok;
+            
 
-            player.GetComponent<Inventory> ().isGreenHerb1 = Dane.ZieloneZiolo1_ok;
-			player.GetComponent<Inventory> ().isGreenHerb2 = Dane.ZieloneZiolo2_ok;
-			player.GetComponent<Inventory> ().isGreenHerb3 = Dane.ZieloneZiolo3_ok;
-			player.GetComponent<Inventory> ().isGreenHerb4 = Dane.ZieloneZiolo4_ok;
-			player.GetComponent<Inventory> ().isGreenHerb5 = Dane.ZieloneZiolo5_ok;
-			player.GetComponent<Inventory> ().isGreenHerb6 = Dane.ZieloneZiolo6_ok;
-			player.GetComponent<Inventory> ().isGreenHerb7 = Dane.ZieloneZiolo7_ok;
-			player.GetComponent<Inventory> ().isGreenHerb8 = Dane.ZieloneZiolo8_ok;
-			player.GetComponent<Inventory> ().isGreenHerb9 = Dane.ZieloneZiolo9_ok;
-			player.GetComponent<Inventory> ().isGreenHerb10 = Dane.ZieloneZiolo10_ok;
-			player.GetComponent<Inventory> ().isGreenHerb11 = Dane.ZieloneZiolo11_ok;
-			player.GetComponent<Inventory> ().isGreenHerb12 = Dane.ZieloneZiolo12_ok;
-			player.GetComponent<Inventory> ().isGreenHerb13 = Dane.ZieloneZiolo13_ok;
-			player.GetComponent<Inventory> ().isGreenHerb14 = Dane.ZieloneZiolo14_ok;
-			player.GetComponent<Inventory> ().isGreenHerb15 = Dane.ZieloneZiolo15_ok;
-			player.GetComponent<Inventory> ().isGreenHerb16 = Dane.ZieloneZiolo16_ok;
-			player.GetComponent<Inventory> ().isGreenHerb17 = Dane.ZieloneZiolo17_ok;
-			player.GetComponent<Inventory> ().isGreenHerb18 = Dane.ZieloneZiolo18_ok;
-			player.GetComponent<Inventory> ().isGreenHerb19 = Dane.ZieloneZiolo19_ok;
-			player.GetComponent<Inventory> ().isGreenHerb20 = Dane.ZieloneZiolo20_ok;
-			player.GetComponent<Inventory> ().isGreenHerb21 = Dane.ZieloneZiolo21_ok;
-			player.GetComponent<Inventory> ().isGreenHerb22 = Dane.ZieloneZiolo22_ok;
-            player.GetComponent<Inventory> ().isGreenHerb23 = Dane.ZieloneZiolo23_ok;
-            player.GetComponent<Inventory> ().isGreenHerb24 = Dane.ZieloneZiolo24_ok;
-            player.GetComponent<Inventory> ().isGreenHerb25 = Dane.ZieloneZiolo25_ok;
-            player.GetComponent<Inventory> ().isGreenHerb26 = Dane.ZieloneZiolo26_ok;
-            player.GetComponent<Inventory> ().isGreenHerb27 = Dane.ZieloneZiolo27_ok;
-            player.GetComponent<Inventory> ().isGreenHerb28 = Dane.ZieloneZiolo28_ok;
-            player.GetComponent<Inventory> ().isGreenHerb29 = Dane.ZieloneZiolo29_ok;
-            player.GetComponent<Inventory> ().isGreenHerb30 = Dane.ZieloneZiolo30_ok;
-            player.GetComponent<Inventory> ().isGreenHerb31 = Dane.ZieloneZiolo31_ok;
-            player.GetComponent<Inventory> ().isGreenHerb32 = Dane.ZieloneZiolo32_ok;
+         
 
-            player.GetComponent<Inventory> ().isBlueHerb1 = Dane.NiebieskieZiolo1_ok;
-			player.GetComponent<Inventory> ().isBlueHerb2 = Dane.NiebieskieZiolo2_ok;
-			player.GetComponent<Inventory> ().isBlueHerb3 = Dane.NiebieskieZiolo3_ok;
-			player.GetComponent<Inventory> ().isBlueHerb4 = Dane.NiebieskieZiolo4_ok;
-			player.GetComponent<Inventory> ().isBlueHerb5 = Dane.NiebieskieZiolo5_ok;
-			player.GetComponent<Inventory> ().isBlueHerb6 = Dane.NiebieskieZiolo6_ok;
-			player.GetComponent<Inventory> ().isBlueHerb7 = Dane.NiebieskieZiolo7_ok;
-			player.GetComponent<Inventory> ().isBlueHerb8 = Dane.NiebieskieZiolo8_ok;
-			player.GetComponent<Inventory> ().isBlueHerb9 = Dane.NiebieskieZiolo9_ok;
-			player.GetComponent<Inventory> ().isBlueHerb10 = Dane.NiebieskieZiolo10_ok;
-			player.GetComponent<Inventory> ().isBlueHerb11 = Dane.NiebieskieZiolo11_ok;
-			player.GetComponent<Inventory> ().isBlueHerb12 = Dane.NiebieskieZiolo12_ok;
-			player.GetComponent<Inventory> ().isBlueHerb13 = Dane.NiebieskieZiolo13_ok;
-			player.GetComponent<Inventory> ().isBlueHerb14 = Dane.NiebieskieZiolo14_ok;
-			player.GetComponent<Inventory> ().isBlueHerb15 = Dane.NiebieskieZiolo15_ok;
-			player.GetComponent<Inventory> ().isBlueHerb16 = Dane.NiebieskieZiolo16_ok;
-			player.GetComponent<Inventory> ().isBlueHerb17 = Dane.NiebieskieZiolo17_ok;
-			player.GetComponent<Inventory> ().isBlueHerb18 = Dane.NiebieskieZiolo18_ok;
-			player.GetComponent<Inventory> ().isBlueHerb19 = Dane.NiebieskieZiolo19_ok;
-			player.GetComponent<Inventory> ().isBlueHerb20 = Dane.NiebieskieZiolo20_ok;
-			player.GetComponent<Inventory> ().isBlueHerb21 = Dane.NiebieskieZiolo21_ok;
-			player.GetComponent<Inventory> ().isBlueHerb22 = Dane.NiebieskieZiolo22_ok;
-            player.GetComponent<Inventory> ().isBlueHerb23 = Dane.NiebieskieZiolo23_ok;
-            player.GetComponent<Inventory> ().isBlueHerb24 = Dane.NiebieskieZiolo24_ok;
-            player.GetComponent<Inventory> ().isBlueHerb25 = Dane.NiebieskieZiolo25_ok;
-            player.GetComponent<Inventory> ().isBlueHerb26 = Dane.NiebieskieZiolo26_ok;
-            player.GetComponent<Inventory> ().isBlueHerb27 = Dane.NiebieskieZiolo27_ok;
-            player.GetComponent<Inventory> ().isBlueHerb28 = Dane.NiebieskieZiolo28_ok;
-            player.GetComponent<Inventory> ().isBlueHerb29 = Dane.NiebieskieZiolo29_ok;
-            player.GetComponent<Inventory> ().isBlueHerb30 = Dane.NiebieskieZiolo30_ok;
-            player.GetComponent<Inventory> ().isBlueHerb31 = Dane.NiebieskieZiolo31_ok;
-            player.GetComponent<Inventory> ().isBlueHerb32 = Dane.NiebieskieZiolo32_ok;
-
-            player.GetComponent<Inventory> ().isVial1 = Dane.Fiolka1_ok;
-            player.GetComponent<Inventory> ().isVial2 = Dane.Fiolka2_ok;
-            player.GetComponent<Inventory> ().isVial3 = Dane.Fiolka3_ok;
-            player.GetComponent<Inventory> ().isVial4 = Dane.Fiolka4_ok;
-            player.GetComponent<Inventory> ().isVial5 = Dane.Fiolka5_ok;
-            player.GetComponent<Inventory> ().isVial6 = Dane.Fiolka6_ok;
-            player.GetComponent<Inventory> ().isVial7 = Dane.Fiolka7_ok;
-            player.GetComponent<Inventory> ().isVial8 = Dane.Fiolka8_ok;
-            player.GetComponent<Inventory> ().isVial9 = Dane.Fiolka9_ok;
-            player.GetComponent<Inventory> ().isVial10 = Dane.Fiolka10_ok;
-            player.GetComponent<Inventory> ().isVial11 = Dane.Fiolka11_ok;
-            player.GetComponent<Inventory> ().isVial12 = Dane.Fiolka12_ok;
-            player.GetComponent<Inventory> ().isVial13 = Dane.Fiolka13_ok;
-            player.GetComponent<Inventory> ().isVial14 = Dane.Fiolka14_ok;
-            player.GetComponent<Inventory> ().isVial15 = Dane.Fiolka15_ok;
-            player.GetComponent<Inventory> ().isVial16 = Dane.Fiolka16_ok;
-
-            player.GetComponent<Inventory> ().isStaminaPot1 = Dane.EliksirStamina1_ok;
-            player.GetComponent<Inventory> ().isStaminaPot2 = Dane.EliksirStamina2_ok;
-            player.GetComponent<Inventory> ().isStaminaPot3 = Dane.EliksirStamina3_ok;
-            player.GetComponent<Inventory> ().isStaminaPot4 = Dane.EliksirStamina4_ok;
-            player.GetComponent<Inventory> ().isStaminaPot5 = Dane.EliksirStamina5_ok;
-
-            player.GetComponent<Inventory> ().isHealthPot1 = Dane.EliksirZdrowie1_ok;
-            player.GetComponent<Inventory> ().isHealthPot2 = Dane.EliksirZdrowie2_ok;
-            player.GetComponent<Inventory> ().isHealthPot3 = Dane.EliksirZdrowie3_ok;
-            player.GetComponent<Inventory> ().isHealthPot4 = Dane.EliksirZdrowie4_ok;
-            player.GetComponent<Inventory> ().isHealthPot5 = Dane.EliksirZdrowie5_ok;
-            player.GetComponent<Inventory> ().isHealthPot6 = Dane.EliksirZdrowie6_ok;
-
-            player.GetComponent<Inventory> ().isSkill1_Unlocked = Dane.Skill1_ok;
-			player.GetComponent<Inventory> ().isSkill2_Unlocked = Dane.Skill2_ok;
-			player.GetComponent<Inventory> ().isSkill3_Unlocked = Dane.Skill3_ok;
-			player.GetComponent<Inventory> ().isSkill4_Unlocked = Dane.Skill4_ok;
 
             player.GetComponent<Inventory>().badgesCount = Dane.IloscOdznak;
             player.GetComponent<Inventory>().tipsCount = Dane.IloscWskazowek;
@@ -1902,46 +1439,6 @@ public class SaveGame : MonoBehaviour {
 			// ksiazki
 			player.GetComponent<TaskBooks> ().isTaskDone = Dane.Wykonane_ok;
 
-            // kolekcja
-
-            player.GetComponent<Inventory>().isBadge1 = Dane.Odznaka1_ok;
-            player.GetComponent<Inventory>().isBadge2 = Dane.Odznaka2_ok;
-            player.GetComponent<Inventory>().isBadge3 = Dane.Odznaka3_ok;
-            player.GetComponent<Inventory>().isBadge4 = Dane.Odznaka4_ok;
-            player.GetComponent<Inventory>().isBadge5 = Dane.Odznaka5_ok;
-            player.GetComponent<Inventory>().isBadge6 = Dane.Odznaka6_ok;
-            player.GetComponent<Inventory>().isBadge7 = Dane.Odznaka7_ok;
-            player.GetComponent<Inventory>().isBadge8 = Dane.Odznaka8_ok;
-            player.GetComponent<Inventory>().isBadge9 = Dane.Odznaka9_ok;
-            player.GetComponent<Inventory>().isBadge10 = Dane.Odznaka10_ok;
-            player.GetComponent<Inventory>().isBadge11 = Dane.Odznaka11_ok;
-            player.GetComponent<Inventory>().isBadge12 = Dane.Odznaka12_ok;
-
-            player.GetComponent<Inventory>().isPhoto1 = Dane.Foto1_ok;
-            player.GetComponent<Inventory>().isPhoto2 = Dane.Foto2_ok;
-            player.GetComponent<Inventory>().isPhoto3 = Dane.Foto3_ok;
-            player.GetComponent<Inventory>().isPhoto4 = Dane.Foto4_ok;
-            player.GetComponent<Inventory>().isPhoto5 = Dane.Foto5_ok;
-            player.GetComponent<Inventory>().isPhoto6 = Dane.Foto6_ok;
-            player.GetComponent<Inventory>().isPhoto7 = Dane.Foto7_ok;
-            player.GetComponent<Inventory>().isPhoto8 = Dane.Foto8_ok;
-            player.GetComponent<Inventory>().isPhoto9 = Dane.Foto9_ok;
-            player.GetComponent<Inventory>().isPhoto10 = Dane.Foto10_ok;
-            player.GetComponent<Inventory>().isPhoto11 = Dane.Foto11_ok;
-            player.GetComponent<Inventory>().isPhoto12 = Dane.Foto12_ok;
-
-            player.GetComponent<Inventory>().isTip1 = Dane.Wskazowka1_ok;
-            player.GetComponent<Inventory>().isTip2 = Dane.Wskazowka2_ok;
-            player.GetComponent<Inventory>().isTip3 = Dane.Wskazowka3_ok;
-            player.GetComponent<Inventory>().isTip4 = Dane.Wskazowka4_ok;
-            player.GetComponent<Inventory>().isTip5 = Dane.Wskazowka5_ok;
-            player.GetComponent<Inventory>().isTip6 = Dane.Wskazowka6_ok;
-            player.GetComponent<Inventory>().isTip7 = Dane.Wskazowka7_ok;
-            player.GetComponent<Inventory>().isTip8 = Dane.Wskazowka8_ok;
-            player.GetComponent<Inventory>().isTip9 = Dane.Wskazowka9_ok;
-            player.GetComponent<Inventory>().isTip10 = Dane.Wskazowka10_ok;
-            player.GetComponent<Inventory>().isTip11 = Dane.Wskazowka11_ok;
-            player.GetComponent<Inventory>().isTip12 = Dane.Wskazowka12_ok;
 
             // haluny
 
