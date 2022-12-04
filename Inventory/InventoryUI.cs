@@ -21,7 +21,8 @@ public class InventoryUI : MonoBehaviour {
     private Canvas inventoryCanvas;
     public string usingItemText = " is using now!";
 
-    public Image[] itemIcons;
+    public Image[] inventorySlots;
+    private Inventory inventoryScript;
     private PlayerManager playerManagerScript;
     public List<Item> items = new List<Item>();
     private Animator animator;
@@ -149,6 +150,23 @@ public class InventoryUI : MonoBehaviour {
 
     }
 
+    void UpdateInventorySlots()
+    {
+
+        foreach(var slot in inventorySlots)
+        {
+            slot.sprite = null;
+            slot.color = Color.black;
+        }
+
+        for (int i = 0; i < inventoryScript.items.Count; i++)
+        {
+            inventorySlots[i].sprite = inventoryScript.items[i].icon;
+            inventorySlots[i].color = Color.white;
+            break;
+        }
+    }
+
     public void BackFunction()
     {
         Time.timeScale = 1;
@@ -160,12 +178,9 @@ public class InventoryUI : MonoBehaviour {
 
     public void InventoryBackFunction()
     {
-
-        //Panel.enabled = true;
-        //Panel_ok = true;
+        
         inventoryCanvas.enabled = false;
         isInventoryActive = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);

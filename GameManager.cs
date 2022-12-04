@@ -1393,11 +1393,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if(Inventory.isKeyV1Taken == true && Inventory.isKeyV1Removed == false){
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i+1, "KluczPokojW", Inventory.uncleKeyName, Inventory.uncleKeyDescription, Inventory.keyV1Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.keyV1Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.keyV1Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1408,11 +1408,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if(Inventory.isOilTaken == true && Inventory.isOilRemoved == false){
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i+1, "Oliwa", Inventory.oilName, Inventory.oilName, Inventory.oilIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.oilIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.oilIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1423,11 +1423,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isKeyV2Taken == true && Inventory.isKeyV2Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczSzafkaKuchnia", Inventory.kitchenWardrobeKeyName, Inventory.kitchenWardrobeKeyDescription, Inventory.keyV2Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.keyV2Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.keyV2Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1438,11 +1438,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isKeyV3Taken == true && Inventory.isKeyV3Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczStajnia", Inventory.stableKeyName, Inventory.stableKeyDescription, Inventory.keyV3Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.keyV3Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.keyV3Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1453,11 +1453,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isKeyV4Taken == true && Inventory.isKeyV4Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczSzopa", Inventory.shedKeyName, Inventory.shedKeyDescription, Inventory.keyV4Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.keyV4Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.keyV4Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1468,11 +1468,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBatteriesTaken == true && Inventory.isBatteriesRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Baterie", Inventory.batteriesName, Inventory.batteriesDescription, Inventory.batteriesIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.batteriesIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.batteriesIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1483,11 +1483,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isCassete1Taken == true && Inventory.isCassete1Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kaseta1", Inventory.cassete1Name, Inventory.cassete1Description, Inventory.cassete1Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.cassete1Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.cassete1Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1498,11 +1498,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBone1Taken == true && Inventory.isBone1Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kosc1", Inventory.bone1Name, Inventory.boneDescription, Inventory.bone1Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.bone1Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.bone1Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1513,11 +1513,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBone2Taken == true && Inventory.isBone2Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kosc2", Inventory.bone2Name, Inventory.boneDescription, Inventory.bone2Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.bone2Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.bone2Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1528,11 +1528,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBone3Taken == true && Inventory.isBone3Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kosc3", Inventory.bone3Name, Inventory.boneDescription, Inventory.bone3Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.bone3Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.bone3Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1543,11 +1543,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBone4Taken == true && Inventory.isBone4Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kosc4", Inventory.bone3Name, Inventory.boneDescription, Inventory.bone4Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.bone4Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.bone4Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1558,11 +1558,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBone5Taken == true && Inventory.isBone5Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kosc5", Inventory.bone5Name, Inventory.boneDescription, Inventory.bone5Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.bone5Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.bone5Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1573,11 +1573,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isNicheKeyTaken == true && Inventory.isNicheKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczWneka", Inventory.nicheKeyName, Inventory.nicheKeyDescription, Inventory.nicheKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.nicheKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.nicheKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1588,11 +1588,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isSecretRoomKeyTaken == true && Inventory.isSecretRoomKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczKamping", Inventory.secretRoomKeyName, Inventory.secretRoomKeyDescription, Inventory.secretRoomKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.secretRoomKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.secretRoomKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1604,11 +1604,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isBrokenFactoryKeyTaken == true && Inventory.isBrokenFactoryKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczFabryka", Inventory.factoryKeyName, Inventory.factoryKeyDescription, Inventory.brokenFactoryKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.brokenFactoryKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.brokenFactoryKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1619,11 +1619,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isWoodenWheelTaken == true && Inventory.isWoodenWheelRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "DrewnianeKolo", Inventory.woodenWheelName, Inventory.woodenWheelDescription, Inventory.woodenWheelIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.woodenWheelIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.woodenWheelIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1635,11 +1635,11 @@ public class GameManager : MonoBehaviour {
         }
 
         if (Inventory.isFixedKeyTaken == true && Inventory.isFixedKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "FixedKey", Inventory.fixedKeyName, Inventory.fixedKeyDescription, Inventory.fixedKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.fixedKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.fixedKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1650,11 +1650,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isCrowbarTaken == true && Inventory.isCrowbarRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Lom", Inventory.crowbarName, Inventory.crowbarDescription, Inventory.crowbarIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.crowbarIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.crowbarIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1665,11 +1665,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isAliceKeyTaken == true && Inventory.isAliceKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczSalonPoludnie", Inventory.aliceKeyName, Inventory.aliceKeyDescription, Inventory.aliceKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.aliceKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.aliceKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1680,11 +1680,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isPliersTaken == true && Inventory.isPliersRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kombinerki", Inventory.pliersName, Inventory.pliersDescription, Inventory.pliersIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.pliersIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.pliersIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1696,11 +1696,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isAxeTaken == true && Inventory.isAxeRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Siekiera", Inventory.axeName, Inventory.axeDescription, Inventory.axeIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.axeIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.axeIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1711,11 +1711,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isWardrobeCorridorKeyTaken == true && Inventory.isWardrobeCorridorKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczSzafaKorytarz", Inventory.wardrobeCorridorKeyName, Inventory.wardrobeCorridorKeyDescription, Inventory.wardrobeCorridorKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.wardrobeCorridorKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.wardrobeCorridorKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1726,11 +1726,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isShedCupboardKeyTaken == true && Inventory.isShedCupboardKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczSzafkaSzopa", Inventory.shedCupboardName, Inventory.shedCupboardDescription, Inventory.shedCupboardKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.shedCupboardKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.shedCupboardKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1741,22 +1741,22 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isCassete2Taken == true && Inventory.isCassete2Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kaseta2", Inventory.cassete2Name, Inventory.cassete2Description, Inventory.cassete2Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.cassete2Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.cassete2Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
 		}
 
 		if (Inventory.isPumpkinTaken == true && Inventory.isPumpkinRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Dynia", Inventory.pumpkinName, Inventory.pumpkinDescription, Inventory.pumpkinIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.pumpkinIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.pumpkinIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1768,11 +1768,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isTomUpstairsKeyTaken == true && Inventory.isTomUpstairsKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczTomGora", Inventory.tomUpstairsKeyName, Inventory.tomUpstairsKeyDescription, Inventory.tomUpstairsKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.tomUpstairsKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.tomUpstairsKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1783,11 +1783,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isTomRoomKeyTaken == true && Inventory.isTomRoomKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczPokojTom", Inventory.tomRoomKeyName, Inventory.tomRoomKeyDescription, Inventory.tomRoomKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.tomRoomKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.tomRoomKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1798,11 +1798,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isCassete3Taken == true && Inventory.isCassete3Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kaseta3", Inventory.cassete3Name, Inventory.cassete3Description, Inventory.cassete3Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.cassete3Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.cassete3Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1813,11 +1813,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isChipTaken == true && Inventory.isChipRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Chip", Inventory.chipName, Inventory.chipDescription, Inventory.chipIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.chipIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.chipIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1828,11 +1828,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isOldWardrobeKeyTaken == true && Inventory.isOldWardrobeKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczStaryDom", Inventory.oldWardrobeKeyName, Inventory.oldWardrobeKeyDescription, Inventory.oldWardrobeKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.oldWardrobeKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.oldWardrobeKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1843,11 +1843,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isCassete4Taken == true && Inventory.isCassete4Removed == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Kaseta4", Inventory.cassete4Name, Inventory.cassete4Description, Inventory.cassete4Icon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.cassete4Icon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.cassete4Icon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1858,11 +1858,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isStevenKeyTaken == true && Inventory.isStevenKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczSteven", Inventory.stevenKeyName, Inventory.stevenKeyDescription, Inventory.stevenKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.stevenKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.stevenKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1873,11 +1873,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isLabPlantTaken == true && Inventory.isLabPlantRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "RoslinaLab", Inventory.labPlantName, Inventory.labPlantDescription, Inventory.labPlantIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.labPlantIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.labPlantIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1888,11 +1888,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isLabMushroomTaken == true && Inventory.isLabMushroomRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "GrzybLab", Inventory.labMushroomName, Inventory.labMushroomDescription, Inventory.labMushroomIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.labMushroomIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.labMushroomIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1903,11 +1903,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isLabSkullTaken == true && Inventory.isLabSkullRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "CzaszkaLab", Inventory.labSkullName, Inventory.labSkullDescription, Inventory.labSkullIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.labSkullIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.labSkullIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1922,11 +1922,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isStrongAcidTaken== true && Inventory.isStrongAcidRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "Mikstura", Inventory.strongAcidName, Inventory.strongAcidDescription, Inventory.strongAcidIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.strongAcidIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.strongAcidIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
@@ -1938,11 +1938,11 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (Inventory.isPaulKeyTaken == true && Inventory.isPaulKeyRemoved == false) {
-			for(int i=0; i<Inventory.itemIcons.Length; i++){
-				if(Inventory.itemIcons[i].sprite == null){
+			for(int i=0; i<Inventory.inventorySlots.Length; i++){
+				if(Inventory.inventorySlots[i].sprite == null){
 					Inventory.items.Add(new Item(i + 1, "KluczPokojZachod", Inventory.paulKeyName, Inventory.paulKeyDescription, Inventory.paulKeyIcon, false, true, false));
-					Inventory.itemIcons[i].sprite = Inventory.paulKeyIcon;
-					Inventory.itemIcons[i].color = Color.white;
+					Inventory.inventorySlots[i].sprite = Inventory.paulKeyIcon;
+					Inventory.inventorySlots[i].color = Color.white;
 					break;
 				}
 			}
