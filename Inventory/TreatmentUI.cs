@@ -144,6 +144,7 @@ public class TreatmentUI : MonoBehaviour {
     public void ShowTreatment()
     {
 
+        CheckHealthCondition();
         itemAudioSource3.PlayOneShot(menuButtonSound);
 
         inventoryCanvas.enabled = false;
@@ -273,6 +274,28 @@ public class TreatmentUI : MonoBehaviour {
             itemAudioSource4.PlayOneShot(usePotSound);
             staminaPotsText.text = staminaPotsCount + "";
         }
+    }
+
+    void CheckHealthCondition()
+    {
+
+        if (healthScript.health >= 70 && playerScript.isRest == true)
+        {
+            healthConditionText.text = stateGoodText;
+        }
+        else if (healthScript.health > 40 && healthScript.health < 70)
+        {
+            healthConditionText.text = stateInjuredText;
+        }
+        else if (healthScript.health <= 40)
+        {
+            healthConditionText.text = stateCriticalText;
+        }
+        else if (healthScript.health >= 70 && playerScript.isRest == false)
+        {
+            healthConditionText.text = stateTiredText;
+        }
+
     }
 
     public void HoverButton()

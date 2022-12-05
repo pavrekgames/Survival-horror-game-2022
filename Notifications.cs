@@ -179,22 +179,7 @@ public class Notifications : MonoBehaviour {
     public Image taskHintBackground;
     public float taskHintTime = 5f;
 
-    public enum CollectibleNotificationType
-    {
-        None, 
-        SecretItem,
-        GreenHerb,
-        BlueHerb,
-        Vial ,
-        StaminaPot,
-        HealthPot,
-        Badge,
-        Photo,
-        Tip,
-        Tutorial
-}
-
-    public CollectibleNotificationType collectibleNotificationType;
+    public NotificationType notificationType;
 
     void OnEnable () {
 
@@ -238,6 +223,11 @@ public class Notifications : MonoBehaviour {
         taskHintTextMesh = GameObject.Find("ZadanieWskazowka").GetComponent<TextMeshProUGUI>();
         taskHintBackground = GameObject.Find("ZadanieWskazowkaTlo").GetComponent<Image>();
 
+    }
+
+    void Start()
+    {
+        inventoryScript.OnAddedCollectibleItem += CallCollectibleNotification;
     }
 	
 
@@ -349,47 +339,52 @@ public class Notifications : MonoBehaviour {
         StopCoroutine("NotificationTimeIE");
     }
 
+    public void CallCollectibleNotification()
+    {
+        StartCoroutine(CollectibleNotificationIE());
+    }
+
    public IEnumerator CollectibleNotificationIE()
     {
-        if (collectibleNotificationType == CollectibleNotificationType.SecretItem)
+        if (notificationType == NotificationType.SecretItem)
         {
             collectibleNotificationTextMesh.text = secretItemNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.GreenHerb)
+        else if (notificationType == NotificationType.GreenHerb)
         {
             collectibleNotificationTextMesh.text = greenHerbNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.BlueHerb)
+        else if (notificationType == NotificationType.BlueHerb)
         {
             collectibleNotificationTextMesh.text = blueHerbNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.Vial)
+        else if (notificationType == NotificationType.Vial)
         {
             collectibleNotificationTextMesh.text = vialNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.Badge)
+        else if (notificationType == NotificationType.Badge)
         {
             collectibleNotificationTextMesh.text = badgeNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.Photo)
+        else if (notificationType == NotificationType.Photo)
         {
             collectibleNotificationTextMesh.text = photoNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.Tip)
+        else if (notificationType == NotificationType.Tip)
         {
             collectibleNotificationTextMesh.text = tipNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.StaminaPot)
+        else if (notificationType == NotificationType.StaminaPot)
         {
             collectibleNotificationTextMesh.text = staminaPotNotification;
         }
-        else if (collectibleNotificationType == CollectibleNotificationType.HealthPot)
+        else if (notificationType == NotificationType.HealthPot)
         {
             collectibleNotificationTextMesh.text = healthPotNotification;
         }
 
         yield return new WaitForSeconds(3);
-        collectibleNotificationType = CollectibleNotificationType.None;
+        notificationType = NotificationType.None;
         collectibleNotificationTextMesh.text = "";
         StopCoroutine("CollectibleNotificationIE");
     }
@@ -454,7 +449,7 @@ public class Notifications : MonoBehaviour {
         secretPlacesTime = 0f;
         secretPlacesNotificationTextMesh.text = notificationText;
         pointer.enabled = true;
-        inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
+       // inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
         inventoryScript.itemAudioSource4.Play();
         inventoryScript.secretPlacesCount++;
         StartCoroutine("SecretPlaceNotificationIE");
@@ -462,7 +457,7 @@ public class Notifications : MonoBehaviour {
 
     public void ShowTutorialNotification(Canvas tutorialCanvas)
     {
-        collectibleNotificationType = CollectibleNotificationType.Tutorial;
+        notificationType = NotificationType.Tutorial;
         tutorialCanvas.enabled = true;
         tutorialAudioSource.PlayOneShot(tutorialSound);
         Time.timeScale = 0;
@@ -476,7 +471,7 @@ public class Notifications : MonoBehaviour {
 
     public void HideTutorialNotification(Canvas tutorialCanvas)
     {
-        collectibleNotificationType = CollectibleNotificationType.None;
+        notificationType = NotificationType.None;
         tutorialCanvas.enabled = false;
         tutorialAudioSource.PlayOneShot(tutorialSound);
         Time.timeScale = 1;

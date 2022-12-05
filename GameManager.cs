@@ -3381,10 +3381,6 @@ public class GameManager : MonoBehaviour {
 
         // aktualny przedmiot canvas UI
 
-        Inventory.currentItemIcon.sprite = null;
-        Inventory.currentItemIcon.color = Color.black;
-        Inventory.currenntItemTitle.text = Inventory.currentItemText;
-
         // Sloty w ekwipunku
 
         InventoryItem1.sprite = null;

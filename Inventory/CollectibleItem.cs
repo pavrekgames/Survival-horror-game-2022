@@ -5,51 +5,39 @@ using UnityEngine.UI;
 
 public class CollectibleItem : MonoBehaviour {
 
+    public AudioSource audioSource;
     public AudioClip itemSound;
     public Inventory inventoryScript;
-    public Image itemTexture;
 
-    public enum ItemType
-    {
-        SecretItem,
-        GreenHerb,
-        BlueHerb,
-        HealthPot,
-        StaminaPot,
-        Badge,
-        Photo,
-        Tip
-    }
-
-    public ItemType itemType;
+    public NotificationType itemType;
 
     public void PickUpItem()
     {
         switch (itemType)
         {
-            case ItemType.SecretItem:
-                inventoryScript.AddSecretItem(itemSound);
+            case NotificationType.SecretItem:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.secretItemsCount, itemType);
                 break;
-            case ItemType.GreenHerb:
-                inventoryScript.AddGreenHerb(itemSound);
+            case NotificationType.GreenHerb:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.greenHerbsCount, itemType);
                 break;
-            case ItemType.BlueHerb:
-                inventoryScript.AddBlueHerb(itemSound);
+            case NotificationType.BlueHerb:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.blueHerbsCount, itemType);
                 break;
-            case ItemType.HealthPot:
-                inventoryScript.AddHealthPot(itemSound);
+            case NotificationType.HealthPot:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.healthPotsCount, itemType);
                 break;
-            case ItemType.StaminaPot:
-                inventoryScript.AddStaminaPot(itemSound);
+            case NotificationType.StaminaPot:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.staminaPotsCount, itemType);
                 break;
-            case ItemType.Badge:
-                inventoryScript.AddBadge(itemSound, itemTexture);
+            case NotificationType.Badge:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.badgesCount, itemType);
                 break;
-            case ItemType.Photo:
-                inventoryScript.AddPhoto(itemSound, itemTexture);
+            case NotificationType.Photo:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.photosCount, itemType);
                 break;
-            case ItemType.Tip:
-                inventoryScript.AddTip(itemSound, itemTexture);
+            case NotificationType.Tip:
+                inventoryScript.AddCollectibleItem(audioSource, itemSound, inventoryScript.tipsCount, itemType);
                 break;
         }
 
