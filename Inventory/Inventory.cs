@@ -5,23 +5,25 @@ using System;
 
 public class Inventory : MonoBehaviour {
 
-    // inventory
     private PlayerManager playerManagerScript;
-    public List<Item> items = new List<Item>();
     private Animator animator;
     private CrosshairGUI cursorScript;
     private Player playerScript;
-    public bool isInventoryActive = false;
     private Menu gameMenuScript;
-    public Notifications notificationScript;
-    public AudioSource itemAudioSource1;
-    public AudioSource itemAudioSource2;
-    public AudioSource itemAudioSource3;
-    public AudioSource itemAudioSource4;
-    public AudioSource pauseAudioSource;
+    private Notifications notificationScript;
+    private InventoryUI inventoryUIScript;
 
-    public InventoryUI inventoryUI;
+    [Header("Inventory components")]
+    [SerializeField] private AudioSource itemAudioSource;
+    [SerializeField] private AudioSource pauseAudioSource;
+    [SerializeField] private AudioClip openInventorySound;
+    [SerializeField] private float rayLength = 4f;
+    private Ray playerAim;
+    private Camera playerCam;
 
+    public List<Item> items = new List<Item>();
+
+    [Header("Collectible items counts")]
     public int secretItemsCount = 0;
     public int secretPlacesCount = 0;
     public int blueHerbsCount = 0;
@@ -30,14 +32,7 @@ public class Inventory : MonoBehaviour {
     public int staminaPotsCount = 0;
     public int vialsCount = 0;
 
-    public AudioClip openInventorySound;
-
-    private Ray playerAim;
-	private Camera playerCam;
-	public float rayLength = 4f;
-
-    // Do osiagniec Steam
-
+    [Header("Steam achievements")]
     public int badgesCount = 0;
     public int tipsCount = 0;
     public int photosCount = 0;
@@ -48,21 +43,13 @@ public class Inventory : MonoBehaviour {
 	void OnEnable(){
 
         playerCam = Camera.main;
-
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
-    
-		cursorScript = GameObject.Find ("Kamera").GetComponent<CrosshairGUI>();
+		cursorScript = GameObject.Find ("PlayerCamera").GetComponent<CrosshairGUI>();
 		playerScript = GameObject.Find ("Player").GetComponent<Player>();
 		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu>();
 		animator = GameObject.Find ("Player").GetComponent<Animator>();
-	
 		notificationScript = GameObject.Find ("Player").GetComponent<Notifications>();
-        
-		itemAudioSource1 = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();      // klucze
-		itemAudioSource2 = GameObject.Find ("ZrodloPrzedmiot2_s").GetComponent<AudioSource>();    // glosne
-		itemAudioSource3 = GameObject.Find ("ZrodloPrzedmiot3_s").GetComponent<AudioSource>();    // srednie
-		itemAudioSource4 = GameObject.Find ("ZrodloPrzedmiot4_s").GetComponent<AudioSource>();    // ciche
-        pauseAudioSource = GameObject.Find("ZrodloPrzedmiotPause_s").GetComponent<AudioSource>();
+		itemAudioSource = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();  
 
     }
 
@@ -109,7 +96,7 @@ public class Inventory : MonoBehaviour {
 
    void OpenInventory()
     {
-        inventoryUI.ShowInventory();
+        inventoryUIScript.ShowInventory();
         Time.timeScale = 0;
         cursorScript.m_ShowCursor = true;
         playerScript.audioSource.Pause();
@@ -121,7 +108,7 @@ public class Inventory : MonoBehaviour {
    public void AddItem(Item item, AudioClip pickUpSound)
     {
         animator.SetTrigger("PickUp");
-        itemAudioSource1.PlayOneShot(pickUpSound);
+        itemAudioSource.PlayOneShot(pickUpSound);
 
         items.Add(item);
         item.isTaken = true;

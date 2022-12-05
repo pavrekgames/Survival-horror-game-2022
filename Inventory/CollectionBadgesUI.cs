@@ -98,7 +98,7 @@ public class CollectionBadgesUI : MonoBehaviour {
     public Canvas badgeCollectionCanvas;
     public Canvas[] collectionCanvas;
     private TextMeshProUGUI badgeCollectionTitleText;
-    public bool isCollectionActive = false;
+    public static bool isCollectionActive = false;
 
     public Sprite badgeSprite;
     public Sprite badgeOKSprite;
@@ -183,13 +183,6 @@ public class CollectionBadgesUI : MonoBehaviour {
   
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
 
         for (int i = 0; i < collectionCanvas.Length; i++)
         {

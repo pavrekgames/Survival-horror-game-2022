@@ -36,7 +36,7 @@ public class InventoryUI : MonoBehaviour {
     private Canvas uiCanvas;
     public TextMeshProUGUI currenntItemTitle;
     public Image currentItemIcon;
-    public bool isInventoryActive = false;
+    public static bool isInventoryActive = false;
     private Menu gameMenuScript;
     public Notifications notificationScript;
     public Tasks tasksScript;
@@ -182,13 +182,6 @@ public class InventoryUI : MonoBehaviour {
         tipCollectionCanvas.enabled = false;
         isCollectionActive = false;
 
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
         for (int i = 0; i < collectionCanvas.Length; i++)
         {
             collectionCanvas[i].enabled = false;
@@ -197,6 +190,8 @@ public class InventoryUI : MonoBehaviour {
         notificationScript.taskHintTime = 5f;
 
     }
+
+
 
     void UpdateInventorySlots()
     {
@@ -217,15 +212,6 @@ public class InventoryUI : MonoBehaviour {
         itemDescriptionText.text = defaultDescription;
         usedItemText.text = defaultUsingItemText;
 
-    }
-
-    public void BackFunction()
-    {
-        Time.timeScale = 1;
-        playerScript.enabled = true;
-        playerScript.audioSource.UnPause();
-        cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-        itemAudioSource3.PlayOneShot(menuButtonSound);
     }
 
     public void InventoryBackFunction()

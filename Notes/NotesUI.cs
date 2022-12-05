@@ -73,7 +73,7 @@ public class NotesUI : MonoBehaviour {
 
     public Canvas notesCanvas;
     public Canvas noteDefaultCanvas;
-    public bool isNotesActive = false;
+    public static bool isNotesActive = false;
 
     private ScrollRect notesScrollRect;
     private Scrollbar notesScrollbar;
@@ -253,11 +253,6 @@ public class NotesUI : MonoBehaviour {
         for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
         {
             notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
         }
 
         Time.timeScale = 1;
