@@ -158,49 +158,19 @@ public class TasksUI : MonoBehaviour {
 
     public void ShowTasks()
     {
-
+        InventoryUIManager.ResetUI();
         itemAudioSource3.PlayOneShot(menuButtonSound);
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
         tasksCanvas.enabled = true;
         isTasksActive = true;
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        noteDefaultCanvas.enabled = false;
-
     }
 
     public void TasksBackFunction()
     {
 
-        //Panel.enabled = true;
-        //Panel_ok = true;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-        //ZrodloDzwieku3.PlayOneShot (PrzyciskMenu);
+        InventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
 
         Time.timeScale = 1;
         playerScript.enabled = true;

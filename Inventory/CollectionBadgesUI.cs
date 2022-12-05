@@ -174,20 +174,20 @@ public class CollectionBadgesUI : MonoBehaviour {
         }
     }
 
+    public void ShowBadgeCollection()
+    {
+        InventoryUIManager.ResetUI();
+        itemAudioSource3.PlayOneShot(menuButtonSound);
+        badgeCollectionCanvas.enabled = true;
+        isCollectionActive = true;
+    }
+
     public void CollectionBackFunction()
     {
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-  
+        InventoryUIManager.ResetUI();
+
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
 
         Time.timeScale = 1;
         playerScript.enabled = true;
