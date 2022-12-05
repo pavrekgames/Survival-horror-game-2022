@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TasksUI : MonoBehaviour {
 
     public Canvas tasksCanvas;
-    public bool isTasksActive = false;
+    public static bool isTasksActive = false;
     public List<TaskData> tasksList = new List<TaskData>();
     public TextMeshProUGUI[] tasksTextMesh;
 

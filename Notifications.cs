@@ -450,7 +450,7 @@ public class Notifications : MonoBehaviour {
         secretPlacesNotificationTextMesh.text = notificationText;
         pointer.enabled = true;
        // inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-        inventoryScript.itemAudioSource4.Play();
+       // inventoryScript.itemAudioSource4.Play();
         inventoryScript.secretPlacesCount++;
         StartCoroutine("SecretPlaceNotificationIE");
     }

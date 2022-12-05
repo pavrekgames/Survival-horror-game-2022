@@ -88,7 +88,7 @@ public class TreatmentUI : MonoBehaviour {
     public Text healthPotsText;
     public Text staminaPotsText;
     private TextMeshProUGUI healthConditionText;
-    public bool isTreatmentActive = false;
+    public static bool isTreatmentActive = false;
     public AudioClip createPotSound;
     public AudioClip usePotSound;
     public AudioClip lackVialsSound;
