@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -421,8 +422,11 @@ public class Tasks : MonoBehaviour {
     private Door DrzwiDomPaulS;
     private Door DrzwiMonsterS;
     private Door DrzwiDomekS;
-		
-	void OnEnable(){
+
+    public event Action OnAddedTask;
+    public event Action OnRemovedTask;
+
+    void OnEnable(){
 
 		playerCam = Camera.main;
 
@@ -664,12 +668,24 @@ public class Tasks : MonoBehaviour {
         audioSource.Play();
         uiAnimator.SetTrigger("NewTask");
         notificationScript.TaskHintNotification();
+
+        if(OnAddedTask != null)
+        {
+            OnAddedTask.Invoke();
+        }
+
     }
 
     public void RemoveTask(TaskData task)
     {
         task.isRemoved = true;
         tasksList.Remove(task);
+
+        if (OnRemovedTask != null)
+        {
+            OnRemovedTask.Invoke();
+        }
+
     }
 
 }

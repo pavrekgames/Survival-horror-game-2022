@@ -39,6 +39,8 @@ public class Inventory : MonoBehaviour {
     public int skillsCount = 0;
 
     public event Action OnAddedCollectibleItem;
+    public event Action OnAddedItem;
+    public event Action OnRemovedItem;
 
 	void OnEnable(){
 
@@ -113,6 +115,11 @@ public class Inventory : MonoBehaviour {
         items.Add(item);
         item.isTaken = true;
         item.id += 1;
+
+        if(OnAddedItem != null)
+        {
+            OnAddedItem.Invoke();
+        }
     }
 
     public void AddCollectibleItem(AudioSource audioSource, AudioClip itemSound, int itemsCount, NotificationType notificationType)
@@ -133,6 +140,12 @@ public class Inventory : MonoBehaviour {
     {
         item.isRemoved = isItemRemoved;
         items.Remove(item);
+
+        if (OnRemovedItem != null)
+        {
+            OnRemovedItem.Invoke();
+        }
+
     }
 
 }
