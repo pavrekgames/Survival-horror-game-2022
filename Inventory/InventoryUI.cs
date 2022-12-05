@@ -19,6 +19,8 @@ public class InventoryUI : MonoBehaviour {
     private CrosshairGUI cursorScript;
     private AudioSource itemAudioSource3;
     private Canvas inventoryCanvas;
+    public string defaultDescription;
+    public string defaultUsingItemText;
     public string usingItemText = " is using now!";
 
     public Image[] inventorySlots;
@@ -158,6 +160,44 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
+    public void ShowInventory()
+    {
+
+        if (Time.timeScale == 0)
+        {
+            itemAudioSource3.PlayOneShot(menuButtonSound);
+        }
+
+
+        inventoryCanvas.enabled = true;
+        isInventoryActive = true;
+        tasksCanvas.enabled = false;
+        isTasksActive = false;
+        notesCanvas.enabled = false;
+        isNotesActive = false;
+        treatmentCanvas.enabled = false;
+        isTreatmentActive = false;
+        badgeCollectionCanvas.enabled = false;
+        photoCollectionCanvas.enabled = false;
+        tipCollectionCanvas.enabled = false;
+        isCollectionActive = false;
+
+        noteDefaultCanvas.enabled = false;
+
+        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
+        {
+            notesScript.notesCanvas2[i].enabled = false;
+        }
+
+        for (int i = 0; i < collectionCanvas.Length; i++)
+        {
+            collectionCanvas[i].enabled = false;
+        }
+
+        notificationScript.taskHintTime = 5f;
+
+    }
+
     void UpdateInventorySlots()
     {
 
@@ -173,6 +213,10 @@ public class InventoryUI : MonoBehaviour {
             inventorySlots[i].color = Color.white;
             break;
         }
+
+        itemDescriptionText.text = defaultDescription;
+        usedItemText.text = defaultUsingItemText;
+
     }
 
     public void BackFunction()

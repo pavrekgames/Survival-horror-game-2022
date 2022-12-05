@@ -1132,10 +1132,6 @@ public class BeginGame : MonoBehaviour {
 		InventoryItem9.sprite = null;
 		InventoryItem9.color = Color.black;
 
-        Inventory.currentItemIcon.sprite = null;
-        Inventory.currentItemIcon.color = Color.black;
-        Inventory.currenntItemTitle.text = Inventory.currentItemText;
-
         if (Tasks.tasksList.Count > 0){
 			Tasks.tasksList.Clear();
 		}

@@ -6,6 +6,7 @@ public class TaskBones : MonoBehaviour {
 
     public bool isPlaySound = false; // wznawianie i zatrzymywanie dzwiekow
 
+    private PlayerManager playerManagerScript;
     public Inventory inventoryScript;
 	public Menu gameMenuScript;
 
@@ -58,7 +59,7 @@ public class TaskBones : MonoBehaviour {
 
 
 
-		if(distance <= 8 && Input.GetMouseButtonDown(0) && bonesCount < 5 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && gameMenuScript.isMenu == false && inventoryScript.isNotesActive == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(distance <= 8 && Input.GetMouseButtonDown(0) && bonesCount < 5 && playerManagerScript.isPlayerCanInput == true)
         {
 			
 			for(int i=0; i<inventoryScript.items.Count; i++){

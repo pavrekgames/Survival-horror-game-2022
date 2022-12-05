@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TaskPainting : MonoBehaviour {
 
+    private PlayerManager playerManagerScript;
 	private Transform player;
 	private Transform painting;
 	public Menu gameMenuScript;
@@ -26,7 +27,7 @@ public class TaskPainting : MonoBehaviour {
 			painting.gameObject.GetComponent<Collider>().enabled = false;
 		}
 
-		if(distance <= 11 && isPainting == false && Input.GetMouseButton(0) && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false)
+		if(distance <= 11 && isPainting == false && Input.GetMouseButton(0) && playerManagerScript.isPlayerCanInput == true)
         {
 			painting.gameObject.AddComponent<Rigidbody>();
 			isPainting = true;

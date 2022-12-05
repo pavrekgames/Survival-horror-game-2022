@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TaskBooks : MonoBehaviour {
 
+    private PlayerManager playerManagerScript;
 	private Menu gameMenuScript;
 	private Inventory inventoryScript;
     public bool isPlaySound = false;
@@ -70,14 +71,14 @@ public class TaskBooks : MonoBehaviour {
 
 		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
 			//Debug.Log(hit.collider.gameObject.name);
-			if(hit.collider.gameObject.name == "Ksiazka_motyl" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			if(hit.collider.gameObject.name == "Ksiazka_motyl" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && playerManagerScript.isPlayerCanInput == true)
             {
 				booksList.Add(butterflyBook);
 				audioSource = audioSource.GetComponent<AudioSource>();
 				audioSource.PlayOneShot(takeBookSound);
 				butterflyBook.gameObject.SetActive(false);
 				isBookTaken = true;
-			} else if(hit.collider.gameObject.name == "Ksiazka_motyl" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			} else if(hit.collider.gameObject.name == "Ksiazka_motyl" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && playerManagerScript.isPlayerCanInput == true)
             {
 				bookPositionContainer.transform.position = new Vector3(booksList[0].transform.position.x, booksList[0].transform.position.y, booksList[0].transform.position.z);
 				booksList[0].transform.position = new Vector3(butterflyBook.transform.position.x, butterflyBook.transform.position.y, butterflyBook.transform.position.z);
@@ -96,14 +97,14 @@ public class TaskBooks : MonoBehaviour {
 		}
 
 		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
-			if(hit.collider.gameObject.name == "Ksiazka_woda" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			if(hit.collider.gameObject.name == "Ksiazka_woda" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && playerManagerScript.isPlayerCanInput == true)
             {
 				booksList.Add(waterBook);
 				audioSource = audioSource.GetComponent<AudioSource>();
 				audioSource.PlayOneShot(takeBookSound);
 				waterBook.gameObject.SetActive(false);
 				isBookTaken = true;
-			} else if(hit.collider.gameObject.name == "Ksiazka_woda" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			} else if(hit.collider.gameObject.name == "Ksiazka_woda" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && playerManagerScript.isPlayerCanInput == true)
             {
 				bookPositionContainer.transform.position = new Vector3(booksList[0].transform.position.x, booksList[0].transform.position.y, booksList[0].transform.position.z);
 				booksList[0].transform.position = new Vector3(waterBook.transform.position.x, waterBook.transform.position.y, waterBook.transform.position.z);
@@ -122,14 +123,14 @@ public class TaskBooks : MonoBehaviour {
 		}
 
 		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
-			if(hit.collider.gameObject.name == "Ksiazka_komputer" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			if(hit.collider.gameObject.name == "Ksiazka_komputer" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && playerManagerScript.isPlayerCanInput == true)
             {
 				booksList.Add(computerBook);
 				audioSource = audioSource.GetComponent<AudioSource>();
 				audioSource.PlayOneShot(takeBookSound);
 				computerBook.gameObject.SetActive(false);
 				isBookTaken = true;
-			} else 	if(hit.collider.gameObject.name == "Ksiazka_komputer" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			} else 	if(hit.collider.gameObject.name == "Ksiazka_komputer" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && playerManagerScript.isPlayerCanInput == true)
             {
 				bookPositionContainer.transform.position = new Vector3(booksList[0].transform.position.x, booksList[0].transform.position.y, booksList[0].transform.position.z);
 				booksList[0].transform.position = new Vector3(computerBook.transform.position.x, computerBook.transform.position.y, computerBook.transform.position.z);
@@ -148,14 +149,14 @@ public class TaskBooks : MonoBehaviour {
 		}
 
 		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
-			if(hit.collider.gameObject.name == "Ksiazka_kosmos" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			if(hit.collider.gameObject.name == "Ksiazka_kosmos" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && playerManagerScript.isPlayerCanInput == true)
             {
 				booksList.Add(spaceBook);
 				audioSource = audioSource.GetComponent<AudioSource>();
 				audioSource.PlayOneShot(takeBookSound);
 				spaceBook.gameObject.SetActive(false);
 				isBookTaken = true;
-			} else if(hit.collider.gameObject.name == "Ksiazka_kosmos" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			} else if(hit.collider.gameObject.name == "Ksiazka_kosmos" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && playerManagerScript.isPlayerCanInput == true)
             {
 				bookPositionContainer.transform.position = new Vector3(booksList[0].transform.position.x, booksList[0].transform.position.y, booksList[0].transform.position.z);
 				booksList[0].transform.position = new Vector3(spaceBook.transform.position.x, spaceBook.transform.position.y, spaceBook.transform.position.z);
@@ -174,14 +175,14 @@ public class TaskBooks : MonoBehaviour {
 		}
 
 		if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)){
-			if(hit.collider.gameObject.name == "Ksiazka_niebo" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			if(hit.collider.gameObject.name == "Ksiazka_niebo" && Input.GetMouseButton(0) && isBookTaken == false && isTaskDone == false && booksList.Count == 0 && playerManagerScript.isPlayerCanInput == true)
             {
 				booksList.Add(skyBook);
 				audioSource = audioSource.GetComponent<AudioSource>();
 				audioSource.PlayOneShot(takeBookSound);
 				skyBook.gameObject.SetActive(false);
 				isBookTaken = true;
-			} else if(hit.collider.gameObject.name == "Ksiazka_niebo" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && inventoryScript.isInventoryActive == false && inventoryScript.isTasksActive == false && inventoryScript.isNotesActive == false && gameMenuScript.isMenu == false && inventoryScript.isTreatmentActive == false && inventoryScript.isCollectionActive == false && Time.timeScale == 1)
+			} else if(hit.collider.gameObject.name == "Ksiazka_niebo" && Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && playerManagerScript.isPlayerCanInput == true)
             {
 				bookPositionContainer.transform.position = new Vector3(booksList[0].transform.position.x, booksList[0].transform.position.y, booksList[0].transform.position.z);
 				booksList[0].transform.position = new Vector3(skyBook.transform.position.x, skyBook.transform.position.y, skyBook.transform.position.z);
