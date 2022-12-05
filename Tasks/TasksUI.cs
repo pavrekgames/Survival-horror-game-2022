@@ -6,139 +6,24 @@ using UnityEngine.UI;
 
 public class TasksUI : MonoBehaviour {
 
-    public Canvas tasksCanvas;
     public static bool isTasksActive = false;
-    public List<TaskData> tasksList = new List<TaskData>();
-    public TextMeshProUGUI[] tasksTextMesh;
 
-    // inventory UI
-
-    public TextMeshProUGUI itemDescriptionText;
-    public TextMeshProUGUI usedItemText;
-    public Text secretItemsText;
-    public Text secretPlacesText;
-    public AudioClip menuButtonSound;
-    public AudioClip useItemSound;
-    public AudioClip itemDesciptionSound;
+    private Tasks tasksScript;
     private Player playerScript;
     private CrosshairGUI cursorScript;
-    private AudioSource itemAudioSource3;
-    private Canvas inventoryCanvas;
-    public string usingItemText = " is using now!";
 
-    public Image[] itemIcons;
-    private PlayerManager playerManagerScript;
-    public List<Item> items = new List<Item>();
-    private Animator animator;
-    private Transform player;
-    private Map mapScript;
-    private BeginGame beginGameScript;
-    public Flashlight flashlightScript;
-    private SaveGame SaveGameScript;
-    private Canvas uiCanvas;
-    public TextMeshProUGUI currenntItemTitle;
-    public Image currentItemIcon;
-    public bool isInventoryActive = false;
-    private Menu gameMenuScript;
-    public Notifications notificationScript;
-    public Tasks tasksScript;
-    public TaskBones bonesTaskScript;
-    public AudioSource itemAudioSource1;
-    public AudioSource itemAudioSource2;
-    public AudioSource itemAudioSource4;
-    public AudioSource pauseAudioSource;
-    public Health healthScript;
-    public Notes notesScript;
-    public VoiceActing voiceActingScript;
+    [SerializeField] private Canvas tasksCanvas;
+    [SerializeField] private TextMeshProUGUI[] tasksTextMesh;
+    [SerializeField] private AudioClip menuButtonSound;
+    [SerializeField] private AudioSource itemAudioSource3;
+    [SerializeField] private AudioSource pauseAudioSource;
+    [SerializeField] private AudioClip openInventorySound;
 
-    public int secretItemsCount = 0;
-    public int secretPlacesCount = 0;
-    public int blueHerbsCount = 0;
-    public int greenHerbsCount = 0;
-    public int healthPotsCount = 0;
-    public int staminaPotsCount = 0;
-    public int vialsCount = 0;
-
-    public AudioClip secretItemSound;
-    public AudioClip secretItemSound2;
-    public AudioClip secretPlaceSound;
-    public AudioClip collectHerbSound;
-    public AudioClip collectVialSound;
-    public AudioClip collectItemSound;
-    public AudioClip openInventorySound;
-
-    // notes UI
-
-    public Canvas notesCanvas;
-    public Canvas noteDefaultCanvas;
-    public bool isNotesActive = false;
-
-    private ScrollRect notesScrollRect;
-    private Scrollbar notesScrollbar;
-
-    // treatment
-
-    // treatment UI
-
-    public Canvas treatmentCanvas;
-    public TextMeshProUGUI mixturesText;
-    public TextMeshProUGUI vialsText;
-    public Text blueHerbsText;
-    public Text greenHerbsText;
-    public Text vialsCountText;
-    public Text healthPotsText;
-    public Text staminaPotsText;
-    private TextMeshProUGUI healthConditionText;
-    public bool isTreatmentActive = false;
-    public AudioClip createPotSound;
-    public AudioClip usePotSound;
-    public AudioClip lackVialsSound;
-
-    // collection badges UI
-
-    public Canvas badgeCollectionCanvas;
-    public Canvas[] collectionCanvas;
-    private TextMeshProUGUI badgeCollectionTitleText;
-    public bool isCollectionActive = false;
-
-    public Sprite badgeSprite;
-    public Sprite badgeOKSprite;
-    public Image[] collectionTextures;
-
-    // collection photos
-
-
-    // collection photos UI
-
-    public Canvas photoCollectionCanvas;
-    private TextMeshProUGUI photoCollectionTitleText;
-    public Sprite photoSprite;
-    public Sprite photoOKSprite;
-
-    // collection tips
-
-
-    // collection tips UI
-
-    public Canvas tipCollectionCanvas;
-    private TextMeshProUGUI tipCollectionTitleText;
-    public Sprite tipSprite;
-    public Sprite tipOKSprite;
-
-    public bool isSkill1_Unlocked = false;
-    public AudioClip skillUnlockedSound;
-    public Image skill1_Icon;
-
-    public bool isSkill2_Unlocked = false;
-    public Image skill2_Icon;
-
-    public bool isSkill3_Unlocked = false;
-    public Image skill3_Icon;
-
-    public bool isSkill4_Unlocked = false;
-    public Image skill4_Icon;
-
-    public int skillsCount = 0;
+    void Start()
+    {
+        tasksScript.OnAddedTask += UpdateTasksUI;
+        tasksScript.OnRemovedTask += UpdateTasksUI;
+    }
 
     void Update()
     {
@@ -150,9 +35,9 @@ public class TasksUI : MonoBehaviour {
 
     public void UpdateTasksUI()
     {
-        for (int i = 0; i < tasksList.Count; i++)
+        for (int i = 0; i < tasksScript.tasksList.Count; i++)
         {
-             tasksTextMesh[i].text = tasksList[i].content;   
+             tasksTextMesh[i].text = tasksScript.tasksList[i].content;   
         }
     }
 
