@@ -214,23 +214,11 @@ public class NotesUI : MonoBehaviour {
 
     public IEnumerator ShowNotesIE()
     {
-
+        InventoryUIManager.ResetUI();
         itemAudioSource3.PlayOneShot(menuButtonSound);
-
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
+       
         notesCanvas.enabled = true;
         isNotesActive = true;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        noteDefaultCanvas.enabled = true;
 
         yield return new WaitForSecondsRealtime(0.01f);
 
@@ -243,17 +231,10 @@ public class NotesUI : MonoBehaviour {
     public void NotesBackFunction()
     {
 
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        noteDefaultCanvas.enabled = false;
+        InventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
 
         Time.timeScale = 1;
         playerScript.enabled = true;

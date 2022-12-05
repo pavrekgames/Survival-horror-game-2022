@@ -163,35 +163,18 @@ public class InventoryUI : MonoBehaviour {
     public void ShowInventory()
     {
 
+        InventoryUIManager.ResetUI();
+
         if (Time.timeScale == 0)
         {
             itemAudioSource3.PlayOneShot(menuButtonSound);
         }
 
-
         inventoryCanvas.enabled = true;
         isInventoryActive = true;
-        tasksCanvas.enabled = false;
-        isTasksActive = false;
-        notesCanvas.enabled = false;
-        isNotesActive = false;
-        treatmentCanvas.enabled = false;
-        isTreatmentActive = false;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
-
         notificationScript.taskHintTime = 5f;
 
     }
-
-
 
     void UpdateInventorySlots()
     {
@@ -216,24 +199,11 @@ public class InventoryUI : MonoBehaviour {
 
     public void InventoryBackFunction()
     {
-        
-        inventoryCanvas.enabled = false;
-        isInventoryActive = false;
+
+        InventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
 
         Time.timeScale = 1;
         playerScript.enabled = true;

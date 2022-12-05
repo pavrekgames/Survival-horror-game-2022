@@ -164,30 +164,28 @@ public class CollectionTipsUI : MonoBehaviour {
 
     public string[] collectionTitles;
 
+    void Update()
+    {
+        if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isCollectionActive == true)
+        {
+            CollectionBackFunction();
+        }
+    }
+
+    public void ShowTipCollection()
+    {
+        InventoryUIManager.ResetUI();
+        itemAudioSource3.PlayOneShot(menuButtonSound);
+        tipCollectionCanvas.enabled = true;
+        isCollectionActive = true;
+    }
+
     public void CollectionBackFunction()
     {
-        //Panel.enabled = true;
-        //Panel_ok = true;
-        badgeCollectionCanvas.enabled = false;
-        photoCollectionCanvas.enabled = false;
-        tipCollectionCanvas.enabled = false;
-        isCollectionActive = false;
-        //ZrodloDzwieku3.PlayOneShot(PrzyciskMenu);
+        InventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
-
-        noteDefaultCanvas.enabled = false;
-
-        for (int i = 0; i < notesScript.notesCanvas2.Length; i++)
-        {
-            notesScript.notesCanvas2[i].enabled = false;
-        }
-
-        for (int i = 0; i < collectionCanvas.Length; i++)
-        {
-            collectionCanvas[i].enabled = false;
-        }
 
         Time.timeScale = 1;
         playerScript.enabled = true;
