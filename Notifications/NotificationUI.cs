@@ -6,23 +6,22 @@ using UnityEngine.UI;
 
 public class NotificationUI : MonoBehaviour {
 
-
-    private Canvas notificationsCanvas;
-
     private Menu gameMenuScript;
     private Inventory inventoryScript;
     private Player playerScript;
-    public PlayerManager playerManagerScript;
+    private PlayerManager playerManagerScript;
     private Door firstDoorSoundScript;
 
-    public TextMeshProUGUI mainNotificationTextMesh;
-    public TextMeshProUGUI infoNotificationTextMesh;
-    public TextMeshProUGUI taskNotificationTextMesh;
-    public TextMeshProUGUI doorNotificationTextMesh;
-    public TextMeshProUGUI saveGameNotificationTextMesh;
-    public TextMeshProUGUI collectibleNotificationTextMesh;
-    public TextMeshProUGUI secretPlacesNotificationTextMesh;
+    [Header("Text Meshes")]
+    [SerializeField] private TextMeshProUGUI mainNotificationTextMesh;
+    [SerializeField] private TextMeshProUGUI infoNotificationTextMesh;
+    [SerializeField] private TextMeshProUGUI taskNotificationTextMesh;
+    [SerializeField] private TextMeshProUGUI doorNotificationTextMesh;
+    [SerializeField] private TextMeshProUGUI saveGameNotificationTextMesh;
+    [SerializeField] private TextMeshProUGUI collectibleNotificationTextMesh;
+    [SerializeField] private TextMeshProUGUI secretPlacesNotificationTextMesh;
 
+    [Header("Canvases")]
     public Canvas herbsNotificationCanvas;
     public Canvas saveGameNotificationCanvas;
     public Canvas pushNotificationCanvas;
@@ -30,13 +29,14 @@ public class NotificationUI : MonoBehaviour {
     public Canvas itemsNotificationCanvas;
     public Canvas inventoryNotificationCanvas;
 
-    public AudioSource audioSource;
-    public AudioSource tutorialAudioSource;
-    public AudioSource audioSource4;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource2;
+    [SerializeField] private AudioSource tutorialAudioSource;
+    [SerializeField] private AudioClip tutorialSound;
+    [SerializeField] private AudioClip secretPlaceSound;
 
-    public AudioClip tutorialSound;
-    public AudioClip secretPlaceSound;
-
+    [Header("Hints")]
     public string lightHint = "Press <color=#280DF6FF> Middle Mouse Button</color> to increase range of light";
     public string tasksHint = "Press <color=#280DF6FF>[ I ]</color> to see Inventory and Tasks";
     public string sprintHint = "Press <color=#280DF6FF>[Left Shift]</color> to sprint";
@@ -44,6 +44,7 @@ public class NotificationUI : MonoBehaviour {
     public string crouchHint = "Press <color=#280DF6FF>[C]</color> to Crouch";
     public string doorHint = "Hold down <color=#280DF6FF>[Left Mouse Button]</color> and move the mouse in order to move the door.";
 
+    [Header("Collectible objects notifications")]
     public string secretItemNotification = "You picked up a Secret Item";
     public string greenHerbNotification = "You picked up a <color=#33D047FF>Green Herb</color>";
     public string blueHerbNotification = "You picked up a <color=#006EFFFF>Blue Herb</color>";
@@ -244,7 +245,7 @@ public class NotificationUI : MonoBehaviour {
         secretPlacesNotificationTextMesh.text = notificationText;
         pointer.enabled = true;
         audioSource.clip = secretPlaceSound;
-        audioSource4.Play();
+        audioSource2.Play();
         inventoryScript.secretPlacesCount++;
         StartCoroutine("SecretPlaceNotificationIE");
     }

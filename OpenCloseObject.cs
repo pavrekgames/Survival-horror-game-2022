@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class OpenCloseObject : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject interactiveObject;
-
+    [SerializeField] private GameObject interactiveObject;
+    
     private Ray playerAim;
     private Camera playerCam;
-    public float rayLength = 4f;
+    [SerializeField] private float rayLength = 4f;
 
     void Start () {
         playerCam = Camera.main;

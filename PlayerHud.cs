@@ -7,18 +7,38 @@ using UnityEngine.UI;
 public class PlayerHud : MonoBehaviour {
 
     private Inventory inventoryScript;
+    private InventoryUI inventoryUIScript;
+    private Player playerScript;
 
     [SerializeField] private Canvas hudCanvas;
     [SerializeField] private TextMeshProUGUI currenntItemTitle;
     [SerializeField] private Image currentItemIcon;
     private string currentItemText = "Item";
 
+    [SerializeField] private Image staminaBar;
+    private string defaultStaminaString = "#D2D7D7A7";
+    private string tiredStaminaString = "#FF5A5ABA";
+    private Color defaultStaminaColor;
+    private Color tiredStaminaColour;
+
     void Start () {
+
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
-	}
-	
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        staminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
+
+        ColorUtility.TryParseHtmlString(defaultStaminaString, out defaultStaminaColor);
+        ColorUtility.TryParseHtmlString(tiredStaminaString, out tiredStaminaColour);
+
+        staminaBar.color = defaultStaminaColor;
+
+        inventoryUIScript.OnUsedItemFromSlot += UpdateHud;
+
+    }
 
 	void Update () {
+
+        StaminaBar();
 
         if (Time.timeScale == 0)
         {
@@ -29,6 +49,20 @@ public class PlayerHud : MonoBehaviour {
             hudCanvas.enabled = true;
         }
 
+    }
+
+    void StaminaBar()
+    {
+        staminaBar.fillAmount = Player.currentStamina / Player.maxStamina;
+
+        if (Player.currentStamina <= 0 && playerScript.isRest == true)
+        {
+            staminaBar.color = tiredStaminaColour;
+        }
+        else if (Player.currentStamina > 75 && playerScript.isRest == false)
+        {
+            staminaBar.color = defaultStaminaColor;
+        }
     }
 
     void UpdateHud()
