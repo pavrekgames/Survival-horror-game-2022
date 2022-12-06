@@ -35,28 +35,14 @@ public class Notifications : MonoBehaviour {
     public Canvas inventoryNotificationCanvas;
 
 	public bool isNotificationTimeOn = false;
-	public bool isSecretItemNotification = false;
-	public bool isGreenHerbNotification = false;
-	public bool isBlueHerbNotification = false;
-    public bool isVialNotification = false;
-    public bool isStaminaPotNotification = false;
-    public bool isHealthPotNotification = false;
-    public bool isBadgeNotification = false;
-    public bool isPhotoNotification = false;
-    public bool isTipNotification = false;
+	
 
     public bool isTutorialNotification = false;
 
     public AudioSource audioSource;
-    public AudioSource audioSource2;
     public AudioSource tutorialAudioSource;
     public AudioSource audioSource4;
-    public AudioClip doorLockedSound;
-	public AudioClip planksSound;
-	public AudioClip lackPowerSound;
-	public AudioClip insertCasseteSound;
-	public AudioClip metalDoorLockedSound;
-	public AudioClip lackChipSound;
+    
     public AudioClip tutorialSound;
     public AudioClip secretPlaceSound;
 
@@ -119,7 +105,7 @@ public class Notifications : MonoBehaviour {
 		secretPlacesNotificationTextMesh = GameObject.Find ("SecretPlaceKomunikat").GetComponent<TextMeshProUGUI> ();
 
 		audioSource = GameObject.Find("ZrodloPrzedmiot3_s").GetComponent<AudioSource>();
-		audioSource2 = GameObject.Find("ZrodloPrzedmiot2_s").GetComponent<AudioSource>();
+		
         tutorialAudioSource = GameObject.Find("ZrodloKomunikat_s").GetComponent<AudioSource>();
         audioSource4 = GameObject.Find("ZrodloPrzedmiot4_s").GetComponent<AudioSource>();
 
@@ -168,7 +154,7 @@ public class Notifications : MonoBehaviour {
         {
 
             audioSource.Pause();
-            audioSource2.Pause();
+            
 
             notificationsCanvas.enabled = false;
 
@@ -182,7 +168,7 @@ public class Notifications : MonoBehaviour {
         {
 
             audioSource.UnPause();
-            audioSource2.UnPause();
+           
 
             notificationsCanvas.enabled = true;
 
