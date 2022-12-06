@@ -12,10 +12,6 @@ public class Notifications : MonoBehaviour {
 
     private Menu gameMenuScript;
 	private Inventory inventoryScript;
-	private Tasks tasksScript;
-	private TaskWell taskWellScript;
-	private TaskBooks taskBooksScript;
-	private Screamer screamerScript;
     private Player playerScript;
     public PlayerManager playerManagerScript;
 
@@ -37,9 +33,7 @@ public class Notifications : MonoBehaviour {
     public Canvas secretNotificationCanvas;
     public Canvas itemsNotificationCanvas;
     public Canvas inventoryNotificationCanvas;
-    public float collectibleTime = 3f;
-	public float secretPlacesTime = 3f;
-	public float notificationTime = 3f;
+
 	public bool isNotificationTimeOn = false;
 	public bool isSecretItemNotification = false;
 	public bool isGreenHerbNotification = false;
@@ -64,6 +58,7 @@ public class Notifications : MonoBehaviour {
 	public AudioClip metalDoorLockedSound;
 	public AudioClip lackChipSound;
     public AudioClip tutorialSound;
+    public AudioClip secretPlaceSound;
 
 	public bool isLightNotification = false;
 	public bool isLight2Notification = false;
@@ -72,75 +67,18 @@ public class Notifications : MonoBehaviour {
 	public bool isMapNotification = false;
 	public bool isCrouchNotification = false;
     public bool isDoorNotification = false;
-    public bool isHerbsNotification = false;
-    public bool isSaveNotification = false;
-    public bool isDragNotification = false;
-    public bool isPushNotification = false;
-    public bool isSecretNotification = false;
-    public bool isItemsNotification = false;
-    public bool isInventoryNotification = false;
+
+
     private Door firstDoorSoundScript;
-    public bool isBatteriesNotification = false;
-	public bool isChipNotification = false;
-	public bool isCasseteNotification = false;
-	public bool isCassete3Notification = false;
 
-	private Transform player;
-    private Transform bookShelf;
-
-    public bool isGardenDoor = false;
-    public bool isCornfieldDoor = false;
-    public bool isStableDoor = false;
-    public bool isCorridorWardrobe = false;
-    public bool isUncleDoor = false;
-    public bool isKitchenWardrobe = false;
-    public bool isSecretRoomDoor = false;
-    public bool isPlanks = false;
-    public bool isToolShedDoor = false;
-    public bool isNicheDoor = false;
-    public bool isCassetePlayer = false;
-    public bool isAliceRoomDoor = false;
-    public bool isFactoryMetalDoor = false;
-    public bool isVictorInvention = false;
-    public bool isFactoryWoodenDoor = false;
-    public bool isShedCupboard = false;
-    public bool isTomRoomDoor = false;
-    public bool isTomUpstairsDoor = false;
-    public bool isPumpkinPile = false;
-    public bool isCassetePlayer2 = false;
-    public bool isOldWardrobe = false;
-    public bool isCassetePlayer3 = false;
-    public bool isStevenDoor = false;
-    public bool isStevenGrille = false;
-    public bool isPaulDoor = false;
-    public bool isPaulJumpscareDoor = false;
-    public bool isThorns = false;
-
-    // teksty do komunikatów
-    public string keyInsideMessage = "A Key is inside...";
-    public string keyToFixMessage = "Put the key you want to repair";
-    public string woodenWheelMessage = "One element is missing";
-    public string edwardKeyMessage = "I have to find a Edward's key";
-    public string pumpkinMessage = "One pumpkin is missing";
-    public string booksMessage = "Select a book to replace";
-    public string insertCasseteMessage = "Insert the Cassete";
-    public string lackChipMessage = "No Chip...";
-    public string lockedDoorMessage = "This door is locked...";
-    public string lockedWardrobeMessage = "I need a key...";
-    public string thornsMessage = "I need something strong to destroy this";
-    public string lockedGardenDoorMessage = "I need an oil or something like this";
-    public string lockedFactoryDoorMessage = "I need the crowbar...";
-    public string lockedCornfieldDoorMessage = "I have to find a tool to cut this wire";
-    public string planksMessage = "Hmmm I have to destroy this";
-	public string stevenGrilleMessage = "I need something strong to destroy this...";
-    public string factoryLeverMessage = "Needs power...";
-    public string flashlightHint = "Press <color=#280DF6FF>[F]</color> to turn on / off a flashlight";
+    
     public string lightHint = "Press <color=#280DF6FF> Middle Mouse Button</color> to increase range of light";
     public string tasksHint = "Press <color=#280DF6FF>[ I ]</color> to see Inventory and Tasks";
 	public string sprintHint = "Press <color=#280DF6FF>[Left Shift]</color> to sprint";
     public string mapHint = "Press <color=#280DF6FF>[M]</color> to see a Map";
     public string crouchHint = "Press <color=#280DF6FF>[C]</color> to Crouch";
     public string doorHint = "Hold down <color=#280DF6FF>[Left Mouse Button]</color> and move the mouse in order to move the door.";
+
     public string secretItemNotification = "You picked up a Secret Item";
 	public string greenHerbNotification = "You picked up a <color=#33D047FF>Green Herb</color>";
 	public string blueHerbNotification = "You picked up a <color=#006EFFFF>Blue Herb</color>";
@@ -150,28 +88,6 @@ public class Notifications : MonoBehaviour {
     public string badgeNotification = "You picked up a <color=#F6FF04FF>Badge</color> to collection";
     public string photoNotification = "You picked up a <color=#F6FF04FF>Photo</color> to collection";
     public string tipNotification = "You picked up a <color=#F6FF04FF>Tip</color> to collection";
-    public string dragHint = "Hold down <color=#280DF6FF>[Left Mouse Button]</color> and move the mouse in order to move some objects.";
-
-    // komunikaty nad drzwiami
-
-    public string uncleDoorName = "Uncle's room";
-    public string stableDoorName = "Stable";
-    public string gardenDoorName = "A metal door to the garden";
-    public string cornfieldDoorName = "Door to the corn field";
-    public string corridorWardrobeName = "Wardrobe in corridor";
-    public string kitchenWardrobeName = "Wardrobe in the kitchen";
-    public string toolShedDoorName = "Shed";
-    public string secretRoomDoorName = "Secret room";
-    public string nicheDoorName = "Wooden door";
-    public string aliceRoomDoorName = "Alice's living room";
-    public string factoryWoodenDoorName = "Victor's workshop";
-    public string shedCupboardName = "Edward's cupboard";
-    public string tomRoomDoorName = "Tom's room";
-    public string tomUpstairsDoorName = "Tom's office";
-    public string oldWardrobeName = "Old wardrobe";
-    public string stevenDoorName = "Steven's room";
-    public string paulDoorName = "Scientist's room";
-    public string paulJumpscareDoorName = "Scientist's office";
 
     // komunikat dodania nowego zadania
 
@@ -189,15 +105,9 @@ public class Notifications : MonoBehaviour {
         playerScript = GameObject.Find("Player").GetComponent<Player>();
 
         firstDoorSoundScript = GameObject.Find("DrzwiDom").GetComponent<Door>();
-		player = GameObject.Find("Player").transform;
-        bookShelf = GameObject.Find("Biblioteka_Ksiazki").transform;
 
         gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu> ();
 		inventoryScript = GameObject.Find ("Player").GetComponent<Inventory> ();
-		tasksScript = GameObject.Find ("Player").GetComponent<Tasks> ();
-		taskWellScript = GameObject.Find ("StudniaTrigger").GetComponent<TaskWell> ();
-		taskBooksScript = GameObject.Find ("Player").GetComponent<TaskBooks> ();
-		screamerScript = GameObject.Find ("Player").GetComponent<Screamer> ();
 
 		//CanvasKomunikaty = GameObject.Find ("CanvasKomunikaty").GetComponent<Canvas> ();
 		mainNotificationTextMesh = GameObject.Find ("GlownyKomunikat").GetComponent<TextMeshProUGUI> ();
@@ -282,10 +192,6 @@ public class Notifications : MonoBehaviour {
 } 
 
 	void HideMainNotification(){
-
-		if(isLightNotification == false){
-			mainNotificationTextMesh.text = flashlightHint;
-		}
 
 		if(Input.GetButtonDown("Flashlight") && isLightNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
@@ -415,7 +321,6 @@ public class Notifications : MonoBehaviour {
     public void ShowInfoNotification(string notificationText)
     {
         infoNotificationTextMesh.text = notificationText;
-        notificationTime = 0;
         isNotificationTimeOn = true;
         StartCoroutine("NotificationTimeIE");
     }
@@ -424,7 +329,6 @@ public class Notifications : MonoBehaviour {
     {
         infoNotificationTextMesh.text = notificationText;
         audioSource.PlayOneShot(notificationSound);
-        notificationTime = 0;
         isNotificationTimeOn = true;
         StartCoroutine("NotificationTimeIE");
     }
@@ -433,7 +337,6 @@ public class Notifications : MonoBehaviour {
     {
         infoNotificationTextMesh.text = notificationText;
         audioSource.PlayOneShot(notificationSound);
-        notificationTime = 0;
         isNotificationTimeOn = true;
         doorNotificationTextMesh.text = doorName;
         StartCoroutine("NotificationTimeIE");
@@ -446,11 +349,10 @@ public class Notifications : MonoBehaviour {
 
     public void ShowSecretPlaceNotification(string notificationText, Text pointer)
     {
-        secretPlacesTime = 0f;
         secretPlacesNotificationTextMesh.text = notificationText;
         pointer.enabled = true;
-       // inventoryScript.itemAudioSource4.clip = inventoryScript.secretPlaceSound;
-       // inventoryScript.itemAudioSource4.Play();
+        audioSource.clip = secretPlaceSound;
+        audioSource4.Play();
         inventoryScript.secretPlacesCount++;
         StartCoroutine("SecretPlaceNotificationIE");
     }
@@ -481,20 +383,6 @@ public class Notifications : MonoBehaviour {
         gameMenuScript.headbobberScript.enabled = true;
         gameMenuScript.playerScript.currentVelocity = gameMenuScript.playerScript.walkVelocity;
         playerScript.isSprint = false;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-
-        if (other.gameObject.CompareTag("PtakSzalas_trigger") && isDragNotification == false)
-        {
-            mainNotificationTextMesh.text = "";
-
-            if (player.gameObject.GetComponent<DragObject>().objectToDrag != null)
-            {
-                isDragNotification = true;
-            }
-        }
     }
 }
 

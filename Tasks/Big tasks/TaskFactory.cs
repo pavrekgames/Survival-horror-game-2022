@@ -41,7 +41,7 @@ public class TaskFactory : MonoBehaviour {
 		if(isHasEnergy == false && leverAudioSource.isPlaying == false && isNotification == true && distance <= 11){ // 
 			notificationScript.infoNotificationTextMesh.text = notificationString;
 			notificationScript.isNotificationTimeOn = true;
-			notificationScript.notificationTime = 0;
+			
 		}else if(distance > 11 && isNotification == true){ // 
 			isNotification = false;
 		}else if(isHasEnergy == true){
