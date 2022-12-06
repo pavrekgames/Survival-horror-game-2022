@@ -6,82 +6,57 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-	public CharacterController characterControler;
-	private Camera playerCamera;
-
     public bool isSoundPlay = false;
 
+    private CharacterController characterControler;
+	private Camera playerCamera;
     private Animator animator;
-	private Transform player;
-	private Inventory inventoryScript;
-	private Notes notesScript;
-	private Headbobber headbobberScript;
-	public Menu gameMenuScript;
-	private Crouch crouchScript;
-	private CrouchCollision crouchCollisionScript;
-	public AudioSource audioSource;
-    public AudioClip tiredSound;
-	private Health healthScript;
-	public ScreenOverlay screenOverlayScript; 
+    private Crouch crouchScript;
+    private Health healthScript;
+    private ScreenOverlay screenOverlayScript;
 
-	private float playerHeight;
-
+    public AudioSource audioSource;
+    [SerializeField] private AudioClip tiredSound;
+	
+    [Header("Movement")]
     public float walkVelocity = 5f;
 	public float currentVelocity = 4.0f;
 	public float crouchVelocity = 4f;
     public float runVelocity = 12.0f;
 
+    [Header("Jump")]
+    private float playerHeight;
     public float jumpHeight = 2.0f;
 	public float currentJumpHeight = 0f;
 	private float jumpTime = 0;
 
-	public float mouseSensitivity = 10f;  
-	public float mouseUpDown = 0.0f;
-	public float mouseUpDownRange = 89.0f;
+    [Header("Mouse")]
+    public float mouseSensitivity = 10f;
+    [SerializeField] private float mouseUpDown = 0.0f;
+    [SerializeField] private float mouseUpDownRange = 89.0f;
 
-	// stamina
-	public float maxStamina = 150f;
-	public float currentStamina = 150f;
+    [Header("Stamina")]
+    public static float maxStamina = 150f;
+	public static float currentStamina = 150f;
 	public int staminaRegenerationFactor = 8;
 	public bool isRest = true;
 	public bool isSprint = false;
 	public bool isSprintEffect = false;
-    private Image staminaBar;
 
-	private bool isCrouch = false;
-
-    // Kolory staminy
-
-    private string defaultStaminaString = "#D2D7D7A7";
-    private string tiredStaminaString = "#FF5A5ABA";
-    private Color defaultStaminaColor;
-    private Color tiredStaminaColour;
 
 	void OnEnable(){
 
-        screenOverlayScript = GameObject.Find("Kamera").GetComponent<ScreenOverlay>();
-        player = GameObject.Find("Player").transform;
+        screenOverlayScript = GameObject.Find("PlayerCamera").GetComponent<ScreenOverlay>();
 		playerCamera = Camera.main;
 		characterControler = GetComponent<CharacterController>();
 		animator = GetComponent<Animator>();
 		playerHeight = characterControler.height;
-		inventoryScript = player.GetComponent<Inventory>();
-		notesScript = player.GetComponent<Notes>();
-		headbobberScript = GameObject.Find("Kamera").GetComponent<Headbobber>();
+		
 		crouchScript = GameObject.Find("Player").GetComponent<Crouch>();
-		crouchCollisionScript = GameObject.Find("KoliderKucanie").GetComponent<CrouchCollision>();
+		
 		healthScript = GameObject.Find("Player").GetComponent<Health>();
 		audioSource = GameObject.Find ("ZrodloZmeczenie_s").GetComponent<AudioSource> ();
-		//Zmeczenie = Resources.Load<AudioClip>("Muzyka/Oddychanie_v1");
-		gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
-
-        staminaBar = GameObject.Find("PasekStamina").GetComponent<Image>();
-        //PasekStamina.color = Color.magenta;
-
-        ColorUtility.TryParseHtmlString(defaultStaminaString, out defaultStaminaColor);
-        ColorUtility.TryParseHtmlString(tiredStaminaString, out tiredStaminaColour);
-
-        staminaBar.color = defaultStaminaColor;
+		
 
     }
 
@@ -121,7 +96,6 @@ public class Player : MonoBehaviour {
 		
 		float moveLeftRight = Input.GetAxis("Horizontal") * currentVelocity;
 
-		//Skakanie
 		
 		if(characterControler.isGrounded && Input.GetButton("Jump") && crouchScript.isCrouch == false){
 			currentJumpHeight = jumpHeight;
@@ -130,7 +104,6 @@ public class Player : MonoBehaviour {
 			currentJumpHeight += Physics.gravity.y * Time.deltaTime;
 		}
 
-		//Bieganie
 		if(Input.GetKey("left shift") && crouchScript.isCrouch == false && Input.GetAxis("Vertical") > 0 && isRest == true && screenOverlayScript.intensity == 0) {
 			currentVelocity = runVelocity;
 			currentStamina -= 4 * Time.deltaTime;
@@ -216,26 +189,20 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Stamina(){
-
-        staminaBar.fillAmount = currentStamina / maxStamina;
 		
 		if (currentStamina <= 0 && isRest == true && healthScript.health > 0) {
 			isRest = false;
 			audioSource.clip = tiredSound;
             audioSource.Play();
-            //PasekStamina.color = Color.red;
-            staminaBar.color = tiredStaminaColour;
 		}
 
         if ((isSprint == false && currentStamina <= maxStamina) || ((Input.GetAxis("Vertical") == 0) && (Input.GetAxis("Horizontal") == 0) && currentStamina <= maxStamina)) 
-        { // bylo to w pierwszym warunku !Input.GetKey("left shift")
+        { 
 			currentStamina += staminaRegenerationFactor * Time.deltaTime;
 		}
 
 		if (isRest == false && currentStamina >= 75) {
 			isRest = true;
-            //PasekStamina.color = Color.magenta;
-            staminaBar.color = defaultStaminaColor;
         }
 	}
 		

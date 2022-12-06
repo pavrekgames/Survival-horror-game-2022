@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class InventoryUI : MonoBehaviour {
 
@@ -50,6 +51,8 @@ public class InventoryUI : MonoBehaviour {
     private Image skill4_Icon;
 
     private int skillsCount = 0;
+
+    public event Action OnUsedItemFromSlot;
 
     void Start()
     {
@@ -168,6 +171,11 @@ public class InventoryUI : MonoBehaviour {
                     playerScript.audioSource.UnPause();
                     cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
 
+                    if(OnUsedItemFromSlot != null)
+                    {
+                        OnUsedItemFromSlot.Invoke();
+                    }
+
                     break;
                 }
             }
@@ -181,7 +189,7 @@ public class InventoryUI : MonoBehaviour {
             itemAudioSource.PlayOneShot(skillUnlockedSound);
             skill1_Icon.color = Color.green;
             isSkill1_Unlocked = true;
-            playerScript.maxStamina = 200;
+            Player.maxStamina = 200;
             inventoryScript.skillsCount++;
         }
     }

@@ -150,7 +150,7 @@ public class TreatmentUI : MonoBehaviour {
         if (inventoryScript.staminaPotsCount > 0)
         {
             inventoryScript.staminaPotsCount--;
-            playerScript.currentStamina += 60;
+            Player.currentStamina += 60;
             itemAudioSource3.PlayOneShot(usePotSound);
             staminaPotsText.text = inventoryScript.staminaPotsCount.ToString();
         }
