@@ -26,7 +26,7 @@ public class Tasks : MonoBehaviour {
     private TaskTower taskTowerScript;
     private TaskWheel taskWheelScript;
     private TaskFactory taskFactoryScript;
-    private Notifications notificationScript;
+    private NotificationUI notificationUIScript;
     private Music musicScript;
     private RandomJumpscare randomJumpscareScript;
     private GameManager gameManagerScript;
@@ -451,7 +451,7 @@ public class Tasks : MonoBehaviour {
 		taskTowerScript = GameObject.Find("PalAmbona").GetComponent<TaskTower>();
 		taskFactoryScript = GameObject.Find("DzwigniaZad").GetComponent<TaskFactory>();
 		taskWheelScript = GameObject.Find("BrakujaceDrewnianeKolo").GetComponent<TaskWheel>();
-		notificationScript = GameObject.Find("Player").GetComponent<Notifications>();
+		notificationUIScript = GameObject.Find("Player").GetComponent<NotificationUI>();
 		voiceActingAudioSourceScript = GameObject.Find("Player").GetComponent<VoiceActing>();
         musicScript = GameObject.Find("Player").GetComponent<Music>();
         randomJumpscareScript = GameObject.Find("Player").GetComponent<RandomJumpscare>();
@@ -667,7 +667,7 @@ public class Tasks : MonoBehaviour {
         audioSource.clip = newTaskSound;
         audioSource.Play();
         uiAnimator.SetTrigger("NewTask");
-        notificationScript.TaskHintNotification();
+        notificationUIScript.TaskHintNotification();
 
         if(OnAddedTask != null)
         {
