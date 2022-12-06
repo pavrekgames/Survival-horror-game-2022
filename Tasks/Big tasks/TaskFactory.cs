@@ -39,8 +39,7 @@ public class TaskFactory : MonoBehaviour {
 		float distance = Vector3.Distance(player.position, lever.position);
 	
 		if(isHasEnergy == false && leverAudioSource.isPlaying == false && isNotification == true && distance <= 11){ // 
-			notificationScript.infoNotificationTextMesh.text = notificationString;
-			notificationScript.isNotificationTimeOn = true;
+			
 			
 		}else if(distance > 11 && isNotification == true){ // 
 			isNotification = false;

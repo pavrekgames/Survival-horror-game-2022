@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour {
     private CrosshairGUI cursorScript;
     private Player playerScript;
     private Menu gameMenuScript;
-    private Notifications notificationScript;
+    private NotificationUI notificationUIScript;
     private InventoryUI inventoryUIScript;
 
     [Header("Inventory components")]
@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour {
 		playerScript = GameObject.Find ("Player").GetComponent<Player>();
 		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu>();
 		animator = GameObject.Find ("Player").GetComponent<Animator>();
-		notificationScript = GameObject.Find ("Player").GetComponent<Notifications>();
+		notificationUIScript = GameObject.Find ("Player").GetComponent<NotificationUI>();
 		itemAudioSource = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();  
 
     }
@@ -126,7 +126,7 @@ public class Inventory : MonoBehaviour {
     {
         audioSource.PlayOneShot(itemSound);
         itemsCount++;
-        notificationScript.notificationType = notificationType;
+        notificationUIScript.notificationType = notificationType;
         animator.SetTrigger("PickUp");
 
         if(OnAddedCollectibleItem != null)
