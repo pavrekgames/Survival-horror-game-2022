@@ -6,8 +6,8 @@ public class VoiceTrigger : MonoBehaviour {
 
     private VoiceActing voiceActingScript;
 
-    private AudioSource audioSource;
-    private AudioClip recording;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip recording;
 
     public bool isVoice;
 

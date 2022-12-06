@@ -5,10 +5,10 @@ using UnityEngine;
 public class VoiceScreamer : MonoBehaviour {
 
     private VoiceActing voiceActingScript;
-    private ScreamerSoundWithEvent screamer;
 
-    private AudioSource audioSource;
-    private AudioClip recording;
+    [SerializeField] private ScreamerSoundWithEvent screamer;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip recording;
 
     void Start () {
         voiceActingScript = GameObject.Find("Player").GetComponent<VoiceActing>();
