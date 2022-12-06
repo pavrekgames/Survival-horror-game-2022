@@ -6,35 +6,35 @@ using System.Collections.Generic;
 public class PlayerSounds : MonoBehaviour {
 
     private Transform player;
-	private Health healtScript;
-	public Crouch crouchScript;
-	public CharacterController characterControler;
+    private Player playerScript;
+    private Health healtScript;
+    private Crouch crouchScript;
+    private CharacterController characterControler;
 
-	public AudioSource audioSource1;
-	public AudioSource audioSource2;
-
-	public AudioClip jumpSound;
-	public AudioClip landSound;
-	public float stepCounter = 0f;
-    public float stepDuration = 0.6f;
-
-	public AudioClip[] dzwiekiLosowe;
+    [SerializeField] private AudioSource audioSource1;
+    [SerializeField] private AudioSource audioSource2;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip landSound;
+    [SerializeField] private float stepCounter = 0f;
+    [SerializeField] private float stepDuration = 0.6f;
 	
 	public bool isGround;
 	public bool isRun = false;
-		
-	private Player playerScript;
 
-    public TextureSound[] sounds;
+    [SerializeField] private TextureSound[] sounds;
     private TextureSound currentSound;
     private bool isCollide = false;
 
     void OnEnable () {
+
+        SetDefaultStepWalkSound();
+
         player = GetComponent<Transform>();
         playerScript = GetComponent<Player> ();
-        SetDefaultStepWalkSound();
-		healtScript = player.GetComponent<Health>();
-		audioSource2 = GameObject.Find ("LandAudioSource").GetComponent<AudioSource> ();
+        healtScript = player.GetComponent<Health>();
+        crouchScript = GetComponent<Crouch>();
+        characterControler = GetComponent<CharacterController>();
+        
     }
 	
 	void Update () {
@@ -118,6 +118,5 @@ public class PlayerSounds : MonoBehaviour {
         }
     }
    
-
 }
 

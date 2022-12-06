@@ -10,8 +10,8 @@ public class PlayerManager : MonoBehaviour {
     private Health healthScript;
     private Menu gameMenuScript;
 
-    public AudioMixerSnapshot pauseSoundSnapshot;
-    public AudioMixerSnapshot unPauseSoundSnapshot;
+    [SerializeField] private AudioMixerSnapshot pauseSoundSnapshot;
+    [SerializeField] private AudioMixerSnapshot unPauseSoundSnapshot;
 
     void Start () {
 
@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour {
 
     }
 	
-
 	void Update () {
 
         CheckSoundSnapshot();

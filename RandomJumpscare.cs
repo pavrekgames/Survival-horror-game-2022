@@ -274,7 +274,7 @@ public class RandomJumpscare : MonoBehaviour {
     IEnumerator MonsterJumpscare1_IE()
     {
         RandomMonster1Position();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForEndOfFrame();
         CheckMonster1Position();
 
     }
