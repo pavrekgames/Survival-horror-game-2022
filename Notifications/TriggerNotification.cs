@@ -9,7 +9,7 @@ public class TriggerNotification : MonoBehaviour {
     public string notificationText;
     public Canvas notifactionCanvas;
     public Text pointer;
-    public Notifications notificationScript;
+    public NotificationUI notificationUIScript;
 
     public enum NotificationType
     {
@@ -27,13 +27,13 @@ public class TriggerNotification : MonoBehaviour {
             switch (notificationType)
             {
                 case NotificationType.Main:
-                    notificationScript.ShowMainNotification(notificationText);
+                    notificationUIScript.ShowMainNotification(notificationText);
                     break;
                 case NotificationType.SecretPlace:
-                    notificationScript.ShowSecretPlaceNotification(notificationText, pointer);
+                    notificationUIScript.ShowSecretPlaceNotification(notificationText, pointer);
                     break;
                 case NotificationType.Tutorial:
-                    notificationScript.ShowTutorialNotification(notifactionCanvas);
+                    notificationUIScript.ShowTutorialNotification(notifactionCanvas);
                     break;
             }
             isTrigger = true;

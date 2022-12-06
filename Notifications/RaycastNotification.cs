@@ -7,7 +7,7 @@ public class RaycastNotification : MonoBehaviour {
     public string notificationText;
     public string doorName;
     public AudioClip notificationSound;
-    public Notifications notificationScript;
+    public NotificationUI notificationUIScript;
     public bool notificationOff;
 
     public enum CursorTag
@@ -24,17 +24,17 @@ public class RaycastNotification : MonoBehaviour {
 
             if (cursorTag == CursorTag.Door)
             {
-                notificationScript.ShowDoorNameNotification(notificationText, doorName, notificationSound);
+                notificationUIScript.ShowDoorNameNotification(notificationText, doorName, notificationSound);
             }
             else
             {
                 if (notificationSound != null)
                 {
-                    notificationScript.ShowInfoNotification(notificationText, notificationSound);
+                    notificationUIScript.ShowInfoNotification(notificationText, notificationSound);
                 }
                 else
                 {
-                    notificationScript.ShowInfoNotification(notificationText);
+                    notificationUIScript.ShowInfoNotification(notificationText);
                 }
             }
         }
