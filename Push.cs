@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Push : MonoBehaviour {
 
-    [SerializeField]
-    private float pushForce = 3f;
-
     private Transform player;
     private CrosshairGUI cursorScript;
-    public GameObject pushedObject;
+
+    [SerializeField] private float pushForce = 3f;
+    [SerializeField] private GameObject pushedObject;
 
     private Ray playerAim;
     private Camera playerCam;
-    public float rayLength = 4f;
+    [SerializeField] private float rayLength = 4f;
 
     void Start()
     {

@@ -19,7 +19,6 @@ public class Tasks : MonoBehaviour {
     public Twirl twirlScript;
     private Player playerScript;
     public Canvas axeBlackBackgroundCanvas;
-    private Screamer screamerScript;
     private Notes notesScript;
     private TaskWell taskWellScript;
     private TaskBones taskBonesScript;
@@ -444,7 +443,7 @@ public class Tasks : MonoBehaviour {
 		twirlScript = GameObject.Find("Kamera").GetComponent<Twirl>();
 		playerScript = GameObject.Find("Player").GetComponent<Player>();
 		axeBlackBackgroundCanvas = GameObject.Find("CanvasCzynnoscSiekiera").GetComponent<Canvas>();
-		screamerScript = GameObject.Find("Player").GetComponent<Screamer>();
+		
 		notesScript = GameObject.Find("Player").GetComponent<Notes>();
 		taskWellScript = GameObject.Find("StudniaTrigger").GetComponent<TaskWell>();
 		taskBonesScript = GameObject.Find("KoliderKosci").GetComponent<TaskBones>();

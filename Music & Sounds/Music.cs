@@ -6,7 +6,6 @@ public class Music : MonoBehaviour {
 
 	private Notes notesScript;
 	private Inventory inventoryScript;
-	private Screamer screamerScript;
 	private Tasks tasksScript;
 	private Jumpscare jumpscareScript;
 	public Monster2_v3 cornfieldMonsterScript;
@@ -170,7 +169,6 @@ public class Music : MonoBehaviour {
 
 		notesScript = GameObject.Find ("Player").GetComponent<Notes> ();
 		inventoryScript = GameObject.Find ("Player").GetComponent<Inventory> ();
-		screamerScript = GameObject.Find ("Player").GetComponent<Screamer> ();
 		tasksScript = GameObject.Find ("Player").GetComponent<Tasks> ();
 		jumpscareScript = GameObject.Find ("Player").GetComponent<Jumpscare> ();
 		voiceActingScript = GameObject.Find ("Player").GetComponent<VoiceActing> ();

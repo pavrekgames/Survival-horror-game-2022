@@ -28,7 +28,7 @@ public class VoiceActing : MonoBehaviour {
 	private Menu gameMenuScript;
     private Music musicScript;
     private Player playerScript;
-    private Screamer screamerScript;
+  
     private Jumpscare jumpscareScript;
     private TaskBooks taskBooksScript;
     private RandomJumpscare randomJumpscareScript;
@@ -334,7 +334,7 @@ public class VoiceActing : MonoBehaviour {
 		flashlightScript = GameObject.Find ("Latarka").GetComponent<Flashlight> ();
         musicScript = GameObject.Find("Player").GetComponent<Music>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
-        screamerScript = GameObject.Find("Player").GetComponent<Screamer>();
+       
         jumpscareScript = GameObject.Find("Player").GetComponent<Jumpscare>();
         taskBooksScript = GameObject.Find("Player").GetComponent<TaskBooks>();
         randomJumpscareScript = GameObject.Find("Player").GetComponent<RandomJumpscare>();
