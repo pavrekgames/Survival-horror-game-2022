@@ -6,8 +6,6 @@ using UnityEngine;
 public class Brightness : MonoBehaviour
 {
 
-    /// Provides a shader property that is set in the inspector
-    /// and a material instantiated from the shader
     public Shader shaderDerp;
     Material m_Material;
 
@@ -16,19 +14,16 @@ public class Brightness : MonoBehaviour
 
     void Start()
     {
-        // Disable if we don't support image effects
+        
         if (!SystemInfo.supportsImageEffects)
         {
             enabled = false;
             return;
         }
 
-        // Disable the image effect if the shader can't
-        // run on the users graphics card
         if (!shaderDerp || !shaderDerp.isSupported)
             enabled = false;
     }
-
 
     Material material
     {
@@ -42,7 +37,6 @@ public class Brightness : MonoBehaviour
             return m_Material;
         }
     }
-
 
     void OnDisable()
     {

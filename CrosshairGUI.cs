@@ -21,23 +21,6 @@ public class CrosshairGUI : MonoBehaviour {
     public Texture2D m_useWardrobeTexture;
     public Texture2D m_useMoveTexture;
 
-    public enum CursorState {
-        DefaultTexture,
-        DoorTexture,
-        HandTexture,
-        NoteTexture,
-        PushTexture,
-        SaveTexture,
-        Drawers1Texture,
-        Drawers2Texture,
-        WardrobeTexture,
-        Object1Texture,
-        Object2Texture,
-        Move1Texture,
-        Move2Texture,
-        MoveTaskTexture
-    };
-
     public CursorState currentCursorState;
 
     public bool m_ShowCursor = false;
@@ -45,7 +28,7 @@ public class CrosshairGUI : MonoBehaviour {
     private bool m_bIsCrosshairVisible = true;
     private Rect m_crosshairRect;
 
-    public float rayLength = 3f;
+    [SerializeField] private float rayLength = 3f;
     private Camera playerCam;
 
 	void OnEnable(){

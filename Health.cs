@@ -9,20 +9,30 @@ public class Health : MonoBehaviour {
 
     public bool isPlaySound = false;
 
-    public AudioClip[] damageSounds;
-    public int randomSound = 0;
+    private Transform player;
+    private Player playerScript;
+    private Animator animator;
+    private Inventory inventoryScript;
+    private SaveGame saveGameScript;
+    private Animator passAnimator;
+    private Menu gameMenuScript;
+    private Map mapScript;
 
-    public int maxHealth = 100;
+    private AudioClip[] damageSounds;
+    private AudioSource audioSource;
+    public AudioSource audioSource2;
+    private AudioSource damageAudioSource;
+    private AudioClip playerInjuredSound;
+    private AudioClip playerDeadSound;
+    private int randomSound = 0;
+
+    [HideInInspector] public int maxHealth = 100;
 	public float health;
 	public Canvas playerInjuredCanvas;
 	public Canvas playerDamageCanvas1;
 	public Canvas playerDamageCanvas2;
 	public Canvas playerDamageCanvas3;
-	public AudioSource audioSource;
-	public AudioSource audioSource2;
-    public AudioSource damageAudioSource;
-    public AudioClip playerInjuredSound;
-	public AudioClip playerDeadSound;
+    
 	public bool isPlayerInjured = false;
 	public NoiseAndScratches noisesScreenScript;
 	public ColorCorrectionRamp deadScreenScript;
@@ -31,14 +41,7 @@ public class Health : MonoBehaviour {
 	public bool isPass = false;
 	public bool isGameLoaded = false;
 	public float counter = 0;
-	private Transform player;
-	private Player playerScript;
-	private Animator animator;
-	private Inventory inventoryScript;
-	private SaveGame saveGameScript;
-	private Animator passAnimator;
-	private Menu gameMenuScript;
-    private Map mapScript;
+	
 
     public bool isTravel = false;
 

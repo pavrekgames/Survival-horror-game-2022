@@ -6,14 +6,14 @@ public class Flashlight : MonoBehaviour {
 	
     private PlayerManager playerManagerScript;
 	private Light flashlightLight;
-	public AudioClip flashlightOnSound;
-	public AudioClip flashlightOffSound;
-	public bool isFlashlightOn;
 	private Transform player;
-	public int lightRange = 40;
+	
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip flashlightOnSound;
+    [SerializeField] private AudioClip flashlightOffSound;
 
-    [SerializeField]
-    private AudioSource audioSource;
+    public int lightRange = 40;
+    public bool isFlashlightOn;
 
     void OnEnable () {
 		

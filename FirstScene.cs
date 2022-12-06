@@ -8,10 +8,12 @@ public class FirstScene : MonoBehaviour {
 
 	private Canvas pavrekSceneCanvas;
 	private AudioSource audioSource;
-	public AudioClip stormSound;
 	private Animator animator;
 	private Animator ligtingAnimator;
-	public bool isPass1 = false;
+
+    [SerializeField] private AudioClip stormSound;
+
+    public bool isPass1 = false;
 	public bool isPass2 = false;
 
 	void Start () {

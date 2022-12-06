@@ -6,36 +6,22 @@ using UnityEngine.UI;
 public class MapUI : MonoBehaviour {
 
     private Map mapScript;
-    private PlayerManager playerManagerScript;
-    public Canvas mapCanvas;
-    public RectTransform resolutionRect;
-    private Menu gameMenuScript;
-    private Inventory inventoryScript;
-    private Tasks tasksScript;
-    public bool isMap = false;
-    public AudioSource audioSource;
-    public AudioClip mapSound;
-    public AudioClip buttonSound;
-    public AudioClip fastTravelSound;
-    public Camera mapCamera;
     private Transform player;
     private Player playerScript;
-    private Health healthScript;
-    private Notes notesScript;
-    private Notifications notificationScript;
-    private StraszakScarecrow scarecrowJumpscareScript;
 
-    private RectTransform wholeMapRect;
-    private RectTransform pointerRect;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip buttonSound;
+    [SerializeField] private AudioClip fastTravelSound;
 
-    private Camera playerCam;
-    private CrosshairGUI cursorScript;
-
-    // Szybka podroz
-
+    [SerializeField] private Transform grandmaHousePoint;
+    [SerializeField] private Transform aliceHousePoint;
+    [SerializeField] private Transform tomHousePoint;
+    [SerializeField] private Transform abandonedHousePoint;
+    [SerializeField] private Transform stevenHousePoint;
+    [SerializeField] private Transform paulHousePoint;
+    
     public bool isFastTravel = true;
     private Canvas fastTravleCanvas;
-    private Button fastTravelButon;
 
     private Image aliceHouseTravelImage;
     private Image tomHouseTravelImage;
@@ -43,14 +29,6 @@ public class MapUI : MonoBehaviour {
     private Image stevenHouseTravelImage;
     private Image PaulHouseTravelImage;
 
-    private Transform grandmaHousePoint;
-    private Transform aliceHousePoint;
-    private Transform tomHousePoint;
-    private Transform abandonedHousePoint;
-    private Transform stevenHousePoint;
-    private Transform paulHousePoint;
-
-    // map UI
     public Text woodenKeyPointer;
     public Text magicWellPointer;
     public Image stonesAreaPointer;
@@ -98,73 +76,27 @@ public class MapUI : MonoBehaviour {
     public Text secretRoomPointer;
 
     void Start () {
-		
-	}
-	
+        fastTravleCanvas = GameObject.Find("CanvasFastTravel").GetComponent<Canvas>();
 
-	void Update () {
-		
-	}
+        aliceHouseTravelImage = GameObject.Find("MiejsciePodrozyDomAlice").GetComponent<Image>();
+        tomHouseTravelImage = GameObject.Find("MiejsciePodrozyDomTom").GetComponent<Image>();
+        abandonedHouseTravelImage = GameObject.Find("MiejsciePodrozyDomOpuszczony").GetComponent<Image>();
+        stevenHouseTravelImage = GameObject.Find("MiejsciePodrozyDomSteven").GetComponent<Image>();
+        PaulHouseTravelImage = GameObject.Find("MiejsciePodrozyDomPaul").GetComponent<Image>();
+
+        grandmaHousePoint = GameObject.Find("PunktZadaniaDomBabci").transform;
+        aliceHousePoint = GameObject.Find("PunktZadaniaDomAlice").transform;
+        tomHousePoint = GameObject.Find("PunktZadaniaDomTom").transform;
+        abandonedHousePoint = GameObject.Find("PunktZadaniaOpuszczonyDom").transform;
+        stevenHousePoint = GameObject.Find("PunktZadaniaDomSteven").transform;
+        paulHousePoint = GameObject.Find("PunktZadaniaDomNaukowca").transform;
+    }
+	
 
     public void FastTravel()
     {
         fastTravleCanvas.enabled = true;
         audioSource.PlayOneShot(buttonSound);
-
-        // czy mozliwa podroz do domu Alice
-
-        if (tasksScript.isAliceSearchTask == true)
-        {
-            aliceHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            aliceHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Tom
-
-        if (tasksScript.isTomPumpkinTask == true || tasksScript.isTomCornifieldTask == true)
-        {
-            tomHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            tomHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Opuszczony
-
-        if (tasksScript.isStevenSearchTask == true)
-        {
-            abandonedHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            abandonedHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Steven
-
-        if (tasksScript.isStevenKeyTask == true)
-        {
-            stevenHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            stevenHouseTravelImage.enabled = false;
-        }
-
-        // czy mozliwa podroz do domu Paul
-
-        if (tasksScript.isHutTask == true)
-        {
-            PaulHouseTravelImage.enabled = true;
-        }
-        else
-        {
-            PaulHouseTravelImage.enabled = false;
-        }
 
     }
 
