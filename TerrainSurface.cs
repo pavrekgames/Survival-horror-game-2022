@@ -14,12 +14,12 @@ public class TerrainSurface : MonoBehaviour {
 		int mapX = (int)(((playerPosition.x - terrainPosition.x) / terrainData.size.x) * terrainData.alphamapWidth);
 		int mapZ = (int)(((playerPosition.z - terrainPosition.z) / terrainData.size.z) * terrainData.alphamapHeight);
 
-		float[,,] splatmapdata = terrainData.GetAlphamaps(mapX, mapZ, 1, 1);
+		float[,,] splatMapData = terrainData.GetAlphamaps(mapX, mapZ, 1, 1);
 
-		float[] targetMix = new float[splatmapdata.GetUpperBound(2) + 1];
+		float[] targetMix = new float[splatMapData.GetUpperBound(2) + 1];
 
 		for(int n = 0; n < targetMix.Length; ++n){
-			targetMix[n] = splatmapdata[0, 0, n];
+			targetMix[n] = splatMapData[0, 0, n];
 		}
 
 		return targetMix;
