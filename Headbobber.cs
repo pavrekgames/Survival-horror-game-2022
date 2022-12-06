@@ -85,7 +85,5 @@ public class Headbobber : MonoBehaviour {
             bobbingSpeed = 0.5f;
             bobbingAmount = 0.02f;
         }
-
     }
-
 }

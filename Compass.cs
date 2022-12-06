@@ -11,7 +11,7 @@ public class Compass : MonoBehaviour {
 
     public List<TaskPoint> tasksPoints = new List<TaskPoint>();
 
-    float compassUnit;
+    private float compassUnit;
 
     public TaskPoint[] taskPointsArray;
 

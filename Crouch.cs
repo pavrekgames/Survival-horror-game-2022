@@ -5,26 +5,26 @@ using UnityEngine;
 public class Crouch : MonoBehaviour {
 
     private PlayerManager playerManagerScript;
+    private Transform player;
+    private Animator animator;
 
-	public float couchFactor = 0.6f;
-	public float couchTime = 5f;
-	public float currentHeight;
-	public float getUpHeight;
-	public float crouchHeight;
-	public bool isCrouch = false;
+    [SerializeField] private float couchFactor = 0.6f;
+	[SerializeField] private float currentHeight;
+	[SerializeField] private float playerHeight;
+	[SerializeField] private float crouchHeight;
 
-	public CrouchCollision crouchCollisionScript;
-	private Transform player;
-	private Animator animator;
-    private AudioSource audioSource;
-    public AudioClip crouchSound;
+	[SerializeField] private CrouchCollision crouchCollisionScript;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip crouchSound;
 
-	void OnEnable(){
+    public bool isCrouch = false;
+
+    void OnEnable(){
 
 		player = GameObject.Find("Player").transform;
         playerManagerScript = player.GetComponent<PlayerManager>();
         currentHeight = transform.localScale.y;
-		getUpHeight = transform.localScale.y;
+		playerHeight = transform.localScale.y;
 		crouchHeight = transform.localScale.y * couchFactor;
 		animator = GetComponent<Animator>();
         audioSource = GameObject.Find("CrouchAudioSource").GetComponent<AudioSource>();
@@ -62,7 +62,7 @@ public class Crouch : MonoBehaviour {
 
         if(crouchCollisionScript.isCollide == false)
         {
-            currentHeight = getUpHeight;
+            currentHeight = playerHeight;
             isCrouch = false;
             animator.SetBool("isCrouch", false);
             animator.SetBool("isGetUp", true);

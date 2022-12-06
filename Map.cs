@@ -9,20 +9,12 @@ public class Map : MonoBehaviour {
     private PlayerManager playerManagerScript;
 	public Canvas mapCanvas;
     public RectTransform resolutionRect;
-	private Menu gameMenuScript;
-	private Inventory inventoryScript;
-    private Tasks tasksScript;
 	public bool isMap = false;
-	public AudioSource audioSource;
-	public AudioClip mapSound;
-    public AudioClip buttonSound;
-    public AudioClip fastTravelSound;
+    private AudioSource audioSource;
+    private AudioClip mapSound;
 	public Camera mapCamera;
 	private Transform player;
     private Player playerScript;
-	private Health healthScript;
-	private Notes notesScript;
-    private Notifications notificationScript;
     private StraszakScarecrow scarecrowJumpscareScript;
 
     private RectTransform wholeMapRect;
@@ -56,12 +48,6 @@ public class Map : MonoBehaviour {
         player = GameObject.Find("Player").transform;
         playerManagerScript = player.GetComponent<PlayerManager>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
-        healthScript = GameObject.Find("Player").GetComponent<Health>();
-		notesScript = GameObject.Find("Player").GetComponent<Notes>();
-		gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
-		inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
-        tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
-        notificationScript = GameObject.Find("Player").GetComponent<Notifications>();
         scarecrowJumpscareScript = GameObject.Find("Player").GetComponent<StraszakScarecrow>();
         mapCanvas = GameObject.Find("CanvasMapa").GetComponent<Canvas>();
         resolutionRect = GameObject.Find("CanvasKomunikaty").GetComponent<RectTransform>();
@@ -69,35 +55,13 @@ public class Map : MonoBehaviour {
         wholeMapRect = mapCanvas.GetComponent<RectTransform>();
 
         audioSource = GameObject.Find("ZrodloMapa_s").GetComponent<AudioSource>();
-		//DzwMapy = Resources.Load<AudioClip>("Muzyka/Mapa");
 		mapCamera = GameObject.Find("MapaKamera").GetComponent<Camera>();
-		//Gui = GameObject.Find("Kamera").GetComponent<CrosshairGUI>();
 
         cursorScript = GameObject.Find("Kamera").GetComponent<CrosshairGUI>();
 
         SetPointer();
 
         mapCamera.gameObject.SetActive (false);
-
-        // szybka podroz
-
-        fastTravleCanvas = GameObject.Find("CanvasFastTravel").GetComponent<Canvas>();
-        fastTravelButon = GameObject.Find("SzybkaPodrozTextButton").GetComponent<Button>();
-
-        aliceHouseTravelImage = GameObject.Find("MiejsciePodrozyDomAlice").GetComponent<Image>();
-        tomHouseTravelImage = GameObject.Find("MiejsciePodrozyDomTom").GetComponent<Image>();
-        abandonedHouseTravelImage = GameObject.Find("MiejsciePodrozyDomOpuszczony").GetComponent<Image>();
-        stevenHouseTravelImage = GameObject.Find("MiejsciePodrozyDomSteven").GetComponent<Image>();
-        PaulHouseTravelImage = GameObject.Find("MiejsciePodrozyDomPaul").GetComponent<Image>();
-
-        grandmaHousePoint = GameObject.Find("PunktZadaniaDomBabci").transform;
-        aliceHousePoint = GameObject.Find("PunktZadaniaDomAlice").transform;
-        tomHousePoint = GameObject.Find("PunktZadaniaDomTom").transform;
-        abandonedHousePoint = GameObject.Find("PunktZadaniaOpuszczonyDom").transform;
-        stevenHousePoint = GameObject.Find("PunktZadaniaDomSteven").transform;
-        paulHousePoint = GameObject.Find("PunktZadaniaDomNaukowca").transform;
-
-        isFastTravel = true;
 
     }
 

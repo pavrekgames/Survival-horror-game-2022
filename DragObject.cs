@@ -64,9 +64,7 @@ public class DragObject : MonoBehaviour {
             {
                 DragMoveTaskObject();
             }
-
         }
-
     }
 
     void Update() {
@@ -83,9 +81,7 @@ public class DragObject : MonoBehaviour {
             {
                 DropMoveTaskObject();
             }
-
         }
-
     }
 
     private void SetDrag(ObjectType objectType, GameObject objectToDrag)
@@ -149,7 +145,6 @@ public class DragObject : MonoBehaviour {
 
     public void SetDefaultValues()
     {
-
         if(objectToDrag != null)
         {
             isDragged = false;
@@ -158,7 +153,5 @@ public class DragObject : MonoBehaviour {
             objectToDrag.layer = 9;
             objectToDrag = null;
         }
-
     }
-
 }
