@@ -5,33 +5,30 @@ using UnityEngine;
 public class Music : MonoBehaviour {
 
 	private Jumpscare jumpscareScript;
-	public Monster2_v3 cornfieldMonsterScript;
-    public Monster1_SzopaSteven1 stevenMonster1_Script;
-    public Monster1_SzopaSteven2 stevenMonster2_Script;
-	public Monster1_v3 meatMonsterScript;
+    private Monster2_v3 cornfieldMonsterScript;
+    private Monster1_v3 meatMonsterScript;
 
-    public AudioSource[] musicAudioSources;
-    public AudioSource backgroundAudioSource1;
-	public AudioSource backgroundAudioSource2;
-	public AudioSource backgroundAudioSource3;
-	public AudioSource monsterBackgroundAudioSource1;
-	public AudioSource monsterBackgroundAudioSource2;
+    [SerializeField] private AudioSource[] musicAudioSources;
+    private AudioSource backgroundAudioSource1;
+    private AudioSource backgroundAudioSource2;
+    private AudioSource backgroundAudioSource3;
+    private AudioSource monsterBackgroundAudioSource1;
+    private AudioSource monsterBackgroundAudioSource2;
 
-	public float randomMusicDuration = 0;
-	public bool isMusicOff = false;
+    [SerializeField] private AudioClip[] actionMusics;
+    [SerializeField] private AudioClip cornfieldMusic;
+    [SerializeField] private AudioClip monsterMusic1;
+    [SerializeField] private AudioClip monsterMusic2;
+    [SerializeField] private AudioClip monsterMusic3;
+    [SerializeField] private AudioClip monsterMusic4;
+    [SerializeField] private AudioClip monsterMusic5;
+    [SerializeField] private AudioClip monsterMusic6;
 
-
-    public AudioClip[] actionMusics;
+    public float randomMusicDuration = 0;
+    public bool isMusicOff = false;
     public int randomMusicActionIndex;
 
-    public AudioClip cornfieldMusic;
-    public AudioClip monsterMusic1;
-	public AudioClip monsterMusic2;
-	public AudioClip monsterMusic3;
-	public AudioClip monsterMusic4;
-	public AudioClip monsterMusic5;
-	public AudioClip monsterMusic6;
-
+    [Header("Monster music states")]
     public bool isGardenMonsterMusic = false;
 	public bool isGardenMonsterMusic_On = false;
 	public bool isWorkshopMonsterMusic = false;
@@ -50,7 +47,6 @@ public class Music : MonoBehaviour {
 	public bool isMeatMonsterMusic_On = false;
     public bool isBasementMonsterMusic = false;
     public bool isPlantMonsterMusic = false;
-    public bool isStevenMonsterMusic = false;
 
     public delegate void PlayMonsterMusicDelegate();
     public PlayMonsterMusicDelegate PlayMonsterMusic; 
@@ -60,8 +56,6 @@ public class Music : MonoBehaviour {
 		jumpscareScript = GameObject.Find ("Player").GetComponent<Jumpscare> ();
 		
         cornfieldMonsterScript = GameObject.Find("Monster2_v3").GetComponent<Monster2_v3>();
-		stevenMonster1_Script = GameObject.Find("Monster1_SzopaSteven").GetComponent<Monster1_SzopaSteven1>();
-		stevenMonster2_Script = GameObject.Find("Monster1_SzopaSteven2").GetComponent<Monster1_SzopaSteven2>();
 		meatMonsterScript = GameObject.Find("Monster1_v3").GetComponent<Monster1_v3>();
 
         backgroundAudioSource1 = GameObject.Find ("MuzykaTlo").GetComponent<AudioSource> (); // ciche
@@ -70,68 +64,19 @@ public class Music : MonoBehaviour {
 		monsterBackgroundAudioSource1 = GameObject.Find ("MuzykaTloPotwory").GetComponent<AudioSource> (); // cicha
 		monsterBackgroundAudioSource2 = GameObject.Find ("MuzykaTloPotwory2").GetComponent<AudioSource> (); // srednia
 
-		cornfieldMonsterScript.gameObject.SetActive (false);
-		stevenMonster1_Script.gameObject.SetActive (false);
-		stevenMonster2_Script.gameObject.SetActive (false);
+        cornfieldMonsterScript.gameObject.SetActive(false);
 		meatMonsterScript.gameObject.SetActive (false);
 
 	}
 	
-
 	void Update () {
 
-        // Zwiekszanie glosnosci muzyki
-
-		if (backgroundAudioSource1.volume < 1 && Time.timeScale == 1 && isMusicOff == false && backgroundAudioSource2.clip == null) {
-			backgroundAudioSource1.volume = backgroundAudioSource1.volume += (Time.deltaTime / 25);
-		}
-
-		 else if (backgroundAudioSource2.volume < 1 && Time.timeScale == 1 && isMusicOff == false && backgroundAudioSource1.clip == null) {
-			backgroundAudioSource2.volume = backgroundAudioSource2.volume += (Time.deltaTime / 25);
-		}
-
-		// Zmniejszanie glosnosci muzyki
-
-		if (isMusicOff == true && Time.timeScale == 1 && backgroundAudioSource1.clip != null) {
-			backgroundAudioSource1.volume = backgroundAudioSource1.volume -= (Time.deltaTime / 4);
-			backgroundAudioSource1.loop = false;
-		}
-
-		if (isMusicOff == true && Time.timeScale == 1 && backgroundAudioSource2.clip != null) {
-			backgroundAudioSource2.volume = backgroundAudioSource2.volume -= (Time.deltaTime / 4);
-			backgroundAudioSource2.loop = false;
-		}
-
-		if (isMusicOff == true && Time.timeScale == 1 && backgroundAudioSource3.clip != null) {
-			backgroundAudioSource3.volume = backgroundAudioSource3.volume -= (Time.deltaTime / 4);
-			backgroundAudioSource3.loop = false;
-		}
-
-        if (isMusicOff == true && Time.timeScale == 1 && monsterBackgroundAudioSource1.clip != null)
-        {
-            monsterBackgroundAudioSource1.volume = monsterBackgroundAudioSource1.volume -= (Time.deltaTime / 4);
-        }
-
-        if (backgroundAudioSource1.volume <= 0 && isMusicOff == true) {
-			backgroundAudioSource1.clip = null;
-			isMusicOff = false;
-		}
-
-		if (backgroundAudioSource2.volume <= 0 && isMusicOff == true) {
-			backgroundAudioSource2.clip = null;
-			isMusicOff = false;
-		}
-
-		if (backgroundAudioSource3.volume <= 0 && isMusicOff == true) {
-			backgroundAudioSource3.clip = null;
-			isMusicOff = false;
-		}
-
-        if (monsterBackgroundAudioSource1.volume <= 0 && isMusicOff == true)
-        {
-            monsterBackgroundAudioSource1.clip = null;
-            isMusicOff = false;
-        }
+        MusicTurnUp();
+        MusicTurnDown();
+        SetAudioToNull();
+        SetAudioToNullWhereMusicOff();
+        PlayMonsterMusic();
+        MusicWithoutTask();
 
         // Zatrzymywanie muzyki
 
@@ -182,34 +127,103 @@ public class Music : MonoBehaviour {
                 monsterBackgroundAudioSource2.UnPause();
             }
         }
+    }
 
-			
-		// muzyka bez zadania
+    void MusicWithoutTask()
+    {
+        if (backgroundAudioSource1.clip == null && backgroundAudioSource2.clip == null && backgroundAudioSource3.clip == null && randomMusicDuration <= 120)
+        {
+            randomMusicDuration += 1 * Time.deltaTime;
+        }
 
-		if(backgroundAudioSource1.clip == null && backgroundAudioSource2.clip == null && backgroundAudioSource3.clip == null && randomMusicDuration <= 120){
-			randomMusicDuration += 1 * Time.deltaTime;
-		}
+        if (randomMusicDuration >= 120)
+        {
+            PlayRandomMusic();
+        }
+    }
 
-		if (randomMusicDuration >= 120) {
-			PlayRandomMusic ();
-		}
+    void MusicTurnUp()
+    {
+        if (backgroundAudioSource1.volume < 1 && Time.timeScale == 1 && isMusicOff == false && backgroundAudioSource2.clip == null)
+        {
+            backgroundAudioSource1.volume = backgroundAudioSource1.volume += (Time.deltaTime / 25);
+        }
 
-		// Danie clipu na null 
+        else if (backgroundAudioSource2.volume < 1 && Time.timeScale == 1 && isMusicOff == false && backgroundAudioSource1.clip == null)
+        {
+            backgroundAudioSource2.volume = backgroundAudioSource2.volume += (Time.deltaTime / 25);
+        }
+    }
 
-		if (backgroundAudioSource1.isPlaying == false && backgroundAudioSource1.clip != null && Time.timeScale == 1) {
-			backgroundAudioSource1.clip = null;
-		}
+    void MusicTurnDown()
+    {
+        if (isMusicOff == true && Time.timeScale == 1 && backgroundAudioSource1.clip != null)
+        {
+            backgroundAudioSource1.volume = backgroundAudioSource1.volume -= (Time.deltaTime / 4);
+            backgroundAudioSource1.loop = false;
+        }
 
-		else if (backgroundAudioSource2.isPlaying == false && backgroundAudioSource2.clip != null && Time.timeScale == 1) {
-			backgroundAudioSource2.clip = null;
-		}
+        if (isMusicOff == true && Time.timeScale == 1 && backgroundAudioSource2.clip != null)
+        {
+            backgroundAudioSource2.volume = backgroundAudioSource2.volume -= (Time.deltaTime / 4);
+            backgroundAudioSource2.loop = false;
+        }
 
-		else if (backgroundAudioSource3.isPlaying == false && backgroundAudioSource3.clip != null && Time.timeScale == 1) {
-			backgroundAudioSource3.clip = null;
-		}
+        if (isMusicOff == true && Time.timeScale == 1 && backgroundAudioSource3.clip != null)
+        {
+            backgroundAudioSource3.volume = backgroundAudioSource3.volume -= (Time.deltaTime / 4);
+            backgroundAudioSource3.loop = false;
+        }
 
-        PlayMonsterMusic();
+        if (isMusicOff == true && Time.timeScale == 1 && monsterBackgroundAudioSource1.clip != null)
+        {
+            monsterBackgroundAudioSource1.volume = monsterBackgroundAudioSource1.volume -= (Time.deltaTime / 4);
+        }
+    }
 
+    void SetAudioToNull()
+    {
+        if (backgroundAudioSource1.isPlaying == false && backgroundAudioSource1.clip != null && Time.timeScale == 1)
+        {
+            backgroundAudioSource1.clip = null;
+        }
+
+        else if (backgroundAudioSource2.isPlaying == false && backgroundAudioSource2.clip != null && Time.timeScale == 1)
+        {
+            backgroundAudioSource2.clip = null;
+        }
+
+        else if (backgroundAudioSource3.isPlaying == false && backgroundAudioSource3.clip != null && Time.timeScale == 1)
+        {
+            backgroundAudioSource3.clip = null;
+        }
+    }
+
+    void SetAudioToNullWhereMusicOff()
+    {
+        if (backgroundAudioSource1.volume <= 0 && isMusicOff == true)
+        {
+            backgroundAudioSource1.clip = null;
+            isMusicOff = false;
+        }
+
+        if (backgroundAudioSource2.volume <= 0 && isMusicOff == true)
+        {
+            backgroundAudioSource2.clip = null;
+            isMusicOff = false;
+        }
+
+        if (backgroundAudioSource3.volume <= 0 && isMusicOff == true)
+        {
+            backgroundAudioSource3.clip = null;
+            isMusicOff = false;
+        }
+
+        if (monsterBackgroundAudioSource1.volume <= 0 && isMusicOff == true)
+        {
+            monsterBackgroundAudioSource1.clip = null;
+            isMusicOff = false;
+        }
     }
 
 	void PlayRandomMusic(){
@@ -404,25 +418,6 @@ public class Music : MonoBehaviour {
         {
             monsterBackgroundAudioSource1.Stop();
             isPlantMonsterMusic = false;
-        }
-
-    }
-
-    void PlayMonsterStevenMusic()
-    {
-        if ((stevenMonster1_Script.Widzi_ok == true || stevenMonster2_Script.Widzi_ok == true) && isStevenMonsterMusic == false)
-        {
-            monsterBackgroundAudioSource1.volume = 0;
-            monsterBackgroundAudioSource1.clip = monsterMusic5;
-            monsterBackgroundAudioSource1.Play();
-            isStevenMonsterMusic = true;
-        }
-
-        if (jumpscareScript.stevenShedMonster1.activeSelf == false && isStevenMonsterMusic == true)
-        {
-            //ZrodloDzwPotwory.Stop();
-            isMusicOff = true;
-            isStevenMonsterMusic = false;
         }
 
     }
