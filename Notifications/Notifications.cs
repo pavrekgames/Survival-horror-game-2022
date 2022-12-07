@@ -10,7 +10,7 @@ public class Notifications : MonoBehaviour {
 
 	private Ray playerAim;
 	private Camera playerCam;
-	public float rayLength = 4f;
+	[SerializeField] private float rayLength = 4f;
 
     void OnEnable () {
 

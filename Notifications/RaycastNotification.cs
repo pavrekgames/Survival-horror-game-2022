@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class RaycastNotification : MonoBehaviour {
 
-    public string notificationText;
-    public string doorName;
-    public AudioClip notificationSound;
-    public NotificationUI notificationUIScript;
-    public bool notificationOff;
+    [SerializeField] private string notificationText;
+    [SerializeField] private string doorName;
+    [SerializeField] private AudioClip notificationSound;
+    [SerializeField] private NotificationUI notificationUIScript;
+    [SerializeField] private bool notificationOff;
 
     public enum CursorTag
     {
