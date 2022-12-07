@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class TriggerNotification : MonoBehaviour {
 
-    public bool isTrigger;
-    public string notificationText;
-    public Canvas notifactionCanvas;
-    public Text pointer;
-    public NotificationUI notificationUIScript;
+    [SerializeField] private bool isTrigger;
+    [SerializeField] private string notificationText;
+    [SerializeField] private Canvas notifactionCanvas;
+    [SerializeField] private Text pointer;
+    [SerializeField] private NotificationUI notificationUIScript;
 
     public enum NotificationType
     {

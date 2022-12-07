@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class Music : MonoBehaviour {
 
-	private Notes notesScript;
-	private Inventory inventoryScript;
-	private Tasks tasksScript;
 	private Jumpscare jumpscareScript;
 	public Monster2_v3 cornfieldMonsterScript;
     public Monster1_SzopaSteven1 stevenMonster1_Script;
     public Monster1_SzopaSteven2 stevenMonster2_Script;
 	public Monster1_v3 meatMonsterScript;
-	private VoiceActing voiceActingScript;
-	private TaskBones bonesTaskScript;
-	private TaskBooks booksTaskScript;
-    private MonsterPotok1 brookMonsterScript;
-    private Map mapScript;
 
     public AudioSource[] musicAudioSources;
     public AudioSource backgroundAudioSource1;
@@ -28,119 +20,17 @@ public class Music : MonoBehaviour {
 	public float randomMusicDuration = 0;
 	public bool isMusicOff = false;
 
-	public bool isHouseLightMusicOff = false;
-	public bool isSimonWorkshopMusicOff = false;
-    public bool isOldShedMusicOff = false;
-    public bool isOldShedMusic2Off = false;
-	public bool isAfterTomMusicOff = false;
-
-	public AudioClip bacgroundMusic1;
-	public AudioClip bacgroundMusic2;
-	public AudioClip bacgroundMusic3;
-	public AudioClip bacgroundMusic4;
-	public AudioClip bacgroundMusic5;
-	public AudioClip bacgroundMusic6;
-	public AudioClip bacgroundMusic7;
-	public AudioClip bacgroundMusic8;
-	public AudioClip bacgroundMusic9;
-	public AudioClip bacgroundMusic10;
-	public AudioClip bacgroundMusic11;
-	public AudioClip bacgroundMusic12;
-	public AudioClip bacgroundMusic13;
-	public AudioClip bacgroundMusic14;
-	public AudioClip bacgroundMusic15;
-	public AudioClip bacgroundMusic16;
-    public AudioClip bacgroundMusic17;
-    public AudioClip bacgroundMusic18;
-    public AudioClip bacgroundMusic19;
-    public AudioClip bacgroundMusic20;
-	public AudioClip bacgroundMusic21;
-	public AudioClip bacgroundMusic22;
-	public AudioClip bacgroundMusic23;
-	public AudioClip bacgroundMusic24;
-	public AudioClip bacgroundMusic25;
-	public AudioClip bacgroundMusic26;
-	public AudioClip bacgroundMusic27;
-	public AudioClip bacgroundMusic28;
-	public AudioClip bacgroundMusic29;
-    public AudioClip beginMusic;
-    public AudioClip beginMonsterMusic;
-    public AudioClip mysteryMusic;
-    public AudioClip violinMusic;
-    public AudioClip cornfieldMusic;
-    public AudioClip shudderMusic;
-    public AudioClip epicMusic;
-    public AudioClip longEpicMusic;
-    public AudioClip anxiousMusic;
-    public AudioClip anxiousMusic2;
-    public AudioClip deepAmbienceMusic;
 
     public AudioClip[] actionMusics;
     public int randomMusicActionIndex;
 
-
+    public AudioClip cornfieldMusic;
     public AudioClip monsterMusic1;
 	public AudioClip monsterMusic2;
 	public AudioClip monsterMusic3;
 	public AudioClip monsterMusic4;
 	public AudioClip monsterMusic5;
 	public AudioClip monsterMusic6;
-
-    public bool isBeginMusic = false;
-    public bool isBeginMonsterMusic = false;
-    public bool isBeginMonsterMusicStop = false;
-    public bool isAfterWolfMusic = false;
-    public bool isBehindHouseMusic = false;
-	public bool isKitchenMusic = false;
-	public bool isUncleRoomMusic = false;
-	public bool isMusicStop = false;
-	public bool isToolShedMusic = false;
-	public bool isWellMusic = false;
-	public bool isWellAnxiousMusic = false;
-	public bool isStableMusic = false;
-	public bool isGardenMusic = false;
-	public bool isBonesMusic = false;
-	public bool isAliceMusic = false;
-	public bool isAliceShedMusic = false;
-	public bool isWorkshopMusic = false;
-	public bool isWorkshopSimonMusic = false;
-	public bool isAnimalCemetaryMusic = false;
-	public bool isAliceRoomMusic = false;
-	public bool isShedMusic = false;
-	public bool isOldShedMusic = false;
-	public bool isBeforeTomMusic = false;
-	public bool isTomMusic = false;
-	public bool isTomHallMusic = false;
-	public bool isTom2Music = false;
-	public bool isBooksMusic = false;
-	public bool isTom3Music = false;
-	public bool isCornfieldMusic = false;
-	public bool isTomCampMusic = false;
-	//public bool KlimatOboz2_ok = false;
-	public bool isTomUpstairsMusic = false;
-	public bool isTomUpstairs2Music = false;
-	public bool isAfterTomMusic = false;
-	public bool isFeederMusic = false;
-	public bool isBeforeStevenMusic = false;
-	public bool isStevenMusic = false;
-	public bool isMeatMusic = false;
-	public bool isStevenUpstairsMusic = false;
-	public bool isStevenShedMusic = false;
-	public bool isBeforePaulMusic = false;
-	public bool isPaulMusic = false;
-	public bool isPaulUpstairsMusic = false;
-	public bool isHutMusic = false;
-    public bool isMonsterUpstairsMusic = false;
-    public bool isMonsterUpstairs2Music = false;
-	public bool isBeforeShelterMusic = false;
-    public bool isShelterMusic = false;
-    public bool isShelter2Music = false;
-	public bool isEndGameMusic = false;
-    public bool isBigRoomMusic = false;
-    public bool isLeftBrookMusic = false;
-    public bool isCornfield1Music = false;
-    public bool isAfterFlashlightMusic = false;
-    public bool isGrandmaDoorMusic = false;
 
     public bool isGardenMonsterMusic = false;
 	public bool isGardenMonsterMusic_On = false;
@@ -167,20 +57,12 @@ public class Music : MonoBehaviour {
 
     void OnEnable () {
 
-		notesScript = GameObject.Find ("Player").GetComponent<Notes> ();
-		inventoryScript = GameObject.Find ("Player").GetComponent<Inventory> ();
-		tasksScript = GameObject.Find ("Player").GetComponent<Tasks> ();
 		jumpscareScript = GameObject.Find ("Player").GetComponent<Jumpscare> ();
-		voiceActingScript = GameObject.Find ("Player").GetComponent<VoiceActing> ();
-		bonesTaskScript = GameObject.Find ("KoliderKosci").GetComponent<TaskBones> ();
-		booksTaskScript = GameObject.Find ("Player").GetComponent<TaskBooks> ();
-        mapScript = GameObject.Find("Player").GetComponent<Map>();
-
+		
         cornfieldMonsterScript = GameObject.Find("Monster2_v3").GetComponent<Monster2_v3>();
 		stevenMonster1_Script = GameObject.Find("Monster1_SzopaSteven").GetComponent<Monster1_SzopaSteven1>();
 		stevenMonster2_Script = GameObject.Find("Monster1_SzopaSteven2").GetComponent<Monster1_SzopaSteven2>();
 		meatMonsterScript = GameObject.Find("Monster1_v3").GetComponent<Monster1_v3>();
-        brookMonsterScript = GameObject.Find("Monster1_Potok1").GetComponent<MonsterPotok1>();
 
         backgroundAudioSource1 = GameObject.Find ("MuzykaTlo").GetComponent<AudioSource> (); // ciche
 		backgroundAudioSource2 = GameObject.Find ("MuzykaTlo2").GetComponent<AudioSource> (); // srednie
@@ -304,7 +186,7 @@ public class Music : MonoBehaviour {
 			
 		// muzyka bez zadania
 
-		if(backgroundAudioSource1.clip == null && backgroundAudioSource2.clip == null && backgroundAudioSource3.clip == null && notesScript.isNote10 == true && randomMusicDuration <= 120){
+		if(backgroundAudioSource1.clip == null && backgroundAudioSource2.clip == null && backgroundAudioSource3.clip == null && randomMusicDuration <= 120){
 			randomMusicDuration += 1 * Time.deltaTime;
 		}
 
@@ -355,7 +237,6 @@ public class Music : MonoBehaviour {
         musicAudioSource.Play();
         musicAudioSource.volume = musicVolume;
         musicAudioSource.loop = musicLoopState;
-        isBehindHouseMusic = true;
     }	
 
     void PlayMonsterGardenMusic(){
