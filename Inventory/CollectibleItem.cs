@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class CollectibleItem : MonoBehaviour {
 
-    public AudioSource audioSource;
-    public AudioClip itemSound;
-    public Inventory inventoryScript;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip itemSound;
+    private Inventory inventoryScript;
 
     public NotificationType itemType;
+
+    void Start()
+    {
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+    }
 
     public void PickUpItem()
     {

@@ -7,9 +7,15 @@ public class TaskItem : MonoBehaviour {
 
     public event Action OnPickUpItem;
 
-    public Item item;
-    public AudioClip itemSound;
-    public Inventory inventoryScript;
+    [SerializeField] private Item item;
+    [SerializeField] private AudioClip itemSound;
+
+    private Inventory inventoryScript;
+
+    void Start()
+    {
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+    }
 
     public void PickUpItem()
     {
@@ -20,7 +26,6 @@ public class TaskItem : MonoBehaviour {
         {
             OnPickUpItem.Invoke();
         }
-
     }
 
 }

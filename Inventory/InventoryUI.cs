@@ -15,42 +15,42 @@ public class InventoryUI : MonoBehaviour {
     private Flashlight flashlightScript;
 
     [Header("UI elements")]
-    private TextMeshProUGUI itemDescriptionText;
-    private TextMeshProUGUI usedItemText;
-    private Canvas inventoryCanvas;
-    private Image[] inventorySlots;
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
+    [SerializeField] private TextMeshProUGUI usedItemText;
+    [SerializeField] private Canvas inventoryCanvas;
+    [SerializeField] private Image[] inventorySlots;
 
     public Text secretItemsText;
     public Text secretPlacesText;
 
     [Header("Audio elements")]
-    private AudioSource itemAudioSource;
-    private AudioSource pauseAudioSource;
-    private AudioClip menuButtonSound;
-    private AudioClip useItemSound;
-    private AudioClip itemDesciptionSound;
-    private AudioClip openInventorySound;
+    [SerializeField] private AudioSource itemAudioSource;
+    [SerializeField] private AudioSource pauseAudioSource;
+    [SerializeField] private AudioClip menuButtonSound;
+    [SerializeField] private AudioClip useItemSound;
+    [SerializeField] private AudioClip itemDesciptionSound;
+    [SerializeField] private AudioClip openInventorySound;
 
     [Header("Texts")]
-    private string defaultDescription;
-    private string defaultUsingItemText;
+    private string defaultDescription = "Hover on object to see description";
+    private string defaultUsingItemText = "Click on item to use it";
     private string usingItemText = " is using now!";
 
     [Header("Skills")]
-    private bool isSkill1_Unlocked = false;
-    private AudioClip skillUnlockedSound;
-    private Image skill1_Icon;
+    [SerializeField] private bool isSkill1_Unlocked = false;
+    [SerializeField] private AudioClip skillUnlockedSound;
+    [SerializeField] private Image skill1_Icon;
 
-    private bool isSkill2_Unlocked = false;
-    private Image skill2_Icon;
+    [SerializeField] private bool isSkill2_Unlocked = false;
+    [SerializeField] private Image skill2_Icon;
 
-    private bool isSkill3_Unlocked = false;
-    private Image skill3_Icon;
+    [SerializeField] private bool isSkill3_Unlocked = false;
+    [SerializeField] private Image skill3_Icon;
 
-    private bool isSkill4_Unlocked = false;
-    private Image skill4_Icon;
+    [SerializeField] private bool isSkill4_Unlocked = false;
+    [SerializeField] private Image skill4_Icon;
 
-    private int skillsCount = 0;
+    [SerializeField] private int skillsCount = 0;
 
     public event Action OnUsedItemFromSlot;
 
