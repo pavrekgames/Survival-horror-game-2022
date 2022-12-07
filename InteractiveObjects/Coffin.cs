@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Coffin : MonoBehaviour {
 
-    public AudioSource audioSource;
-    public AudioClip openSound;
-    public AudioClip hitSound;
-    public bool isHit = false;
-    public bool isOpen = false;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip openSound;
+    [SerializeField] private AudioClip hitSound;
+
+    [Header("Object")]
+    [SerializeField] private GameObject usedObject;
+    [SerializeField] private bool isHit = false;
+    [SerializeField] private bool isOpen = false;
     private DragObject dragObjectScript;
 
-    public GameObject usedObject;
-    public Vector3 defaultPosition;
-    public Quaternion defaultRotation;
+    private Vector3 defaultPosition;
+    private Quaternion defaultRotation;
 
     void Start()
     {
@@ -29,30 +32,21 @@ public class Coffin : MonoBehaviour {
 
         if (col.gameObject.CompareTag("Teren") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound();
         }
         else if (col.gameObject.CompareTag("Move") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound();
         }
         else if (col.gameObject.CompareTag("Untagged") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound();
         }
 
         else if (col.gameObject.CompareTag("Push") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound();
         }
-
     }
 
     void OnCollisionExit(Collision col)
@@ -77,8 +71,6 @@ public class Coffin : MonoBehaviour {
         {
             isHit = false;
         }
-
-
     }
 
     void OnTriggerExit(Collider other)
@@ -90,13 +82,18 @@ public class Coffin : MonoBehaviour {
         }
     }
 
+    void PlayHitSound()
+    {
+        audioSource.pitch = Random.Range(0.8f, 1.5f);
+        audioSource.PlayOneShot(hitSound);
+        isHit = true;
+    }
+
     public void DefaultSettings()
     {
-
         usedObject.transform.position = defaultPosition;
         usedObject.transform.localRotation = defaultRotation;
         isOpen = false;
-
     }
 
 }

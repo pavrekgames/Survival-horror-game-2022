@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
 
-    public AudioSource audioSource;
-    public AudioClip openSound;
-    public AudioClip closeSound;
-    public bool isOpen = false;
+    [Header("Audio")]
+    private AudioSource audioSource;
+    private AudioClip openSound;
+    private AudioClip closeSound;
+
+    [Header("Object")]
+    private GameObject usedObject;
+    private int openForce = 9000;
+    private int closeForce = 900;
+    private bool isOpen = false;
+    private bool isReverse = false;
     public bool isOpenClose = false;
 
-    public GameObject usedObject;
-    public int openForce = 9000;
-    public int closeForce = 9000;
-    public bool isReverse = false;
-
-    public Vector3 defaultPosition;
-    public Quaternion defaultRotation;
+    private Vector3 defaultPosition;
+    private Quaternion defaultRotation;
 
     void Start() {
 
