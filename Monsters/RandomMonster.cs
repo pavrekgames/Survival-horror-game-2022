@@ -20,8 +20,6 @@ public class RandomMonster : Monster {
     [SerializeField] private bool isCalculated = true;
     [SerializeField] private int firstRespawn = 0;
 
-    public bool isPathPossible = false;
-
     void OnEnable()
     {
 

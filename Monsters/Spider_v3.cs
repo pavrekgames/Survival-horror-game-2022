@@ -17,7 +17,6 @@ public class Spider_v3 : Monster {
     [SerializeField] private bool isRun = false;
     [SerializeField] private bool isSpiderOffConfirmed = false;
 
-    public bool isPathPossible = true;
     public bool isSpiderOff = false;
 
     public enum CurrentPoint
