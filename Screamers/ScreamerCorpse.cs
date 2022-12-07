@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ScreamerCorpse : MonoBehaviour, IScreamer {
 
-    private GameObject corpse;
-    private Cupboard cupboardScript;
-
-    public bool isCalled;
+    [SerializeField] private GameObject corpse;
+    [SerializeField] private Cupboard cupboardScript;
+    [SerializeField] private bool isCalled;
 
     public void CallScreamer()
     {
