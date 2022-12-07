@@ -27,6 +27,7 @@ public abstract class Monster : MonoBehaviour {
     public bool isSawPlayer = false;
     public bool isRayPlayer = false;
     public bool isSawLight = false;
+    public bool isPathPossible = true;
     [SerializeField] protected bool isAttack = false;
 
     [Header("Monster movement")]
