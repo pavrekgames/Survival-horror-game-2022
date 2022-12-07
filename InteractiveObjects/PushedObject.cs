@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class PushedObject : MonoBehaviour {
 
-    public AudioSource audioSource;
-    public AudioClip pushSound;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip pushSound;
+    [SerializeField] private GameObject pushedObject;
+    [SerializeField] private bool isDone = false;
+    [SerializeField] private bool isPause = false;
     public bool isPush = false;
-    public bool isDone = false;
-    public bool isPause = false;
 
-    public GameObject pushedObject;
-    public Vector3 defaultPosition;
-    public Quaternion defaultRotation;
-
+    private Vector3 defaultPosition;
+    private Quaternion defaultRotation;
 
     void Start () {
 
         defaultPosition = pushedObject.transform.position;
         defaultRotation = pushedObject.transform.localRotation;
-
     }
-	
 	
 	void Update () {
 		
@@ -36,7 +33,6 @@ public class PushedObject : MonoBehaviour {
         else if(isPush == false && isDone == true && isPause == false)
         {
             audioSource.Pause();
-            //Wykonano_ok = false;
             isPause = true;
         }
 
@@ -44,21 +40,16 @@ public class PushedObject : MonoBehaviour {
         {
             audioSource.UnPause();
             isPause = false;
-            //Wykonano_ok = true;
         }
-
 	}
-
 
     public void DefaultSettings()
     {
-
         pushedObject.transform.position = defaultPosition;
         pushedObject.transform.localRotation = defaultRotation;
         isPush = false;
         isDone = false;
         isPause = false;
-
     }
 
 }

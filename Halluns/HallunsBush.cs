@@ -14,11 +14,6 @@ public class HallunsBush : MonoBehaviour {
 
     public bool isFire;
 
-
-	void Start () {
-		
-	}
-
     public void FireBush()
     {
         if(isFire == false)
@@ -33,7 +28,6 @@ public class HallunsBush : MonoBehaviour {
             {
                 OnFireBush.Invoke();
             }
-
         }
     }
 

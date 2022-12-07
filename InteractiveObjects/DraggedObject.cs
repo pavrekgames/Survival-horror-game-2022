@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class DraggedObject : MonoBehaviour {
 
-    public AudioSource audioSource;
-    public AudioSource waterAudioSource;
-    public AudioClip hitSound;
-    public AudioClip groundHitSound;
-    public AudioClip waterHitSound;
-    public bool isHit = false;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource waterAudioSource;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField] private AudioClip groundHitSound;
+    [SerializeField] private AudioClip waterHitSound;
+
+    [Header("Object")]
+    [SerializeField] private GameObject draggedObject;
+    [SerializeField] private bool isHit = false;
     public float objectForce = 18;
     public float objectVelocity = 7;
     private DragObject dragObjectScript;
 
-    public GameObject draggedObject;
-    public Vector3 defaultPosition;
-    public Quaternion defaultRotation;
+    private Vector3 defaultPosition;
+    private Quaternion defaultRotation;
 
     void Start () {
 
@@ -25,35 +28,26 @@ public class DraggedObject : MonoBehaviour {
         dragObjectScript = GameObject.Find("Player").GetComponent<DragObject>();
 
     }
-	
 
     void OnCollisionEnter(Collision col)
     {
 
         if (col.gameObject.CompareTag("Teren") && isHit == false && (draggedObject.layer != 13 || dragObjectScript.objectToDrag == draggedObject))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(groundHitSound);
-            isHit = true;
+            PlayHitSound(groundHitSound);
         }
         else if (col.gameObject.CompareTag("Move") && isHit == false && (draggedObject.layer != 13 || dragObjectScript.objectToDrag == draggedObject))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound(hitSound);
         }
         else if (col.gameObject.CompareTag("Untagged") && isHit == false && (draggedObject.layer != 13 || dragObjectScript.objectToDrag == draggedObject))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound(hitSound);
         }
 
         else if (col.gameObject.CompareTag("Push") && isHit == false && (draggedObject.layer != 13 || dragObjectScript.objectToDrag == draggedObject))
         {
-            audioSource.pitch = Random.Range(0.8f, 1.5f);
-            audioSource.PlayOneShot(hitSound);
-            isHit = true;
+            PlayHitSound(hitSound);
         }
 
     }
@@ -89,9 +83,7 @@ public class DraggedObject : MonoBehaviour {
 
        if (col.gameObject.CompareTag("Woda") && isHit == false)
         {
-            waterAudioSource.pitch = Random.Range(0.8f, 1.5f);
-            waterAudioSource.PlayOneShot(waterHitSound);
-            isHit = true;
+            PlayHitSound(waterHitSound);
         }
 
     }
@@ -106,6 +98,13 @@ public class DraggedObject : MonoBehaviour {
 
     }
 
+    void PlayHitSound(AudioClip hitSound)
+    {
+        audioSource.pitch = Random.Range(0.8f, 1.5f);
+        audioSource.PlayOneShot(hitSound);
+        isHit = true;
+    }
+
     public void DefaultSettings()
     {
 
@@ -114,6 +113,5 @@ public class DraggedObject : MonoBehaviour {
         isHit = false;
 
     }
-
 
 }

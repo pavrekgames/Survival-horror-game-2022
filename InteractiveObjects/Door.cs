@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IOpenCloseObject {
 
-	public AudioSource audioSource;
-	public AudioClip openSound;
-	public AudioClip closeSound;
-	public bool isOpen = false;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip openSound;
+    [SerializeField] private AudioClip closeSound;
+
+    [Header("Object")]
+    [SerializeField] private GameObject door;
+    [SerializeField] private int openForce = 9000;
+    [SerializeField] private int closeForce = 9000;
+    [SerializeField] private bool isReverse = false;
+    public bool isOpen = false;
     public bool isOpenClose = false;
     public bool isNeedKey = false;
-
     public bool isDestroyed = false;
 
-    public GameObject door;
-    public int openForce = 9000;
-    public int closeForce = 9000;
-    public bool isReverse = false;
-
-    public Vector3 defaultPosition;
-    public Quaternion defaultRotation;
+    private Vector3 defaultPosition;
+    private Quaternion defaultRotation;
 
     void Start () {
 
@@ -28,11 +29,8 @@ public class Door : MonoBehaviour, IOpenCloseObject {
 
     }
 		
-
 	void OnTriggerExit(Collider col){
 		if(col.gameObject.GetComponent<Collider>().gameObject.name == "Drzwi_kolider" && isOpen == false && isDestroyed == false){
-            //ZrodloDzwieku = GetComponent<AudioSource>();
-            //ZrodloDzwieku.PlayOneShot(Otwieranie);
             audioSource.clip = openSound;
             audioSource.Play();
 			isOpen = true;
@@ -44,8 +42,6 @@ public class Door : MonoBehaviour, IOpenCloseObject {
 	void OnTriggerEnter (Collider col) {
 		if((col.gameObject.name == "Drzwi_kolider" || col.gameObject.name == "Kolider_tyl") && isOpen == true && isDestroyed == false)
 		{
-            //ZrodloDzwieku = GetComponent<AudioSource>();
-            //ZrodloDzwieku.PlayOneShot(Zamykanie);
             audioSource.clip = closeSound;
             audioSource.Play();
             isOpen = false;
@@ -59,16 +55,12 @@ public class Door : MonoBehaviour, IOpenCloseObject {
         {
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(door.transform.right * openForce);
-            //OtwZam_ok = !OtwZam_ok;
             isOpenClose = true;
-            Debug.Log("OtworzDrzwi");
-
         }
         else if(isReverse == true && isNeedKey == false && isDestroyed == false)
         {
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(-door.transform.right * openForce);
-            //OtwZam_ok = !OtwZam_ok;
             isOpenClose = true;
         }
 
@@ -79,23 +71,16 @@ public class Door : MonoBehaviour, IOpenCloseObject {
 
         if (isReverse == false && isNeedKey == false && isDestroyed == false)
         {
-
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(-door.transform.right * openForce);
-            //OtwZam_ok = !OtwZam_ok;
             isOpenClose = false;
-            Debug.Log("ZamknijDrzwi");
-
         }
         else if(isReverse == true && isNeedKey == false && isDestroyed == false)
         {
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(door.transform.right * openForce);
-            //OtwZam_ok = !OtwZam_ok;
             isOpenClose = false;
         }
-
-
     }
 
     public void Open2()
@@ -142,7 +127,6 @@ public class Door : MonoBehaviour, IOpenCloseObject {
         isOpen = false;
         isOpenClose = false;
         isDestroyed = false;
-
     }
 
 }

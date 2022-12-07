@@ -8,54 +8,23 @@ public class Halluns : MonoBehaviour {
     public bool isPlaySound = false;
     private PlayerManager playerManager;
 
-    private AudioSource fireAudioSource;
-    private AudioSource ganjaAudioSource;
-    public AudioClip fireSound;
+    [SerializeField] private AudioSource fireAudioSource;
+    [SerializeField] private AudioSource ganjaAudioSource;
+    [SerializeField] private AudioClip fireSound;
 
-    public bool isStartGanja1 = false;
-    public bool isStartGanja2 = false;
-    public bool isStartGanja3 = false;
-    public bool isStartGanja4 = false;
-    public bool isStartGanja5 = false;
+    [SerializeField] private Image halluns3Image;
+    [SerializeField] private Image halluns4Image;
+    [SerializeField] private Image halluns5Image;
 
-    public bool isEndGanja1 = false;
-    public bool isEndGanja2 = false;
-    public bool isEndGanja3 = false;
-    public bool isEndGanja4 = false;
-    public bool isEndGanja5 = false;
+    [SerializeField] private Sprite halluns3Sprite;
+    [SerializeField] private Sprite halluns4Sprite;
+    [SerializeField] private Sprite halluns5Sprite;
 
-    private Canvas ganja1Canvas;
-    private Canvas ganja2Canvas;
-    private Canvas ganja3Canvas;
-    private Canvas ganja4Canvas;
-    private Canvas ganja5Canvas;
-
-    public AudioClip whistleSound;
-    public AudioClip flashbackSound;
-    public AudioClip backgroundSound;
-
-    public Image halluns3Image;
-    public Image halluns4Image;
-    public Image halluns5Image;
-
-    public Sprite halluns3Sprite;
-    public Sprite halluns4Sprite;
-    public Sprite halluns5Sprite;
-
-    private Animator halluns1Animator;
-    private Animator halluns2Animator;
-    private Animator halluns3Animator;
-    private Animator halluns4Animator;
-    private Animator halluns5Animator;
-
-    private Animator fire1Animator;
-    private Animator fire2Animator;
-    private Animator fire3Animator;
-    private Animator fire4Animator;
-    private Animator fire5Animator;
-
-    public bool isStartCount = false;
-    public float counter = 0;
+    [SerializeField] private Animator halluns1Animator;
+    [SerializeField] private Animator halluns2Animator;
+    [SerializeField] private Animator halluns3Animator;
+    [SerializeField] private Animator halluns4Animator;
+    [SerializeField] private Animator halluns5Animator;
 
     private Ray playerAim;
     private Camera playerCam;
@@ -67,33 +36,14 @@ public class Halluns : MonoBehaviour {
 
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
 
-        ganja1Canvas = GameObject.Find("CanvasHaluny1").GetComponent<Canvas>();
-        ganja2Canvas = GameObject.Find("CanvasHaluny2").GetComponent<Canvas>();
-        ganja3Canvas = GameObject.Find("CanvasHaluny3").GetComponent<Canvas>();
-        ganja4Canvas = GameObject.Find("CanvasHaluny4").GetComponent<Canvas>();
-        ganja5Canvas = GameObject.Find("CanvasHaluny5").GetComponent<Canvas>();
-        fireAudioSource = GameObject.Find("ZrodloPrzedmiot3_s").GetComponent<AudioSource>();
-        ganjaAudioSource = GameObject.Find("GanjaHalucynacje2").GetComponent<AudioSource>();
-
-        halluns1Animator = GameObject.Find("ObrazHaluny1").GetComponent<Animator>();
-        halluns2Animator = GameObject.Find("ObrazHaluny2").GetComponent<Animator>();
-        halluns3Animator = GameObject.Find("ObrazHaluny3").GetComponent<Animator>();
-        halluns4Animator = GameObject.Find("ObrazHaluny4").GetComponent<Animator>();
-        halluns5Animator = GameObject.Find("ObrazHaluny5").GetComponent<Animator>();
-        fire1Animator = GameObject.Find("SwiatloGanja1").GetComponent<Animator>();
-        fire2Animator = GameObject.Find("SwiatloGanja2").GetComponent<Animator>();
-        fire3Animator = GameObject.Find("SwiatloGanja3").GetComponent<Animator>();
-        fire4Animator = GameObject.Find("SwiatloGanja4").GetComponent<Animator>();
-        fire5Animator = GameObject.Find("SwiatloGanja5").GetComponent<Animator>();
-
         fireAudioSource.clip = null;
         ganjaAudioSource.clip = null;
 
-        halluns1Animator.SetTrigger("Haluny1Restart");
-        halluns2Animator.SetTrigger("Haluny2Restart");
-        halluns3Animator.SetTrigger("Haluny3Restart");
-        halluns4Animator.SetTrigger("Haluny4Restart");
-        halluns5Animator.SetTrigger("Haluny5Restart");
+        halluns1Animator.SetTrigger("Haluns1Restart");
+        halluns2Animator.SetTrigger("Haluns2Restart");
+        halluns3Animator.SetTrigger("Haluns3Restart");
+        halluns4Animator.SetTrigger("Haluns4Restart");
+        halluns5Animator.SetTrigger("Haluns5Restart");
 
         halluns3Image.GetComponent<HallunsEvent3>().enabled = true;
         halluns4Image.GetComponent<HallunsEvent4>().enabled = true;
@@ -115,7 +65,6 @@ public class Halluns : MonoBehaviour {
         halluns5Image.GetComponent<HallunsEvent5>().enabled = true;
 
     }
-	
 	
 	void Update () {
 
