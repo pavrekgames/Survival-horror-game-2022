@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScreamerWind : MonoBehaviour, IScreamer {
 
-    private Flashlight flashlightScript;
-    private AudioSource audioSource;
-    private AudioClip windSound;
+    [SerializeField] private Flashlight flashlightScript;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip windSound;
 
     public bool isCalled;
 

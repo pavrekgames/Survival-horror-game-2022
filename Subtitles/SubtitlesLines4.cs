@@ -5,9 +5,9 @@ using TMPro;
 
 public class SubtitlesLines4 : MonoBehaviour, ISubtitles {
 
-    private AudioSource audioSource;
-    private AudioClip recording;
-    private SubData4 subtitlesData;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip recording;
+    [SerializeField] private SubData4 subtitlesData;
 
     private Menu gameMenuScript;
     private TextMeshProUGUI subtitlesTextMesh;
