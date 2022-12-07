@@ -22,8 +22,6 @@ public class Wolf_v1 : Monster {
     [SerializeField] private bool isHowlDone = false;
     [SerializeField] private bool isRun = false;
 
-    public bool isPathPossible = true;
-
     public enum ActualPoint
     {
         Point1,

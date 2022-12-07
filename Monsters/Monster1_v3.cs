@@ -10,7 +10,6 @@ public class Monster1_v3 : Monster {
 
     private TaskMeat taskMeatScript;
     public NavMeshPath mainPath;
-    public bool isPathPossible = true;
 
     private Transform monsterPoint1;
 

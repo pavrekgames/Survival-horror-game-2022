@@ -17,7 +17,6 @@ public class Monster2_v2 : Monster {
     private Transform monsterPoint3;
 
     public NavMeshPath mainPath;
-    public bool isPathPossible = true;
 
 	public bool isStartPoint = false;
 
@@ -29,8 +28,6 @@ public class Monster2_v2 : Monster {
     }
 
     public ActualPoint actualPoint;
-
-    // monster drzwi
 
     private GameObject kitchenDoor;
     public bool isKitchenDoor = false;
