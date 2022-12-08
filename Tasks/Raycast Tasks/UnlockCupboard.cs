@@ -7,12 +7,14 @@ public class UnlockCupboard : MonoBehaviour, IRaycastTask {
 
     private Inventory inventoryScript;
     private OpenCloseObject openCloseObjectsScript;
-    public AudioSource audioSource;
-    public AudioClip keyOpenSound;
-    public GameObject doorCollider;
-    public GameObject additionalObject;
-    public Door doorScript;
-    public Door doorScript2;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip keyOpenSound;
+    [SerializeField] private GameObject doorCollider;
+    [SerializeField] private GameObject additionalObject;
+    [SerializeField] private Door doorScript;
+    [SerializeField] private Door doorScript2;
+
     public bool isLocked;
     public string itemType;
 

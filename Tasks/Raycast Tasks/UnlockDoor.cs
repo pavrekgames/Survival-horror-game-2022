@@ -9,11 +9,13 @@ public class UnlockDoor : MonoBehaviour, IRaycastTask {
 
     private Inventory inventoryScript;
     private OpenCloseObject openCloseObjectsScript;
-    public AudioSource audioSource;
-    public AudioClip keyOpenSound;
-    public GameObject doorCollider;
-    public GameObject additionalObject;
-    public Door doorScript;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip keyOpenSound;
+    [SerializeField] private GameObject doorCollider;
+    [SerializeField] private GameObject additionalObject;
+    [SerializeField] private Door doorScript;
+
     public bool isLocked;
     public string itemType;
 
@@ -49,10 +51,6 @@ public class UnlockDoor : MonoBehaviour, IRaycastTask {
                 break;
             }
         }
-
-        // RemoveSzopaNarzedziaPointer(); pointer musi obserwować czy drzwi sa zamkniete czy otwarte
-        // taskFactoryScript.enabled = true; game manager musi obserwac czy drzwi sa zamkniete czy otwarte
-
     }
 
     private void CallEvent()

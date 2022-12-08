@@ -13,6 +13,7 @@ public class UnlockPlanks : MonoBehaviour, IRaycastTask {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip putItemSound;
     [SerializeField] private GameObject planksCollider;
+
     public bool isLocked;
     public string itemType;
 

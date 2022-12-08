@@ -6,9 +6,11 @@ using UnityEngine;
 public class PutItem : MonoBehaviour, IRaycastTask {
 
     private Inventory inventoryScript;
-    public AudioSource audioSource;
-    public AudioClip putItemSound;
-    public GameObject additionalObject;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip putItemSound;
+    [SerializeField] private GameObject additionalObject;
+
     public bool isPut;
     public string itemType;
 
