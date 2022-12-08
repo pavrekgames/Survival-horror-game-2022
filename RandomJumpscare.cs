@@ -127,7 +127,7 @@ public class RandomJumpscare : MonoBehaviour {
 
             SetAudioSource(audioSource2);
         }
-        else if (randomSoundIndex >= 8 && (tasksScript.isVictorBrookTask == false || tasksScript.isVictorBrookTaskRemoved == true)) 
+        else if (randomSoundIndex >= 8 && tasksScript.isVictorBrookTask == false) 
         {
             MonsterJumpscare(randomMonsters[0]);
         }
