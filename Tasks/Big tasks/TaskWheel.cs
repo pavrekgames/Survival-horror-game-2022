@@ -26,7 +26,7 @@ public class TaskWheel : MonoBehaviour {
 
 		x = woodenWheel.transform.eulerAngles.x;
 
-		if(x > 300 && x < 310 && isFullCounter == false && tasksScript.isBrokenKey == true){
+		if(x > 300 && x < 310 && isFullCounter == false){
 			counter++;
 		}
 
@@ -52,13 +52,9 @@ public class TaskWheel : MonoBehaviour {
 		audioSource.PlayOneShot(fullCounterSound);
 		woodenWheel.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 		woodenWheel.GetComponent<SphereCollider>().enabled = false;
-		tasksScript.isFixedKey = true;
+		
         fixedKey.SetActive(true);
 
-        if(tasksScript.isWorkshopTask == false)
-        {
-            //tasksScript.ZadanieWarsztat();
-        }
 
     }
 

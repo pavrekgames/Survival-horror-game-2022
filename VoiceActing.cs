@@ -62,15 +62,7 @@ public class VoiceActing : MonoBehaviour {
 				playerAudioSource4.Pause ();
 			} else if (retrospectionAudioSource.clip != null) {
 				retrospectionAudioSource.Pause ();
-			} else if (tasksScript.cassete1_AudioSource.clip != null) {
-				tasksScript.cassete1_AudioSource.Pause ();
-			} else if (tasksScript.cassete3_AudioSource.clip != null) {
-				tasksScript.cassete3_AudioSource.Pause ();
-			} else if (tasksScript.cassete4_AudioSource.clip != null) {
-				tasksScript.cassete4_AudioSource.Pause ();
-			} else if (tasksScript.cassete5_AudioSource.clip != null) {
-				tasksScript.cassete5_AudioSource.Pause ();
-			}
+			} 
 		}
 
 		if (Time.timeScale == 1) {
@@ -84,15 +76,7 @@ public class VoiceActing : MonoBehaviour {
 				playerAudioSource4.UnPause ();
 			} else if (retrospectionAudioSource.clip != null) {
 				retrospectionAudioSource.UnPause ();
-			} else if (tasksScript.cassete1_AudioSource.clip != null) {
-				tasksScript.cassete1_AudioSource.UnPause ();
-			} else if (tasksScript.cassete3_AudioSource.clip != null) {
-				tasksScript.cassete3_AudioSource.UnPause ();
-			} else if (tasksScript.cassete4_AudioSource.clip != null) {
-				tasksScript.cassete4_AudioSource.UnPause ();
-			} else if (tasksScript.cassete5_AudioSource.clip != null) {
-				tasksScript.cassete5_AudioSource.UnPause ();
-			}
+			} 
 		}
 
 		if (playerAudioSource1.isPlaying == false && playerAudioSource1.clip != null && Time.timeScale == 1) {
