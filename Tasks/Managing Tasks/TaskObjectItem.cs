@@ -6,10 +6,9 @@ public class TaskObjectItem : MonoBehaviour {
 
     private Tasks tasksScript;
 
-    public TaskData taskToAdd;
-    public TaskData taskToRemove;
-
-    public TaskItem taskItem;
+    [SerializeField] private TaskData taskToAdd;
+    [SerializeField] private TaskData taskToRemove;
+    [SerializeField] private TaskItem taskItem;
 
 	void Start () {
 

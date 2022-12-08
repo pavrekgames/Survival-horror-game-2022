@@ -6,9 +6,8 @@ public class TaskObjectDoor : MonoBehaviour {
 
     private Tasks tasksScript;
 
-    public TaskData taskToRemove;
-
-    public UnlockDoor unlockDoor;
+    [SerializeField] private TaskData taskToRemove;
+    [SerializeField] private UnlockDoor unlockDoor;
 
     void Start()
     {
