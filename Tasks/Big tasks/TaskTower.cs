@@ -4,36 +4,28 @@ using UnityEngine;
 
 public class TaskTower : MonoBehaviour {
 
-    public bool isPlaySound = false; // wznawianie i zatrzymywanie dzwiekow
+    public bool isPlaySound = false; 
 
-    private Transform pile;
-	public Transform upperBox1;
-	public Transform upperBox2;
-	public AudioSource audioSource;
-	public AudioClip hitSound;
-	public bool isHit = false;
+    [SerializeField] private Transform pile;
+    [SerializeField] private AudioClip hitSound;
+    public AudioSource audioSource;
+
+    public Transform upperBox1;
+    public Transform upperBox2;
+
+    public bool isHit = false;
 	public float counter = 0;
 
+	void Start () {
 
-	void Awake () {
-
-		pile = GameObject.Find("PalAmbona").transform;
-		upperBox1 = GameObject.Find("SkrzyniaMisjaKojotM_gora1").transform;
-		upperBox2 = GameObject.Find("SkrzyniaMisjaKojotM_gora2").transform;
+		pile = GameObject.Find("TaskTowerPile").transform;
+		upperBox1 = GameObject.Find("TaskTowerBoxUp1").transform;
+		upperBox2 = GameObject.Find("TaskTowerBoxUp2").transform;
 	}
 	
-
 	void Update () {
-		
-		if(isHit == true && counter <= 5){
-			counter += 1 * Time.deltaTime;
-		}	
 
-		if(counter > 4 && counter <= 5)
-        {
-			upperBox1.gameObject.GetComponent<Rigidbody>().mass = 700;
-			upperBox2.gameObject.GetComponent<Rigidbody>().mass = 700;
-		}
+        CheckBoxes();
 
         // Zatrzymanie odtwarzania dzwiekow
 
@@ -60,12 +52,25 @@ public class TaskTower : MonoBehaviour {
     }
 
 	void OnCollisionEnter(Collision col){
-		if(col.gameObject.GetComponent<Collider>().gameObject.name == "SkrzyniaMisjaKojotM_gora1" && isHit == false){
+		if(col.gameObject.GetComponent<Collider>().gameObject.name == "TaskTowerBoxUp1" && isHit == false){
             pile.gameObject.GetComponent<Rigidbody>().AddForce(pile.transform.forward * 2000000f);
             isHit = true;
-            //ZrodloDzwieku.PlayOneShot(DzwUderzenia);
             audioSource.clip = hitSound;
             audioSource.Play();
 		}
 	}
+
+    void CheckBoxes()
+    {
+        if (isHit == true && counter <= 5)
+        {
+            counter += 1 * Time.deltaTime;
+        }
+
+        if (counter > 4 && counter <= 5)
+        {
+            upperBox1.gameObject.GetComponent<Rigidbody>().mass = 700;
+            upperBox2.gameObject.GetComponent<Rigidbody>().mass = 700;
+        }
+    }
 }
