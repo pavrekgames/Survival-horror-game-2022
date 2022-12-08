@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class TaskWheel : MonoBehaviour {
 
-    public GameObject fixedKey;
-	public Transform woodenWheel;
-	private Tasks tasksScript;
-	public AudioSource audioSource;
-	public AudioClip halfCounterSound;
-	public AudioClip fullCounterSound;
+    [SerializeField] private GameObject fixedKey;
+    [SerializeField] private Transform woodenWheel;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip halfCounterSound;
+    [SerializeField] private AudioClip fullCounterSound;
+
 	public int counter = 0;
 	public bool isHalfCounter = false;
 	public bool isFullCounter = false;
-	public float x;
-
-	void Start () {
-
-		woodenWheel = GameObject.Find("BrakujaceDrewnianeKolo").transform;
-		tasksScript = GameObject.Find ("Player").GetComponent<Tasks> ();
-	}
+	public float wheel_x;
 	
-
 	void Update () {
 
-		x = woodenWheel.transform.eulerAngles.x;
+		wheel_x = woodenWheel.transform.eulerAngles.x;
 
-		if(x > 300 && x < 310 && isFullCounter == false){
+		if(wheel_x > 300 && wheel_x < 310 && isFullCounter == false){
 			counter++;
 		}
 
@@ -54,8 +48,6 @@ public class TaskWheel : MonoBehaviour {
 		woodenWheel.GetComponent<SphereCollider>().enabled = false;
 		
         fixedKey.SetActive(true);
-
-
     }
 
 }
