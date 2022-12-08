@@ -75,9 +75,9 @@ public class Monster1_v3 : Monster {
 
         MonsterAttackSound(distance);
         MonsterCheckMeats();
-        MonsterEatMeat(isSeeMeat1, isAteMeat1, monster, meat1, taskMeatScript.meat1Condition);
-        MonsterEatMeat(isSeeMeat2, isAteMeat2, monster, meat2, taskMeatScript.meat2Condition);
-        MonsterEatMeat(isSeeMeat3, isAteMeat3, monster, meat3, taskMeatScript.meat3Condition);
+        MonsterEatMeat(isSeeMeat1, isAteMeat1, monster, meat1, taskMeatScript.meats[0].meatCondition);
+        MonsterEatMeat(isSeeMeat2, isAteMeat2, monster, meat2, taskMeatScript.meats[1].meatCondition);
+        MonsterEatMeat(isSeeMeat3, isAteMeat3, monster, meat3, taskMeatScript.meats[2].meatCondition);
 
         // Zatrzymanie odtwarzania dzwiekow
 
@@ -262,17 +262,17 @@ public class Monster1_v3 : Monster {
 
         if (isSawPlayer == true || isRayPlayer == true || isSawLight == true)
         {
-            if (taskMeatScript.isDragMeat1 == true && taskMeatScript.meat1Condition > 0)
+            if (taskMeatScript.meats[0].isDragMeat == true && taskMeatScript.meats[0].meatCondition > 0)
             {
                 isSeeMeat1 = true;
             }
 
-            if (taskMeatScript.isDragMeat2 == true && taskMeatScript.meat2Condition > 0)
+            if (taskMeatScript.meats[1].isDragMeat == true && taskMeatScript.meats[1].meatCondition > 0)
             {
                 isSeeMeat2 = true;
             }
 
-            if (taskMeatScript.isDragMeat3 == true && taskMeatScript.meat3Condition > 0)
+            if (taskMeatScript.meats[2].isDragMeat == true && taskMeatScript.meats[2].meatCondition > 0)
             {
                 isSeeMeat3 = true;
             }
