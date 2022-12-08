@@ -4,95 +4,90 @@ using UnityEngine;
 
 public class TaskMeat : MonoBehaviour {
 
-	private Transform meat1; 
-	private Transform meat2; 
-	private Transform meat3; 
-	public bool isDragMeat1 = false;
-	public bool isDragMeat2 = false;
-	public bool isDragMeat3 = false;
-    private Light meat1Light;
-    private Light meat2Light;
-    private Light meat3Light;
-    public float meat1Condition = 100;
-	public float meat2Condition = 100;
-	public float meat3Condition = 100;
-	//public Color KolorMiesa = Color.black;
-	//public Color KolorPoczatkowy = Color.red;
+    public struct Meat
+    {
+        public Transform meatObject;
+        public string meatName;
+        public Light meatLight;
+        public float meatCondition;
+        public bool isDragMeat;
+    }
+
+    public Meat[] meats;
 
 	private Ray playerAim;
 	private Camera playerCam;
-	public float rayLength = 4f;
+    [SerializeField] private float rayLength = 4f;
 
 	void OnEnable () {
 
 		playerCam = Camera.main;
 
-		meat1 = GameObject.Find("MiesoDlaPotwora1").transform;
-		meat2 = GameObject.Find("MiesoDlaPotwora2").transform;
-		meat3 = GameObject.Find("MiesoDlaPotwora3").transform;
+        meats[0].meatCondition = 100;
+        meats[1].meatCondition = 100;
+        meats[2].meatCondition = 100;
 
-        meat1Light = GameObject.Find("SwiatloMiesa1").GetComponent<Light>();
-        meat2Light = GameObject.Find("SwiatloMiesa2").GetComponent<Light>();
-        meat3Light = GameObject.Find("SwiatloMiesa3").GetComponent<Light>();
+        meats[0].isDragMeat = false;
+        meats[1].isDragMeat = false;
+        meats[2].isDragMeat = false;
 
-        meat1Condition = 100;
-        meat2Condition = 100;
-        meat3Condition = 100;
+        meats[0].meatLight.enabled = true;
+        meats[1].meatLight.enabled = true;
+        meats[2].meatLight.enabled = true;
 
-        isDragMeat1 = false;
-        isDragMeat2 = false;
-        isDragMeat3 = false;
-
-        meat1Light.enabled = true;
-        meat2Light.enabled = true;
-        meat3Light.enabled = true;
-
-        meat1.transform.position = new Vector3 (2391.53f, 74.65f, 2116.67f);
-		meat2.transform.position = new Vector3 (2330.4f, 74.65f, 2171.03f);
-		meat3.transform.position = new Vector3 (2344.2f, 74.65f, 2218.89f);
+        meats[0].meatObject.transform.position = new Vector3 (2391.53f, 74.65f, 2116.67f);
+        meats[1].meatObject.transform.position = new Vector3 (2330.4f, 74.65f, 2171.03f);
+        meats[2].meatObject.transform.position = new Vector3 (2344.2f, 74.65f, 2218.89f);
 
 	}
 	
 
 	void Update () {
 
+        CheckMeats();
+
 		if (Input.GetMouseButton (0) && Time.timeScale == 1) {
 
-			//playerCam = Camera.main;
 			Ray playerAim = playerCam.ViewportPointToRay (new Vector3 (0.5f, 0.5f, 0));
 			RaycastHit hit;
 
 			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 13)) {
 
-                if (hit.collider.gameObject.name == "MiesoDlaPotwora1") { // && Input.GetMouseButtonDown (0)
-					isDragMeat1 = true;
-				} else if (hit.collider.gameObject.name == "MiesoDlaPotwora2") { // && Input.GetMouseButtonDown (0)
-					isDragMeat2 = true;
-				} else if (hit.collider.gameObject.name == "MiesoDlaPotwora3") { // && Input.GetMouseButtonDown (0)
-					isDragMeat3 = true;
-				}
-				
+                if (hit.collider.gameObject.name == meats[0].meatName) {
+                    meats[0].isDragMeat = true;
+				} else if (hit.collider.gameObject.name == meats[1].meatName) {
+                    meats[1].isDragMeat = true;
+                } else if (hit.collider.gameObject.name == meats[2].meatName) {
+                    meats[2].isDragMeat = true;
+                }
 			}
-
 		}
 
 		if(Input.GetMouseButtonUp(0) && Time.timeScale == 1)
         {
-			isDragMeat1 = false;
-			isDragMeat2 = false;
-			isDragMeat3 = false;
-		}
-
-		if(meat1Condition <= 0){
-            meat1Light.enabled = false;
+            meats[0].isDragMeat = false;
+            meats[1].isDragMeat = false;
+            meats[2].isDragMeat = false;
         }
 
-		if(meat2Condition <= 0){ 
-            meat2Light.enabled = false;
-        }
-
-		if(meat3Condition <= 0){
-            meat3Light.enabled = false;
-        }
 	}
+
+    void CheckMeats()
+    {
+        if (meats[0].meatCondition <= 0)
+        {
+            meats[0].meatLight.enabled = false;
+        }
+
+        if (meats[1].meatCondition <= 0)
+        {
+            meats[1].meatLight.enabled = false;
+        }
+
+        if (meats[2].meatCondition <= 0)
+        {
+            meats[2].meatLight.enabled = false;
+        }
+    }
+
 }
