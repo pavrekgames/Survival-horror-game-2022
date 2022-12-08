@@ -6,11 +6,10 @@ public class TaskObjectAudio : MonoBehaviour {
 
     private Tasks tasksScript;
 
-    public TaskData taskToAdd;
-    public TaskData taskToRemove;
-    public TaskData previosTask;
-
-    public VoiceActing voiceActingScript;
+    [SerializeField] private TaskData taskToAdd;
+    [SerializeField] private TaskData taskToRemove;
+    [SerializeField] private TaskData previosTask;
+    [SerializeField] private VoiceActing voiceActingScript;
 
     void Start()
     {

@@ -6,9 +6,10 @@ public class TaskObjectTrigger : MonoBehaviour {
 
     private Tasks tasksScript;
 
-    public TaskData previousTask;
-    public TaskData taskToAdd;
-    public TaskData taskToRemove;
+    [SerializeField] private TaskData previousTask;
+    [SerializeField] private TaskData taskToAdd;
+    [SerializeField] private TaskData taskToRemove;
+
     public bool isAdded;
 
     void OnTriggerEnter(Collider other)
