@@ -73,6 +73,11 @@ public class NotificationUI : MonoBehaviour {
 
     void Start()
     {
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+        gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
+
         inventoryScript.OnAddedCollectibleItem += CallCollectibleNotification;
     }
 

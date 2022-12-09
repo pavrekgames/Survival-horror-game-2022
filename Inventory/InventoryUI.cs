@@ -56,6 +56,12 @@ public class InventoryUI : MonoBehaviour {
 
     void Start()
     {
+
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
+        flashlightScript = GameObject.Find("Flashlight").GetComponent<Flashlight>();
+
         inventoryScript.OnAddedItem += UpdateInventorySlots;
         inventoryScript.OnRemovedItem += UpdateInventorySlots;
         inventoryScript.OnAddedCollectibleItem += UpdateSecretPlaceCount;

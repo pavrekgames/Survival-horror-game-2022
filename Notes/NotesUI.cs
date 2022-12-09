@@ -16,7 +16,6 @@ public class NotesUI : MonoBehaviour {
     [SerializeField] private Canvas defaultNoteCanvas;
     [SerializeField] private TextMeshProUGUI noteTitleTextMesh;
     [SerializeField] private Canvas notesCanvas;
-    [SerializeField] private Canvas noteDefaultCanvas;
     [SerializeField] private ScrollRect notesScrollRect;
     [SerializeField] private Scrollbar notesScrollbar;
 

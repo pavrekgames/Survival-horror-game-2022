@@ -10,7 +10,7 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
     private AudioClip closeSound;
 
     [Header("Object")]
-    private GameObject usedObject;
+    [SerializeField] private GameObject usedObject;
     private int openForce = 9000;
     private int closeForce = 900;
     private bool isOpen = false;
@@ -22,6 +22,7 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
 
     void Start() {
 
+        usedObject = this.gameObject;
         defaultPosition = usedObject.transform.position;
         defaultRotation = usedObject.transform.localRotation;
 
