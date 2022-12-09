@@ -26,7 +26,6 @@ public class PlayerHud : MonoBehaviour {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
         inventoryUIScript = GameObject.Find("CanvasInventory").GetComponent<InventoryUI>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
-        staminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
 
         ColorUtility.TryParseHtmlString(defaultStaminaString, out defaultStaminaColor);
         ColorUtility.TryParseHtmlString(tiredStaminaString, out tiredStaminaColour);

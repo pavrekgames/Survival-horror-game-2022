@@ -67,6 +67,8 @@ public class Music : MonoBehaviour {
         cornfieldMonsterScript.gameObject.SetActive(false);
 		meatMonsterScript.gameObject.SetActive (false);
 
+        PlayMonsterMusic += PlayMonsterCornfieldMusic;
+
 	}
 	
 	void Update () {

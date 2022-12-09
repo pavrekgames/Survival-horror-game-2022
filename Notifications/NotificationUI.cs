@@ -125,13 +125,6 @@ public class NotificationUI : MonoBehaviour {
             isCrouchNotification = true;
             mainNotificationTextMesh.text = "";
         }
-
-        if (isDoorNotification == false && firstDoorSoundScript.isOpen == true)
-        {
-
-            isDoorNotification = true;
-
-        }
     }
 
     IEnumerator NotificationTimeIE()

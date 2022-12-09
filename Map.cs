@@ -57,7 +57,7 @@ public class Map : MonoBehaviour {
         audioSource = GameObject.Find("ZrodloMapa_s").GetComponent<AudioSource>();
 		mapCamera = GameObject.Find("MapaKamera").GetComponent<Camera>();
 
-        cursorScript = GameObject.Find("Kamera").GetComponent<CrosshairGUI>();
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
 
         SetPointer();
 

@@ -58,11 +58,11 @@ public class Health : MonoBehaviour {
 		playerDamageCanvas1 = GameObject.Find ("CanvasGraczObrazenia").GetComponent<Canvas> ();
 		playerDamageCanvas2 = GameObject.Find ("CanvasGraczObrazenia2").GetComponent<Canvas> ();
 		playerDamageCanvas3 = GameObject.Find ("CanvasGraczObrazenia3").GetComponent<Canvas> ();
-		audioSource = GameObject.Find ("Głowa").GetComponent<AudioSource> ();
+		audioSource = GameObject.Find ("PlayerHead").GetComponent<AudioSource> ();
 		audioSource2 = GameObject.Find ("ZrodloRanny_s").GetComponent<AudioSource>();
         damageAudioSource = GameObject.Find("ZrodloObrazenia_s").GetComponent<AudioSource>();
-        noisesScreenScript = GameObject.Find ("Kamera").GetComponent<NoiseAndScratches> (); 
-		deadScreenScript = GameObject.Find ("Kamera").GetComponent<ColorCorrectionRamp> ();
+        noisesScreenScript = GameObject.Find ("PlayerCamera").GetComponent<NoiseAndScratches> (); 
+		deadScreenScript = GameObject.Find ("PlayerCamera").GetComponent<ColorCorrectionRamp> ();
 		deadScreenScript.enabled = false;
 		saveGameScript = GameObject.Find ("Player").GetComponent<SaveGame> ();
 		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu> ();
