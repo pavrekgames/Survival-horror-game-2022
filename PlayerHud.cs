@@ -24,6 +24,7 @@ public class PlayerHud : MonoBehaviour {
     void Start () {
 
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+        inventoryUIScript = GameObject.Find("CanvasInventory").GetComponent<InventoryUI>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         staminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
 

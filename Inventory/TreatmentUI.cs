@@ -28,7 +28,6 @@ public class TreatmentUI : MonoBehaviour {
     [Header("UI")]
     [SerializeField] private Canvas treatmentCanvas;
     [SerializeField] private TextMeshProUGUI mixturesText;
-    [SerializeField] private TextMeshProUGUI vialsText;
     [SerializeField] private Text blueHerbsText;
     [SerializeField] private Text greenHerbsText;
     [SerializeField] private Text vialsCountText;

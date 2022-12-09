@@ -10,7 +10,7 @@ public class Drawers : MonoBehaviour, IOpenCloseObject {
     private AudioClip closeSound;
 
     [Header("Object")]
-    private GameObject usedObject;
+    [SerializeField] private GameObject usedObject;
     private int openForce = 9000;
     private int closeForce = 9000;
     private bool isOpen = false;
@@ -22,7 +22,7 @@ public class Drawers : MonoBehaviour, IOpenCloseObject {
     private Quaternion defaultRotation;
 
     void Start () {
-
+        usedObject = this.gameObject;
         defaultPosition = usedObject.transform.position;
         defaultRotation = usedObject.transform.localRotation;
 

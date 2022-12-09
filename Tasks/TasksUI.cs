@@ -21,6 +21,10 @@ public class TasksUI : MonoBehaviour {
 
     void Start()
     {
+        tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
+        playerScript = GameObject.Find("Player").GetComponent < Player>();
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
+
         tasksScript.OnAddedTask += UpdateTasksUI;
         tasksScript.OnRemovedTask += UpdateTasksUI;
     }
