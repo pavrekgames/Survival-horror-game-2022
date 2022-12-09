@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TaskMeat : MonoBehaviour {
 
+    [System.Serializable]
     public struct Meat
     {
         public Transform meatObject;
