@@ -19,6 +19,7 @@ public class TaskItem : MonoBehaviour, IItem {
 
     public void PickUpItem()
     {
+        item.Reset();
         inventoryScript.AddItem(item, itemSound);
         gameObject.SetActive(false);
 
