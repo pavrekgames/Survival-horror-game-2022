@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CollectionBadgesUI : MonoBehaviour {
 
+    private InventoryUIManager inventoryUIManager;
     public static bool isCollectionActive = false;
 
     private Player playerScript;
@@ -33,7 +34,7 @@ public class CollectionBadgesUI : MonoBehaviour {
 
     public void ShowBadgeCollection()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
         itemAudioSource.PlayOneShot(menuButtonSound);
         badgeCollectionCanvas.enabled = true;
         isCollectionActive = true;
@@ -41,7 +42,7 @@ public class CollectionBadgesUI : MonoBehaviour {
 
     public void CollectionBackFunction()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
