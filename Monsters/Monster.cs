@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public abstract class Monster : MonoBehaviour {
 
     protected Transform player;
-    protected NavMeshAgent monsterAgent;
     protected CharacterController monsterController;
     protected Flashlight flashlightScript;
     protected Health healthScript;
@@ -18,6 +17,7 @@ public abstract class Monster : MonoBehaviour {
     [Header("Monster components")]
     [SerializeField] protected Transform playerHead;
     [SerializeField] protected Transform monster;
+    [SerializeField] protected NavMeshAgent monsterAgent;
     [SerializeField] protected Animator monsterAnimator;
     [SerializeField] protected AudioSource audioSource;
     [SerializeField] protected AudioClip monsterSound;

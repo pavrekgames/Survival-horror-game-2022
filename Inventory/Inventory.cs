@@ -51,7 +51,8 @@ public class Inventory : MonoBehaviour {
 		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu>();
 		animator = GameObject.Find ("Player").GetComponent<Animator>();
 		notificationUIScript = GameObject.Find ("Player").GetComponent<NotificationUI>();
-		itemAudioSource = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();  
+		itemAudioSource = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();
+        inventoryUIScript = GameObject.Find("CanvasInventory").GetComponent<InventoryUI>();
 
     }
 

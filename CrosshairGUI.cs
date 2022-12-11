@@ -309,7 +309,7 @@ public class CrosshairGUI : MonoBehaviour {
     void SetDefaultScriptsSettings()
     {
         dragRigidbodyScript.enabled = false;
-        openCloseObjectScript.enabled = false;
+        //openCloseObjectScript.enabled = false;
         pushScript.DefaultSettings();
         pushScript.enabled = false;
     }
