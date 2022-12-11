@@ -73,7 +73,7 @@ public class PlayerHud : MonoBehaviour {
             {
                 currentItemIcon.sprite = inventoryScript.items[i].icon;
                 currentItemIcon.color = Color.white;
-                currenntItemTitle.text = inventoryScript.items[i].name;
+                currenntItemTitle.text = inventoryScript.items[i].itemName;
             }
           
         }

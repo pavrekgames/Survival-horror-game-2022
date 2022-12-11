@@ -66,6 +66,7 @@ public class InventoryUI : MonoBehaviour {
         inventoryScript.OnAddedItem += UpdateInventorySlots;
         inventoryScript.OnRemovedItem += UpdateInventorySlots;
         inventoryScript.OnAddedCollectibleItem += UpdateSecretPlaceCount;
+        OnUsedItemFromSlot += UpdateInventorySlots;
     }
 
     void OnEnable()
@@ -109,7 +110,7 @@ public class InventoryUI : MonoBehaviour {
         }
 
 
-        for (int i = 0; i < inventoryScript.items.Count; i++)
+        for (int i = 0; i <= inventoryScript.items.Count; i++)
         {
             inventorySlots[i].sprite = inventoryScript.items[i].icon;
             inventorySlots[i].color = Color.white;
@@ -151,7 +152,7 @@ public class InventoryUI : MonoBehaviour {
                 if (inventoryScript.items[i].id == itemId)
                 {
                     itemAudioSource.PlayOneShot(itemDesciptionSound);
-                    itemDescriptionText.text = inventoryScript.items[i].name + " - " + inventoryScript.items[i].description;
+                    itemDescriptionText.text = inventoryScript.items[i].itemName + " - " + inventoryScript.items[i].description;
                     break;
                 }
             } 
@@ -171,7 +172,7 @@ public class InventoryUI : MonoBehaviour {
 
                     inventoryScript.items[i].isUsed = true;
                     itemAudioSource.PlayOneShot(useItemSound);
-                    usedItemText.text = inventoryScript.items[i].name + usingItemText;
+                    usedItemText.text = inventoryScript.items[i].itemName + usingItemText;
 
                     Time.timeScale = 1;
                     playerScript.enabled = true;
