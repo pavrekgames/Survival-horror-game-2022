@@ -84,14 +84,13 @@ public class Inventory : MonoBehaviour {
             if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9))
             {
 
-                if (hit.collider.gameObject.tag == "TaskItem")
+                if (hit.collider.gameObject.tag == "Hand")
                 {
-                    hit.transform.gameObject.GetComponent<TaskItem>().PickUpItem();
-                }
-
-                else if (hit.collider.gameObject.tag == "CollectibleItem")
-                {
-                    hit.transform.gameObject.GetComponent<CollectibleItem>().PickUpItem();
+                    IItem item = hit.transform.GetComponent<IItem>() as IItem;
+                    if (item != null)
+                    {
+                        item.PickUpItem();
+                    }
                 }
             }
         }

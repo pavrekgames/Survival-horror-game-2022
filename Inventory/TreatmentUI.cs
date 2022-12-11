@@ -8,6 +8,7 @@ public class TreatmentUI : MonoBehaviour {
 
     public static bool isTreatmentActive = false;
 
+    private InventoryUIManager inventoryUIManager;
     private Inventory inventoryScript;
     private Player playerScript;
     private CrosshairGUI cursorScript;
@@ -44,6 +45,15 @@ public class TreatmentUI : MonoBehaviour {
     private string stateTiredText = "<color=#BF42C7FF>Tired</color>";
     private string lackComponentsText = "<color=#FF0000FF>You don't have enough herbs or a vial</color>";
 
+    void Start()
+    {
+        inventoryUIManager = GameObject.Find("CanvasInventory").GetComponent<InventoryUIManager>();
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
+        healthScript = GameObject.Find("Player").GetComponent<Health>();
+    }
+
     void Update()
     {
         if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && isTreatmentActive == true)
@@ -54,7 +64,7 @@ public class TreatmentUI : MonoBehaviour {
 
     public void ShowTreatment()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
         CheckHealthCondition();
         itemAudioSource2.PlayOneShot(menuButtonSound);
         treatmentCanvas.enabled = true;
@@ -64,7 +74,7 @@ public class TreatmentUI : MonoBehaviour {
     public void TreatmentBackFunction()
     {
 
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);

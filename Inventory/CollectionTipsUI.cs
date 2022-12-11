@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CollectionTipsUI : MonoBehaviour {
 
+    private InventoryUIManager inventoryUIManager;
     private Player playerScript;
     private CrosshairGUI cursorScript;
 
@@ -27,7 +28,7 @@ public class CollectionTipsUI : MonoBehaviour {
 
     public void ShowTipCollection()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
         itemAudioSource.PlayOneShot(menuButtonSound);
         tipCollectionCanvas.enabled = true;
         CollectionBadgesUI.isCollectionActive = true;
@@ -35,7 +36,7 @@ public class CollectionTipsUI : MonoBehaviour {
 
     public void CollectionBackFunction()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CollectionPhotosUI : MonoBehaviour {
 
+    private InventoryUIManager inventoryUIManager;
     private Player playerScript;
     private CrosshairGUI cursorScript;
 
@@ -33,7 +34,7 @@ public class CollectionPhotosUI : MonoBehaviour {
 
     public void ShowPhotoCollection()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
         itemAudioSource.PlayOneShot(menuButtonSound);
         photoCollectionCanvas.enabled = true;
         CollectionBadgesUI.isCollectionActive = true;
@@ -41,7 +42,7 @@ public class CollectionPhotosUI : MonoBehaviour {
 
     public void CollectionBackFunction()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);

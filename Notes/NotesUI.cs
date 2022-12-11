@@ -8,6 +8,7 @@ public class NotesUI : MonoBehaviour {
 
     public static bool isNotesActive = false;
 
+    private InventoryUIManager inventoryUIManager;
     private Player playerScript;
     private CrosshairGUI cursorScript;
 
@@ -31,6 +32,7 @@ public class NotesUI : MonoBehaviour {
 
     void Start()
     {
+        inventoryUIManager = GameObject.Find("CanvasInventory").GetComponent<InventoryUIManager>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
     }
@@ -50,7 +52,7 @@ public class NotesUI : MonoBehaviour {
 
     public IEnumerator ShowNotesIE()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
         itemAudioSource.PlayOneShot(menuButtonSound);
        
         notesCanvas.enabled = true;
@@ -67,7 +69,7 @@ public class NotesUI : MonoBehaviour {
     public void NotesBackFunction()
     {
 
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);

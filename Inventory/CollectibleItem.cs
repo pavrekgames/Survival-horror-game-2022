@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CollectibleItem : MonoBehaviour {
+public class CollectibleItem : MonoBehaviour, IItem {
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip itemSound;

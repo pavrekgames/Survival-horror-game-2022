@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour {
 
     public static bool isInventoryActive = false;
 
+    private InventoryUIManager inventoryUIManager;
     private Inventory inventoryScript;
     private Player playerScript;
     private CrosshairGUI cursorScript;
@@ -56,7 +57,7 @@ public class InventoryUI : MonoBehaviour {
 
     void Start()
     {
-
+        inventoryUIManager = GameObject.Find("CanvasInventory").GetComponent<InventoryUIManager>();
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
@@ -86,7 +87,7 @@ public class InventoryUI : MonoBehaviour {
     public void ShowInventory()
     {
 
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         if (Time.timeScale == 0)
         {
@@ -129,7 +130,7 @@ public class InventoryUI : MonoBehaviour {
     public void InventoryBackFunction()
     {
 
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);
@@ -166,7 +167,7 @@ public class InventoryUI : MonoBehaviour {
                 if (inventoryScript.items[i].id == itemId)
                 {
 
-                    InventoryUIManager.ResetUI();
+                    inventoryUIManager.ResetUI();
 
                     inventoryScript.items[i].isUsed = true;
                     itemAudioSource.PlayOneShot(useItemSound);

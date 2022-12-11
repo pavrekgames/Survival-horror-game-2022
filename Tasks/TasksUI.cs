@@ -8,6 +8,7 @@ public class TasksUI : MonoBehaviour {
 
     public static bool isTasksActive = false;
 
+    private InventoryUIManager inventoryUIManager;
     private Tasks tasksScript;
     private Player playerScript;
     private CrosshairGUI cursorScript;
@@ -21,6 +22,7 @@ public class TasksUI : MonoBehaviour {
 
     void Start()
     {
+        inventoryUIManager = GameObject.Find("CanvasInventory").GetComponent<InventoryUIManager>();
         tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
         playerScript = GameObject.Find("Player").GetComponent < Player>();
         cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
@@ -47,7 +49,7 @@ public class TasksUI : MonoBehaviour {
 
     public void ShowTasks()
     {
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
         itemAudioSource3.PlayOneShot(menuButtonSound);
         tasksCanvas.enabled = true;
         isTasksActive = true;
@@ -56,7 +58,7 @@ public class TasksUI : MonoBehaviour {
     public void TasksBackFunction()
     {
 
-        InventoryUIManager.ResetUI();
+        inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
         pauseAudioSource.PlayOneShot(openInventorySound, 0.5f);

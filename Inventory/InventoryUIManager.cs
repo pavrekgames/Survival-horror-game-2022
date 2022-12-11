@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class InventoryUIManager : MonoBehaviour {
 
-    public static Canvas[] inventoryUIArray;
-    public static Canvas[] notesCanvasArray;
-    public static Canvas[] collectionCanvasArray;
+    public Canvas[] inventoryUIArray;
+    public Canvas[] notesCanvasArray;
+    public Canvas[] collectionCanvasArray;
  
 	void Start () {
 		
 	}
 	
-    public static void ResetUI()
+    public void ResetUI()
     {
 
         InventoryUI.isInventoryActive = false;
