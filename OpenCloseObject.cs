@@ -19,9 +19,9 @@ public class OpenCloseObject : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0) && Time.timeScale == 1)
         {
-
             Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
+           
 
             if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Drawers1"))
             {
@@ -70,7 +70,6 @@ public class OpenCloseObject : MonoBehaviour {
 
             else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Door"))
             {
-
                 interactiveObject = hit.transform.gameObject;
 
                 if (interactiveObject.GetComponent<Door>().isOpenClose == false && interactiveObject.GetComponent<Door>().isNeedKey == false)

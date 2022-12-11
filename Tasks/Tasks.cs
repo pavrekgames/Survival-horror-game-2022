@@ -11,7 +11,6 @@ public class Tasks : MonoBehaviour {
     public bool DzwiekPlay_ok = false; 
 
     private Inventory inventoryScript;
-    private Animator uiAnimator;
     private NotificationUI notificationUIScript;
     private PlayerManager playerManagerScript;
 
@@ -21,6 +20,7 @@ public class Tasks : MonoBehaviour {
     private Camera playerCam;
     [SerializeField] private float rayLength = 4f;
 
+    [SerializeField] private Animator uiAnimator;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip newTaskSound;
 
@@ -35,6 +35,9 @@ public class Tasks : MonoBehaviour {
     void OnEnable(){
 
 		playerCam = Camera.main;
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
+        notificationUIScript = GameObject.Find("Player").GetComponent<NotificationUI>();
+        playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
 
     }
 

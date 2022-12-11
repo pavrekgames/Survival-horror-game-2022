@@ -84,12 +84,12 @@ public class MapUI : MonoBehaviour {
         stevenHouseTravelImage = GameObject.Find("MiejsciePodrozyDomSteven").GetComponent<Image>();
         PaulHouseTravelImage = GameObject.Find("MiejsciePodrozyDomPaul").GetComponent<Image>();
 
-        grandmaHousePoint = GameObject.Find("PunktZadaniaDomBabci").transform;
-        aliceHousePoint = GameObject.Find("PunktZadaniaDomAlice").transform;
-        tomHousePoint = GameObject.Find("PunktZadaniaDomTom").transform;
-        abandonedHousePoint = GameObject.Find("PunktZadaniaOpuszczonyDom").transform;
-        stevenHousePoint = GameObject.Find("PunktZadaniaDomSteven").transform;
-        paulHousePoint = GameObject.Find("PunktZadaniaDomNaukowca").transform;
+        grandmaHousePoint = GameObject.Find("GrandmaHousePoint").transform;
+        aliceHousePoint = GameObject.Find("AliceHousePoint").transform;
+        tomHousePoint = GameObject.Find("TomHousePoint").transform;
+        abandonedHousePoint = GameObject.Find("AbandonedHousePoint").transform;
+        stevenHousePoint = GameObject.Find("StevenHousePoint").transform;
+        paulHousePoint = GameObject.Find("ScientistHousePoint").transform;
     }
 	
 
