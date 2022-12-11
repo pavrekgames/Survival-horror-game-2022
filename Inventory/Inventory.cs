@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour {
 		playerScript = GameObject.Find ("Player").GetComponent<Player>();
 		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu>();
 		animator = GameObject.Find ("Player").GetComponent<Animator>();
-		notificationUIScript = GameObject.Find ("Player").GetComponent<NotificationUI>();
+		notificationUIScript = GameObject.Find ("CanvasKomunikaty").GetComponent<NotificationUI>();
 		itemAudioSource = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();
         inventoryUIScript = GameObject.Find("CanvasInventory").GetComponent<InventoryUI>();
 
@@ -64,7 +64,7 @@ public class Inventory : MonoBehaviour {
 
     void InventoryInput()
     {
-        if (Input.GetButtonDown("Inventory") && playerManagerScript.isPlayerCanInput == true)
+        if (Input.GetButtonUp("Inventory") && playerManagerScript.isPlayerCanInput == true)
         {
             OpenInventory();
         }
@@ -114,7 +114,7 @@ public class Inventory : MonoBehaviour {
 
         items.Add(item);
         item.isTaken = true;
-        item.id += 1;
+        item.id = items.Count;
 
         if(OnAddedItem != null)
         {

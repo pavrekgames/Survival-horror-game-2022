@@ -8,7 +8,7 @@ public class Item: ScriptableObject{
 
 	public int id;
     public string type;
-	public string name;
+	public string itemName;
 	public string description;
     public Sprite icon;
 	public bool isUsed;
@@ -19,11 +19,19 @@ public class Item: ScriptableObject{
 		
 	}
 
-	public Item(int id, string type, string name, string description, Sprite icon, bool isUsed, bool isTaken, bool isRemoved){
+    void Start()
+    {
+        id = 0;
+        isUsed = false;
+        isTaken = false;
+        isRemoved = false;
+    }
+
+	public Item(int id, string type, string itemName, string description, Sprite icon, bool isUsed, bool isTaken, bool isRemoved){
 
 		this.id = id;
         this.type = type;
-		this.name = name;
+		this.itemName = itemName;
 		this.description = description;
         this.icon = icon;
 		this.isUsed = isUsed;
