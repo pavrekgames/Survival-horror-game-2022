@@ -110,11 +110,10 @@ public class InventoryUI : MonoBehaviour {
         }
 
 
-        for (int i = 0; i <= inventoryScript.items.Count; i++)
+        for (int i = 0; i < inventoryScript.items.Count; i++)
         {
             inventorySlots[i].sprite = inventoryScript.items[i].icon;
             inventorySlots[i].color = Color.white;
-            break;
         }
 
 
