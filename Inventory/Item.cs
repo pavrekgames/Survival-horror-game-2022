@@ -19,7 +19,7 @@ public class Item: ScriptableObject{
 		
 	}
 
-    void Start()
+    public void Reset()
     {
         id = 0;
         isUsed = false;
