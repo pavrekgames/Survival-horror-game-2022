@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemAudioSourceInstance : MonoBehaviour {
+public class ItemAudioSourceInstance : MonoBehaviour
+{
 
-	public static ItemAudioSourceInstance instance;
+    public static ItemAudioSourceInstance instance;
 
+    void Awake()
+    {
 
-	void Awake () {
-		
-		if (!instance) {
-			
-			DontDestroyOnLoad(this.gameObject) ;
-			
-			instance = this;
-		} else {
-			Destroy(gameObject) ;
-		}
+        if (!instance)
+        {
 
-	}
+            DontDestroyOnLoad(this.gameObject);
 
-
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }

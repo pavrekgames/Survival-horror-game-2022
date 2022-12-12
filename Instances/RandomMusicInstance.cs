@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomMusicInstance : MonoBehaviour {
+public class RandomMusicInstance : MonoBehaviour
+{
 
-	public static RandomMusicInstance instance;
+    public static RandomMusicInstance instance;
 
+    void Awake()
+    {
 
-	void Awake () {
-		
-		if (!instance) {
-			
-			DontDestroyOnLoad(this.gameObject) ;
-			instance = this;
-		} else {
-			Destroy(gameObject) ;
-		}
+        if (!instance)
+        {
 
-	}
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
