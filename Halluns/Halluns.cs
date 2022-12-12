@@ -3,28 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Halluns : MonoBehaviour {
+public class Halluns : MonoBehaviour
+{
 
     public bool isPlaySound = false;
     private PlayerManager playerManager;
 
-    [SerializeField] private AudioSource fireAudioSource;
-    [SerializeField] private AudioSource ganjaAudioSource;
-    [SerializeField] private AudioClip fireSound;
+    [SerializeField]
+    private AudioSource fireAudioSource;
+    [SerializeField]
+    private AudioSource ganjaAudioSource;
+    [SerializeField]
+    private AudioClip fireSound;
 
-    [SerializeField] private Image halluns3Image;
-    [SerializeField] private Image halluns4Image;
-    [SerializeField] private Image halluns5Image;
+    [SerializeField]
+    private Image halluns3Image;
+    [SerializeField]
+    private Image halluns4Image;
+    [SerializeField]
+    private Image halluns5Image;
 
-    [SerializeField] private Sprite halluns3Sprite;
-    [SerializeField] private Sprite halluns4Sprite;
-    [SerializeField] private Sprite halluns5Sprite;
+    [SerializeField]
+    private Sprite halluns3Sprite;
+    [SerializeField]
+    private Sprite halluns4Sprite;
+    [SerializeField]
+    private Sprite halluns5Sprite;
 
-    [SerializeField] private Animator halluns1Animator;
-    [SerializeField] private Animator halluns2Animator;
-    [SerializeField] private Animator halluns3Animator;
-    [SerializeField] private Animator halluns4Animator;
-    [SerializeField] private Animator halluns5Animator;
+    [SerializeField]
+    private Animator halluns1Animator;
+    [SerializeField]
+    private Animator halluns2Animator;
+    [SerializeField]
+    private Animator halluns3Animator;
+    [SerializeField]
+    private Animator halluns4Animator;
+    [SerializeField]
+    private Animator halluns5Animator;
 
     private Ray playerAim;
     private Camera playerCam;
@@ -32,7 +47,8 @@ public class Halluns : MonoBehaviour {
 
     public static int fireCount = 0;
 
-    void OnEnable () {
+    void OnEnable()
+    {
 
         playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
 
@@ -65,8 +81,9 @@ public class Halluns : MonoBehaviour {
         halluns5Image.GetComponent<HallunsEvent5>().enabled = true;
 
     }
-	
-	void Update () {
+
+    void Update()
+    {
 
         if (Input.GetMouseButtonUp(0) && playerManager.isPlayerCanInput == true)
         {
@@ -84,37 +101,14 @@ public class Halluns : MonoBehaviour {
                     }
                 }
             }
-        } 
-
-        // pauza dzwieku haluny
-
-        if(Time.timeScale == 0 && isPlaySound == false)
-        {
-            ganjaAudioSource.Pause();
-
-            isPlaySound = true;
         }
-        else if (Time.timeScale == 1 && isPlaySound == true)
-        {
-            ganjaAudioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
-        } // klamra do update
-
+    }
 
     public void DefaultScriptSettings()
     {
 
         fireAudioSource.clip = null;
         ganjaAudioSource.clip = null;
-
-        halluns1Animator.SetTrigger("Haluny1Restart");
-        halluns2Animator.SetTrigger("Haluny2Restart");
-        halluns3Animator.SetTrigger("Haluny3Restart");
-        halluns4Animator.SetTrigger("Haluny4Restart");
-        halluns5Animator.SetTrigger("Haluny5Restart");
 
         halluns3Image.GetComponent<HallunsEvent3>().enabled = true;
         halluns4Image.GetComponent<HallunsEvent4>().enabled = true;
@@ -125,5 +119,4 @@ public class Halluns : MonoBehaviour {
         halluns5Image.sprite = halluns5Sprite;
 
     }
-
 }
