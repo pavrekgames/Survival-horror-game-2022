@@ -36,7 +36,7 @@ public class Tasks : MonoBehaviour {
 
 		playerCam = Camera.main;
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
-        notificationUIScript = GameObject.Find("Player").GetComponent<NotificationUI>();
+        notificationUIScript = GameObject.Find("CanvasKomunikaty").GetComponent<NotificationUI>();
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
 
     }

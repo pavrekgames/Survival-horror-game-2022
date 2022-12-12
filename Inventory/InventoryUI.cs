@@ -183,7 +183,6 @@ public class InventoryUI : MonoBehaviour {
                         OnUsedItemFromSlot.Invoke();
                     }
 
-                    break;
                 }
                 else
                 {
