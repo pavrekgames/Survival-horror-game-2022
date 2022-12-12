@@ -12,6 +12,8 @@ public class SubtitlesLines4 : MonoBehaviour, ISubtitles {
     private Menu gameMenuScript;
     private TextMeshProUGUI subtitlesTextMesh;
 
+    public bool isSubtitles;
+
     void Start()
     {
         gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
@@ -20,13 +22,19 @@ public class SubtitlesLines4 : MonoBehaviour, ISubtitles {
 
     void Update()
     {
+        CheckAudio();
 
-        if(gameMenuScript.subtitlesToggle.isOn == true)
+        if(gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
         {
             if (audioSource.isPlaying == true && audioSource.clip == recording)
             {
                 ShowSubtitles();
             }
+        }
+        else if (isSubtitles == true)
+        {
+            subtitlesTextMesh.text = "";
+            isSubtitles = false;
         }
     }
 
@@ -49,11 +57,14 @@ public class SubtitlesLines4 : MonoBehaviour, ISubtitles {
         {
             subtitlesTextMesh.text = subtitlesData.subtitles4;
         }
+    }
 
-        if (audioSource.isPlaying == false)
+    void CheckAudio()
+    {
+        if (audioSource.isPlaying == false && audioSource.clip == recording && isSubtitles == false)
         {
             audioSource.clip = null;
-            subtitlesTextMesh.text = "";
+            isSubtitles = true;
         }
     }
 

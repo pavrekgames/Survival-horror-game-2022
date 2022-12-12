@@ -23,6 +23,8 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
 
     void Update () {
 
+        CheckAudio();
+
         if(gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
         {
             if (audioSource.isPlaying == true && audioSource.clip == recording)
@@ -33,6 +35,7 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
         else if (isSubtitles == true)
         {
             subtitlesTextMesh.text = "";
+            isSubtitles = false;
         }
     }
 
@@ -42,8 +45,11 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
         {
             subtitlesTextMesh.text = subtitlesData.subtitles;
         }
+    }
 
-        if(audioSource.isPlaying == false && isSubtitles == false)
+    void CheckAudio()
+    {
+        if (audioSource.isPlaying == false && audioSource.clip == recording && isSubtitles == false)
         {
             audioSource.clip = null;
             isSubtitles = true;
