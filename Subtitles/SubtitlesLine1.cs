@@ -10,6 +10,8 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
     [SerializeField] private AudioClip recording;
     [SerializeField] private SubData1 subtitlesData;
 
+    public bool isSubtitles;
+
     private Menu gameMenuScript;
     private TextMeshProUGUI subtitlesTextMesh;
 
@@ -21,26 +23,30 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
 
     void Update () {
 
-        if(gameMenuScript.subtitlesToggle.isOn == true)
+        if(gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
         {
             if (audioSource.isPlaying == true && audioSource.clip == recording)
             {
                 ShowSubtitles();
             }
         }
+        else if (isSubtitles == true)
+        {
+            subtitlesTextMesh.text = "";
+        }
     }
 
     public void ShowSubtitles()
     {
-        if (audioSource.time > subtitlesData.startTime)
+        if (audioSource.time > subtitlesData.startTime && audioSource.isPlaying == true)
         {
             subtitlesTextMesh.text = subtitlesData.subtitles;
         }
 
-        if(audioSource.isPlaying == false)
+        if(audioSource.isPlaying == false && isSubtitles == false)
         {
             audioSource.clip = null;
-            subtitlesTextMesh.text = "";
+            isSubtitles = true;
         }
     }
 
