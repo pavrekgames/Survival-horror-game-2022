@@ -114,7 +114,6 @@ public class Inventory : MonoBehaviour {
 
         items.Add(item);
         item.isTaken = true;
-        item.id = items.Count;
 
         if(OnAddedItem != null)
         {
