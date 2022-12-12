@@ -22,32 +22,33 @@ public class Door : MonoBehaviour, IOpenCloseObject {
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
-    void Start () {
-
+    void Start()
+    {
         defaultPosition = door.transform.position;
         defaultRotation = door.transform.localRotation;
-
     }
-		
-	void OnTriggerExit(Collider col){
-		if(col.gameObject.GetComponent<Collider>().gameObject.name == "Drzwi_kolider" && isOpen == false && isDestroyed == false){
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.GetComponent<Collider>().gameObject.name == "Door_collider" && isOpen == false && isDestroyed == false)
+        {
             audioSource.clip = openSound;
             audioSource.Play();
-			isOpen = true;
+            isOpen = true;
             isOpenClose = true;
         }
-	}
+    }
 
-
-	void OnTriggerEnter (Collider col) {
-		if((col.gameObject.name == "Drzwi_kolider" || col.gameObject.name == "Kolider_tyl") && isOpen == true && isDestroyed == false)
-		{
+    void OnTriggerEnter(Collider col)
+    {
+        if ((col.gameObject.name == "Door_collider" || col.gameObject.name == "Collider_back") && isOpen == true && isDestroyed == false)
+        {
             audioSource.clip = closeSound;
             audioSource.Play();
             isOpen = false;
             isOpenClose = false;
-		}
-	}
+        }
+    }
 
     public void Open1()
     {
@@ -57,25 +58,23 @@ public class Door : MonoBehaviour, IOpenCloseObject {
             door.GetComponent<Rigidbody>().AddForce(door.transform.right * openForce);
             isOpenClose = true;
         }
-        else if(isReverse == true && isNeedKey == false && isDestroyed == false)
+        else if (isReverse == true && isNeedKey == false && isDestroyed == false)
         {
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(-door.transform.right * openForce);
             isOpenClose = true;
         }
-
     }
 
     public void Close1()
     {
-
         if (isReverse == false && isNeedKey == false && isDestroyed == false)
         {
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(-door.transform.right * openForce);
             isOpenClose = false;
         }
-        else if(isReverse == true && isNeedKey == false && isDestroyed == false)
+        else if (isReverse == true && isNeedKey == false && isDestroyed == false)
         {
             door.GetComponent<Rigidbody>().Sleep();
             door.GetComponent<Rigidbody>().AddForce(door.transform.right * openForce);
@@ -85,7 +84,6 @@ public class Door : MonoBehaviour, IOpenCloseObject {
 
     public void Open2()
     {
-
         if (isReverse == false && isNeedKey == false && isDestroyed == false)
         {
             door.GetComponent<Rigidbody>().Sleep();
@@ -98,7 +96,6 @@ public class Door : MonoBehaviour, IOpenCloseObject {
             door.GetComponent<Rigidbody>().AddForce(door.transform.right * openForce);
             isOpenClose = !isOpenClose;
         }
-
     }
 
     public void Close2()
@@ -116,17 +113,14 @@ public class Door : MonoBehaviour, IOpenCloseObject {
             door.GetComponent<Rigidbody>().AddForce(-door.transform.right * closeForce);
             isOpenClose = !isOpenClose;
         }
-
     }
 
     public void DefaultSettings()
     {
-
         door.transform.position = defaultPosition;
         door.transform.localRotation = defaultRotation;
         isOpen = false;
         isOpenClose = false;
         isDestroyed = false;
     }
-
 }

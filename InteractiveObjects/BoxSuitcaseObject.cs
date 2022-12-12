@@ -20,7 +20,8 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
-    void Start() {
+    void Start()
+    {
 
         usedObject = this.gameObject;
         defaultPosition = usedObject.transform.position;
@@ -30,7 +31,7 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_otworz" && isOpen == false)
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_open" && isOpen == false)
         {
             audioSource.PlayOneShot(openSound);
             isOpen = true;
@@ -38,10 +39,9 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
         }
     }
 
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_otworz" && isOpen == true)
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_open" && isOpen == true)
         {
             audioSource.PlayOneShot(closeSound);
             isOpen = false;
@@ -54,9 +54,8 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
         if (isReverse == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
-            usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.up * openForce); // przy walizkach up
+            usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.up * openForce);
             isOpenClose = !isOpenClose;
-
         }
         else
         {
@@ -64,19 +63,15 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.up * openForce);
             isOpenClose = !isOpenClose;
         }
-
     }
 
     public void Close1()
     {
-
         if (isReverse == false)
         {
-
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.up * openForce);
             isOpenClose = !isOpenClose;
-
         }
         else
         {
@@ -84,8 +79,6 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
             usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.up * openForce);
             isOpenClose = !isOpenClose;
         }
-
-
     }
 
     public void Open2()
@@ -93,9 +86,8 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
         if (isReverse == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
-            usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.forward * openForce); // przy walizkach up
+            usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.forward * openForce);
             isOpenClose = !isOpenClose;
-
         }
         else
         {
@@ -103,19 +95,15 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.forward * openForce);
             isOpenClose = !isOpenClose;
         }
-
     }
 
     public void Close2()
     {
-
         if (isReverse == false)
         {
-
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.forward * openForce);
             isOpenClose = !isOpenClose;
-
         }
         else
         {
@@ -123,19 +111,13 @@ public class BoxSuitcaseObject : MonoBehaviour, IOpenCloseObject {
             usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.forward * openForce);
             isOpenClose = !isOpenClose;
         }
-
-
     }
 
     public void DefaultSettings()
     {
-
         usedObject.transform.position = defaultPosition;
         usedObject.transform.localRotation = defaultRotation;
         isOpen = false;
         isOpenClose = false;
-
     }
-
-
 }

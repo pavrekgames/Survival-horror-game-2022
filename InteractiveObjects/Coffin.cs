@@ -20,17 +20,14 @@ public class Coffin : MonoBehaviour {
 
     void Start()
     {
-
         defaultPosition = usedObject.transform.position;
         defaultRotation = usedObject.transform.localRotation;
         dragObjectScript = GameObject.Find("Player").GetComponent<DragObject>();
-
     }
 
     void OnCollisionEnter(Collision col)
     {
-
-        if (col.gameObject.CompareTag("Teren") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
+        if (col.gameObject.CompareTag("Terrain") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
         {
             PlayHitSound();
         }
@@ -42,7 +39,6 @@ public class Coffin : MonoBehaviour {
         {
             PlayHitSound();
         }
-
         else if (col.gameObject.CompareTag("Push") && isHit == false && (usedObject.layer != 13 || dragObjectScript.objectToDrag == usedObject) && !Input.GetMouseButton(0))
         {
             PlayHitSound();
@@ -51,8 +47,7 @@ public class Coffin : MonoBehaviour {
 
     void OnCollisionExit(Collision col)
     {
-
-        if (col.gameObject.CompareTag("Teren") && isHit == true && Input.GetMouseButton(0))
+        if (col.gameObject.CompareTag("Terrain") && isHit == true && Input.GetMouseButton(0))
         {
             isHit = false;
         }
@@ -75,7 +70,7 @@ public class Coffin : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if ((other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_trumna" || other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_skrzynia") && isOpen == false)
+        if ((other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_coffin" || other.gameObject.GetComponent<Collider>().gameObject.name == "Trigger_box") && isOpen == false)
         {
             audioSource.PlayOneShot(openSound);
             isOpen = true;
@@ -95,5 +90,4 @@ public class Coffin : MonoBehaviour {
         usedObject.transform.localRotation = defaultRotation;
         isOpen = false;
     }
-
 }
