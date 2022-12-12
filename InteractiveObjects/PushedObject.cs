@@ -14,34 +14,33 @@ public class PushedObject : MonoBehaviour {
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
-    void Start () {
+    void Start()
+    {
 
         defaultPosition = pushedObject.transform.position;
         defaultRotation = pushedObject.transform.localRotation;
     }
-	
-	void Update () {
-		
-        if(isPush == true && isDone == false && isPause == false)
+
+    void Update()
+    {
+        if (isPush == true && isDone == false && isPause == false)
         {
             audioSource.pitch = Random.Range(0.8f, 1.5f);
             audioSource.clip = pushSound;
             audioSource.Play();
             isDone = true;
         }
-
-        else if(isPush == false && isDone == true && isPause == false)
+        else if (isPush == false && isDone == true && isPause == false)
         {
             audioSource.Pause();
             isPause = true;
         }
-
         else if (isPush == true && isDone == true && isPause == true)
         {
             audioSource.UnPause();
             isPause = false;
         }
-	}
+    }
 
     public void DefaultSettings()
     {
@@ -51,5 +50,4 @@ public class PushedObject : MonoBehaviour {
         isDone = false;
         isPause = false;
     }
-
 }

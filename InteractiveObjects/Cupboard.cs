@@ -21,39 +21,43 @@ public class Cupboard : MonoBehaviour, IOpenCloseObject {
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
-    void Start () {
+    void Start()
+    {
 
         defaultPosition = usedObject.transform.position;
         defaultRotation = usedObject.transform.localRotation;
     }
 
-	void OnTriggerExit(Collider other){
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Kolider_otworz" && isOpen == false){
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Collider_open" && isOpen == false)
+        {
             audioSource.pitch = Random.Range(0.8f, 1f);
             audioSource.PlayOneShot(openSound);
-			isOpen = true;
+            isOpen = true;
             isCloseOpen = true;
         }
-	}
+    }
 
-	void OnTriggerEnter(Collider other){
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Kolider_otworz" && isOpen == true){
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Collider_open" && isOpen == true)
+        {
             audioSource.PlayOneShot(closeSound);
-			isOpen = false;
+            isOpen = false;
             isCloseOpen = false;
         }
-	}
+    }
 
     public void Open1()
     {
-        if(isReverse == false && isNeedKey == false)
+        if (isReverse == false && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.right * openForce);
             isCloseOpen = !isCloseOpen;
-
         }
-        else if(isReverse == true && isNeedKey == false)
+        else if (isReverse == true && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.right * openForce);
@@ -63,7 +67,6 @@ public class Cupboard : MonoBehaviour, IOpenCloseObject {
 
     public void Close1()
     {
-
         if (isReverse == false && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
@@ -71,7 +74,7 @@ public class Cupboard : MonoBehaviour, IOpenCloseObject {
             isCloseOpen = !isCloseOpen;
 
         }
-        else if(isReverse == true && isNeedKey == false)
+        else if (isReverse == true && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.right * openForce);
@@ -81,14 +84,13 @@ public class Cupboard : MonoBehaviour, IOpenCloseObject {
 
     public void Open2()
     {
-
         if (isReverse == false && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.right * openForce);
             isCloseOpen = !isCloseOpen;
         }
-        else if(isReverse == true && isNeedKey == false)
+        else if (isReverse == true && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.right * openForce);
@@ -98,14 +100,13 @@ public class Cupboard : MonoBehaviour, IOpenCloseObject {
 
     public void Close2()
     {
-
         if (isReverse == false && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(usedObject.transform.right * closeForce);
             isCloseOpen = !isCloseOpen;
         }
-        else if(isReverse == true && isNeedKey == false)
+        else if (isReverse == true && isNeedKey == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.right * closeForce);
@@ -115,14 +116,11 @@ public class Cupboard : MonoBehaviour, IOpenCloseObject {
 
     public void DefaultSettings()
     {
-
         usedObject.transform.position = defaultPosition;
         usedObject.transform.localRotation = defaultRotation;
         isOpen = false;
         isCloseOpen = false;
-
     }
-
 }
 
 

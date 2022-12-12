@@ -21,41 +21,45 @@ public class Drawers : MonoBehaviour, IOpenCloseObject {
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
-    void Start () {
+    void Start()
+    {
         usedObject = this.gameObject;
         defaultPosition = usedObject.transform.position;
         defaultRotation = usedObject.transform.localRotation;
-
     }
-		
-	void OnTriggerExit(Collider other){
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Kolider_tyl" && isOpen == false){
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Collider_back" && isOpen == false)
+        {
             audioSource.pitch = Random.Range(0.8f, 1.5f);
             audioSource.PlayOneShot(openSound);
-			isOpen = true;
-		}
-	}
+            isOpen = true;
+        }
+    }
 
-	void OnTriggerEnter(Collider other){
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "Kolider_tyl" && isOpen == true){
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Collider_back" && isOpen == true)
+        {
             audioSource.pitch = Random.Range(0.8f, 1.5f);
             audioSource.PlayOneShot(closeSound);
-			isOpen = false;
+            isOpen = false;
             isBlocked = false;
             isCloseOpen = false;
-		}
-	}
+        }
+    }
 
     void OnColliderEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Kolider_przod" && isOpen == true)
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "Collider_front" && isOpen == true)
         {
             isBlocked = true;
         }
     }
 
-    public void Open1() {
-
+    public void Open1()
+    {
         if (isReverse == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
@@ -72,7 +76,6 @@ public class Drawers : MonoBehaviour, IOpenCloseObject {
 
     public void Close1()
     {
-
         if (isReverse == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
@@ -89,8 +92,7 @@ public class Drawers : MonoBehaviour, IOpenCloseObject {
 
     public void Open2()
     {
-
-        if(isReverse == false)
+        if (isReverse == false)
         {
             usedObject.GetComponent<Rigidbody>().Sleep();
             usedObject.GetComponent<Rigidbody>().AddForce(-usedObject.transform.right * openForce);
@@ -122,11 +124,9 @@ public class Drawers : MonoBehaviour, IOpenCloseObject {
 
     public void DefaultSettings()
     {
-
         usedObject.transform.position = defaultPosition;
         usedObject.transform.localRotation = defaultRotation;
         isOpen = false;
         isCloseOpen = false;
     }
-
 }

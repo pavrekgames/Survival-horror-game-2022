@@ -21,18 +21,16 @@ public class DraggedObject : MonoBehaviour {
     private Vector3 defaultPosition;
     private Quaternion defaultRotation;
 
-    void Start () {
-
+    void Start()
+    {
         defaultPosition = draggedObject.transform.position;
         defaultRotation = draggedObject.transform.localRotation;
         dragObjectScript = GameObject.Find("Player").GetComponent<DragObject>();
-
     }
 
     void OnCollisionEnter(Collision col)
     {
-
-        if (col.gameObject.CompareTag("Teren") && isHit == false && (draggedObject.layer != 13 || dragObjectScript.objectToDrag == draggedObject))
+        if (col.gameObject.CompareTag("Terrain") && isHit == false && (draggedObject.layer != 13 || dragObjectScript.objectToDrag == draggedObject))
         {
             PlayHitSound(groundHitSound);
         }
@@ -49,53 +47,42 @@ public class DraggedObject : MonoBehaviour {
         {
             PlayHitSound(hitSound);
         }
-
     }
 
     void OnCollisionExit(Collision col)
     {
-
-        if (col.gameObject.CompareTag("Teren") && isHit == true)
+        if (col.gameObject.CompareTag("Terrain") && isHit == true)
         {
             isHit = false;
         }
-
         else if (col.gameObject.CompareTag("Move") && isHit == true)
         {
             isHit = false;
         }
-
         else if (col.gameObject.CompareTag("Untagged") && isHit == true)
         {
             isHit = false;
         }
-
         else if (col.gameObject.CompareTag("Push") && isHit == true)
         {
             isHit = false;
         }
-
-
     }
 
     void OnTriggerEnter(Collider col)
     {
-
-       if (col.gameObject.CompareTag("Woda") && isHit == false)
+        if (col.gameObject.CompareTag("Water") && isHit == false)
         {
             PlayHitSound(waterHitSound);
         }
-
     }
 
     void OnTriggerExit(Collider col)
     {
-
-        if (col.gameObject.CompareTag("Woda") && isHit == true)
+        if (col.gameObject.CompareTag("Water") && isHit == true)
         {
             isHit = false;
         }
-
     }
 
     void PlayHitSound(AudioClip hitSound)
@@ -107,11 +94,8 @@ public class DraggedObject : MonoBehaviour {
 
     public void DefaultSettings()
     {
-
         draggedObject.transform.position = defaultPosition;
         draggedObject.transform.localRotation = defaultRotation;
         isHit = false;
-
     }
-
 }
