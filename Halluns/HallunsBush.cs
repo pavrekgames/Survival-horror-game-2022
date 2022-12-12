@@ -3,20 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HallunsBush : MonoBehaviour {
+public class HallunsBush : MonoBehaviour
+{
 
     public event Action OnFireBush;
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip fireSound;
-    [SerializeField] private Canvas hallunsCanvas;
-    [SerializeField] private Animator animator;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip fireSound;
+    [SerializeField]
+    private Canvas hallunsCanvas;
+    [SerializeField]
+    private Animator animator;
 
     public bool isFire;
 
     public void FireBush()
     {
-        if(isFire == false)
+        if (isFire == false)
         {
             audioSource.PlayOneShot(fireSound);
             hallunsCanvas.enabled = true;
@@ -24,7 +29,7 @@ public class HallunsBush : MonoBehaviour {
             Halluns.fireCount++;
             isFire = true;
 
-            if(OnFireBush != null)
+            if (OnFireBush != null)
             {
                 OnFireBush.Invoke();
             }
