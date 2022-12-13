@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Music : MonoBehaviour {
 
-	private Jumpscare jumpscareScript;
+    private Jumpscare jumpscareScript;
     private Monster2_v3 cornfieldMonsterScript;
     private Monster1_v3 meatMonsterScript;
 
