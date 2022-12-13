@@ -21,36 +21,37 @@ public class TaskWell : MonoBehaviour {
 
     public int stonesCount = 0;
 
-	void Update () {
-
-		if(stonesCount == 5){
-			key.GetComponent<Collider> ().enabled = true;
-		}
-		
-	}
-
-	void OnTriggerEnter(Collider col){
-		if(col.gameObject.GetComponent<Collider>().gameObject.name == stones[0].stoneName){
-			AddStoneToWell(stones[0]);
+    void Update()
+    {
+        if (stonesCount == 5)
+        {
+            key.GetComponent<Collider>().enabled = true;
         }
+    }
 
-		else if(col.gameObject.GetComponent<Collider>().gameObject.name == stones[1].stoneName){
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.GetComponent<Collider>().gameObject.name == stones[0].stoneName)
+        {
+            AddStoneToWell(stones[0]);
+        }
+        else if (col.gameObject.GetComponent<Collider>().gameObject.name == stones[1].stoneName)
+        {
             AddStoneToWell(stones[1]);
         }
-
-		else if(col.gameObject.GetComponent<Collider>().gameObject.name == stones[2].stoneName){
+        else if (col.gameObject.GetComponent<Collider>().gameObject.name == stones[2].stoneName)
+        {
             AddStoneToWell(stones[2]);
         }
-
-		else if(col.gameObject.GetComponent<Collider>().gameObject.name == stones[3].stoneName){
+        else if (col.gameObject.GetComponent<Collider>().gameObject.name == stones[3].stoneName)
+        {
             AddStoneToWell(stones[3]);
         }
-
-		else if(col.gameObject.GetComponent<Collider>().gameObject.name == stones[4].stoneName){
+        else if (col.gameObject.GetComponent<Collider>().gameObject.name == stones[4].stoneName)
+        {
             AddStoneToWell(stones[4]);
         }
-
-	}
+    }
 
     void AddStoneToWell(Stone stone)
     {
@@ -62,6 +63,4 @@ public class TaskWell : MonoBehaviour {
         stone.stoneObject.SetActive(false);
         stonesCount++;
     }
-
-
 }

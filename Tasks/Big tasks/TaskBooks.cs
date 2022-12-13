@@ -39,17 +39,15 @@ public class TaskBooks : MonoBehaviour {
 	private Camera playerCam;
     [SerializeField] private float rayLength = 4f;
 
-	void OnEnable () {
-
-		playerCam = Camera.main;
-		player = GameObject.Find("Player").transform;
-		chip.gameObject.SetActive (false);
-	
-	}
+    void OnEnable()
+    {
+        playerCam = Camera.main;
+        player = GameObject.Find("Player").transform;
+        chip.gameObject.SetActive(false);
+    }
 
     void Update()
     {
-
         float distance = Vector3.Distance(player.position, bookshelf.position);
 
         CheckPlayerDistance(distance);
@@ -61,7 +59,6 @@ public class TaskBooks : MonoBehaviour {
 
             if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9))
             {
-
                 if (hit.collider.gameObject.name == books[0].bookName)
                 {
                     TakeBook(books[0]);
@@ -87,7 +84,6 @@ public class TaskBooks : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0) && isBookTaken == true && isTaskDone == false && playerManagerScript.isPlayerCanInput == true)
         {
-
             Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
 
@@ -115,31 +111,6 @@ public class TaskBooks : MonoBehaviour {
                 }
             }
         }
-
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            chipAudioSource.Pause();
-
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            chipAudioSource.UnPause();
-
-
-            isPlaySound = false;
-        }
-
     }
 
     void TakeBook(Book book)
@@ -174,10 +145,9 @@ public class TaskBooks : MonoBehaviour {
 
     void EnableBooks()
     {
-        foreach(var book in books)
+        foreach (var book in books)
         {
             book.bookObject.SetActive(false);
         }
     }
-
 }
