@@ -54,7 +54,7 @@ public class NotesUI : MonoBehaviour {
     {
         inventoryUIManager.ResetUI();
         itemAudioSource.PlayOneShot(menuButtonSound);
-       
+
         notesCanvas.enabled = true;
         isNotesActive = true;
 
@@ -63,12 +63,10 @@ public class NotesUI : MonoBehaviour {
         notesScrollRect.GetComponent<ScrollRect>().enabled = true;
         notesScrollbar.value = 1;
         StopCoroutine(ShowNotesIE());
-
     }
 
     public void NotesBackFunction()
     {
-
         inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
@@ -78,7 +76,6 @@ public class NotesUI : MonoBehaviour {
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
     }
 
     public void ShowNote(int id)
