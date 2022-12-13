@@ -21,8 +21,8 @@ public class PlayerHud : MonoBehaviour {
     private Color defaultStaminaColor;
     private Color tiredStaminaColour;
 
-    void Start () {
-
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
         inventoryUIScript = GameObject.Find("CanvasInventory").GetComponent<InventoryUI>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
@@ -33,10 +33,10 @@ public class PlayerHud : MonoBehaviour {
         staminaBar.color = defaultStaminaColor;
 
         inventoryUIScript.OnUsedItemFromSlot += UpdateHud;
-
     }
 
-	void Update () {
+    void Update()
+    {
 
         StaminaBar();
 
@@ -48,7 +48,6 @@ public class PlayerHud : MonoBehaviour {
         {
             hudCanvas.enabled = true;
         }
-
     }
 
     void StaminaBar()
@@ -75,7 +74,6 @@ public class PlayerHud : MonoBehaviour {
                 currentItemIcon.color = Color.white;
                 currenntItemTitle.text = inventoryScript.items[i].itemName;
             }
-          
         }
     }
 

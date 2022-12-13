@@ -13,19 +13,19 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private AudioMixerSnapshot pauseSoundSnapshot;
     [SerializeField] private AudioMixerSnapshot unPauseSoundSnapshot;
 
-    void Start () {
-
+    void Start()
+    {
         gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
         healthScript = GameObject.Find("Player").GetComponent<Health>();
-
     }
-	
-	void Update () {
+
+    void Update()
+    {
 
         CheckSoundSnapshot();
         IsPlayerCanInput();
         isPlayerCanInput = IsPlayerCanInput();
-	}
+    }
 
     public void CheckSoundSnapshot()
     {
@@ -41,15 +41,15 @@ public class PlayerManager : MonoBehaviour {
 
     public bool IsPlayerCanInput()
     {
-        if(Time.timeScale == 1 &&
-            healthScript.health > 0 && 
+        if (Time.timeScale == 1 &&
+            healthScript.health > 0 &&
             gameMenuScript.isLoadedGame == false)
         {
             return true;
-        }else
+        }
+        else
         {
             return false;
         }
     }
-
 }

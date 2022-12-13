@@ -21,8 +21,8 @@ public class Push : MonoBehaviour {
         cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
     }
 
-    void Update() {
-
+    void Update()
+    {
         if (Input.GetMouseButton(0) && Time.timeScale == 1)
         {
 
@@ -35,23 +35,18 @@ public class Push : MonoBehaviour {
                 pushedObject.transform.position += player.transform.forward * Time.deltaTime * pushForce;
                 pushedObject.GetComponent<PushedObject>().isPush = true;
             }
-
         }
-
         else if (!Input.GetMouseButton(0) && pushedObject != null)
         {
             pushedObject.GetComponent<PushedObject>().isPush = false;
         }
-
     }
 
     public void DefaultSettings()
     {
-
         if (pushedObject != null)
         {
             pushedObject.GetComponent<PushedObject>().isPush = false;
         }
-
     }
 }
