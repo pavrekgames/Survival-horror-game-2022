@@ -28,9 +28,9 @@ public class MusicTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(triggerType == TriggerType.TriggerEnter)
+        if (triggerType == TriggerType.TriggerEnter)
         {
-            if(other.gameObject.CompareTag("Player") && isPlay == false)
+            if (other.gameObject.CompareTag("Player") && isPlay == false)
             {
                 musicScript.PlayMusic(audioSource, music, musicVolume, musicLoopState);
                 isPlay = true;
@@ -49,5 +49,4 @@ public class MusicTrigger : MonoBehaviour {
             }
         }
     }
-
 }

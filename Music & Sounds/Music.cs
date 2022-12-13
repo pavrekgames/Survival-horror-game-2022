@@ -30,48 +30,49 @@ public class Music : MonoBehaviour {
 
     [Header("Monster music states")]
     public bool isGardenMonsterMusic = false;
-	public bool isGardenMonsterMusic_On = false;
-	public bool isWorkshopMonsterMusic = false;
-	public bool isWorkshopMonsterMusic_On = false;
-	public bool isLeftBrookMonsterMusic = false;
-	public bool isLeftBrookMonsterMusic_On = false;
-	public bool isCorridorMonsterMusic = false;
-	public bool isCorridorMonsterMusic_On = false;
-	public bool isCornfieldMonsterMusic = false;
-	public bool isCornfieldMonsterMusic_On = false;
-	public bool isPumpkinMonsterMusic = false;
-	public bool isPumpkinMonsterMusic_On = false;
-	public bool isAbandonedMonsterMusic = false;
-	public bool isAbandonedMonsterMusic_On = false;
-	public bool isMeatMonsterMusic = false;
-	public bool isMeatMonsterMusic_On = false;
+    public bool isGardenMonsterMusic_On = false;
+    public bool isWorkshopMonsterMusic = false;
+    public bool isWorkshopMonsterMusic_On = false;
+    public bool isLeftBrookMonsterMusic = false;
+    public bool isLeftBrookMonsterMusic_On = false;
+    public bool isCorridorMonsterMusic = false;
+    public bool isCorridorMonsterMusic_On = false;
+    public bool isCornfieldMonsterMusic = false;
+    public bool isCornfieldMonsterMusic_On = false;
+    public bool isPumpkinMonsterMusic = false;
+    public bool isPumpkinMonsterMusic_On = false;
+    public bool isAbandonedMonsterMusic = false;
+    public bool isAbandonedMonsterMusic_On = false;
+    public bool isMeatMonsterMusic = false;
+    public bool isMeatMonsterMusic_On = false;
     public bool isBasementMonsterMusic = false;
     public bool isPlantMonsterMusic = false;
 
     public delegate void PlayMonsterMusicDelegate();
-    public PlayMonsterMusicDelegate PlayMonsterMusic; 
+    public PlayMonsterMusicDelegate PlayMonsterMusic;
 
-    void OnEnable () {
+    void OnEnable()
+    {
 
-		jumpscareScript = GameObject.Find ("Player").GetComponent<Jumpscare> ();
-		
+        jumpscareScript = GameObject.Find("Player").GetComponent<Jumpscare>();
+
         cornfieldMonsterScript = GameObject.Find("Monster2_v3").GetComponent<Monster2_v3>();
-		meatMonsterScript = GameObject.Find("Monster1_v3").GetComponent<Monster1_v3>();
+        meatMonsterScript = GameObject.Find("Monster1_v3").GetComponent<Monster1_v3>();
 
-        backgroundAudioSource1 = GameObject.Find ("MuzykaTlo").GetComponent<AudioSource> (); // ciche
-		backgroundAudioSource2 = GameObject.Find ("MuzykaTlo2").GetComponent<AudioSource> (); // srednie
-		backgroundAudioSource3 = GameObject.Find ("MuzykaTlo3").GetComponent<AudioSource> (); // glosna
-		monsterBackgroundAudioSource1 = GameObject.Find ("MuzykaTloPotwory").GetComponent<AudioSource> (); // cicha
-		monsterBackgroundAudioSource2 = GameObject.Find ("MuzykaTloPotwory2").GetComponent<AudioSource> (); // srednia
+        backgroundAudioSource1 = GameObject.Find("MusicBackground").GetComponent<AudioSource>();
+        backgroundAudioSource2 = GameObject.Find("MusicBackground2").GetComponent<AudioSource>();
+        backgroundAudioSource3 = GameObject.Find("MusicBackground3").GetComponent<AudioSource>();
+        monsterBackgroundAudioSource1 = GameObject.Find("MusicMonster1").GetComponent<AudioSource>();
+        monsterBackgroundAudioSource2 = GameObject.Find("MusicMonster2").GetComponent<AudioSource>();
 
         cornfieldMonsterScript.gameObject.SetActive(false);
-		meatMonsterScript.gameObject.SetActive (false);
+        meatMonsterScript.gameObject.SetActive(false);
 
         PlayMonsterMusic += PlayMonsterCornfieldMusic;
+    }
 
-	}
-	
-	void Update () {
+    void Update()
+    {
 
         MusicTurnUp();
         MusicTurnDown();
@@ -80,9 +81,8 @@ public class Music : MonoBehaviour {
         PlayMonsterMusic();
         MusicWithoutTask();
 
-        // Zatrzymywanie muzyki
-
-        if (Time.timeScale == 0) {
+        if (Time.timeScale == 0)
+        {
             if (backgroundAudioSource1.clip != null)
             {
                 backgroundAudioSource1.Pause();
@@ -105,9 +105,8 @@ public class Music : MonoBehaviour {
             }
         }
 
-		// Wznawianie muzyki
-
-		if (Time.timeScale == 1) {
+        if (Time.timeScale == 1)
+        {
             if (backgroundAudioSource1.clip != null)
             {
                 backgroundAudioSource1.UnPause();
@@ -228,23 +227,24 @@ public class Music : MonoBehaviour {
         }
     }
 
-	void PlayRandomMusic(){
+    void PlayRandomMusic()
+    {
 
         randomMusicActionIndex = Random.Range(0, 3);
 
-		backgroundAudioSource1.clip = actionMusics[randomMusicActionIndex]; 
-		backgroundAudioSource1.Play ();
-		backgroundAudioSource1.volume = 0;
-		backgroundAudioSource1.loop = true;
-		randomMusicDuration = 0;
-	}
+        backgroundAudioSource1.clip = actionMusics[randomMusicActionIndex];
+        backgroundAudioSource1.Play();
+        backgroundAudioSource1.volume = 0;
+        backgroundAudioSource1.loop = true;
+        randomMusicDuration = 0;
+    }
 
-   public void PlayMusic(AudioSource musicAudioSource, AudioClip music, float musicVolume, bool musicLoopState)
+    public void PlayMusic(AudioSource musicAudioSource, AudioClip music, float musicVolume, bool musicLoopState)
     {
         randomMusicDuration = 0;
         isMusicOff = false;
-        
-        foreach(var audioSource in musicAudioSources)
+
+        foreach (var audioSource in musicAudioSources)
         {
             audioSource.Stop();
         }
@@ -253,151 +253,183 @@ public class Music : MonoBehaviour {
         musicAudioSource.Play();
         musicAudioSource.volume = musicVolume;
         musicAudioSource.loop = musicLoopState;
-    }	
+    }
 
-    void PlayMonsterGardenMusic(){
-		if (isGardenMonsterMusic == true && isGardenMonsterMusic_On == false) {
-			monsterBackgroundAudioSource1.volume = 0;
-			monsterBackgroundAudioSource1.clip = monsterMusic1;
-			monsterBackgroundAudioSource1.Play ();
-			isGardenMonsterMusic_On = true;
-		} 
-
-		if(isGardenMonsterMusic == false && isGardenMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isGardenMonsterMusic_On = false;
-		}
-	}
-
-	void PlayMonsterWorkshopMusic(){
-		if (isWorkshopMonsterMusic == true && isWorkshopMonsterMusic_On == false) {
-			monsterBackgroundAudioSource1.volume = 0;
-			monsterBackgroundAudioSource1.clip = monsterMusic2;
-			monsterBackgroundAudioSource1.Play ();
-			isWorkshopMonsterMusic_On = true;
-		} 
-
-		if(isWorkshopMonsterMusic == false && isWorkshopMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isWorkshopMonsterMusic_On = false;
-		}
-	}
-
-	void PlayMonsterLeftBrookMusic(){
-		if (jumpscareScript.brookMonster1.activeSelf) {
-			isLeftBrookMonsterMusic = true;
-		}
-
-		if (isLeftBrookMonsterMusic == true && isLeftBrookMonsterMusic_On == false) {
+    void PlayMonsterGardenMusic()
+    {
+        if (isGardenMonsterMusic == true && isGardenMonsterMusic_On == false)
+        {
             monsterBackgroundAudioSource1.volume = 0;
-			monsterBackgroundAudioSource1.clip = monsterMusic3;
-			monsterBackgroundAudioSource1.Play ();
-			isLeftBrookMonsterMusic_On = true;
-		} 
+            monsterBackgroundAudioSource1.clip = monsterMusic1;
+            monsterBackgroundAudioSource1.Play();
+            isGardenMonsterMusic_On = true;
+        }
 
-		if(isLeftBrookMonsterMusic == false && isLeftBrookMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isLeftBrookMonsterMusic_On = false;
-		}
+        if (isGardenMonsterMusic == false && isGardenMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isGardenMonsterMusic_On = false;
+        }
+    }
 
-		if (!jumpscareScript.brookMonster1.activeSelf) {
-			isLeftBrookMonsterMusic = false;
-		}
-	}
+    void PlayMonsterWorkshopMusic()
+    {
+        if (isWorkshopMonsterMusic == true && isWorkshopMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource1.volume = 0;
+            monsterBackgroundAudioSource1.clip = monsterMusic2;
+            monsterBackgroundAudioSource1.Play();
+            isWorkshopMonsterMusic_On = true;
+        }
 
-	void PlayMonsterCorridorMusic(){
-		if (jumpscareScript.corridorMonster.activeSelf) {
-			isCorridorMonsterMusic = true;
-		}
+        if (isWorkshopMonsterMusic == false && isWorkshopMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isWorkshopMonsterMusic_On = false;
+        }
+    }
 
-		if (isCorridorMonsterMusic == true && isCorridorMonsterMusic_On == false) {
-			monsterBackgroundAudioSource1.volume = 0;
-			monsterBackgroundAudioSource1.clip = monsterMusic4;
-			monsterBackgroundAudioSource1.Play ();
-			isCorridorMonsterMusic_On = true;
-		} 
+    void PlayMonsterLeftBrookMusic()
+    {
+        if (jumpscareScript.brookMonster1.activeSelf)
+        {
+            isLeftBrookMonsterMusic = true;
+        }
 
-		if(isCorridorMonsterMusic == false && isCorridorMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isCorridorMonsterMusic_On = false;
-		}
+        if (isLeftBrookMonsterMusic == true && isLeftBrookMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource1.volume = 0;
+            monsterBackgroundAudioSource1.clip = monsterMusic3;
+            monsterBackgroundAudioSource1.Play();
+            isLeftBrookMonsterMusic_On = true;
+        }
 
-		if (!jumpscareScript.corridorMonster.activeSelf) {
-			isCorridorMonsterMusic = false;
-		}
-	}
+        if (isLeftBrookMonsterMusic == false && isLeftBrookMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isLeftBrookMonsterMusic_On = false;
+        }
 
-	void PlayMonsterCornfieldMusic(){
-		if ((cornfieldMonsterScript.Widzi_ok == true || cornfieldMonsterScript.WidzialSwiatlo_ok == true || cornfieldMonsterScript.WidzialGracza_ok == true) && jumpscareScript.cornfieldMonster2.activeSelf) {
-			isCornfieldMonsterMusic = true;
-		}
+        if (!jumpscareScript.brookMonster1.activeSelf)
+        {
+            isLeftBrookMonsterMusic = false;
+        }
+    }
 
-		if (isCornfieldMonsterMusic == true && isCornfieldMonsterMusic_On == false) {
-			monsterBackgroundAudioSource1.volume = 0;
-			monsterBackgroundAudioSource1.clip = monsterMusic5;
-			monsterBackgroundAudioSource1.Play ();
-			isCornfieldMonsterMusic_On = true;
-		}
+    void PlayMonsterCorridorMusic()
+    {
+        if (jumpscareScript.corridorMonster.activeSelf)
+        {
+            isCorridorMonsterMusic = true;
+        }
 
-		if(isCornfieldMonsterMusic == false && isCornfieldMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isCornfieldMonsterMusic_On = false;
-		}
+        if (isCorridorMonsterMusic == true && isCorridorMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource1.volume = 0;
+            monsterBackgroundAudioSource1.clip = monsterMusic4;
+            monsterBackgroundAudioSource1.Play();
+            isCorridorMonsterMusic_On = true;
+        }
 
-		if (!jumpscareScript.cornfieldMonster2.activeSelf) {
-			isCornfieldMonsterMusic = false;
-		}
-	}
+        if (isCorridorMonsterMusic == false && isCorridorMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isCorridorMonsterMusic_On = false;
+        }
 
-	void PlayMonsterPumpkinMusic(){
-		if (jumpscareScript.pumpkinMonster.activeSelf) {
-			isPumpkinMonsterMusic = true;
-		}
+        if (!jumpscareScript.corridorMonster.activeSelf)
+        {
+            isCorridorMonsterMusic = false;
+        }
+    }
 
-		if (isPumpkinMonsterMusic == true && isPumpkinMonsterMusic_On == false) {
-			monsterBackgroundAudioSource1.volume = 0;
-			monsterBackgroundAudioSource1.clip = monsterMusic1;
-			monsterBackgroundAudioSource1.Play ();
-			isPumpkinMonsterMusic_On = true;
-		}
+    void PlayMonsterCornfieldMusic()
+    {
+        if ((cornfieldMonsterScript.Widzi_ok == true || cornfieldMonsterScript.WidzialSwiatlo_ok == true || cornfieldMonsterScript.WidzialGracza_ok == true) && jumpscareScript.cornfieldMonster2.activeSelf)
+        {
+            isCornfieldMonsterMusic = true;
+        }
 
-		if(isPumpkinMonsterMusic == false && isPumpkinMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isPumpkinMonsterMusic_On = false;
-		}
+        if (isCornfieldMonsterMusic == true && isCornfieldMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource1.volume = 0;
+            monsterBackgroundAudioSource1.clip = monsterMusic5;
+            monsterBackgroundAudioSource1.Play();
+            isCornfieldMonsterMusic_On = true;
+        }
 
-		if (!jumpscareScript.pumpkinMonster.activeSelf) {
-			isPumpkinMonsterMusic = false;
-		}
-	}
+        if (isCornfieldMonsterMusic == false && isCornfieldMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isCornfieldMonsterMusic_On = false;
+        }
 
-	void PlayMonsterAbandonedMusic(){
-		if (isAbandonedMonsterMusic == true && isAbandonedMonsterMusic_On == false) {
-			monsterBackgroundAudioSource2.volume = 0;
-			monsterBackgroundAudioSource2.clip = monsterMusic6;
-			monsterBackgroundAudioSource2.Play ();
-			isAbandonedMonsterMusic_On = true;
-		} 
+        if (!jumpscareScript.cornfieldMonster2.activeSelf)
+        {
+            isCornfieldMonsterMusic = false;
+        }
+    }
 
-		if(isAbandonedMonsterMusic == false && isAbandonedMonsterMusic_On == true){
-			monsterBackgroundAudioSource2.Stop ();
-			isAbandonedMonsterMusic_On = false;
-		}
-	}
+    void PlayMonsterPumpkinMusic()
+    {
+        if (jumpscareScript.pumpkinMonster.activeSelf)
+        {
+            isPumpkinMonsterMusic = true;
+        }
 
-	void PlayMonsterMeatMusic(){
-		if ((meatMonsterScript.isSawPlayer == true || meatMonsterScript.isRayPlayer == true || meatMonsterScript.isSawLight == true) && isMeatMonsterMusic_On == false) {
-			monsterBackgroundAudioSource1.volume = 0.5f;
-			monsterBackgroundAudioSource1.clip = monsterMusic1;
-			monsterBackgroundAudioSource1.Play ();
-			isMeatMonsterMusic_On = true;
-		} 
+        if (isPumpkinMonsterMusic == true && isPumpkinMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource1.volume = 0;
+            monsterBackgroundAudioSource1.clip = monsterMusic1;
+            monsterBackgroundAudioSource1.Play();
+            isPumpkinMonsterMusic_On = true;
+        }
 
-		if((meatMonsterScript.isSawPlayer == false && meatMonsterScript.isRayPlayer == false && meatMonsterScript.isSawLight == false) && isMeatMonsterMusic_On == true){
-			monsterBackgroundAudioSource1.Stop ();
-			isMeatMonsterMusic_On = false;
-		}
-	}
+        if (isPumpkinMonsterMusic == false && isPumpkinMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isPumpkinMonsterMusic_On = false;
+        }
+
+        if (!jumpscareScript.pumpkinMonster.activeSelf)
+        {
+            isPumpkinMonsterMusic = false;
+        }
+    }
+
+    void PlayMonsterAbandonedMusic()
+    {
+        if (isAbandonedMonsterMusic == true && isAbandonedMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource2.volume = 0;
+            monsterBackgroundAudioSource2.clip = monsterMusic6;
+            monsterBackgroundAudioSource2.Play();
+            isAbandonedMonsterMusic_On = true;
+        }
+
+        if (isAbandonedMonsterMusic == false && isAbandonedMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource2.Stop();
+            isAbandonedMonsterMusic_On = false;
+        }
+    }
+
+    void PlayMonsterMeatMusic()
+    {
+        if ((meatMonsterScript.isSawPlayer == true || meatMonsterScript.isRayPlayer == true || meatMonsterScript.isSawLight == true) && isMeatMonsterMusic_On == false)
+        {
+            monsterBackgroundAudioSource1.volume = 0.5f;
+            monsterBackgroundAudioSource1.clip = monsterMusic1;
+            monsterBackgroundAudioSource1.Play();
+            isMeatMonsterMusic_On = true;
+        }
+
+        if ((meatMonsterScript.isSawPlayer == false && meatMonsterScript.isRayPlayer == false && meatMonsterScript.isSawLight == false) && isMeatMonsterMusic_On == true)
+        {
+            monsterBackgroundAudioSource1.Stop();
+            isMeatMonsterMusic_On = false;
+        }
+    }
 
     void PlayMonsterBasementMusic()
     {
@@ -409,7 +441,8 @@ public class Music : MonoBehaviour {
 
     void PlayMonsterPlantMusic()
     {
-        if (jumpscareScript.plantMonster.activeSelf == true && isPlantMonsterMusic == false) {
+        if (jumpscareScript.plantMonster.activeSelf == true && isPlantMonsterMusic == false)
+        {
             monsterBackgroundAudioSource1.volume = 0;
             monsterBackgroundAudioSource1.clip = monsterMusic4;
             monsterBackgroundAudioSource1.Play();
@@ -421,7 +454,5 @@ public class Music : MonoBehaviour {
             monsterBackgroundAudioSource1.Stop();
             isPlantMonsterMusic = false;
         }
-
     }
-
 }
