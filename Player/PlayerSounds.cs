@@ -17,9 +17,9 @@ public class PlayerSounds : MonoBehaviour {
     [SerializeField] private AudioClip landSound;
     [SerializeField] private float stepCounter = 0f;
     [SerializeField] private float stepDuration = 0.6f;
-	
-	public bool isGround;
-	public bool isRun = false;
+
+    public bool isGround;
+    public bool isRun = false;
 
     [SerializeField] private TextureSound[] sounds;
     private TextureSound currentSound;

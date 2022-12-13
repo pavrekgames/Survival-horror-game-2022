@@ -21,7 +21,6 @@ public class PlayerManager : MonoBehaviour {
 
     void Update()
     {
-
         CheckSoundSnapshot();
         IsPlayerCanInput();
         isPlayerCanInput = IsPlayerCanInput();
