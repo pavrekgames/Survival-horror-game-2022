@@ -8,16 +8,15 @@ public class Notifications : MonoBehaviour {
 
     private PlayerManager playerManagerScript;
 
-	private Ray playerAim;
-	private Camera playerCam;
-	[SerializeField] private float rayLength = 4f;
+    private Ray playerAim;
+    private Camera playerCam;
+    
+    [SerializeField] private float rayLength = 4f;
 
     void OnEnable()
     {
-
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
         playerCam = Camera.main;
-
     }
 
     void Update()
