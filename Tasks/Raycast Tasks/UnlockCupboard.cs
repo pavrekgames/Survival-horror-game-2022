@@ -18,7 +18,8 @@ public class UnlockCupboard : MonoBehaviour, IRaycastTask {
     public bool isLocked;
     public string itemType;
 
-    void Start () {
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
         openCloseObjectsScript = GameObject.Find("Player").GetComponent<OpenCloseObject>();
     }

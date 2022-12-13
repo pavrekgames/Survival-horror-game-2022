@@ -39,7 +39,7 @@ public class UnlockDoor : MonoBehaviour, IRaycastTask {
                 doorScript.isNeedKey = false;
                 openCloseObjectsScript.enabled = true;
 
-                if(additionalObject != null)
+                if (additionalObject != null)
                 {
                     additionalObject.SetActive(false);
                 }
@@ -55,10 +55,9 @@ public class UnlockDoor : MonoBehaviour, IRaycastTask {
 
     private void CallEvent()
     {
-        if(OnDoorUnlocked != null)
+        if (OnDoorUnlocked != null)
         {
             OnDoorUnlocked.Invoke();
         }
     }
-
 }

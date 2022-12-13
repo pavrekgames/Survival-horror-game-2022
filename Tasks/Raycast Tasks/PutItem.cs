@@ -14,7 +14,8 @@ public class PutItem : MonoBehaviour, IRaycastTask {
     public bool isPut;
     public string itemType;
 
-    void Start () {
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
@@ -38,5 +39,4 @@ public class PutItem : MonoBehaviour, IRaycastTask {
             }
         }
     }
-
 }

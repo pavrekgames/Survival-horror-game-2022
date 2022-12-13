@@ -1,6 +1,5 @@
 ﻿
-public interface IRaycastTask {
-
+public interface IRaycastTask
+{
     void Execute();
-	
 }
