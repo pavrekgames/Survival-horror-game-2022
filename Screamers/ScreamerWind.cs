@@ -17,5 +17,4 @@ public class ScreamerWind : MonoBehaviour, IScreamer {
         flashlightScript.TurnOffFlashlight();
         isCalled = true;
     }
-
 }

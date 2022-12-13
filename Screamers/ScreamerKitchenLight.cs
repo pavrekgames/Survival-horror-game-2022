@@ -26,5 +26,4 @@ public class ScreamerKitchenLight : MonoBehaviour, IScreamer {
             CallScreamer();
         }
     }
-
 }

@@ -20,11 +20,10 @@ public class ScreamerSoundWithEvent : MonoBehaviour {
         audioSource.loop = false;
         isCalled = true;
 
-        if(OnCallScreamer != null)
+        if (OnCallScreamer != null)
         {
             OnCallScreamer.Invoke();
         }
-
     }
 
     void OnTriggerEnter(Collider other)
