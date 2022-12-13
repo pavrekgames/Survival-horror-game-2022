@@ -21,8 +21,8 @@ public class Notes : MonoBehaviour {
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip notesSound;
-	public bool isNotes = false;
-	public Canvas[] notesCanvas;
+    public bool isNotes = false;
+    public Canvas[] notesCanvas;
 
     public int notesCount = 0;
 
