@@ -81,15 +81,13 @@ public class NotificationUI : MonoBehaviour {
         inventoryScript.OnAddedCollectibleItem += CallCollectibleNotification;
     }
 
-    void Update () {
-
+    void Update()
+    {
         HideMainNotification();
-
     }
 
     void HideMainNotification()
     {
-
         if (Input.GetButtonDown("Flashlight") && isLightNotification == false && playerManagerScript.isPlayerCanInput == true)
         {
             isLightNotification = true;

@@ -20,7 +20,7 @@ public class TriggerNotification : MonoBehaviour {
 
     public NotificationType notificationType;
 
-	void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Player") && isTrigger == false)
         {
@@ -36,6 +36,7 @@ public class TriggerNotification : MonoBehaviour {
                     notificationUIScript.ShowTutorialNotification(notifactionCanvas);
                     break;
             }
+
             isTrigger = true;
         }
     }

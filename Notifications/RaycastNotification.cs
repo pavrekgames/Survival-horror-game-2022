@@ -20,8 +20,8 @@ public class RaycastNotification : MonoBehaviour {
 
     public void SendNotification()
     {
-        if (notificationOff == false) {
-
+        if (notificationOff == false)
+        {
             if (cursorTag == CursorTag.Door)
             {
                 notificationUIScript.ShowDoorNameNotification(notificationText, doorName, notificationSound);
