@@ -23,70 +23,44 @@ public class Notes : MonoBehaviour {
     [SerializeField] private AudioClip notesSound;
 	public bool isNotes = false;
 	public Canvas[] notesCanvas;
-	
+
     public int notesCount = 0;
 
-	void OnEnable(){
+    void OnEnable()
+    {
+        playerCam = Camera.main;
 
-		playerCam = Camera.main;
-
-		blurScript = GameObject.Find ("PlayerCamera").GetComponent<Blur> ();
-		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu> ();
+        blurScript = GameObject.Find("PlayerCamera").GetComponent<Blur>();
+        gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
-        cursorScript = GameObject.Find ("PlayerCamera").GetComponent<CrosshairGUI> ();
-		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
-		
-}
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+    }
 
-	void Update () {
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && isNotes == false && playerManagerScript.isPlayerCanInput == true)
+        {
+            Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
 
-		if (Input.GetMouseButtonDown (0) && isNotes == false && playerManagerScript.isPlayerCanInput == true) {
+            if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9))
+            {
 
-			Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-			RaycastHit hit;
-
-			if (Physics.Raycast (playerAim, out hit, rayLength, 1 << 9)) {
-					
-				if (hit.collider.gameObject.tag == "Note") {
+                if (hit.collider.gameObject.tag == "Note")
+                {
                     hit.transform.gameObject.GetComponent<Note>().PickUpNote();
-				}
-
-			} 
-		} 
-
-		else if ((Input.GetMouseButtonDown (0)) && isNotes == true && notesCanvas.Length > 0 && gameMenuScript.isMenu == false && Time.timeScale == 0) { 
-
+                }
+            }
+        }
+        else if ((Input.GetMouseButtonDown(0)) && isNotes == true && notesCanvas.Length > 0 && gameMenuScript.isMenu == false && Time.timeScale == 0)
+        {
             HideNote();
-
-		}
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-           
-
-            isPlaySound = true;
-
         }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-           
-
-            isPlaySound = false;
-        }
-
-    } 
-
+    }
 
     public void HideNote()
     {
-
         Time.timeScale = 1;
         blurScript.enabled = false;
         isNotes = false;
@@ -94,13 +68,13 @@ public class Notes : MonoBehaviour {
         cursorScript.enabled = true;
         playerScript.enabled = true;
 
-        if(notesCanvas.Length > 0)
+        if (notesCanvas.Length > 0)
         {
             for (int i = 0; i < notesCanvas.Length; i++)
             {
                 notesCanvas[i].enabled = false;
             }
-        }  
+        }
     }
 
     public void ReadNote(Canvas noteCanvas)
@@ -116,6 +90,5 @@ public class Notes : MonoBehaviour {
         playerScript.enabled = false;
         notesCount++;
     }
-
 }
 

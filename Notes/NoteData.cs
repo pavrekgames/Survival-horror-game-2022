@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Note", menuName ="Note")]
-public class NoteData : ScriptableObject {
+[CreateAssetMenu(fileName = "Note", menuName = "Note")]
+public class NoteData : ScriptableObject
+{
 
     public string title;
     [TextArea]

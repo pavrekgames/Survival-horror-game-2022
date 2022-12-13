@@ -7,8 +7,8 @@ public class Note : MonoBehaviour {
 
     public event Action OnPickUpNote;
 
-   [SerializeField] private Canvas noteCanvas;
-   [SerializeField] private Notes notesScript;
+    [SerializeField] private Canvas noteCanvas;
+    [SerializeField] private Notes notesScript;
 
     public bool isRead;
 
@@ -22,11 +22,9 @@ public class Note : MonoBehaviour {
         notesScript.ReadNote(noteCanvas);
         gameObject.SetActive(false);
 
-        if(OnPickUpNote != null)
+        if (OnPickUpNote != null)
         {
             OnPickUpNote.Invoke();
         }
-
     }
-
 }
