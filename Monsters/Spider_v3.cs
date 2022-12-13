@@ -54,7 +54,6 @@ public class Spider_v3 : Monster {
 
     void Update()
     {
-
         float distance = Vector3.Distance(player.position, monster.position);
         mapScript.isFastTravel = false;
         CheckPath();
@@ -72,27 +71,6 @@ public class Spider_v3 : Monster {
         MonsterAttackSound(distance);
         MonsterRunSound(distance);
         MonsterFollowsPlayer(distance);
- 
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-
-            isPlaySound = false;
-        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -101,18 +79,15 @@ public class Spider_v3 : Monster {
         {
             currentPoint = CurrentPoint.Point2;
         }
-
-       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point2" && isSpiderOff == false)
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point2" && isSpiderOff == false)
         {
             currentPoint = CurrentPoint.Point3;
         }
-
-       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point3")
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point3")
         {
             currentPoint = CurrentPoint.Point1;
         }
-
-       else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point2" && isSpiderOff == true)
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Spider3Point2" && isSpiderOff == true)
         {
             monster.gameObject.SetActive(false);
             monster.gameObject.GetComponent<Spider_v3>().enabled = false;
@@ -291,7 +266,7 @@ public class Spider_v3 : Monster {
             isSawLight = false;
             monsterAgent.speed = runVelocity;
             monsterAnimator.SetBool("Attack", true);
-            monsterAgent.updatePosition = true; 
+            monsterAgent.updatePosition = true;
             monster.rotation = Quaternion.Slerp(monster.rotation, Quaternion.LookRotation(player.position - monster.position), rotationVelocity * Time.deltaTime);
         }
         else
@@ -309,7 +284,6 @@ public class Spider_v3 : Monster {
             audioSource.Play();
             isAttack = true;
             isRun = false;
-
         }
         else if (_distance >= 6 && isAttack == true && healthScript.health > 0)
         {
@@ -328,7 +302,6 @@ public class Spider_v3 : Monster {
             audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.5f);
             audioSource.Play();
             isRun = true;
-
         }
         else if ((isSawPlayer == false && isRayPlayer == false && isSawLight == false) && isRun == true)
         {
@@ -338,5 +311,4 @@ public class Spider_v3 : Monster {
             isRun = false;
         }
     }
-
 }

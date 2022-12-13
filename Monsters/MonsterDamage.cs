@@ -8,11 +8,13 @@ public class MonsterDamage : MonoBehaviour {
     [SerializeField] private Canvas damageCanvas;
     [SerializeField] private float damage;
 
-	void Start () {
-		healthScript = GameObject.Find("Player").GetComponent<Health>();
-	}
-	
-	void InflictDamage(){
-		healthScript.ReceiveDamage(damage, damageCanvas);
-	}
+    void Start()
+    {
+        healthScript = GameObject.Find("Player").GetComponent<Health>();
+    }
+
+    void InflictDamage()
+    {
+        healthScript.ReceiveDamage(damage, damageCanvas);
+    }
 }

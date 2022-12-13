@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Monster1_v1 : Monster {
+public class Monster1_v1 : Monster
+{
 
-    public bool isPlaySound = false; 
+    public bool isPlaySound = false;
 
     private Transform monsterPoint1;
-	private Transform monsterPoint2;
-	private Transform monsterPoint3;
-	private Transform monsterPoint4;
-	private Transform monsterPoint5;
-	private Transform monsterPoint6;
-	private Transform monsterPoint7;
+    private Transform monsterPoint2;
+    private Transform monsterPoint3;
+    private Transform monsterPoint4;
+    private Transform monsterPoint5;
+    private Transform monsterPoint6;
+    private Transform monsterPoint7;
 
     public enum ActualPoint
     {
@@ -28,33 +29,33 @@ public class Monster1_v1 : Monster {
 
     public ActualPoint actualPoint;
 
-	void OnEnable () {
+    void OnEnable()
+    {
 
-		player = GameObject.Find("Player").transform;
-		monster = GameObject.Find("Monster1_v1").transform;
-		monsterPoint1 = GameObject.Find("MonsterPoint1").transform;
-		monsterPoint2 = GameObject.Find("MonsterPoint2").transform;
-		monsterPoint3 = GameObject.Find("MonsterPoint3").transform;
-		monsterPoint4 = GameObject.Find("MonsterPoint4").transform;
-		monsterPoint5 = GameObject.Find("MonsterPoint5").transform;
-		monsterPoint6 = GameObject.Find("MonsterPoint6").transform;
-		monsterPoint7 = GameObject.Find("MonsterPoint7").transform;
-		monsterController = GetComponent<CharacterController>();
-		flashlightScript = GameObject.Find ("Flashlight").GetComponent<Flashlight> ();
-		healthScript = player.GetComponent<Health>();
-		crouchScript = player.GetComponent<Crouch>();
-		playerHead = GameObject.Find ("PlayerHead").transform;
+        player = GameObject.Find("Player").transform;
+        monster = GameObject.Find("Monster1_v1").transform;
+        monsterPoint1 = GameObject.Find("MonsterPoint1").transform;
+        monsterPoint2 = GameObject.Find("MonsterPoint2").transform;
+        monsterPoint3 = GameObject.Find("MonsterPoint3").transform;
+        monsterPoint4 = GameObject.Find("MonsterPoint4").transform;
+        monsterPoint5 = GameObject.Find("MonsterPoint5").transform;
+        monsterPoint6 = GameObject.Find("MonsterPoint6").transform;
+        monsterPoint7 = GameObject.Find("MonsterPoint7").transform;
+        monsterController = GetComponent<CharacterController>();
+        flashlightScript = GameObject.Find("Flashlight").GetComponent<Flashlight>();
+        healthScript = player.GetComponent<Health>();
+        crouchScript = player.GetComponent<Crouch>();
+        playerHead = GameObject.Find("PlayerHead").transform;
         monsterAgent = monster.GetComponent<NavMeshAgent>();
         jumpscareScript = GameObject.Find("Player").GetComponent<Jumpscare>();
         mapScript = GameObject.Find("Player").GetComponent<Map>();
 
         actualPoint = ActualPoint.Point1;
+    }
 
-}
-	
-	void Update () {
-
-		float distance = Vector3.Distance(player.position, monster.position);
+    void Update()
+    {
+        float distance = Vector3.Distance(player.position, monster.position);
 
         runVelocity = Random.Range(7, 11);
         mapScript.isFastTravel = false;
@@ -65,29 +66,9 @@ public class Monster1_v1 : Monster {
         MonsterFlashlight(distance);
         MonsterRaycast(distance);
         MonsterAttack(distance);
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-            isPlaySound = false;
-        }
-
     }
 
-   public override void MonsterFollowsPoint()
+    public override void MonsterFollowsPoint()
     {
         if (isSawPlayer == false && isRayPlayer == false && isSawLight == false)
         {
@@ -242,34 +223,42 @@ public class Monster1_v1 : Monster {
         }
     }
 
-	void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
 
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint1"){ 
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint1")
+        {
             actualPoint = ActualPoint.Point2;
-		}
+        }
 
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint2"){
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint2")
+        {
             actualPoint = ActualPoint.Point3;
         }
 
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint3"){
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint3")
+        {
             actualPoint = ActualPoint.Point4;
         }
 
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint4"){
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint4")
+        {
             actualPoint = ActualPoint.Point5;
         }
 
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint5"){
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint5")
+        {
             actualPoint = ActualPoint.Point6;
         }
 
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint6"){
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint6")
+        {
             actualPoint = ActualPoint.Point7;
         }
 
-		else if(other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint7"){
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPoint7")
+        {
             actualPoint = ActualPoint.Point1;
-        }	
-	}	
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class Monster2_v2 : Monster {
 
     public NavMeshPath mainPath;
 
-	public bool isStartPoint = false;
+    public bool isStartPoint = false;
 
     public enum ActualPoint
     {
@@ -54,20 +54,20 @@ public class Monster2_v2 : Monster {
     private GameObject houseDoor;
     public bool isHouseDoor = false;
 
-	void OnEnable () {
-
-		player = GameObject.Find("Player").transform;
-		monster = GameObject.Find("Monster2_v2").transform;
-		monsterStartPoint = GameObject.Find("Monster4StartPoint").transform;
+    void OnEnable()
+    {
+        player = GameObject.Find("Player").transform;
+        monster = GameObject.Find("Monster2_v2").transform;
+        monsterStartPoint = GameObject.Find("Monster4StartPoint").transform;
         monsterPoint1 = GameObject.Find("Monster4Point1").transform;
         monsterPoint2 = GameObject.Find("Monster4Point2").transform;
         monsterPoint2 = GameObject.Find("Monster4Point3").transform;
         monsterController = GetComponent<CharacterController>();
-		flashlightScript = GameObject.Find ("Flashlight").GetComponent<Flashlight> ();
-		healthScript = player.GetComponent<Health>();
+        flashlightScript = GameObject.Find("Flashlight").GetComponent<Flashlight>();
+        healthScript = player.GetComponent<Health>();
         crouchScript = player.GetComponent<Crouch>();
         monsterAgent = monster.GetComponent<NavMeshAgent>();
-		playerHead = GameObject.Find ("PlayerHead").transform;
+        playerHead = GameObject.Find("PlayerHead").transform;
         mapScript = GameObject.Find("Player").GetComponent<Map>();
 
         kitchenDoor = GameObject.Find("DoorKitchen").gameObject;
@@ -104,12 +104,11 @@ public class Monster2_v2 : Monster {
 
         hitAudioSource.clip = null;
         audioSource.pitch = 1;
-
     }
 
-	void Update () {
-
-		float distance = Vector3.Distance(player.position, monster.position);
+    void Update()
+    {
+        float distance = Vector3.Distance(player.position, monster.position);
 
         runVelocity = UnityEngine.Random.Range(8, 12);
         mapScript.isFastTravel = false;
@@ -128,38 +127,16 @@ public class Monster2_v2 : Monster {
         MonsterAttack(distance);
         MonsterFollowsPlayer(distance);
         MonsterAttackSound(distance);
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-            hitAudioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-            hitAudioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
     }
 
-	void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
 
         if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster4StartPoint")
-        { 
+        {
             isStartPoint = true;
-        }else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster4Point1")
+        }
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster4Point1")
         {
             actualPoint = ActualPoint.Point2;
         }
@@ -175,12 +152,11 @@ public class Monster2_v2 : Monster {
 
     void OnCollisionEnter(Collision other)
     {
-       
         if (other.gameObject.GetComponent<Collider>().gameObject.name == "DoorKitchen" && isKitchenDoor == false)
         {
             MonsterHitDoor(kitchenDoor, isKitchenDoor);
         }
-        else if(other.gameObject.GetComponent<Collider>().gameObject.name == "DoorUncle" && isUncleDoor == false)
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "DoorUncle" && isUncleDoor == false)
         {
             MonsterHitDoor(kitchenDoor, isUncleDoor);
         }
@@ -224,7 +200,6 @@ public class Monster2_v2 : Monster {
         {
             MonsterHitDoor(kitchenDoor, isHouseDoor);
         }
-
     }
 
     void MonsterHitDoor(GameObject door, bool isHit)
@@ -243,7 +218,6 @@ public class Monster2_v2 : Monster {
         {
             NavMesh.CalculatePath(monster.transform.position, player.transform.position, -1, mainPath);
         }
-
 
         if ((mainPath.status == NavMeshPathStatus.PathInvalid || mainPath.status == NavMeshPathStatus.PathPartial))
         {
@@ -378,11 +352,10 @@ public class Monster2_v2 : Monster {
 
     public override void MonsterAttack(float _distance)
     {
-
         if (_distance < 5 && healthScript.health > 0 && isStartPoint == true)
         {
             monsterAgent.SetDestination(player.transform.position);
-            monsterAgent.updatePosition = true; 
+            monsterAgent.updatePosition = true;
             monsterAgent.Stop();
             monsterAgent.velocity = Vector3.zero;
             isSawLight = false;
@@ -412,5 +385,4 @@ public class Monster2_v2 : Monster {
             isAttack = false;
         }
     }
-
 }

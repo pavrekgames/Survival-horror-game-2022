@@ -24,17 +24,17 @@ public class Monster1_v3 : Monster {
     public Transform meat2;
     public Transform meat3;
 
-	void OnEnable () {
-
-		player = GameObject.Find("Player").transform;
-		monster = GameObject.Find("Monster1_v3").transform;
-		monsterController = GetComponent<CharacterController>();
-		flashlightScript = GameObject.Find ("Flashlight").GetComponent<Flashlight> ();
-		healthScript = player.GetComponent<Health>();
-		taskMeatScript = player.GetComponent<TaskMeat>();
+    void OnEnable()
+    {
+        player = GameObject.Find("Player").transform;
+        monster = GameObject.Find("Monster1_v3").transform;
+        monsterController = GetComponent<CharacterController>();
+        flashlightScript = GameObject.Find("Flashlight").GetComponent<Flashlight>();
+        healthScript = player.GetComponent<Health>();
+        taskMeatScript = player.GetComponent<TaskMeat>();
         crouchScript = player.GetComponent<Crouch>();
         mapScript = GameObject.Find("Player").GetComponent<Map>();
-        playerHead = GameObject.Find ("PlayerHead").transform;
+        playerHead = GameObject.Find("PlayerHead").transform;
         monsterPoint1 = GameObject.Find("Monster6Point1").transform;
         monsterAgent = monster.GetComponent<NavMeshAgent>();
 
@@ -48,18 +48,17 @@ public class Monster1_v3 : Monster {
         isPathPossible = true;
         mainPath = new NavMeshPath();
         audioSource.pitch = 1;
-
     }
 
-	void Update () {
-
-		float distance = Vector3.Distance(player.position, monster.position);
+    void Update()
+    {
+        float distance = Vector3.Distance(player.position, monster.position);
         mapScript.isFastTravel = false;
 
         runVelocity = UnityEngine.Random.Range(8, 12);
         PlayerDead();
         CheckPath();
-       
+
         if (isPathPossible == true)
         {
             MonsterLongLight(distance);
@@ -67,8 +66,9 @@ public class Monster1_v3 : Monster {
             MonsterRaycast(distance);
             MonsterAttack(distance);
             MonsterFollowsPlayer(distance);
-          
-        }else
+
+        }
+        else
         {
             MonsterFollowsPoint();
         }
@@ -78,28 +78,6 @@ public class Monster1_v3 : Monster {
         MonsterEatMeat(isSeeMeat1, isAteMeat1, monster, meat1, taskMeatScript.meats[0].meatCondition);
         MonsterEatMeat(isSeeMeat2, isAteMeat2, monster, meat2, taskMeatScript.meats[1].meatCondition);
         MonsterEatMeat(isSeeMeat3, isAteMeat3, monster, meat3, taskMeatScript.meats[2].meatCondition);
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
     }
 
     void CheckPath()
@@ -109,7 +87,8 @@ public class Monster1_v3 : Monster {
         if ((mainPath.status == NavMeshPathStatus.PathInvalid || mainPath.status == NavMeshPathStatus.PathPartial))
         {
             isPathPossible = false;
-        } else
+        }
+        else
         {
             isPathPossible = true;
         }
@@ -213,7 +192,6 @@ public class Monster1_v3 : Monster {
                 }
             }
         }
-
         else if (_distance > 40)
         {
             isRayPlayer = false;
@@ -259,7 +237,6 @@ public class Monster1_v3 : Monster {
 
     void MonsterCheckMeats()
     {
-
         if (isSawPlayer == true || isRayPlayer == true || isSawLight == true)
         {
             if (taskMeatScript.meats[0].isDragMeat == true && taskMeatScript.meats[0].meatCondition > 0)
@@ -283,7 +260,6 @@ public class Monster1_v3 : Monster {
     {
         if (isMeat == true)
         {
-
             float meatDistance = Vector3.Distance(meat.position, monster.position);
 
             monsterAgent.SetDestination(meat.transform.position);
@@ -304,7 +280,6 @@ public class Monster1_v3 : Monster {
             {
                 isEat = false;
             }
-
         }
     }
 }
