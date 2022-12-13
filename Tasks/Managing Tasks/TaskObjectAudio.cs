@@ -35,5 +35,4 @@ public class TaskObjectAudio : MonoBehaviour {
             voiceActingScript.OnStopTalking -= RemoveTask;
         }
     }
-
 }
