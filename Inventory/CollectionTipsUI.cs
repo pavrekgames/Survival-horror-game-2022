@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CollectionTipsUI : MonoBehaviour {
 
@@ -15,9 +13,9 @@ public class CollectionTipsUI : MonoBehaviour {
     [SerializeField] private AudioSource pauseAudioSource;
     [SerializeField] private AudioClip menuButtonSound;
     [SerializeField] private AudioClip openInventorySound;
-    
+
     public string[] collectionTitles;
-  
+
     void Update()
     {
         if ((Input.GetButtonDown("Cancel") || Input.GetButtonDown("Inventory")) && CollectionBadgesUI.isCollectionActive == true)
@@ -45,8 +43,5 @@ public class CollectionTipsUI : MonoBehaviour {
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
     }
-
-
 }

@@ -42,18 +42,17 @@ public class Inventory : MonoBehaviour {
     public event Action OnAddedItem;
     public event Action OnRemovedItem;
 
-	void OnEnable(){
-
+    void OnEnable()
+    {
         playerCam = Camera.main;
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
-		cursorScript = GameObject.Find ("PlayerCamera").GetComponent<CrosshairGUI>();
-		playerScript = GameObject.Find ("Player").GetComponent<Player>();
-		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu>();
-		animator = GameObject.Find ("Player").GetComponent<Animator>();
-		notificationUIScript = GameObject.Find ("CanvasKomunikaty").GetComponent<NotificationUI>();
-		itemAudioSource = GameObject.Find ("ZrodloPrzedmiot_s").GetComponent<AudioSource>();
+        cursorScript = GameObject.Find("PlayerCamera").GetComponent<CrosshairGUI>();
+        playerScript = GameObject.Find("Player").GetComponent<Player>();
+        gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
+        animator = GameObject.Find("Player").GetComponent<Animator>();
+        notificationUIScript = GameObject.Find("CanvasNotification").GetComponent<NotificationUI>();
+        itemAudioSource = GameObject.Find("AudioSource_Item").GetComponent<AudioSource>();
         inventoryUIScript = GameObject.Find("CanvasInventory").GetComponent<InventoryUI>();
-
     }
 
     void Update()
@@ -96,7 +95,7 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-   void OpenInventory()
+    void OpenInventory()
     {
         inventoryUIScript.ShowInventory();
         Time.timeScale = 0;
@@ -107,7 +106,7 @@ public class Inventory : MonoBehaviour {
         pauseAudioSource.PlayOneShot(openInventorySound);
     }
 
-   public void AddItem(Item item, AudioClip pickUpSound)
+    public void AddItem(Item item, AudioClip pickUpSound)
     {
         animator.SetTrigger("PickUp");
         itemAudioSource.PlayOneShot(pickUpSound);
@@ -115,7 +114,7 @@ public class Inventory : MonoBehaviour {
         items.Add(item);
         item.isTaken = true;
 
-        if(OnAddedItem != null)
+        if (OnAddedItem != null)
         {
             OnAddedItem.Invoke();
         }
@@ -128,11 +127,10 @@ public class Inventory : MonoBehaviour {
         notificationUIScript.notificationType = notificationType;
         animator.SetTrigger("PickUp");
 
-        if(OnAddedCollectibleItem != null)
+        if (OnAddedCollectibleItem != null)
         {
             OnAddedCollectibleItem.Invoke();
         }
-
     }
 
     public void RemoveItem(Item item, bool isItemRemoved)
@@ -144,9 +142,7 @@ public class Inventory : MonoBehaviour {
         {
             OnRemovedItem.Invoke();
         }
-
     }
-
 }
 
 

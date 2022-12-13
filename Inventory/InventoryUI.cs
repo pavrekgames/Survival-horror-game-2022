@@ -70,10 +70,10 @@ public class InventoryUI : MonoBehaviour {
 
     void OnEnable()
     {
-        itemDescriptionText = GameObject.Find("InventoryOpis").GetComponent<TextMeshProUGUI>();
+        itemDescriptionText = GameObject.Find("InventoryDescription").GetComponent<TextMeshProUGUI>();
         usedItemText = GameObject.Find("InventoryUsing").GetComponent<TextMeshProUGUI>();
-        secretItemsText = GameObject.Find("InventorySecretItemsWynik").GetComponent<Text>();
-        secretPlacesText = GameObject.Find("InventorySecretPlacesWynik").GetComponent<Text>();
+        secretItemsText = GameObject.Find("InventorySecretItemsCount").GetComponent<Text>();
+        secretPlacesText = GameObject.Find("InventorySecretPlacesCount").GetComponent<Text>();
     }
 
     void Update()
@@ -86,7 +86,6 @@ public class InventoryUI : MonoBehaviour {
 
     public void ShowInventory()
     {
-
         inventoryUIManager.ResetUI();
 
         if (Time.timeScale == 0)
@@ -96,30 +95,25 @@ public class InventoryUI : MonoBehaviour {
 
         inventoryCanvas.enabled = true;
         isInventoryActive = true;
-
     }
 
     void UpdateInventorySlots()
     {
-
-        foreach(var slot in inventorySlots)
+        foreach (var slot in inventorySlots)
         {
             slot.sprite = null;
             slot.color = Color.black;
         }
 
-
         for (int i = 0; i < inventoryScript.items.Count; i++)
         {
             inventorySlots[i].sprite = inventoryScript.items[i].icon;
             inventorySlots[i].color = Color.white;
-            inventoryScript.items[i].id = i+1;
+            inventoryScript.items[i].id = i + 1;
         }
-
 
         itemDescriptionText.text = defaultDescription;
         usedItemText.text = defaultUsingItemText;
-
     }
 
     void UpdateSecretItemsCount()
@@ -129,7 +123,6 @@ public class InventoryUI : MonoBehaviour {
 
     public void InventoryBackFunction()
     {
-
         inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
@@ -139,7 +132,6 @@ public class InventoryUI : MonoBehaviour {
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
     }
 
     public void ShowDescription(int itemId)
@@ -154,7 +146,7 @@ public class InventoryUI : MonoBehaviour {
                     itemDescriptionText.text = inventoryScript.items[i].itemName + " - " + inventoryScript.items[i].description;
                     break;
                 }
-            } 
+            }
         }
     }
 
@@ -166,7 +158,6 @@ public class InventoryUI : MonoBehaviour {
             {
                 if (inventoryScript.items[i].id == itemId)
                 {
-
                     inventoryUIManager.ResetUI();
 
                     inventoryScript.items[i].isUsed = true;
@@ -182,7 +173,6 @@ public class InventoryUI : MonoBehaviour {
                     {
                         OnUsedItemFromSlot.Invoke();
                     }
-
                 }
                 else
                 {

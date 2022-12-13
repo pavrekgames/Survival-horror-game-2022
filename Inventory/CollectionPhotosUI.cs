@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CollectionPhotosUI : MonoBehaviour {
 
@@ -51,7 +49,5 @@ public class CollectionPhotosUI : MonoBehaviour {
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
     }
-
 }
