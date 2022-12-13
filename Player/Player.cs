@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     public bool isSoundPlay = false;
 
     private CharacterController characterControler;
-	private Camera playerCamera;
+    private Camera playerCamera;
     private Animator animator;
     private Crouch crouchScript;
     private Health healthScript;
@@ -17,18 +17,18 @@ public class Player : MonoBehaviour {
 
     public AudioSource audioSource;
     [SerializeField] private AudioClip tiredSound;
-	
+
     [Header("Movement")]
     public float walkVelocity = 5f;
-	public float currentVelocity = 4.0f;
-	public float crouchVelocity = 4f;
+    public float currentVelocity = 4.0f;
+    public float crouchVelocity = 4f;
     public float runVelocity = 12.0f;
 
     [Header("Jump")]
     private float playerHeight;
     public float jumpHeight = 2.0f;
-	public float currentJumpHeight = 0f;
-	private float jumpTime = 0;
+    public float currentJumpHeight = 0f;
+    private float jumpTime = 0;
 
     [Header("Mouse")]
     public float mouseSensitivity = 10f;
@@ -37,11 +37,11 @@ public class Player : MonoBehaviour {
 
     [Header("Stamina")]
     public static float maxStamina = 150f;
-	public static float currentStamina = 150f;
-	public int staminaRegenerationFactor = 8;
-	public bool isRest = true;
-	public bool isSprint = false;
-	public bool isSprintEffect = false;
+    public static float currentStamina = 150f;
+    public int staminaRegenerationFactor = 8;
+    public bool isRest = true;
+    public bool isSprint = false;
+    public bool isSprintEffect = false;
 
     void OnEnable()
     {

@@ -26,10 +26,10 @@ public class Health : MonoBehaviour {
     [SerializeField] private int randomSound = 0;
 
     [Header("Damage Canvases")]
-	public Canvas playerInjuredCanvas;
-	public Canvas playerDamageCanvas1;
-	public Canvas playerDamageCanvas2;
-	public Canvas playerDamageCanvas3;
+    public Canvas playerInjuredCanvas;
+    public Canvas playerDamageCanvas1;
+    public Canvas playerDamageCanvas2;
+    public Canvas playerDamageCanvas3;
 
     [Header("Health states")]
     [HideInInspector]

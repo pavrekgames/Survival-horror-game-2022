@@ -9,11 +9,10 @@ public class Crouch : MonoBehaviour {
     private Animator animator;
 
     [SerializeField] private float couchFactor = 0.6f;
-	[SerializeField] private float currentHeight;
-	[SerializeField] private float playerHeight;
-	[SerializeField] private float crouchHeight;
-
-	[SerializeField] private CrouchCollision crouchCollisionScript;
+    [SerializeField] private float currentHeight;
+    [SerializeField] private float playerHeight;
+    [SerializeField] private float crouchHeight;
+    [SerializeField] private CrouchCollision crouchCollisionScript;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip crouchSound;
 
@@ -35,13 +34,10 @@ public class Crouch : MonoBehaviour {
 
         if (Input.GetButtonDown("Crouch") && isCrouch == false && playerManagerScript.isPlayerCanInput == true)
         {
-
             CrouchFunc();
-
         }
         else if (Input.GetButtonDown("Crouch") && isCrouch == true && playerManagerScript.isPlayerCanInput == true)
         {
-
             GetUp();
         }
 
@@ -61,7 +57,6 @@ public class Crouch : MonoBehaviour {
 
     public void GetUp()
     {
-
         if (crouchCollisionScript.isCollide == false)
         {
             currentHeight = playerHeight;
