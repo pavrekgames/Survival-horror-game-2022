@@ -22,7 +22,6 @@ public class RandomMonster : Monster {
 
     void OnEnable()
     {
-
         player = GameObject.Find("Player").transform;
 
         points = new Transform[14];
@@ -79,87 +78,65 @@ public class RandomMonster : Monster {
         MonsterFollowsPlayer(distance);
         MonsterLifeTime();
 
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterBrookPoint") // 1
         {
-           randomPointIndex = 3;
+            randomPointIndex = 3;
         }
-
         else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster6Point1") // 2
         {
-           RandomPoint();
+            RandomPoint();
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterChanelPoint")  
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterChanelPoint")
         {
-           randomPointIndex = 10;
+            randomPointIndex = 10;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPumpkinPoint1") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPumpkinPoint1")
         {
-           randomPointIndex = 11;
+            randomPointIndex = 11;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster5Point1") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster5Point1")
         {
-           randomPointIndex = 4;
+            randomPointIndex = 4;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point5") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point5")
         {
-           randomPointIndex = 12;
+            randomPointIndex = 12;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf2Point3") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf2Point3")
         {
-           randomPointIndex = 13;
+            randomPointIndex = 13;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf3Point1") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf3Point1")
         {
-           randomPointIndex = 14;
+            randomPointIndex = 14;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster3Point2") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Monster3Point2")
         {
-           RandomPoint();
+            RandomPoint();
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPlantPoint") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPlantPoint")
         {
-           randomPointIndex = 13;
+            randomPointIndex = 13;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPumpkinPoint3") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "MonsterPumpkinPoint3")
         {
-           randomPointIndex = 4;
+            randomPointIndex = 4;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point4") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point4")
         {
-           randomPointIndex = 6;
+            randomPointIndex = 6;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf2Point2") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf2Point2")
         {
-           randomPointIndex = 7;
+            randomPointIndex = 7;
         }
-        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf3Point2") 
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf3Point2")
         {
-           randomPointIndex = 8;
+            randomPointIndex = 8;
         }
     }
 
@@ -177,7 +154,6 @@ public class RandomMonster : Monster {
             monster.gameObject.GetComponent<RandomMonster>().enabled = false;
             monster.gameObject.SetActive(false);
             mapScript.isFastTravel = true;
-
         }
     }
 
@@ -313,7 +289,6 @@ public class RandomMonster : Monster {
 
     public override void MonsterFollowsPlayer(float _distance)
     {
-
         if ((isSawPlayer == true || isSawPlayer == true || isRayPlayer == true || firstRespawn == 1) && _distance >= 5 && isPathPossible == true && monsterTime > 0 && randomJumpscareScript.isPossibleTerrain == true)
         {
             monsterAgent.SetDestination(player.transform.position);
@@ -410,7 +385,7 @@ public class RandomMonster : Monster {
         if (_distance < 5 && healthScript.health > 0 && monsterTime > 0)
         {
             monsterAgent.SetDestination(player.transform.position);
-            monsterAgent.updatePosition = true; 
+            monsterAgent.updatePosition = true;
             monsterAgent.Stop();
             monsterAgent.velocity = Vector3.zero;
             isSawPlayer = false;

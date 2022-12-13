@@ -46,5 +46,4 @@ public abstract class Monster : MonoBehaviour {
     public abstract void MonsterFlashlight(float _distance);
     public abstract void MonsterRaycast(float _distance);
     public abstract void MonsterAttack(float _distance);
-
 }

@@ -37,7 +37,6 @@ public class Wolf_v1 : Monster {
 
     void OnEnable()
     {
-
         player = GameObject.Find("Player").transform;
         monster = GameObject.Find("Wolf_v1").transform;
         monsterPoint1 = GameObject.Find("Wolf1Point1").transform;
@@ -57,13 +56,10 @@ public class Wolf_v1 : Monster {
         mainPath = new NavMeshPath();
 
         isFastTravel = false;
-
     }
-
 
     void Update()
     {
-
         float distance = Vector3.Distance(player.position, monster.position);
         CheckPath();
 
@@ -82,28 +78,6 @@ public class Wolf_v1 : Monster {
         MonsterRunSound(distance);
         MonsterHowlSound();
         MonsterFollowsPlayer(distance);
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -112,27 +86,22 @@ public class Wolf_v1 : Monster {
         {
             StartCoroutine(Howl(ActualPoint.Point2));
         }
-
         else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point2")
         {
             StartCoroutine(Howl(ActualPoint.Point3));
         }
-
         else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point3")
         {
             StartCoroutine(Howl(ActualPoint.Point4));
         }
-
         else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point4")
         {
             StartCoroutine(Howl(ActualPoint.Point5));
         }
-
         else if (other.gameObject.GetComponent<Collider>().gameObject.name == "Wolf1Point5")
         {
             StartCoroutine(Howl(ActualPoint.Point1));
         }
-
     }
 
     IEnumerator Howl(ActualPoint point)
@@ -158,7 +127,6 @@ public class Wolf_v1 : Monster {
             NavMesh.CalculatePath(monster.transform.position, player.transform.position, -1, mainPath);
         }
 
-
         if ((mainPath.status == NavMeshPathStatus.PathInvalid || mainPath.status == NavMeshPathStatus.PathPartial))
         {
             isPathPossible = false;
@@ -173,7 +141,7 @@ public class Wolf_v1 : Monster {
     {
         if ((isSawPlayer == false && isRayPlayer == false && isSawLight == false) || isPathPossible == false)
         {
-            if(isHowl == false)
+            if (isHowl == false)
             {
                 switch (actualPoint)
                 {
@@ -345,7 +313,6 @@ public class Wolf_v1 : Monster {
             audioSource.Play();
             isAttack = true;
             isRun = false;
-
         }
         else if (_distance >= 8 && isAttack == true)
         {
