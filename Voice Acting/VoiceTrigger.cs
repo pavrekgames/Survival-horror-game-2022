@@ -23,24 +23,21 @@ public class VoiceTrigger : MonoBehaviour {
     {
         voiceActingScript = GameObject.Find("Player").GetComponent<VoiceActing>();
     }
-	
+
     void OnTriggerEnter(Collider other)
     {
-        if(isVoice == false)
+        if (isVoice == false)
         {
             if (other.gameObject.CompareTag("Player") && voiceType == VoiceType.Voice)
             {
                 voiceActingScript.PlayVoice(audioSource, recording);
                 isVoice = true;
             }
-            else if(other.gameObject.CompareTag("Player") && voiceType == VoiceType.VoiceRetro)
+            else if (other.gameObject.CompareTag("Player") && voiceType == VoiceType.VoiceRetro)
             {
                 voiceActingScript.PlayRetrospection(recording);
                 isVoice = true;
             }
         }
-
-       
     }
-
 }

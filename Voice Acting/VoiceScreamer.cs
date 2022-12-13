@@ -10,17 +10,17 @@ public class VoiceScreamer : MonoBehaviour {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip recording;
 
-    void Start () {
+    void Start()
+    {
         voiceActingScript = GameObject.Find("Player").GetComponent<VoiceActing>();
 
         screamer.OnCallScreamer += PlayVoice;
     }
-	
-	public void PlayVoice()
+
+    public void PlayVoice()
     {
         voiceActingScript.PlayVoice(audioSource, recording);
 
         screamer.OnCallScreamer -= PlayVoice;
     }
-
 }
