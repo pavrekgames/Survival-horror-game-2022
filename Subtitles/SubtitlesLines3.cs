@@ -25,7 +25,7 @@ public class SubtitlesLines3 : MonoBehaviour, ISubtitles {
 
         CheckAudio();
 
-        if(gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
+        if (gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
         {
             if (audioSource.isPlaying == true && audioSource.clip == recording)
             {
@@ -63,5 +63,4 @@ public class SubtitlesLines3 : MonoBehaviour, ISubtitles {
             isSubtitles = true;
         }
     }
-
 }

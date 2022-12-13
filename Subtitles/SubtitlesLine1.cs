@@ -21,11 +21,12 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
         subtitlesTextMesh = GameObject.Find("SubtitlesTextMesh").GetComponent<TextMeshProUGUI>();
     }
 
-    void Update () {
+    void Update()
+    {
 
         CheckAudio();
 
-        if(gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
+        if (gameMenuScript.subtitlesToggle.isOn == true && isSubtitles == false)
         {
             if (audioSource.isPlaying == true && audioSource.clip == recording)
             {
@@ -55,5 +56,4 @@ public class SubtitlesLine1 : MonoBehaviour, ISubtitles {
             isSubtitles = true;
         }
     }
-
 }

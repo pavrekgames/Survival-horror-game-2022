@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SubLines2", menuName ="Subtitles/Lines2", order = 2)]
-public class SubData2 : ScriptableObject {
+[CreateAssetMenu(fileName = "SubLines2", menuName = "Subtitles/Lines2", order = 2)]
+public class SubData2 : ScriptableObject
+{
 
     [Header("Subtitles")]
     public string subtitles1;

@@ -1,8 +1,7 @@
 ﻿
-public interface ISubtitles {
-
-    void ShowSubtitles(); 
-
+public interface ISubtitles
+{
+    void ShowSubtitles();
 }
 
-	
+
