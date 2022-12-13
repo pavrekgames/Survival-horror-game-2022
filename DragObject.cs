@@ -29,17 +29,15 @@ public class DragObject : MonoBehaviour {
 
     public ObjectType objectType;
 
-    void Start() {
-
+    void Start()
+    {
         player = GameObject.Find("Player").transform;
-
     }
 
-    void FixedUpdate() {
-
+    void FixedUpdate()
+    {
         if (Input.GetMouseButton(0) && Time.timeScale == 1)
         {
-
             Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
 
@@ -48,7 +46,6 @@ public class DragObject : MonoBehaviour {
                 objectToDrag = hit.transform.gameObject;
                 SetDrag(ObjectType.MoveObject, objectToDrag);
             }
-
             else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("MoveTask") && isDragged == false)
             {
                 objectToDrag = hit.transform.gameObject;
@@ -59,7 +56,6 @@ public class DragObject : MonoBehaviour {
             {
                 DragMoveObject();
             }
-
             else if (isDragged == true && objectType == ObjectType.MoveTaskObject)
             {
                 DragMoveTaskObject();
@@ -67,17 +63,18 @@ public class DragObject : MonoBehaviour {
         }
     }
 
-    void Update() {
-
+    void Update()
+    {
         if ((Input.GetMouseButtonUp(0) && objectToDrag != null && isDragged == true) || (Time.timeScale == 0 && objectToDrag != null))
         {
             objectToDrag.layer = 9;
-            
+
             if (objectType == ObjectType.MoveObject)
             {
                 DropMoveObject();
 
-            } else if (objectType == ObjectType.MoveTaskObject)
+            }
+            else if (objectType == ObjectType.MoveTaskObject)
             {
                 DropMoveTaskObject();
             }
@@ -133,7 +130,6 @@ public class DragObject : MonoBehaviour {
         objectToDrag.GetComponent<Rigidbody>().AddForce(-objectToDrag.transform.right * forceValue);
         objectToDrag.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
         objectToDrag.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
-
     }
 
     void DropMoveTaskObject()
@@ -145,7 +141,7 @@ public class DragObject : MonoBehaviour {
 
     public void SetDefaultValues()
     {
-        if(objectToDrag != null)
+        if (objectToDrag != null)
         {
             isDragged = false;
             objectType = ObjectType.None;

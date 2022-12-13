@@ -15,25 +15,26 @@ public class Compass : MonoBehaviour {
 
     public TaskPoint[] taskPointsArray;
 
-    void OnEnable () {
+    void OnEnable()
+    {
 
         compassUnit = compassImage.rectTransform.rect.width / 360f;
         player = GameObject.Find("Player").transform;
 
         AddPointsToArray();
     }
-	
-	
-	void Update () {
+
+    void Update()
+    {
 
         compassImage.uvRect = new Rect(player.localEulerAngles.y / 360f, 0f, 1f, 1f);
 
-        foreach(TaskPoint point in tasksPoints)
+        foreach (TaskPoint point in tasksPoints)
         {
             point.pointImage.rectTransform.anchoredPosition = GetPointPosition(point);
         }
 
-	}
+    }
 
     public void AddTaskPoint(TaskPoint point)
     {
@@ -106,5 +107,4 @@ public class Compass : MonoBehaviour {
         taskPointsArray[33] = GameObject.Find("KeyToiletPoint").GetComponent<TaskPoint>();
         taskPointsArray[34] = GameObject.Find("SecretRoomPoint").GetComponent<TaskPoint>();
     }
-
 }

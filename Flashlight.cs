@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Flashlight : MonoBehaviour {
-	
+
     private PlayerManager playerManagerScript;
-	private Light flashlightLight;
-	private Transform player;
-	
+    private Light flashlightLight;
+    private Transform player;
+
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip flashlightOnSound;
     [SerializeField] private AudioClip flashlightOffSound;
@@ -15,52 +15,61 @@ public class Flashlight : MonoBehaviour {
     public int lightRange = 40;
     public bool isFlashlightOn;
 
-    void OnEnable () {
-		
+    void OnEnable()
+    {
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
         player = GameObject.Find("Player").transform;
-        flashlightLight = GameObject.Find ("Flashlight").GetComponent<Light> ();
-		audioSource = GameObject.Find ("Flashlight").GetComponent<AudioSource> ();
+        flashlightLight = GameObject.Find("Flashlight").GetComponent<Light>();
+        audioSource = GameObject.Find("Flashlight").GetComponent<AudioSource>();
+    }
 
-	}
-	
-	void Update () {
+    void Update()
+    {
 
-		if (Input.GetButtonDown ("Flashlight") && isFlashlightOn == false && playerManagerScript.isPlayerCanInput == true) {
-			TurnOnFlashlight ();
+        if (Input.GetButtonDown("Flashlight") && isFlashlightOn == false && playerManagerScript.isPlayerCanInput == true)
+        {
+            TurnOnFlashlight();
+        }
+        else if (Input.GetButtonDown("Flashlight") && isFlashlightOn == true && playerManagerScript.isPlayerCanInput == true)
+        {
+            TurnOffFlashlight();
+        }
 
-		} else if (Input.GetButtonDown ("Flashlight") && isFlashlightOn == true && playerManagerScript.isPlayerCanInput == true) {
-			TurnOffFlashlight ();
-		}
-	
-		if (Input.GetMouseButton (2) && playerManagerScript.isPlayerCanInput == true) {
-			TurnOnLongLight ();
+        if (Input.GetMouseButton(2) && playerManagerScript.isPlayerCanInput == true)
+        {
+            TurnOnLongLight();
+        }
+        else
+        {
+            TurnOffLongLight();
+        }
+    }
 
-		} else {
-			TurnOffLongLight ();
-		}
-}
+    public void TurnOnFlashlight()
+    {
+        audioSource.PlayOneShot(flashlightOnSound);
+        flashlightLight.enabled = true;
+        isFlashlightOn = true;
+    }
 
-	public void TurnOnFlashlight(){
-		audioSource.PlayOneShot(flashlightOnSound);
-		flashlightLight.enabled = true;
-		isFlashlightOn = true;
-	}
-	public void TurnOffFlashlight(){
-		audioSource.PlayOneShot(flashlightOffSound);
-		flashlightLight.enabled = false;
-		isFlashlightOn = false;
-	}
+    public void TurnOffFlashlight()
+    {
+        audioSource.PlayOneShot(flashlightOffSound);
+        flashlightLight.enabled = false;
+        isFlashlightOn = false;
+    }
 
-	private void TurnOnLongLight(){
-		flashlightLight.range = 100; 
-		flashlightLight.spotAngle = lightRange;
-		flashlightLight.intensity = 5.3f;  
-	}
+    private void TurnOnLongLight()
+    {
+        flashlightLight.range = 100;
+        flashlightLight.spotAngle = lightRange;
+        flashlightLight.intensity = 5.3f;
+    }
 
-	private void TurnOffLongLight(){
-		flashlightLight.range = 40f; 
-		flashlightLight.spotAngle = 80f; 
-		flashlightLight.intensity = 4.5f; 
-		} 
+    private void TurnOffLongLight()
+    {
+        flashlightLight.range = 40f;
+        flashlightLight.spotAngle = 80f;
+        flashlightLight.intensity = 4.5f;
+    }
 }

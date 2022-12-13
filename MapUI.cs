@@ -19,7 +19,7 @@ public class MapUI : MonoBehaviour {
     [SerializeField] private Transform abandonedHousePoint;
     [SerializeField] private Transform stevenHousePoint;
     [SerializeField] private Transform paulHousePoint;
-    
+
     public bool isFastTravel = true;
     private Canvas fastTravleCanvas;
 
@@ -75,29 +75,10 @@ public class MapUI : MonoBehaviour {
     public Text keyToiletPointer;
     public Text secretRoomPointer;
 
-    void Start () {
-        fastTravleCanvas = GameObject.Find("CanvasFastTravel").GetComponent<Canvas>();
-
-        aliceHouseTravelImage = GameObject.Find("MiejsciePodrozyDomAlice").GetComponent<Image>();
-        tomHouseTravelImage = GameObject.Find("MiejsciePodrozyDomTom").GetComponent<Image>();
-        abandonedHouseTravelImage = GameObject.Find("MiejsciePodrozyDomOpuszczony").GetComponent<Image>();
-        stevenHouseTravelImage = GameObject.Find("MiejsciePodrozyDomSteven").GetComponent<Image>();
-        PaulHouseTravelImage = GameObject.Find("MiejsciePodrozyDomPaul").GetComponent<Image>();
-
-        grandmaHousePoint = GameObject.Find("GrandmaHousePoint").transform;
-        aliceHousePoint = GameObject.Find("AliceHousePoint").transform;
-        tomHousePoint = GameObject.Find("TomHousePoint").transform;
-        abandonedHousePoint = GameObject.Find("AbandonedHousePoint").transform;
-        stevenHousePoint = GameObject.Find("StevenHousePoint").transform;
-        paulHousePoint = GameObject.Find("ScientistHousePoint").transform;
-    }
-	
-
     public void FastTravel()
     {
         fastTravleCanvas.enabled = true;
         audioSource.PlayOneShot(buttonSound);
-
     }
 
     public void TravelToGrandmaHouse()

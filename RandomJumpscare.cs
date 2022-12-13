@@ -31,7 +31,7 @@ public class RandomJumpscare : MonoBehaviour {
     private int intPlayerX;
     private int intPlayerZ;
 
-    struct RandomMonsters
+    struct RandomMonster
     {
         public Transform monster;
         public Monster monsterScript;
@@ -40,23 +40,22 @@ public class RandomJumpscare : MonoBehaviour {
     }
 
     [Header("Monsters")]
-    [SerializeField] private RandomMonsters[] randomMonsters;
+    [SerializeField] private RandomMonster[] randomMonsters;
 
     public bool isPlaySound = false;
 
-    void OnEnable () {
-
+    void OnEnable()
+    {
         audioSource1 = GameObject.Find("RandomJumpscare1_s").GetComponent<AudioSource>();
         audioSource2 = GameObject.Find("RandomJumpscare2_s").GetComponent<AudioSource>();
         audioSource3 = GameObject.Find("RandomJumpscare3_s").GetComponent<AudioSource>();
         player = GameObject.Find("Player").transform;
         tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
         randomDuration = Random.Range(40, 121);
-
     }
-	
-	
-	void Update () {
+
+    void Update()
+    {
 
         if (counter < randomDuration)
         {
@@ -67,15 +66,15 @@ public class RandomJumpscare : MonoBehaviour {
         {
             EnableSmallJumpscare();
         }
-        else if (counter >= randomDuration && isOn == false && isPossibleTerrain == true && tasksScript.isGoToAliceTask == true && tasksScript.isStevenSearchTask == false) 
+        else if (counter >= randomDuration && isOn == false && isPossibleTerrain == true && tasksScript.isGoToAliceTask == true && tasksScript.isStevenSearchTask == false)
         {
             EnableJumpscare();
         }
-        else if (counter >= randomDuration && isOn == false && isPossibleTerrain == true && tasksScript.isGoToAliceTask == true && tasksScript.isStevenSearchTask == true && tasksScript.isStevenShedTask == false) 
+        else if (counter >= randomDuration && isOn == false && isPossibleTerrain == true && tasksScript.isGoToAliceTask == true && tasksScript.isStevenSearchTask == true && tasksScript.isStevenShedTask == false)
         {
             EnableMonsterJumpscare();
         }
-        else if (counter >= randomDuration && isOn == false && isPossibleTerrain == true && tasksScript.isGoToAliceTask == true && tasksScript.isStevenSearchTask == true && tasksScript.isStevenShedTask == true) 
+        else if (counter >= randomDuration && isOn == false && isPossibleTerrain == true && tasksScript.isGoToAliceTask == true && tasksScript.isStevenSearchTask == true && tasksScript.isStevenShedTask == true)
         {
             EnableMonsterJumpscare();
         }
@@ -89,17 +88,15 @@ public class RandomJumpscare : MonoBehaviour {
             isPlaySound = true;
         }
 
-        else if(Time.timeScale == 1 && isPlaySound == true)
+        else if (Time.timeScale == 1 && isPlaySound == true)
         {
-
             audioSource1.UnPause();
             audioSource2.UnPause();
             audioSource3.UnPause();
 
             isPlaySound = false;
         }
-
-	}
+    }
 
     void SetAudioSource(AudioSource audioSource)
     {
@@ -114,7 +111,7 @@ public class RandomJumpscare : MonoBehaviour {
 
     void EnableJumpscare()
     {
-        randomSoundIndex = Random.Range(0, 17); 
+        randomSoundIndex = Random.Range(0, 17);
         randomPosition1 = Random.Range(-18, 21);
         randomPosition2 = Random.Range(-18, 21);
 
@@ -123,17 +120,19 @@ public class RandomJumpscare : MonoBehaviour {
             SetAudioSource(audioSource1);
         }
 
-        else if (randomSoundIndex >= 6 && randomSoundIndex < 8) { 
+        else if (randomSoundIndex >= 6 && randomSoundIndex < 8)
+        {
 
             SetAudioSource(audioSource2);
         }
-        else if (randomSoundIndex >= 8 && tasksScript.isVictorBrookTask == false) 
+        else if (randomSoundIndex >= 8 && tasksScript.isVictorBrookTask == false)
         {
             MonsterJumpscare(randomMonsters[0]);
         }
     }
 
-    void EnableSmallJumpscare() {
+    void EnableSmallJumpscare()
+    {
 
         randomSoundIndex = Random.Range(0, 14);
         randomPosition1 = Random.Range(-18, 21);
@@ -143,7 +142,6 @@ public class RandomJumpscare : MonoBehaviour {
         {
             SetAudioSource(audioSource1);
         }
-
         else if (randomSoundIndex >= 6 && randomSoundIndex < 14)
         {
 
@@ -153,7 +151,7 @@ public class RandomJumpscare : MonoBehaviour {
 
     void EnableMonsterJumpscare()
     {
-        randomSoundIndex = Random.Range(11, 19); 
+        randomSoundIndex = Random.Range(11, 19);
         randomPosition1 = Random.Range(-18, 21);
         randomPosition2 = Random.Range(-18, 21);
 
@@ -161,7 +159,7 @@ public class RandomJumpscare : MonoBehaviour {
         {
             MonsterJumpscare(randomMonsters[0]);
         }
-        else if (randomSoundIndex == 11 || randomSoundIndex == 12 ||randomSoundIndex == 17)
+        else if (randomSoundIndex == 11 || randomSoundIndex == 12 || randomSoundIndex == 17)
         {
             MonsterJumpscare(randomMonsters[1]);
         }
@@ -172,13 +170,12 @@ public class RandomJumpscare : MonoBehaviour {
 
         counter = 0;
         isOn = true;
-
     }
 
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("JumpscareArea"))
-        { 
+        {
             isPossibleTerrain = false;
         }
     }
@@ -186,38 +183,35 @@ public class RandomJumpscare : MonoBehaviour {
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("JumpscareArea"))
-        { 
+        {
             isPossibleTerrain = true;
         }
     }
 
     public void DisableMonsters()
     {
-
-        foreach(var monster in randomMonsters)
+        foreach (var monster in randomMonsters)
         {
             monster.monster.gameObject.SetActive(false);
             monster.monsterScript.enabled = false;
         }
 
         counter = 0;
-
     }
 
-    void MonsterJumpscare(RandomMonsters randomMonster)
+    void MonsterJumpscare(RandomMonster randomMonster)
     {
         StartCoroutine(MonsterJumpscare_IE(randomMonster));
     }
 
-    IEnumerator MonsterJumpscare_IE(RandomMonsters randomMonster)
+    IEnumerator MonsterJumpscare_IE(RandomMonster randomMonster)
     {
         RandomMonsterPosition(randomMonster);
         yield return new WaitForEndOfFrame();
         CheckMonsterPosition(randomMonster);
-
     }
 
-    void RandomMonsterPosition(RandomMonsters randomMonster)
+    void RandomMonsterPosition(RandomMonster randomMonster)
     {
         randomMonsterPosition1 = Random.Range(-30, 30);
         randomMonsterPosition2 = Random.Range(-30, 30);
@@ -243,17 +237,16 @@ public class RandomJumpscare : MonoBehaviour {
         audioSource3.transform.position = new Vector3(player.transform.position.x + randomMonsterPosition1, player.transform.position.y, player.transform.position.z + randomMonsterPosition2);
         playerX = player.transform.position.x;
         playerZ = player.transform.position.z;
-        intPlayerX = (int)playerX + randomMonsterPosition1; 
-        intPlayerZ = (int)playerZ + randomMonsterPosition2; 
+        intPlayerX = (int)playerX + randomMonsterPosition1;
+        intPlayerZ = (int)playerZ + randomMonsterPosition2;
         terrainY = Terrain.activeTerrain.SampleHeight(audioSource3.transform.position);
         randomMonster.monster.transform.position = new Vector3(intPlayerX, terrainY, intPlayerZ);
         randomMonster.monster.gameObject.SetActive(true);
         randomMonster.monsterScript.enabled = true;
     }
 
-    void CheckMonsterPosition(RandomMonsters randomMonster)
+    void CheckMonsterPosition(RandomMonster randomMonster)
     {
-
         if (randomMonster.monsterScript.isPathPossible == true)
         {
             ExecuteMonsterJumspcare(randomMonster);
@@ -267,9 +260,8 @@ public class RandomJumpscare : MonoBehaviour {
         }
     }
 
-    void ExecuteMonsterJumspcare(RandomMonsters randomMonster)
+    void ExecuteMonsterJumspcare(RandomMonster randomMonster)
     {
-
         audioSource3.transform.position = new Vector3(player.transform.position.x + randomMonsterPosition1, player.transform.position.y, player.transform.position.z + randomMonsterPosition2);
         audioSource3.pitch = Random.Range(0.8f, 1.1f);
         audioSource3.clip = sounds[randomSoundIndex];
@@ -282,7 +274,5 @@ public class RandomJumpscare : MonoBehaviour {
         randomDuration = Random.Range(40, 121);
         counter = 0;
         isOn = true;
-
     }
-
 }

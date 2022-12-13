@@ -10,33 +10,33 @@ public class OpenCloseObject : MonoBehaviour {
     private Camera playerCam;
     [SerializeField] private float rayLength = 4f;
 
-    void Start () {
+    void Start()
+    {
         playerCam = Camera.main;
     }
-	
-	
-	void Update () {
 
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0) && Time.timeScale == 1)
         {
             Ray playerAim = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
-           
 
             if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Drawers1"))
             {
                 interactiveObject = hit.transform.gameObject;
 
-                if(interactiveObject.GetComponent<Drawers>().isCloseOpen == false)
+                if (interactiveObject.GetComponent<Drawers>().isCloseOpen == false)
                 {
                     interactiveObject.GetComponent<Drawers>().Open1();
-                }else
+                }
+                else
                 {
                     interactiveObject.GetComponent<Drawers>().Close1();
                 }
 
             }
-            else if(Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Drawers2"))
+            else if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && hit.transform.gameObject.CompareTag("Drawers2"))
             {
 
                 interactiveObject = hit.transform.gameObject;
@@ -59,9 +59,9 @@ public class OpenCloseObject : MonoBehaviour {
                 if (interactiveObject.GetComponent<Cupboard>().isCloseOpen == false && interactiveObject.GetComponent<Cupboard>().isNeedKey == false)
                 {
                     interactiveObject.GetComponent<Cupboard>().Open1();
-                    
+
                 }
-                else if(interactiveObject.GetComponent<Cupboard>().isCloseOpen == true && interactiveObject.GetComponent<Cupboard>().isNeedKey == false)
+                else if (interactiveObject.GetComponent<Cupboard>().isCloseOpen == true && interactiveObject.GetComponent<Cupboard>().isNeedKey == false)
                 {
                     interactiveObject.GetComponent<Cupboard>().Close1();
                 }
@@ -77,7 +77,7 @@ public class OpenCloseObject : MonoBehaviour {
                     interactiveObject.GetComponent<Door>().Open1();
 
                 }
-                else if(interactiveObject.GetComponent<Door>().isOpenClose == true && interactiveObject.GetComponent<Door>().isNeedKey == false)
+                else if (interactiveObject.GetComponent<Door>().isOpenClose == true && interactiveObject.GetComponent<Door>().isNeedKey == false)
                 {
                     interactiveObject.GetComponent<Door>().Close1();
                 }
@@ -117,9 +117,7 @@ public class OpenCloseObject : MonoBehaviour {
                 }
 
             }
-
         }
     }
-
 
 }

@@ -14,9 +14,9 @@ public class DefaultObjectSettings : MonoBehaviour {
     [SerializeField] private GameObject[] movedObjects2;
     [SerializeField] private GameObject[] tasksMovedObjects;
     [SerializeField] private GameObject[] pushedObjects;
-    
-    void Start () {
 
+    void Start()
+    {
         cupboards = GameObject.FindGameObjectsWithTag("Cupboard");
         drawers1 = GameObject.FindGameObjectsWithTag("Drawers1");
         drawers2 = GameObject.FindGameObjectsWithTag("Drawers2");
@@ -28,11 +28,9 @@ public class DefaultObjectSettings : MonoBehaviour {
         pushedObjects = GameObject.FindGameObjectsWithTag("Push");
         tasksMovedObjects = GameObject.FindGameObjectsWithTag("MoveTask");
     }
-	
 
     public void LoadDefaultSettings()
     {
-
         foreach (GameObject Obiekt in cupboards)
         {
             Obiekt.GetComponent<Cupboard>().DefaultSettings();
@@ -77,9 +75,5 @@ public class DefaultObjectSettings : MonoBehaviour {
         {
             Obiekt.GetComponent<PushedObject>().DefaultSettings();
         }
-
-
     }
-
-
 }
