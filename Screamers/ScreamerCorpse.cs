@@ -24,5 +24,4 @@ public class ScreamerCorpse : MonoBehaviour, IScreamer {
             CallScreamer();
         }
     }
-
 }
