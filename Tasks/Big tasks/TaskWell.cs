@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskWell : MonoBehaviour {
+public class TaskWell : MonoBehaviour
+{
 
-	[SerializeField] private Transform bucket;
+    [SerializeField] private Transform bucket;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip bucketSound;
 

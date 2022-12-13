@@ -18,7 +18,6 @@ public class TaskTower : MonoBehaviour {
 
     void Start()
     {
-
         pile = GameObject.Find("TaskTowerPile").transform;
         upperBox1 = GameObject.Find("TaskTowerBoxUp1").transform;
         upperBox2 = GameObject.Find("TaskTowerBoxUp2").transform;

@@ -16,8 +16,8 @@ public class TaskMeat : MonoBehaviour {
 
     public Meat[] meats;
 
-	private Ray playerAim;
-	private Camera playerCam;
+    private Ray playerAim;
+    private Camera playerCam;
     [SerializeField] private float rayLength = 4f;
 
     void OnEnable()

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaskPainting : MonoBehaviour, IRaycastTask {
+public class TaskPainting : MonoBehaviour, IRaycastTask
+{
 
-	[SerializeField] private Transform painting;
-	public bool isPainting = false;
+    [SerializeField] private Transform painting;
+    public bool isPainting = false;
 
     public void Execute()
     {

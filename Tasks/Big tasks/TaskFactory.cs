@@ -10,7 +10,7 @@ public class TaskFactory : MonoBehaviour {
     private Notifications notificationScript;
 
     [Header("Objects")]
-	[SerializeField] private Transform lever;
+    [SerializeField] private Transform lever;
     [SerializeField] private Light energyLight;
     [SerializeField] private Animator grillesAnimator;
     [SerializeField] private Transform grilles;
@@ -40,11 +40,11 @@ public class TaskFactory : MonoBehaviour {
         float distance = Vector3.Distance(player.position, lever.position);
 
         if (isHasEnergy == false && leverAudioSource.isPlaying == false && isNotification == true && distance <= 11)
-        { // 
+        { 
             isNotification = true;
         }
         else if (distance > 11 && isNotification == true)
-        { // 
+        { 
             isNotification = false;
         }
         else if (isHasEnergy == true)

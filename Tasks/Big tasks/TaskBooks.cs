@@ -8,12 +8,13 @@ public class TaskBooks : MonoBehaviour {
 
     private PlayerManager playerManagerScript;
     private Transform player;
-    
+
     [Header("Objects")]
-	[SerializeField] private Transform bookPositionContainer;
-	[SerializeField] private Transform bookshelf;
+    
+    [SerializeField] private Transform bookPositionContainer;
+    [SerializeField] private Transform bookshelf;
     [SerializeField] private GameObject chip;
-	public List<Transform> booksList = new List<Transform>();
+    public List<Transform> booksList = new List<Transform>();
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -24,7 +25,7 @@ public class TaskBooks : MonoBehaviour {
 
     [Header("Books states")]
     public bool isBookTaken = false;
-	public bool isTaskDone = false;
+    public bool isTaskDone = false;
 
     struct Book
     {
