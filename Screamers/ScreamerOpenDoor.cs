@@ -17,7 +17,7 @@ public class ScreamerOpenDoor : MonoBehaviour, IScreamer {
         doorScript.enabled = false;
         audioSource.clip = openDoorSound;
         audioSource.Play();
-        openDoorCollider.SetActive(true); 
+        openDoorCollider.SetActive(true);
         isCalled = true;
         openDoorCollider.gameObject.AddComponent<Rigidbody>();
         openDoorCollider.gameObject.GetComponent<Rigidbody>().mass = 2;
@@ -35,5 +35,4 @@ public class ScreamerOpenDoor : MonoBehaviour, IScreamer {
             CallScreamer();
         }
     }
-
 }

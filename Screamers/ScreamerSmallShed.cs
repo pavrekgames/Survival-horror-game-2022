@@ -30,5 +30,4 @@ public class ScreamerSmallShed : MonoBehaviour, IScreamer {
             CallScreamer();
         }
     }
-
 }

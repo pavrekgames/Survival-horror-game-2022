@@ -19,10 +19,9 @@ public class ScreamerSound : MonoBehaviour, IScreamer
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && isCalled == false)
+        if (other.gameObject.CompareTag("Player") && isCalled == false)
         {
             CallScreamer();
         }
     }
-
 }
