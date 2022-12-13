@@ -14,8 +14,8 @@ public class TaskObjectItem : MonoBehaviour {
 
         tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
 
-        taskItem.OnPickUpItem += AddTask;
-        taskItem.OnPickUpItem += RemoveTask;
+        taskItem.OnPickedUpItem += AddTask;
+        taskItem.OnPickedUpItem += RemoveTask;
 
     }
 
@@ -23,7 +23,7 @@ public class TaskObjectItem : MonoBehaviour {
     {
         tasksScript.AddTask(taskToAdd);
 
-        taskItem.OnPickUpItem -= AddTask;
+        taskItem.OnPickedUpItem -= AddTask;
     }
 
     public void RemoveTask()
@@ -32,7 +32,7 @@ public class TaskObjectItem : MonoBehaviour {
         {
             tasksScript.RemoveTask(taskToRemove);
 
-            taskItem.OnPickUpItem -= RemoveTask;
+            taskItem.OnPickedUpItem -= RemoveTask;
         }
     }
 

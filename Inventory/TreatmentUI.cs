@@ -73,7 +73,6 @@ public class TreatmentUI : MonoBehaviour {
 
     public void TreatmentBackFunction()
     {
-
         inventoryUIManager.ResetUI();
 
         pauseAudioSource.pitch = 1.3f;
@@ -99,7 +98,6 @@ public class TreatmentUI : MonoBehaviour {
 
     public void CreateHealthPot()
     {
-
         if (inventoryScript.greenHerbsCount >= 2 && inventoryScript.blueHerbsCount >= 2 && inventoryScript.vialsCount > 0)
         {
             inventoryScript.greenHerbsCount -= 2;
@@ -121,7 +119,6 @@ public class TreatmentUI : MonoBehaviour {
 
     public void CreateStaminaPot()
     {
-
         if (inventoryScript.greenHerbsCount >= 1 && inventoryScript.blueHerbsCount >= 2 && inventoryScript.vialsCount > 0)
         {
             inventoryScript.greenHerbsCount -= 1;
@@ -143,7 +140,6 @@ public class TreatmentUI : MonoBehaviour {
 
     public void UseHealthPot()
     {
-
         if (inventoryScript.healthPotsCount > 0)
         {
             inventoryScript.healthPotsCount--;
@@ -155,7 +151,6 @@ public class TreatmentUI : MonoBehaviour {
 
     public void UseStaminaPot()
     {
-
         if (inventoryScript.staminaPotsCount > 0)
         {
             inventoryScript.staminaPotsCount--;
@@ -167,7 +162,6 @@ public class TreatmentUI : MonoBehaviour {
 
     void CheckHealthCondition()
     {
-
         if (healthScript.health >= 70 && playerScript.isRest == true)
         {
             healthConditionText.text = stateGoodText;
@@ -184,14 +178,10 @@ public class TreatmentUI : MonoBehaviour {
         {
             healthConditionText.text = stateTiredText;
         }
-
     }
 
     public void HoverButton()
     {
-
         itemAudioSource2.PlayOneShot(itemDesciptionSound);
-
     }
-
 }

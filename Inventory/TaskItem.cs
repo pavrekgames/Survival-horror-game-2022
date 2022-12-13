@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TaskItem : MonoBehaviour, IItem {
 
-    public event Action OnPickUpItem;
+    public event Action OnPickedUpItem;
 
     [SerializeField] private Item item;
     [SerializeField] private AudioClip itemSound;
@@ -23,10 +23,9 @@ public class TaskItem : MonoBehaviour, IItem {
         inventoryScript.AddItem(item, itemSound);
         gameObject.SetActive(false);
 
-        if(OnPickUpItem != null)
+        if (OnPickedUpItem != null)
         {
-            OnPickUpItem.Invoke();
+            OnPickedUpItem.Invoke();
         }
     }
-
 }

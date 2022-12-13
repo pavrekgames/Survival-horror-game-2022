@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CollectionBadgesUI : MonoBehaviour {
 
@@ -51,8 +49,5 @@ public class CollectionBadgesUI : MonoBehaviour {
         playerScript.enabled = true;
         playerScript.audioSource.UnPause();
         cursorScript.m_ShowCursor = !cursorScript.m_ShowCursor;
-
     }
-
-
 }

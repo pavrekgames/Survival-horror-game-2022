@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryUIManager : MonoBehaviour {
+public class InventoryUIManager : MonoBehaviour
+{
 
     public Canvas[] inventoryUIArray;
     public Canvas[] notesCanvasArray;
     public Canvas[] collectionCanvasArray;
- 
-	void Start () {
-		
-	}
-	
+
     public void ResetUI()
     {
-
         InventoryUI.isInventoryActive = false;
         TasksUI.isTasksActive = false;
         NotesUI.isNotesActive = false;
@@ -35,7 +31,5 @@ public class InventoryUIManager : MonoBehaviour {
         {
             collectionCanvas.enabled = false;
         }
-
     }
-
 }
