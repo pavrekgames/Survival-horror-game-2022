@@ -13,12 +13,18 @@ public class Monster1_v3 : Monster {
 
     private Transform monsterPoint1;
 
-	[HideInInspector] public bool isSeeMeat1 = false;
-	[HideInInspector] public bool isSeeMeat2 = false;
-	[HideInInspector] public bool isSeeMeat3 = false;
-	[HideInInspector] public bool isAteMeat1 = false;
-	[HideInInspector] public bool isAteMeat2 = false;
-	[HideInInspector] public bool isAteMeat3 = false;
+    [HideInInspector]
+    public bool isSeeMeat1 = false;
+    [HideInInspector]
+    public bool isSeeMeat2 = false;
+    [HideInInspector]
+    public bool isSeeMeat3 = false;
+    [HideInInspector]
+    public bool isAteMeat1 = false;
+    [HideInInspector]
+    public bool isAteMeat2 = false;
+    [HideInInspector]
+    public bool isAteMeat3 = false;
 
     public Transform meat1;
     public Transform meat2;

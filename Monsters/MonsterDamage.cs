@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterDamage : MonoBehaviour {
 
-	[SerializeField] private Health healthScript;
+    [SerializeField] private Health healthScript;
     [SerializeField] private Canvas damageCanvas;
     [SerializeField] private float damage;
 
