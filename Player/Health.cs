@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
-using UnityStandardAssets.Utility;
 
 public class Health : MonoBehaviour {
 
@@ -18,88 +16,71 @@ public class Health : MonoBehaviour {
     private Menu gameMenuScript;
     private Map mapScript;
 
-    private AudioClip[] damageSounds;
-    private AudioSource audioSource;
-    public AudioSource audioSource2;
-    private AudioSource damageAudioSource;
-    private AudioClip playerInjuredSound;
-    private AudioClip playerDeadSound;
-    private int randomSound = 0;
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] damageSounds;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource2;
+    [SerializeField] private AudioSource damageAudioSource;
+    [SerializeField] private AudioClip playerInjuredSound;
+    [SerializeField] private AudioClip playerDeadSound;
+    [SerializeField] private int randomSound = 0;
 
-    [HideInInspector] public int maxHealth = 100;
-	public float health;
+    [Header("Damage Canvases")]
 	public Canvas playerInjuredCanvas;
 	public Canvas playerDamageCanvas1;
 	public Canvas playerDamageCanvas2;
 	public Canvas playerDamageCanvas3;
-    
-	public bool isPlayerInjured = false;
-	public NoiseAndScratches noisesScreenScript;
-	public ColorCorrectionRamp deadScreenScript;
-	public bool isStartCount = false;
-	public bool isDead = false;
-	public bool isPass = false;
-	public bool isGameLoaded = false;
-	public float counter = 0;
-	
+
+    [Header("Health states")]
+    [HideInInspector]
+    public int maxHealth = 100;
+    public float health;
+    public bool isPlayerInjured = false;
+    public NoiseAndScratches noisesScreenScript;
+    public ColorCorrectionRamp deadScreenScript;
+    public bool isStartCount = false;
+    public bool isDead = false;
+    public bool isPass = false;
+    public bool isGameLoaded = false;
+    public float counter = 0;
 
     public bool isTravel = false;
 
+    void OnEnable()
+    {
+        health = maxHealth;
+        player = GameObject.Find("Player").transform;
+        playerScript = player.GetComponent<Player>();
+        animator = GetComponent<Animator>();
+        inventoryScript = player.GetComponent<Inventory>();
+        passAnimator = GameObject.Find("Pass").GetComponent<Animator>();
 
-    void OnEnable () {
-		health = maxHealth;
-		player = GameObject.Find("Player").transform;
-		playerScript = player.GetComponent<Player>();
-		animator = GetComponent<Animator>();
-		inventoryScript = player.GetComponent<Inventory>();
-		passAnimator = GameObject.Find ("Przejscie").GetComponent<Animator> ();
-
-		playerInjuredCanvas = GameObject.Find ("CanvasGraczRanny").GetComponent<Canvas> ();
-		playerDamageCanvas1 = GameObject.Find ("CanvasGraczObrazenia").GetComponent<Canvas> ();
-		playerDamageCanvas2 = GameObject.Find ("CanvasGraczObrazenia2").GetComponent<Canvas> ();
-		playerDamageCanvas3 = GameObject.Find ("CanvasGraczObrazenia3").GetComponent<Canvas> ();
-		audioSource = GameObject.Find ("PlayerHead").GetComponent<AudioSource> ();
-		audioSource2 = GameObject.Find ("ZrodloRanny_s").GetComponent<AudioSource>();
-        damageAudioSource = GameObject.Find("ZrodloObrazenia_s").GetComponent<AudioSource>();
-        noisesScreenScript = GameObject.Find ("PlayerCamera").GetComponent<NoiseAndScratches> (); 
-		deadScreenScript = GameObject.Find ("PlayerCamera").GetComponent<ColorCorrectionRamp> ();
-		deadScreenScript.enabled = false;
-		saveGameScript = GameObject.Find ("Player").GetComponent<SaveGame> ();
-		gameMenuScript = GameObject.Find ("CanvasMenu").GetComponent<Menu> ();
+        playerInjuredCanvas = GameObject.Find("CanvasPlayerInjured").GetComponent<Canvas>();
+        playerDamageCanvas1 = GameObject.Find("CanvasPlayerDamage").GetComponent<Canvas>();
+        playerDamageCanvas2 = GameObject.Find("CanvasPlayerDamage2").GetComponent<Canvas>();
+        playerDamageCanvas3 = GameObject.Find("CanvasPlayerDamage3").GetComponent<Canvas>();
+        audioSource = GameObject.Find("PlayerHead").GetComponent<AudioSource>();
+        audioSource2 = GameObject.Find("AudioSource_Injured").GetComponent<AudioSource>();
+        damageAudioSource = GameObject.Find("AudioSource_Damage").GetComponent<AudioSource>();
+        noisesScreenScript = GameObject.Find("PlayerCamera").GetComponent<NoiseAndScratches>();
+        deadScreenScript = GameObject.Find("PlayerCamera").GetComponent<ColorCorrectionRamp>();
+        deadScreenScript.enabled = false;
+        saveGameScript = GameObject.Find("Player").GetComponent<SaveGame>();
+        gameMenuScript = GameObject.Find("CanvasMenu").GetComponent<Menu>();
         mapScript = GameObject.Find("Player").GetComponent<Map>();
 
         isTravel = false;
     }
 
-	void Update () {
-		
-		HealthCondition ();
-	
-		if (isDead == true && isGameLoaded == false) {
+    void Update()
+    {
+
+        HealthCondition();
+
+        if (isDead == true && isGameLoaded == false)
+        {
             gameMenuScript.LoadGame();
-		}
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource2.Pause();
-
-            isPlaySound = true;
-
         }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource2.UnPause();
-
-            isPlaySound = false;
-        }
-
     }
 
     public void ReceiveDamage(float damage, Canvas damageCanvas)
@@ -125,23 +106,29 @@ public class Health : MonoBehaviour {
         }
     }
 
-    public void HealthCondition(){
+    public void HealthCondition()
+    {
 
-		if(health < maxHealth && health > 0 && (!Input.GetKey("left shift")) ){
-			health += 2 * Time.deltaTime;
-		}
+        if (health < maxHealth && health > 0 && (!Input.GetKey("left shift")))
+        {
+            health += 2 * Time.deltaTime;
+        }
 
-		if(health > maxHealth){
-			health = maxHealth;
-		}
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
 
-		if(health <= 50 && isDead == false){
-			noisesScreenScript.enabled = true;
+        if (health <= 50 && isDead == false)
+        {
+            noisesScreenScript.enabled = true;
             isTravel = false;
             mapScript.isFastTravel = false;
-		}else{
-			noisesScreenScript.enabled = false;
-		}
+        }
+        else
+        {
+            noisesScreenScript.enabled = false;
+        }
 
         if (health <= 0 && isDead == false)
         {
@@ -150,8 +137,8 @@ public class Health : MonoBehaviour {
 
         CriticalHealthEffect();
         CheckDamageCanvas();
-	
-	}
+
+    }
 
     public void CriticalHealthEffect()
     {
@@ -190,13 +177,13 @@ public class Health : MonoBehaviour {
         }
     }
 
-	public void PlayerDead(){
-		player.GetComponent<Crouch> ().GetUp();
-		playerScript.enabled = false;
+    public void PlayerDead()
+    {
+        player.GetComponent<Crouch>().GetUp();
+        playerScript.enabled = false;
         damageAudioSource.PlayOneShot(playerDeadSound);
-		isDead = true;
-		animator.SetTrigger("Death");
-		deadScreenScript.enabled = true;
-	}
-		
+        isDead = true;
+        animator.SetTrigger("Death");
+        deadScreenScript.enabled = true;
+    }
 }

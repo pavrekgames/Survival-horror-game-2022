@@ -43,168 +43,167 @@ public class Player : MonoBehaviour {
 	public bool isSprint = false;
 	public bool isSprintEffect = false;
 
-
-	void OnEnable(){
-
+    void OnEnable()
+    {
         screenOverlayScript = GameObject.Find("PlayerCamera").GetComponent<ScreenOverlay>();
-		playerCamera = Camera.main;
-		characterControler = GetComponent<CharacterController>();
-		animator = GetComponent<Animator>();
-		playerHeight = characterControler.height;
-		
-		crouchScript = GameObject.Find("Player").GetComponent<Crouch>();
-		
-		healthScript = GameObject.Find("Player").GetComponent<Health>();
-		audioSource = GameObject.Find ("ZrodloZmeczenie_s").GetComponent<AudioSource> ();
-		
+        playerCamera = Camera.main;
+        characterControler = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
+        playerHeight = characterControler.height;
+        crouchScript = GameObject.Find("Player").GetComponent<Crouch>();
+        healthScript = GameObject.Find("Player").GetComponent<Health>();
+        audioSource = GameObject.Find("AudioSource_Tired").GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+
+        KeyboardInput();
+        MouseInput();
+        PlayerAnimation();
+        Stamina();
 
     }
 
-	void Update() {
-		
-		KeyboardInput();
-		MouseInput();
-		PlayerAnimation();
-		Stamina ();
+    private void KeyboardInput()
+    {
 
-        // Zatrzymanie odtwarzania dzwiekow
+        float moveForwardBack = Input.GetAxis("Vertical") * currentVelocity;
 
-        if (Time.timeScale == 0 && isSoundPlay == false)
+        float moveLeftRight = Input.GetAxis("Horizontal") * currentVelocity;
+
+        if (characterControler.isGrounded && Input.GetButton("Jump") && crouchScript.isCrouch == false)
         {
-
-            audioSource.Pause();
-
-            isSoundPlay = true;
-
+            currentJumpHeight = jumpHeight;
+        }
+        else if (!characterControler.isGrounded)
+        {
+            currentJumpHeight += Physics.gravity.y * Time.deltaTime;
         }
 
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isSoundPlay == true)
+        if (Input.GetKey("left shift") && crouchScript.isCrouch == false && Input.GetAxis("Vertical") > 0 && isRest == true && screenOverlayScript.intensity == 0)
         {
+            currentVelocity = runVelocity;
+            currentStamina -= 4 * Time.deltaTime;
+            isSprint = true;
 
-            audioSource.UnPause();
-
-            isSoundPlay = false;
+        }
+        else if (!Input.GetKey("left shift") || crouchScript.isCrouch == true || isRest == false || screenOverlayScript.intensity != 0)
+        {
+            currentVelocity = walkVelocity;
+            isSprint = false;
         }
 
+        Vector3 movement = new Vector3(moveLeftRight, currentJumpHeight, moveForwardBack);
+
+        movement = transform.rotation * movement;
+
+        characterControler.Move(movement * Time.deltaTime);
     }
-		
-	private void KeyboardInput(){
-		
-		float moveForwardBack = Input.GetAxis("Vertical") * currentVelocity;
-		
-		float moveLeftRight = Input.GetAxis("Horizontal") * currentVelocity;
 
-		
-		if(characterControler.isGrounded && Input.GetButton("Jump") && crouchScript.isCrouch == false){
-			currentJumpHeight = jumpHeight;
-		} else if (!characterControler.isGrounded ){
-			//Fizyka grawitacja osi Y
-			currentJumpHeight += Physics.gravity.y * Time.deltaTime;
-		}
+    private void MouseInput()
+    {
 
-		if(Input.GetKey("left shift") && crouchScript.isCrouch == false && Input.GetAxis("Vertical") > 0 && isRest == true && screenOverlayScript.intensity == 0) {
-			currentVelocity = runVelocity;
-			currentStamina -= 4 * Time.deltaTime;
-			isSprint = true;
+        float mouseLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
+        transform.Rotate(0, mouseLeftRight, 0);
 
-		} else if(!Input.GetKey("left shift") || crouchScript.isCrouch == true || isRest == false || screenOverlayScript.intensity != 0) {
-			currentVelocity = walkVelocity;
-			isSprint = false;
-		}
-			
-		Vector3 movement = new Vector3(moveLeftRight, currentJumpHeight, moveForwardBack);
-		
-		movement = transform.rotation * movement;
+        mouseUpDown -= Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-		characterControler.Move(movement * Time.deltaTime);
-	}
+        mouseUpDown = Mathf.Clamp(mouseUpDown, -mouseUpDownRange, mouseUpDownRange);
 
-	private void MouseInput(){
-		
-		float mouseLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity; 
-		transform.Rotate(0, mouseLeftRight, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(mouseUpDown, 0, 0);
+    }
 
-		mouseUpDown -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+    private void PlayerAnimation()
+    {
 
-		mouseUpDown = Mathf.Clamp(mouseUpDown, -mouseUpDownRange, mouseUpDownRange);
+        animator.SetFloat("ForwardVelocity", GetForwardVelocity());
+        animator.SetFloat("BackVelocity", GetBackVelocity());
+        animator.SetFloat("RightVelocity", GetRightVelocity());
+        animator.SetFloat("LeftVelocity", GetLeftVelocity());
 
-		playerCamera.transform.localRotation = Quaternion.Euler(mouseUpDown, 0, 0);
-	}
-
-	private void PlayerAnimation(){
-
-		animator.SetFloat("predkoscPoruszania" , GetForwardVelocity());
-		animator.SetFloat("predkoscPoruszaniaTyl" , GetBackVelocity());
-		animator.SetFloat("predkoscPoruszaniaPrawo" , GetRightVelocity());
-		animator.SetFloat("predkoscPoruszaniaLewo" , GetLeftVelocity());
-
-
-		if(Input.GetButton("Jump") && jumpTime <= 0 && crouchScript.isCrouch == false)
+        if (Input.GetButton("Jump") && jumpTime <= 0 && crouchScript.isCrouch == false)
         {
-			animator.SetTrigger("skok");
-			jumpTime = 1.07f;
-		}
+            animator.SetTrigger("Jump");
+            jumpTime = 1.07f;
+        }
 
-		if (jumpTime > 0) {
-			jumpTime -= Time.deltaTime;
-		}
+        if (jumpTime > 0)
+        {
+            jumpTime -= Time.deltaTime;
+        }
+    }
 
-	} 
+    protected float GetForwardVelocity()
+    {
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            return currentVelocity;
+        }
+        else if (Input.GetAxis("Vertical") > 0 && Input.GetKeyDown("left shift"))
+        {
+            return runVelocity;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-	protected float GetForwardVelocity(){
-		if(Input.GetAxis("Vertical") > 0){
-		return currentVelocity;
-		}
-		else if(Input.GetAxis("Vertical") > 0 && Input.GetKeyDown("left shift")){
-			return runVelocity;
-		}else{
-			return 0;
-		}
-	}
+    protected float GetBackVelocity()
+    {
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            return currentVelocity;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-	protected float GetBackVelocity(){
-		if(Input.GetAxis("Vertical") < 0){
-			return currentVelocity;
-		}else{
-			return 0;
-		}
-	}
+    protected float GetRightVelocity()
+    {
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            return currentVelocity;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-	protected float GetRightVelocity(){
-		if(Input.GetAxis("Horizontal") > 0){
-			return currentVelocity;
-		}else{
-			return 0;
-		}
-	}
+    protected float GetLeftVelocity()
+    {
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            return currentVelocity;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-	protected float GetLeftVelocity(){
-		if(Input.GetAxis("Horizontal") < 0){
-			return currentVelocity;
-		}else{
-			return 0;
-		}
-	}
+    public void Stamina()
+    {
 
-	public void Stamina(){
-		
-		if (currentStamina <= 0 && isRest == true && healthScript.health > 0) {
-			isRest = false;
-			audioSource.clip = tiredSound;
+        if (currentStamina <= 0 && isRest == true && healthScript.health > 0)
+        {
+            isRest = false;
+            audioSource.clip = tiredSound;
             audioSource.Play();
-		}
-
-        if ((isSprint == false && currentStamina <= maxStamina) || ((Input.GetAxis("Vertical") == 0) && (Input.GetAxis("Horizontal") == 0) && currentStamina <= maxStamina)) 
-        { 
-			currentStamina += staminaRegenerationFactor * Time.deltaTime;
-		}
-
-		if (isRest == false && currentStamina >= 75) {
-			isRest = true;
         }
-	}
-		
 
+        if ((isSprint == false && currentStamina <= maxStamina) || ((Input.GetAxis("Vertical") == 0) && (Input.GetAxis("Horizontal") == 0) && currentStamina <= maxStamina))
+        {
+            currentStamina += staminaRegenerationFactor * Time.deltaTime;
+        }
+
+        if (isRest == false && currentStamina >= 75)
+        {
+            isRest = true;
+        }
+    }
 }
