@@ -14,51 +14,31 @@ public class TaskTower : MonoBehaviour {
     public Transform upperBox2;
 
     public bool isHit = false;
-	public float counter = 0;
+    public float counter = 0;
 
-	void Start () {
+    void Start()
+    {
 
-		pile = GameObject.Find("TaskTowerPile").transform;
-		upperBox1 = GameObject.Find("TaskTowerBoxUp1").transform;
-		upperBox2 = GameObject.Find("TaskTowerBoxUp2").transform;
-	}
-	
-	void Update () {
-
-        CheckBoxes();
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            audioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            audioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
-
+        pile = GameObject.Find("TaskTowerPile").transform;
+        upperBox1 = GameObject.Find("TaskTowerBoxUp1").transform;
+        upperBox2 = GameObject.Find("TaskTowerBoxUp2").transform;
     }
 
-	void OnCollisionEnter(Collision col){
-		if(col.gameObject.GetComponent<Collider>().gameObject.name == "TaskTowerBoxUp1" && isHit == false){
+    void Update()
+    {
+        CheckBoxes();
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.GetComponent<Collider>().gameObject.name == "TaskTowerBoxUp1" && isHit == false)
+        {
             pile.gameObject.GetComponent<Rigidbody>().AddForce(pile.transform.forward * 2000000f);
             isHit = true;
             audioSource.clip = hitSound;
             audioSource.Play();
-		}
-	}
+        }
+    }
 
     void CheckBoxes()
     {

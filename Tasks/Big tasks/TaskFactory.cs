@@ -27,75 +27,59 @@ public class TaskFactory : MonoBehaviour {
     public bool isNotification = false;
     public string notificationString = "No energy...";
 
-	void Start () {
-
-		player = GameObject.Find("Player").transform;
-		lever = GameObject.Find("Dzwignia").transform;
-		energyLight = GameObject.Find ("SwiatloEnergii").GetComponent<Light> ();
-		notificationScript = GameObject.Find ("Player").GetComponent<Notifications> ();
-	}
-	
-
-	void Update () {
-
-		float distance = Vector3.Distance(player.position, lever.position);
-	
-		if(isHasEnergy == false && leverAudioSource.isPlaying == false && isNotification == true && distance <= 11){ // 
-            isNotification = true;
-		}else if(distance > 11 && isNotification == true){ // 
-			isNotification = false;
-		}else if(isHasEnergy == true){
-			energyLight.color = Color.green;
-		}
-
-        // Zatrzymanie odtwarzania dzwiekow
-
-        if (Time.timeScale == 0 && isPlaySound == false)
-        {
-
-            leverAudioSource.Pause();
-            grillesAudioSource.Pause();
-
-            isPlaySound = true;
-
-        }
-
-        else // Wznowienie odtwarzania dzwiekow
-
-        if (Time.timeScale == 1 && isPlaySound == true)
-        {
-
-            leverAudioSource.UnPause();
-            grillesAudioSource.UnPause();
-
-            isPlaySound = false;
-        }
-
-
+    void Start()
+    {
+        player = GameObject.Find("Player").transform;
+        lever = GameObject.Find("FactoryLever").transform;
+        energyLight = GameObject.Find("EnergyLight").GetComponent<Light>();
+        notificationScript = GameObject.Find("Player").GetComponent<Notifications>();
     }
 
-	void OnTriggerEnter(Collider other){
-		
-		if(other.gameObject.GetComponent<Collider>().gameObject.name == "LeverTrigger" && isHasEnergy == false){
-			LeverNotification ();
-		}else if(other.gameObject.GetComponent<Collider>().gameObject.name == "LeverTrigger" && isHasEnergy == true && isLever == false){
-			OpenGate ();
-		}
-	}
+    void Update()
+    {
+        float distance = Vector3.Distance(player.position, lever.position);
 
+        if (isHasEnergy == false && leverAudioSource.isPlaying == false && isNotification == true && distance <= 11)
+        { // 
+            isNotification = true;
+        }
+        else if (distance > 11 && isNotification == true)
+        { // 
+            isNotification = false;
+        }
+        else if (isHasEnergy == true)
+        {
+            energyLight.color = Color.green;
+        }
+    }
 
-	void LeverNotification(){
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.GetComponent<Collider>().gameObject.name == "LeverTrigger" && isHasEnergy == false)
+        {
+            LeverNotification();
+        }
+        else if (other.gameObject.GetComponent<Collider>().gameObject.name == "LeverTrigger" && isHasEnergy == true && isLever == false)
+        {
+            OpenGate();
+        }
+    }
+
+    void LeverNotification()
+    {
         leverAudioSource.clip = leverSound;
         leverAudioSource.Play();
-		isNotification = true;
-	}
+        isNotification = true;
+    }
 
-	void OpenGate(){
+    void OpenGate()
+    {
         leverAudioSource.clip = leverSound;
         leverAudioSource.Play();
         grillesAudioSource.clip = grillesSound;
         grillesAudioSource.Play();
         isLever = true;
-		grillesAnimator.SetTrigger("OpenGate");
-	}
+        grillesAnimator.SetTrigger("OpenGate");
+    }
 }

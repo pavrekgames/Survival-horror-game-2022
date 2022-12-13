@@ -28,27 +28,27 @@ public class TaskBones : MonoBehaviour, IRaycastTask {
     [Header("Objects states")]
     public int bonesCount = 0;
     public bool isBone1 = false;
-	public bool isBone2 = false;
-	public bool isBone3 = false;
-	public bool isBone4 = false;
-	public bool isBone5 = false;
+    public bool isBone2 = false;
+    public bool isBone3 = false;
+    public bool isBone4 = false;
+    public bool isBone5 = false;
 
-	public bool isGrille = false;
+    public bool isGrille = false;
     public string itemType;
 
-	void OnEnable () {
-
+    void OnEnable()
+    {
         playerManagerScript = GameObject.Find("Player").GetComponent<PlayerManager>();
-        inventoryScript = GameObject.Find ("Player").GetComponent<Inventory> ();
+        inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
         grilleAudioSource.clip = null;
+    }
 
-	}
-
-	void Update () {
+    void Update()
+    {
 
         CheckBones();
         TaskDone();
-        
+
         if (Time.timeScale == 0 && isPlaySound == false)
         {
             grilleAudioSource.Pause();
@@ -56,12 +56,11 @@ public class TaskBones : MonoBehaviour, IRaycastTask {
 
         }
 
-        else if(Time.timeScale == 1 && isPlaySound == true)
+        else if (Time.timeScale == 1 && isPlaySound == true)
         {
             grilleAudioSource.UnPause();
             isPlaySound = false;
         }
-
     }
 
     public void Execute()
@@ -115,7 +114,5 @@ public class TaskBones : MonoBehaviour, IRaycastTask {
             grilleAudioSource.clip = grilleSound;
             grilleAudioSource.Play();
         }
-
     }
-
 }

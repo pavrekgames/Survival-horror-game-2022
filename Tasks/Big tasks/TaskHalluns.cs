@@ -16,11 +16,8 @@ public class TaskHalluns : MonoBehaviour {
     public bool isHalluns;
     public bool isHallunsFlashback;
 
-    void Start () {
-		
-	}
-	
-	void Update () {
+    void Update()
+    {
 
         if (isHalluns == true && hallunsTimer < 30)
         {
@@ -55,5 +52,4 @@ public class TaskHalluns : MonoBehaviour {
         twirlScript.enabled = true;
         isHalluns = true;
     }
-
 }
