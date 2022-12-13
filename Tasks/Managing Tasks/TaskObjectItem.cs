@@ -10,13 +10,12 @@ public class TaskObjectItem : MonoBehaviour {
     [SerializeField] private TaskData taskToRemove;
     [SerializeField] private TaskItem taskItem;
 
-	void Start () {
-
+    void Start()
+    {
         tasksScript = GameObject.Find("Player").GetComponent<Tasks>();
 
         taskItem.OnPickedUpItem += AddTask;
         taskItem.OnPickedUpItem += RemoveTask;
-
     }
 
     public void AddTask()
@@ -28,12 +27,11 @@ public class TaskObjectItem : MonoBehaviour {
 
     public void RemoveTask()
     {
-        if(taskToRemove != null)
+        if (taskToRemove != null)
         {
             tasksScript.RemoveTask(taskToRemove);
 
             taskItem.OnPickedUpItem -= RemoveTask;
         }
     }
-
 }

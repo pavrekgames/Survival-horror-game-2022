@@ -34,5 +34,4 @@ public class TaskObjectNote : MonoBehaviour {
             note.OnPickUpNote -= RemoveTask;
         }
     }
-
 }
