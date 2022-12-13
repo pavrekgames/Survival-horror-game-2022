@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrouchCollision : MonoBehaviour {
+public class CrouchCollision : MonoBehaviour
+{
 
-	public bool isCollide = false;
+    public bool isCollide = false;
 
-	void OnCollisionStay(Collision col){
+    void OnCollisionStay(Collision col)
+    {
 
-		if(col.transform.tag == "CrouchCollision"){
-			isCollide = true;
-		}
-	}
+        if (col.transform.tag == "CrouchCollision")
+        {
+            isCollide = true;
+        }
+    }
 
-	void OnCollisionExit(){
-		isCollide = false;
-	}
-
+    void OnCollisionExit()
+    {
+        isCollide = false;
+    }
 }

@@ -31,9 +31,9 @@ public class CrosshairGUI : MonoBehaviour {
     [SerializeField] private float rayLength = 3f;
     private Camera playerCam;
 
-	void OnEnable(){
-
-		playerCam = Camera.main;
+    void OnEnable()
+    {
+        playerCam = Camera.main;
         pushScript = GameObject.Find("Player").GetComponent<Push>();
         dragScript = GameObject.Find("Player").GetComponent<DragObject>();
         dragRigidbodyScript = GameObject.Find("Player").GetComponent<DragRigidbody>();
@@ -42,14 +42,13 @@ public class CrosshairGUI : MonoBehaviour {
         healthScript = GameObject.Find("Player").GetComponent<Health>();
     }
 
-	void  Update (){
-
+    void Update()
+    {
         ShowHideCursor();
         SetCursorState();
         SetCursorTexture();
-
     }
-		
+
     void ShowHideCursor()
     {
         if (m_ShowCursor == true)
@@ -71,79 +70,64 @@ public class CrosshairGUI : MonoBehaviour {
 
         if (Physics.Raycast(playerAim, out hit, rayLength, 1 << 9) && notesScript.isNotes == false)
         {
-
             if (hit.collider.gameObject.tag == "Door" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.DoorTexture;
             }
-
             else if (hit.collider.gameObject.tag == "Hand" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.HandTexture;
             }
-
             else if (hit.collider.gameObject.tag == "Note" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.NoteTexture;
             }
-
             else if (hit.collider.gameObject.tag == "Push" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.PushTexture;
             }
-
             else if (hit.collider.gameObject.tag == "Save" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.SaveTexture;
             }
-
             else if (hit.collider.gameObject.tag == "Drawers1" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.Drawers1Texture;
             }
-
             else if (hit.collider.gameObject.tag == "Drawers2" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.Drawers2Texture;
             }
-
             else if (hit.collider.gameObject.tag == "Wardrobe" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.WardrobeTexture;
             }
-
             else if (hit.collider.gameObject.tag == "Object1" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.Object1Texture;
             }
-
             else if (hit.collider.gameObject.tag == "Object2" && m_ShowCursor == false)
             {
                 currentCursorState = CursorState.Object2Texture;
             }
-
             else if (hit.collider.gameObject.tag == "Move1" && m_ShowCursor == false && healthScript.health > 0)
             {
                 currentCursorState = CursorState.Move1Texture;
             }
-
             else if (hit.collider.gameObject.tag == "Move2" && m_ShowCursor == false && healthScript.health > 0)
             {
                 currentCursorState = CursorState.Move2Texture;
             }
-
             else if (hit.collider.gameObject.tag == "MoveTask" && m_ShowCursor == false && healthScript.health > 0)
             {
                 currentCursorState = CursorState.MoveTaskTexture;
             }
-
         }
 
         else if (notesScript.isNotes == true)
         {
             HideCursorDuringNotes();
         }
-
         else
         {
             currentCursorState = CursorState.DefaultTexture;
@@ -232,7 +216,7 @@ public class CrosshairGUI : MonoBehaviour {
     }
 
     void Drawers1CursorTexture()
-    {  
+    {
         SetDefaultScriptsSettings();
         SetCrosshairRect(m_useDrawersTexture);
         openCloseObjectScript.enabled = true;
@@ -309,14 +293,13 @@ public class CrosshairGUI : MonoBehaviour {
     void SetDefaultScriptsSettings()
     {
         dragRigidbodyScript.enabled = false;
-        //openCloseObjectScript.enabled = false;
         pushScript.DefaultSettings();
         pushScript.enabled = false;
     }
 
-    void  OnGUI (){
-		if(m_bIsCrosshairVisible)
-
+    void OnGUI()
+    {
+        if (m_bIsCrosshairVisible)
             switch (currentCursorState)
             {
                 case CursorState.DefaultTexture:
@@ -362,11 +345,10 @@ public class CrosshairGUI : MonoBehaviour {
                     GUI.DrawTexture(m_crosshairRect, m_useMoveTexture);
                     break;
             }
-    } 
+    }
 
-	void OnEnabled(){
-		m_ShowCursor = false;
-	}
-		
-
+    void OnEnabled()
+    {
+        m_ShowCursor = false;
+    }
 }

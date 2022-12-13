@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrilleSound : MonoBehaviour {
+public class GrilleSound : MonoBehaviour
+{
 
-	[SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip grilleSound;
 
-	public bool isOpen = false;
+    public bool isOpen = false;
 
     void OnTriggerExit(Collider other)
     {
