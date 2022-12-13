@@ -1,5 +1,6 @@
 ﻿
-public interface IScreamer {
+public interface IScreamer
+{
 
     void CallScreamer();
 
