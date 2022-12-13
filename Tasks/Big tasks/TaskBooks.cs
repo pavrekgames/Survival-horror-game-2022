@@ -36,8 +36,8 @@ public class TaskBooks : MonoBehaviour {
 
     private Book[] books;
 
-	private Ray playerAim;
-	private Camera playerCam;
+    private Ray playerAim;
+    private Camera playerCam;
     [SerializeField] private float rayLength = 4f;
 
     void OnEnable()
