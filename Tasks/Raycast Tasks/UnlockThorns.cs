@@ -18,7 +18,8 @@ public class UnlockThorns : MonoBehaviour, IRaycastTask {
     public bool isLocked;
     public string itemType;
 
-    void Start () {
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
@@ -54,5 +55,4 @@ public class UnlockThorns : MonoBehaviour, IRaycastTask {
             isLocked = false;
         }
     }
-
 }

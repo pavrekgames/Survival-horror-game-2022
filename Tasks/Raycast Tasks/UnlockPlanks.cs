@@ -17,8 +17,8 @@ public class UnlockPlanks : MonoBehaviour, IRaycastTask {
     public bool isLocked;
     public string itemType;
 
-
-    void Start () {
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
         playerScript = GameObject.Find("Player").GetComponent<Player>();
         notesScript = GameObject.Find("Player").GetComponent<Notes>();
@@ -54,5 +54,4 @@ public class UnlockPlanks : MonoBehaviour, IRaycastTask {
             notesScript.isNotes = false;
         }
     }
-
 }

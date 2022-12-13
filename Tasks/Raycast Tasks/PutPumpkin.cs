@@ -13,11 +13,12 @@ public class PutPumpkin : MonoBehaviour, IRaycastTask {
     [SerializeField] private AudioClip keySound;
     [SerializeField] private GameObject pumpkin;
     [SerializeField] private GameObject key;
-    
+
     public bool isDone;
     public string itemType;
 
-    void Start () {
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
@@ -40,5 +41,4 @@ public class PutPumpkin : MonoBehaviour, IRaycastTask {
             }
         }
     }
-
 }

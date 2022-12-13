@@ -14,7 +14,8 @@ public class UnlockGrille : MonoBehaviour, IRaycastTask {
     public bool isLocked;
     public string itemType;
 
-    void Start () {
+    void Start()
+    {
         inventoryScript = GameObject.Find("Player").GetComponent<Inventory>();
     }
 
@@ -29,7 +30,7 @@ public class UnlockGrille : MonoBehaviour, IRaycastTask {
                 grille.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
                 grille.gameObject.AddComponent<Rigidbody>();
                 isLocked = false;
-                
+
                 inventoryScript.RemoveItem(inventoryScript.items[i], true);
                 break;
             }
