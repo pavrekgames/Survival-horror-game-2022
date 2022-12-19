@@ -10,7 +10,6 @@ Used game Design patterns:
 * Strategy Pattern
 * Component Pattern
 * Prototype Pattern
-* Bridge Pattern
 
 Main implementations:
 
