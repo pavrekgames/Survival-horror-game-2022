@@ -41,3 +41,13 @@ Not in the repository but in the game:
 5. Options (Graphics settings, music and sounds settings, mouse sensitivity, language)
 6. Fast travel system
 
+SCREENSHOTS
+
+![InterfaceNow](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/811a471c-d764-40ce-9dcd-b3779c4144a5)
+
+![OpenedDoorSteamEvent](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/f3025452-8787-4909-bf65-2200d1aef768)
+
+![ScarecrowRoom](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/fee3988b-8c1a-4da2-95d8-d11bb0cff67f)
+
+![SpiderShed](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/4861ca58-d2a2-4731-9884-070aee6a22c7)
+
