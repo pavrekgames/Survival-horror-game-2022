@@ -49,5 +49,6 @@ SCREENSHOTS
 
 ![ScarecrowRoom](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/fee3988b-8c1a-4da2-95d8-d11bb0cff67f)
 
-![SpiderShed](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/4861ca58-d2a2-4731-9884-070aee6a22c7)
+![9_SteamPageCornfield](https://github.com/pavrekgames/Survival-horror-game-2022/assets/105421661/164ef54e-c9eb-43b2-b7ee-b89a8eb9c3a4)
+
 
